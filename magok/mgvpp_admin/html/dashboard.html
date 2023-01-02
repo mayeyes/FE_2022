@@ -1,0 +1,727 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>P2P전력거래서비스</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="../css/favicon.svg" sizes="any" type="image/svg+xml">
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/eSharing.css" />
+        <link rel="stylesheet" href="../css/navibar.css" />
+        <link rel="stylesheet" href="../css/layout.css" />
+        <link rel="stylesheet" href="../css/head.css" />
+        <link rel="stylesheet" href="../css/ui.jqgrid.css" />
+        <link rel="stylesheet" href="../css/bootstrap-material-datetimepicker.css" />
+        <link rel="stylesheet" href="../css/vpp.css" />
+        <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../js/jqGrid/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../js/jqGrid/i18n/grid.locale-kr.js"></script>
+		<script type="text/javascript" src="../js/jqGrid/jquery.jqGrid.min.js"></script>
+        <script type="text/javascript" src="../js/moment.min.js"></script>
+        <script type="text/javascript" src="../js/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap-material-datetimepicker.js"></script>
+        <script type="text/javascript" src="../js/layout.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/highcharts-custom.js"></script>
+        <script type="text/javascript" src="../js/secosChart.js"></script>
+        <script type="text/javascript" src="../js/jquery.bpopup.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.serializeObject.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+        
+    </head>
+    <body>
+        <div class="container">
+		
+
+    
+            <div class="wrap">
+                <div id="subpage_top_menu" data-status="large" class="slider_bar">
+                    <div class="top_menu">
+                        <span class="logo" onclick="location.href='http://portal.magok.kr:22202'"><img src="../img/logo-2.png"></span>
+                        <div class="menu">
+                            <div class="button"></div>
+                            <div class="button"></div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="subpage_dept1_menu" data-menu-id="M010000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_01"><i></i></span> <span class="title">데이터 수집</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M010100" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/collectionMonitor.do?menu-id=M010100" target="_blank">데이터 연계처리 현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010200" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0001.do?menu-id=M010200" target="_self">데이터 수집 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010300" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0003.do?menu-id=M010300" target="_self">전력 정보 수집</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010400" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0005.do?menu-id=M010400" target="_self">비전력 정보 수집</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010500" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0004.do?menu-id=M010500" target="_self">공공 정보 수집</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M020000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_02"><i></i></span> <span class="title">데이터 저장소</span> </a>
+                            <ul class="sub_menu">
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M130000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_03"><i></i></span> <span class="title">현황/통계</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M130100" data-menu-depth="2"> <a href="http://support.magok.kr:22205/ver1/test?menu-id=M130100" target="_blank">통합 운영 대시보드</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130200" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sa/sa1201.do?menu-id=M130200" target="_self">에너지 종합현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130300" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sa/sa1301.do?menu-id=M130300" target="_self">건물별 사용 현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130500" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sa/sa1400.do?menu-id=M130500" target="_self">에너지 품질</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130600" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sd/sd0000.do?menu-id=M130600" target="_self">분산자원 현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu active" data-menu-id="M120000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_06"><i></i></span> <span class="title">응용 서비스</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M121100" data-menu-depth="2" class=" active"> <a href="javascript:void(0);">가상발전소 관리자</a>
+                                    <ul>
+                                        <li data-menu-id="M121101" data-menu-depth="3" class=" selectedMenuEntry"> <a href="../main/main.do?menu-id=M121101" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M121102" data-menu-depth="3"> <a href="../agent/agent.do?menu-id=M121102" target="_self">중개사업자 관리</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120200" data-menu-depth="2"> <a href="javascript:void(0);">가상발전소 중개사업자</a>
+                                    <ul>
+                                        <li data-menu-id="M120206" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/main/main.do?menu-id=M120206" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M120207" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/res/res0101.do?menu-id=M120207" target="_self">자원관리</a> </li>
+                                        <li data-menu-id="M120208" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/pred/pred0101.do?menu-id=M120208" target="_self">예측모형관리</a> </li>
+                                        <li data-menu-id="M120209" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/oper/oper0101.do?menu-id=M120209" target="_self">집합전력자원운영</a> </li>
+                                        <li data-menu-id="M120210" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/pay/pay0101.do?menu-id=M120210" target="_self">정산분석</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120500" data-menu-depth="2"> <a href="javascript:void(0);">가상발전소 전력보유자</a>
+                                    <ul>
+                                        <li data-menu-id="M120505" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/main/main.do?menu-id=M120505" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M120501" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/res/res0201.do?menu-id=M120501" target="_self">나의 자원정보</a> </li>
+                                        <li data-menu-id="M120502" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/oper/oper0101.do?menu-id=M120502" target="_self">운영현황</a> </li>
+                                        <li data-menu-id="M120503" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/stat/stat0201.do?menu-id=M120503" target="_self">통계</a> </li>
+                                        <li data-menu-id="M120504" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/support/support0101.do?menu-id=M120504" target="_self">고객지원</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120800" data-menu-depth="2"> <a href="javascript:void(0);">에너지 쉐어링 고객</a>
+                                    <ul>
+                                        <li data-menu-id="M120801" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/introduction/introduction.do?menu-id=M120801" target="_self">서비스 소개</a> </li>
+                                        <li data-menu-id="M120802" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/dashboard/dashboard.do?menu-id=M120802" target="_self">My E-Sharing</a> </li>
+                                        <li data-menu-id="M120803" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/bidding/biddingList.do?menu-id=M120803" target="_self">E-Sharing 입찰</a> </li>
+                                        <li data-menu-id="M120805" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/calculation/calculationList.do?menu-id=M120805" target="_self">E-Sharing 정산</a> </li>
+                                        <li data-menu-id="M120804" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/board/noticeList.do?menu-id=M120804" target="_self">공지사항</a> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M090000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_07"><i></i></span> <span class="title">커뮤니티</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M090100" data-menu-depth="2"> <a href="123?menu-id=M090100" target="_self">123</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M990000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_08"><i></i></span> <span class="title">환경설정</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M990400" data-menu-depth="2"> <a href="javascript:void(0);">가이드</a>
+                                    <ul>
+                                        <li data-menu-id="M990403" data-menu-depth="3"> <a href="http://portal.magok.kr:22202/guide/sso?menu-id=M990403&amp;type=adm" target="_self">플랫폼 활용 가이드</a> </li>
+                                        <li data-menu-id="M990401" data-menu-depth="3"> <a href="http://portal.magok.kr:22202/guide/design?menu-id=M990401" target="_self">디자인가이드</a> </li>
+                                        <li data-menu-id="M990402" data-menu-depth="3"> <a href="http://portal.magok.kr:22202/guide/sub?menu-id=M990402" target="_self">페이지가이드</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990800" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/userRequestManage?menu-id=M990800" target="_self">가입요청 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990100" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/developer/ssoManage?menu-id=M990100" target="_self">SSO 서비스 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990300" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/developer/menuManage?menu-id=M990300&amp;target=adm" target="_self">메뉴 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990200" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/userManage?menu-id=M990200" target="_self">사용자 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M991100" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/roleManage?menu-id=M991100" target="_self">권한 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990500" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/untyCodeManage?menu-id=M990500" target="_self">통합코드 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990700" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/boardManage?menu-id=M990700" target="_self">게시판 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990900" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/my/infoEnter?menu-id=M990900" target="_self">나의 정보 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990600" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/loginHistory?menu-id=M990600" target="_self">로그인 이력</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M991000" data-menu-depth="2"> <a href="javascript:void(0);">약관 및 정책 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="top_navbar">
+                    <div class="top_menu">
+                        <nav id="login"> <span class="user">켑코쏠라(kbet0000)</span> <span>님 로그인했습니다.</span> <a href="/sso/logout" class="logout"></a>
+                            <div class="setbox"> <a href="http://portal.magok.kr:22202/guide/sso?menu-id=M990403&amp;type=adm" title="환경설정" class="setting"></a> </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="mid_navbar">
+                        <div class="titlebox">
+                            <h2>대시보드</h2>
+                        </div>
+                        <nav class="navi">
+                            <ul>
+                                <li> <span class="navi_home">home</span> </li>
+                                <li> <span>응용 서비스</span> </li>
+                                <li> <span>가상발전소 관리자</span> </li>
+                                <li> <span>대시보드</span> </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="totalPage" data-names="mgvpp_admin">
+                        <div class="totalPageWrap wrapper">
+                            <div class="contentWrap one">
+                                <div class="underBar">
+                                    <h4 class="titleName">현재 날씨</h4>
+                                </div>
+                                <div class="tablePage">
+                                    <div class="item_01" id="main_weather_icon_area"></div>
+                                    <div class="item_02" id="main_weather_text_area">
+                                        <dl>
+                                            <dt>기온</dt>
+                                            <dd>℃</dd>
+                                            <dt>풍속</dt>
+                                            <dd>m/s</dd>
+                                            <dt>대기상태</dt>
+                                            <dd> - </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentWrap two">
+                                <div class="underBar">
+                                    <h4 class="titleName">구성 현황</h4>
+                                </div>
+                                <div class="tablePage">
+                                    <dl>
+                                        <dt>집합전력자원 수</dt>
+                                        <dd><span id="vpp_cnt_div">5</span> 기</dd>
+                                        <dt>계약자원 수</dt>
+                                        <dd><span id="re_cnt_div">73</span> 기</dd>
+                                        <dt>자원용량</dt>
+                                        <dd><span id="gen_cap_div">98.732</span> MW</dd>
+                                        <dt>중개사업자 수</dt>
+                                        <dd><span id="agent_cnt_div">3</span> 업체</dd>
+                                        <dt>계약고객 수</dt>
+                                        <dd><span id="cust_cnt_div">7</span> 업체</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="contentWrap three">
+                                <div class="underBar">
+                                    <h4 class="titleName">오늘의 종합 운영현황(<span id="nowTime_area">9</span>시 현재)</h4>
+                                </div>
+                                <div class="tablePage">
+                                    <div class="item_01">
+                                        <div>
+                                            <dl>
+                                                <dt>발전량</dt>
+                                                <dd><span id="todayTotGenAmount_area">44</span><span> MWh</span></dd>
+                                            </dl>
+                                        </div>
+                                        <div>
+                                            <dl>
+                                                <dt>오차율</dt>
+                                                <dd><span id="todayTotGenRate_area"> 22.02</span><span> %</span></dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div id="dayStackUpGenAmount_div" class="item_02">
+                                        <ul>
+                                            <li>
+                                                <div class="tp_nm"><span>태양광</span></div>
+                                                <div class="res_cnt"><span>73</span> 기</div>
+                                                <div class="tot_gen_amount"><span>44</span> MWh</div>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <div class="tp_nm"><span>풍력</span></div>
+                                                <div class="res_cnt"><span>0</span> 기</div>
+                                                <div class="tot_gen_amount"><span>0</span> MWh</div>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <div class="tp_nm"><span>ESS</span></div>
+                                                <div class="res_cnt"><span>0</span> 기</div>
+                                                <div class="tot_gen_amount"><span>0</span> MWh</div>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <div class="tp_nm"><span>기타</span></div>
+                                                <div class="res_cnt"><span>0</span> 기</div>
+                                                <div class="tot_gen_amount"><span>0</span> MWh</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentWrap four">
+                                <div class="underBar">
+                                    <h4 class="titleName">시간별 운영현황</h4>
+                                </div>
+                                <div class="tablePage">
+                                    <div id="chart1" class="item_01" data-highcharts-chart="0">
+                                        <div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 1375px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, 돋움, Dotum, Helvetica, Verdana, Arial, sans-serif; font-size: 12px;"><svg version="1.1" style="font-family:Noto Sans KR, Nanum Gothic ,돋움 ,Dotum,Helvetica,Verdana,Arial,sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="1375" height="400">
+                                                <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                <defs>
+                                                    <clipPath id="highcharts-1">
+                                                        <rect x="0" y="0" width="1202" height="322"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                                <rect x="0" y="0" width="1375" height="400" strokeWidth="0" rx="5" ry="5" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                <g class="highcharts-grid" zIndex="1"></g>
+                                                <g class="highcharts-grid" zIndex="1">
+                                                    <path fill="none" d="M 58 332.5 L 1260 332.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 268.5 L 1260 268.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 203.5 L 1260 203.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 139.5 L 1260 139.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 74.5 L 1260 74.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 9.5 L 1260 9.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                </g>
+                                                <g class="highcharts-grid" zIndex="1">
+                                                    <path fill="none" d="M 58 332.5 L 1260 332.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 268.5 L 1260 268.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 203.5 L 1260 203.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 139.5 L 1260 139.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 74.5 L 1260 74.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                    <path fill="none" d="M 58 9.5 L 1260 9.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                </g>
+                                                <g class="highcharts-axis" zIndex="2">
+                                                    <path fill="none" d="M 58 332.5 L 1260 332.5" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                                </g>
+                                                <g class="highcharts-axis" zIndex="2"><text x="21" zIndex="7" text-anchor="end" transform="translate(0,0)" class=" highcharts-yaxis-title" style="color:#707070;fill:#707070;" y="10">%</text>
+                                                    <path fill="none" d="M 57.5 10 L 57.5 332" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                                </g>
+                                                <g class="highcharts-axis" zIndex="2"><text x="1337" zIndex="7" text-anchor="start" transform="translate(0,0)" class=" highcharts-yaxis-title" style="color:#707070;fill:#707070;" y="10">MWh</text></g>
+                                                <path fill="none" d="M 182.5 10 L 182.5 332 M 182.5 10 L 182.5 332" stroke="rgba(155,200,255,0.2)" stroke-width="50.083333333333336" zIndex="2" visibility="hidden"></path>
+                                                <g class="highcharts-series-group" zIndex="3">
+                                                    <path fill="#d4583b" fill-opacity="0.25" d="M 0 0"></path>
+                                                    <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(58,10) scale(1 1)" style="" clip-path="url(#highcharts-1)">
+                                                        <rect x="13" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="63" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="113" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="163" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="213" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="263" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="313" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="363" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="413" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="463" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="513" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="563" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="614" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="664" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="714" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="764" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="814" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="864" y="323" width="12" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="914" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="964" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="1014" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="1064" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="1114" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                        <rect x="1164" y="323" width="13" height="0" fill="#7CB5EC" rx="0" ry="0"></rect>
+                                                    </g>
+                                                    <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(58,10) scale(1 1)" clip-path="none"></g>
+                                                    <g class="highcharts-series highcharts-series-1 highcharts-tracker" zIndex="0.1" transform="translate(58,10) scale(1 1)" style="" clip-path="url(#highcharts-1)">
+                                                        <rect x="25" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="75" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="125" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="175" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="225" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="275" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="326" y="312" width="12" height="11" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="376" y="241" width="12" height="82" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="426" y="131" width="12" height="192" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="476" y="323" width="12" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="526" y="323" width="12" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="576" y="323" width="12" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="626" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="676" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="726" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="776" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="826" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="876" y="323" width="13" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="927" y="323" width="12" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="977" y="323" width="12" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="1027" y="323" width="12" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="1077" y="323" width="12" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="1127" y="323" width="12" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                        <rect x="1177" y="323" width="12" height="0" fill="#e4931f" rx="0" ry="0"></rect>
+                                                    </g>
+                                                    <g class="highcharts-markers highcharts-series-1" zIndex="0.1" transform="translate(58,10) scale(1 1)" clip-path="none"></g>
+                                                    <g class="highcharts-series highcharts-series-2" zIndex="0.1" transform="translate(58,10) scale(1 1)" clip-path="url(#highcharts-1)">
+                                                        <path fill="none" d="M 25.041666666666668 322 C 25.041666666666668 322 55.09166666666666 322 75.125 322 C 95.15833333333333 322 105.175 322 125.20833333333334 322 C 145.24166666666665 322 155.25833333333335 322 175.29166666666666 322 C 195.325 322 205.34166666666664 322 225.375 322 C 245.40833333333336 322 255.425 322 275.45833333333337 322 C 295.4916666666667 322 305.5083333333333 322 325.5416666666667 312.52032 C 345.575 303.04064000000005 355.5916666666667 281.49755200000004 375.62500000000006 249.57576 C 395.6583333333334 217.653968 405.675 152.91136 425.70833333333337 152.91136 C 445.7416666666667 152.91136 455.7583333333334 322 475.7916666666667 322 C 495.825 322 505.8416666666667 322 525.875 322 C 545.9083333333334 322 555.925 322 575.9583333333334 322 C 595.9916666666666 322 606.0083333333334 322 626.0416666666666 322 C 646.075 322 656.0916666666666 322 676.125 322 C 696.1583333333334 322 706.175 322 726.2083333333334 322 C 746.2416666666666 322 756.2583333333334 322 776.2916666666666 322 C 796.325 322 806.3416666666666 322 826.375 322 C 846.4083333333334 322 856.425 322 876.4583333333334 322 C 896.4916666666666 322 906.5083333333334 322 926.5416666666666 322 C 946.575 322 956.5916666666666 322 976.625 322 C 996.6583333333334 322 1006.675 322 1026.7083333333335 322 C 1046.7416666666668 322 1056.7583333333334 322 1076.7916666666667 322 C 1096.825 322 1106.8416666666667 322 1126.8750000000002 322 C 1146.9083333333335 322 1176.9583333333335 322 1176.9583333333335 322" stroke="#d4583b" stroke-width="2" zIndex="1" stroke-dasharray="none"></path>
+                                                        <path fill="none" d="M 15.041666666666668 322 L 25.041666666666668 322 C 25.041666666666668 322 55.09166666666666 322 75.125 322 C 95.15833333333333 322 105.175 322 125.20833333333334 322 C 145.24166666666665 322 155.25833333333335 322 175.29166666666666 322 C 195.325 322 205.34166666666664 322 225.375 322 C 245.40833333333336 322 255.425 322 275.45833333333337 322 C 295.4916666666667 322 305.5083333333333 322 325.5416666666667 312.52032 C 345.575 303.04064000000005 355.5916666666667 281.49755200000004 375.62500000000006 249.57576 C 395.6583333333334 217.653968 405.675 152.91136 425.70833333333337 152.91136 C 445.7416666666667 152.91136 455.7583333333334 322 475.7916666666667 322 C 495.825 322 505.8416666666667 322 525.875 322 C 545.9083333333334 322 555.925 322 575.9583333333334 322 C 595.9916666666666 322 606.0083333333334 322 626.0416666666666 322 C 646.075 322 656.0916666666666 322 676.125 322 C 696.1583333333334 322 706.175 322 726.2083333333334 322 C 746.2416666666666 322 756.2583333333334 322 776.2916666666666 322 C 796.325 322 806.3416666666666 322 826.375 322 C 846.4083333333334 322 856.425 322 876.4583333333334 322 C 896.4916666666666 322 906.5083333333334 322 926.5416666666666 322 C 946.575 322 956.5916666666666 322 976.625 322 C 996.6583333333334 322 1006.675 322 1026.7083333333335 322 C 1046.7416666666668 322 1056.7583333333334 322 1076.7916666666667 322 C 1096.825 322 1106.8416666666667 322 1126.8750000000002 322 C 1146.9083333333335 322 1176.9583333333335 322 1176.9583333333335 322 L 1186.9583333333335 322" stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="22" zIndex="2" class=" highcharts-tracker" style=""></path>
+                                                    </g>
+                                                    <g class="highcharts-markers highcharts-series-2 highcharts-tracker" zIndex="0.1" transform="translate(58,10) scale(1 1)" clip-path="url(#highcharts-2)" style="">
+                                                        <path fill="#d4583b" d="M 1176 319 C 1179.996 319 1179.996 325 1176 325 C 1172.004 325 1172.004 319 1176 319 Z"></path>
+                                                        <path fill="#d4583b" d="M 1126 319 C 1129.996 319 1129.996 325 1126 325 C 1122.004 325 1122.004 319 1126 319 Z"></path>
+                                                        <path fill="#d4583b" d="M 1076 319 C 1079.996 319 1079.996 325 1076 325 C 1072.004 325 1072.004 319 1076 319 Z"></path>
+                                                        <path fill="#d4583b" d="M 1026 319 C 1029.996 319 1029.996 325 1026 325 C 1022.004 325 1022.004 319 1026 319 Z"></path>
+                                                        <path fill="#d4583b" d="M 976 319 C 979.996 319 979.996 325 976 325 C 972.004 325 972.004 319 976 319 Z"></path>
+                                                        <path fill="#d4583b" d="M 926 319 C 929.996 319 929.996 325 926 325 C 922.004 325 922.004 319 926 319 Z"></path>
+                                                        <path fill="#d4583b" d="M 876 319 C 879.996 319 879.996 325 876 325 C 872.004 325 872.004 319 876 319 Z"></path>
+                                                        <path fill="#d4583b" d="M 826 319 C 829.996 319 829.996 325 826 325 C 822.004 325 822.004 319 826 319 Z"></path>
+                                                        <path fill="#d4583b" d="M 776 319 C 779.996 319 779.996 325 776 325 C 772.004 325 772.004 319 776 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 726 319 C 729.996 319 729.996 325 726 325 C 722.004 325 722.004 319 726 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 676 319 C 679.996 319 679.996 325 676 325 C 672.004 325 672.004 319 676 319 Z"></path>
+                                                        <path fill="#d4583b" d="M 626 319 C 629.996 319 629.996 325 626 325 C 622.004 325 622.004 319 626 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 575 319 C 578.996 319 578.996 325 575 325 C 571.004 325 571.004 319 575 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 525 319 C 528.996 319 528.996 325 525 325 C 521.004 325 521.004 319 525 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 475 319 C 478.996 319 478.996 325 475 325 C 471.004 325 471.004 319 475 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 425 149.91136 C 428.996 149.91136 428.996 155.91136 425 155.91136 C 421.004 155.91136 421.004 149.91136 425 149.91136 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 375 246.57576 C 378.996 246.57576 378.996 252.57576 375 252.57576 C 371.004 252.57576 371.004 246.57576 375 246.57576 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 325 309.52032 C 328.996 309.52032 328.996 315.52032 325 315.52032 C 321.004 315.52032 321.004 309.52032 325 309.52032 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 275 319 C 278.996 319 278.996 325 275 325 C 271.004 325 271.004 319 275 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 225 319 C 228.996 319 228.996 325 225 325 C 221.004 325 221.004 319 225 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 175 319 C 178.996 319 178.996 325 175 325 C 171.004 325 171.004 319 175 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 125 319 C 128.996 319 128.996 325 125 325 C 121.004 325 121.004 319 125 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 75 319 C 78.996 319 78.996 325 75 325 C 71.004 325 71.004 319 75 319 Z" stroke-width="1"></path>
+                                                        <path fill="#d4583b" d="M 25 319 C 28.996 319 28.996 325 25 325 C 21.004 325 21.004 319 25 319 Z" stroke-width="1"></path>
+                                                    </g>
+                                                </g>
+                                                <g class="highcharts-legend" zIndex="7" transform="translate(544,364)">
+                                                    <rect x="0.5" y="0.5" width="287" height="25" strokeWidth="1" rx="3" ry="3" stroke="#CCC" stroke-width="1" fill="#FFFFFF" visibility="visible"></rect>
+                                                    <g zIndex="1">
+                                                        <g>
+                                                            <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)"><text x="21" style="color:#666;font-size:13px;font-weight:normal;cursor:pointer;fill:#666;" text-anchor="start" zIndex="2" y="17">예측발전량</text>
+                                                                <rect x="0" y="5" width="16" height="13" zIndex="3" fill="#7CB5EC"></rect>
+                                                            </g>
+                                                            <g class="highcharts-legend-item" zIndex="1" transform="translate(114,3)"><text x="21" y="17" style="color:#666;font-size:13px;font-weight:normal;cursor:pointer;fill:#666;" text-anchor="start" zIndex="2">계측발전량</text>
+                                                                <rect x="0" y="5" width="16" height="13" zIndex="3" fill="#e4931f"></rect>
+                                                            </g>
+                                                            <g class="highcharts-legend-item" zIndex="1" transform="translate(220,3)">
+                                                                <path fill="none" d="M 0 13 L 16 13" stroke-dasharray="none" stroke="#d4583b" stroke-width="2"></path>
+                                                                <path fill="#d4583b" d="M 8 10 C 11.996 10 11.996 16 8 16 C 4.004 16 4.004 10 8 10 Z"></path><text x="21" y="17" style="color:#666;font-size:13px;font-weight:normal;cursor:pointer;fill:#666;" text-anchor="start" zIndex="2">오차율</text>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                                <g class="highcharts-axis-labels highcharts-xaxis-labels" zIndex="7"><text x="83.04166666666667" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">01</text><text x="133.125" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">02</text><text x="183.20833333333334" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">03</text><text x="233.29166666666666" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">04</text><text x="283.375" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">05</text><text x="333.45833333333337" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">06</text><text x="383.5416666666667" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">07</text><text x="433.62500000000006" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">08</text><text x="483.70833333333337" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">09</text><text x="533.7916666666667" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">10</text><text x="583.875" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">11</text><text x="633.9583333333334" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">12</text><text x="684.0416666666666" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">13</text><text x="734.125" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">14</text><text x="784.2083333333334" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">15</text><text x="834.2916666666666" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">16</text><text x="884.375" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">17</text><text x="934.4583333333334" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">18</text><text x="984.5416666666666" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">19</text><text x="1034.625" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">20</text><text x="1084.7083333333335" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">21</text><text x="1134.7916666666667" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">22</text><text x="1184.8750000000002" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">23</text><text x="1234.9583333333335" style="color:#606060;cursor:default;font-size:12px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="352" opacity="1">24</text></g>
+                                                <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"><text x="43" style="color:#606060;cursor:default;font-size:12px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="338" opacity="1">0</text><text x="43" style="color:#606060;cursor:default;font-size:12px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="274" opacity="1">10</text><text x="43" style="color:#606060;cursor:default;font-size:12px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="209" opacity="1">20</text><text x="43" style="color:#606060;cursor:default;font-size:12px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="145" opacity="1">30</text><text x="43" style="color:#606060;cursor:default;font-size:12px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="80" opacity="1">40</text><text x="43" style="color:#606060;cursor:default;font-size:12px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="16" opacity="1">50</text></g>
+                                                <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"><text x="1315" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="start" transform="translate(0,0)" y="338" opacity="1">0</text><text x="1315" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="start" transform="translate(0,0)" y="273" opacity="1">10</text><text x="1315" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="start" transform="translate(0,0)" y="209" opacity="1">20</text><text x="1315" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="start" transform="translate(0,0)" y="144" opacity="1">30</text><text x="1315" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="start" transform="translate(0,0)" y="80" opacity="1">40</text><text x="1315" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:444px;text-overflow:clip;" text-anchor="start" transform="translate(0,0)" y="16" opacity="1">50</text></g>
+                                                <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(59,-9999)" opacity="0" visibility="visible">
+                                                    <path fill="rgba(255,255,255,0.9)" d="M 3 0 L 109 0 C 112 0 112 0 112 3 L 112 71 C 112 74 112 74 109 74 L 3 74 C 0 74 0 74 0 71 L 0 3 C 0 0 0 0 3 0" stroke="#777777" stroke-width="2"></path>
+                                                </g>
+                                            </svg>
+                                            <div class="highcharts-tooltip" style="position: absolute; left: 59px; top: -9999px; opacity: 0; visibility: visible;"><span style="position: absolute; font-family: &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, 돋움, Dotum, Helvetica, Verdana, Arial, sans-serif; font-size: 11px; white-space: nowrap; color: rgb(102, 102, 102); margin-left: 0px; margin-top: 0px; left: 6px; top: 6px;" zindex="1">
+                                                    <div>
+                                                        <table class="highcharts-tooltip-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="3"><strong>03</strong></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="legend_color_guide"> </td>
+                                                                    <td class="key"> 예측발전량 </td>
+                                                                    <td class="value"> 0 MWh </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="legend_color_guide"> </td>
+                                                                    <td class="key"> 계측발전량 </td>
+                                                                    <td class="value"> 0 MWh </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="legend_color_guide"> </td>
+                                                                    <td class="key"> 오차율 </td>
+                                                                    <td class="value"> 0 % </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </span></div>
+                                        </div>
+                                    </div>
+                                    <div id="grid1" class="item_02 table">
+                                        <table class="ty1">
+                                            <colgroup>
+                                                <col style="width:auto;">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                                <col style="width:calc(95%/24);">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>시간</th>
+                                                    <th> 01</th>
+                                                    <th> 02</th>
+                                                    <th> 03</th>
+                                                    <th> 04</th>
+                                                    <th> 05</th>
+                                                    <th> 06</th>
+                                                    <th> 07</th>
+                                                    <th> 08</th>
+                                                    <th> 09</th>
+                                                    <th> 10</th>
+                                                    <th> 11</th>
+                                                    <th> 12</th>
+                                                    <th> 13</th>
+                                                    <th> 14</th>
+                                                    <th> 15</th>
+                                                    <th> 16</th>
+                                                    <th> 17</th>
+                                                    <th> 18</th>
+                                                    <th> 19</th>
+                                                    <th> 20</th>
+                                                    <th> 21</th>
+                                                    <th> 22</th>
+                                                    <th> 23</th>
+                                                    <th> 24</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>예측량(MWh)</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td bgcolor="red">0</td>
+                                                    <td bgcolor="red">0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>발전량(MWh)</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>1.8</td>
+                                                    <td bgcolor="red">12.7</td>
+                                                    <td bgcolor="red">29.8</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>평균이용률(%)</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>1.48</td>
+                                                    <td bgcolor="red">11.26</td>
+                                                    <td bgcolor="red">26.28</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>평균오차율(%)</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>1.48</td>
+                                                    <td bgcolor="red">11.26</td>
+                                                    <td bgcolor="red">26.28</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentWrap five" id="main_rank2">
+                                <div class="underBar">
+                                    <h4 class="titleName">중개사업자 운영현황</h4>
+                                </div>
+                                <div id="agentStatus_div" class="item_01">
+                                    <table class="ty1">
+                                        <colgroup>
+                                            <col style="width: 15%">
+                                            <col style="width: 15%">
+                                            <col style="width: 15%">
+                                            <col style="width: 15%">
+                                            <col style="width: 15%">
+                                            <col style="width: 15%">
+                                            <col style="width: 15%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>중개사업자명</th>
+                                                <th>집합자원수<br>총(예측형/일반형)</th>
+                                                <th>계약자원 수</th>
+                                                <th>계약자원 총용량</th>
+                                                <th>고객수</th>
+                                                <th>평균오차율<br>(최근3개월)</th>
+                                                <th>정산금<br>(최근3개월)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>캡코쏠라</td>
+                                                <td>4(4/0)</td>
+                                                <td>60</td>
+                                                <td> 91,753.870 MW</td>
+                                                <td>4</td>
+                                                <td>6 %</td>
+                                                <td> 4,380,720,861 원</td>
+                                            </tr>
+                                            <tr>
+                                                <td>서울쏠라</td>
+                                                <td>1(1/0)</td>
+                                                <td>37</td>
+                                                <td> 20,510.715 MW</td>
+                                                <td>3</td>
+                                                <td>5.13 %</td>
+                                                <td> 250,722,206 원</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer id="ft">
+                    <p class="copyright">
+                        <img src="/img/smlogo.png" alt=""> <span>COPTRIGHT
+                            2020 SMART ENERGY CITY ALL RIGHTS RESERVED.</span>
+                    </p>
+                </footer>
+            </div>
+
+	</div>
+    </body>
+</html>

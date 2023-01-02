@@ -1,0 +1,1493 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>P2P전력거래서비스</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="http://tvpp.magok.kr:22217/css/favicon.svg" sizes="any" type="image/svg+xml">
+        <link rel="stylesheet" href="http://tvpp.magok.kr:22217/css/common.css" />
+        <link rel="stylesheet" href="http://tvpp.magok.kr:22217/css/eSharing.css" />
+        <link rel="stylesheet" href="http://tvpp.magok.kr:22217/css/navibar.css" />
+        <link rel="stylesheet" href="http://tvpp.magok.kr:22217/css/layout.css" />
+        <link rel="stylesheet" href="http://tvpp.magok.kr:22217/css/head.css" />
+        <link rel="stylesheet" href="http://tvpp.magok.kr:22217/css/ui.jqgrid.css" />
+        <link rel="stylesheet" href="http://tvpp.magok.kr:22217/css/bootstrap-material-datetimepicker.css" />
+        <link rel="stylesheet" href="http://tvpp.magok.kr:22217/css/vpp.css" />
+        <script type="text/javascript" src="http://tvpp.magok.kr:22217/js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="http://tvpp.magok.kr:22217/js/jqGrid/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="http://tvpp.magok.kr:22217/js/jqGrid/i18n/grid.locale-kr.js"></script>
+		<script type="text/javascript" src="http://tvpp.magok.kr:22217/js/jqGrid/jquery.jqGrid.min.js"></script>
+        <script type="text/javascript" src="http://tvpp.magok.kr:22217/js/moment.min.js"></script>
+        <script type="text/javascript" src="http://tvpp.magok.kr:22217/js/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="http://tvpp.magok.kr:22217/js/bootstrap-material-datetimepicker.js"></script>
+        <script type="text/javascript" src="http://tvpp.magok.kr:22217/js/layout.js"></script>
+        <script type="text/javascript" src="http://tvpp.magok.kr:22217/js/common.js"></script>
+        <script type="text/javascript" src="http://tvpp.magok.kr:22217/js/highcharts-custom.js"></script>
+        <script type="text/javascript" src="http://tvpp.magok.kr:22217/js/secosChart.js"></script>
+        <script type="text/javascript" src="http://tvpp.magok.kr:22217/js/jquery.bpopup.min.js"></script>
+		<script type="text/javascript" src="http://tvpp.magok.kr:22217/js/jquery.serializeObject.js"></script>
+        
+        <script>
+            $(function(){
+                var obj = $(".totalPage[data-names='mgp2p_admin'] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody");
+                    obj.gph = obj.find(" [data-percent]");
+                
+                
+                $('<td>\
+                    <div class="span_box"><span></span></div>\
+                </td>').appendTo(obj.gph);
+                setTimeout(function(){
+                    for(var i=0; i<obj.gph.size(); i++){
+                        obj.gph.eq(i).find(".span_box span").css("width",obj.gph.eq(i).attr("data-percent")+"%");
+                    }
+                },300);
+            });
+        </script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+        <style>
+            .totalPage[data-names="mgp2p_admin"]{padding: 20px; font-family: 'Pretendard';}
+            [data-names="mgp2p_admin"] .totalPageWrap{width: 100%; margin: 0;}
+            [data-names="mgp2p_admin"] .totalPageWrap > div:after{content: ""; display: block; clear: both;}
+            [data-names="mgp2p_admin"] #separate .left,
+            [data-names="mgp2p_admin"] #separate .right{width: calc((100% - 1px - 32px) / 2) !important;}
+            [data-names="mgp2p_admin"] #separate .right{margin-left: 32px;}
+            [data-names="mgp2p_admin"] .contentWrap{
+                border: 0; margin-bottom: 0; box-shadow: 0px 5px 8px rgba(204, 204, 204, 0.15);
+                border-radius: 8px; -webkit-border-radius: 8px;
+            }
+            [data-names="mgp2p_admin"] .contentWrap .underBar{height: auto; padding-right: 0; border-bottom: 0;}
+            [data-names="mgp2p_admin"] .contentWrap .underBar .titleName{display: block; padding: 24px; color: #1E293B; font-family: 'Pretendard'; letter-spacing: -0.05em; font-size: 24px; line-height: 1; box-sizing: border-box;}
+            [data-names="mgp2p_admin"] .contentWrap .underBar .titleName a{color: #1E293B;}
+            [data-names="mgp2p_admin"] .contentWrap .underBar .titleName:before{width: 32px; height: 32px; margin-left: 0; margin-right: 8px; background-repeat: no-repeat; background-position: center center; background-size: 100% auto; vertical-align: sub;}
+            [data-names="mgp2p_admin"] .tablePage{border-radius: 0; -webkit-border-radius: 0;}
+            
+            
+            .totalPage{display: grid; grid-template-columns: repeat(11, 1fr); grid-gap: 32px; grid-template-rows: auto 235px 410px;}
+            
+            
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .left{display: none;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1){grid-column: 7 / 12; grid-row: 2;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2) .underBar .titleName{padding: 24px 24px 18px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2) .underBar .titleName a{color: #fff;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2) .underBar .titleName:before{background-image: url(../img/p2_icon04.svg);}
+            
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2){position: relative; width: 100% !important; margin-right: 0; margin-left: 0; float: none; clear: none; background:#0C3382 url(../img/p2_icon06.svg) no-repeat right top; background-size: 220px 147px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2) .boardSimpleEntry{padding: 0 30px 30px; box-sizing: border-box;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2) .boardSimpleEntry:after{content: ""; display: block; clear: both;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2) .boardSimpleEntry li{float: left; position: relative; width: calc((100% - 1px - 30px) / 2); padding: 12.5px 17px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); box-sizing: border-box;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2) .boardSimpleEntry li:nth-child(2n-1){margin-right: 30px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2) .boardSimpleEntry li:before{
+                content: ""; display: block; position: absolute; top: 50%; left: 5px; width: 4px; height: 4px; margin-top: -2px; background-color: rgba(255,255,255,0.5); 
+                border-radius: 50%; -webkit-border-radius: 50%;
+            }
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2) .boardSimpleEntry li a{display: block; width: 100%; font-size: 18px; font-weight: 400; line-height: 18px; letter-spacing: -0.05em; color: rgba(255, 255, 255, 0.9); white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+            
+            
+            
+            
+            
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2){grid-column: 1 / 12; grid-row: 1;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) .contentWrap .underBar .titleName{padding: 24px 24px 18px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .underBar .titleName:before{background-image: url(../img/p2_icon01.svg);}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .underBar .titleName:before{background-image: url(../img/p2_icon02.svg);}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap .topPanelDiv{padding: 0 30px 30px; box-sizing: border-box;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap .topPanelDiv table.type01{width: 100%; display: table; table-layout: fixed; border-collapse: collapse;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap .topPanelDiv table.type01 thead{height: 61px; background-color: #F5F6FA;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap .topPanelDiv table.type01 thead th{color: #403B5C; font-size: 16px; font-weight: 600; line-height: 1.3; letter-spacing: -0.05em;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap .topPanelDiv table.type01 tbody tr{border-bottom: 1px solid #EEF0F2;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap .topPanelDiv table.type01 tbody tr td{height: 38px; text-align: center; color: #444; font-size: 16px; letter-spacing: -0.05em;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap .topPanelDiv #biddingMonthlyChart,
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap .topPanelDiv #calculationMonthlyChart{height: 260px; background-color: #ddd;}
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap{position: relative;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .topPanelDiv .selectArea{position: absolute; top: 24px; right: 24px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .topPanelDiv .radioArea{position: absolute; top: -40px; right: 24px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .topPanelDiv .selectArea form >select{margin-right: -5px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .topPanelDiv .selectArea #touTypeCd{display: inline-block;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .topPanelDiv .selectArea select{width: 170px;}
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3){grid-column: 1 / 12; grid-row: 2 / 3;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate{display: grid; display: grid; grid-template-columns: repeat(11, 1fr); grid-gap: 32px; grid-template-rows: 235px 410px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) .contentWrap:nth-child(1) .underBar .titleName{padding: 24px 24px 13px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .underBar .titleName:before{background-image: url(../img/p2_icon03.svg);}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(2) .underBar .titleName:before{background-image: url(../img/p2_icon05.svg);}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap{width: 100% !important; float: none; clear: none;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap .bottomPanelDiv{position: relative; padding: 0 30px 30px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1){grid-column: 1/7; grid-row: 1 / 2; height: 677px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea{padding: 30px 0;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea:first-child{padding-top: 0; border-bottom: 1px solid #DEDEDE; box-sizing: border-box;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel{position: relative; padding-left: 320px; box-sizing: border-box;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel h4{color: #0A347E; font-size: 22px; font-weight: 900; letter-spacing: -0.05em; line-height: 1;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel .chartDiv{position: absolute; top: 0; left: 0px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table{display: block;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody{display: block;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody tr{display: block; padding: 10px 0; border-bottom: 1px solid #EEF0F2; box-sizing: border-box;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody tr td{display: inline-block; width: auto !important; float: none; margin-left: 0;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody tr td:first-child{display: block; margin-bottom: 5px; color: #8F93A1; font-size: 15.5px; line-height: 1; letter-spacing: -0.05em; font-weight: 400;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody tr td:nth-child(2){color: #403B5C; font-size: 30px; font-weight: 700; letter-spacing: -0.05em; line-height: 1; }
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody tr td:nth-child(3){font-size: 22px; color: #8F93A1; font-weight: 400; letter-spacing: -0.05em; vertical-align: bottom;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody tr td:nth-child(4){display: block; margin-top: 10px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody tr td:nth-child(4) div{
+                display: block; width: 100%; height: 10px; background-color: rgba(66, 99, 235, 0.2); 
+                border-radius: 10px; -webkit-border-radius: 10px;
+            }
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody tr td:nth-child(4) div span{
+                display: block; width: 0; height: 100%; background-color: #4263EB;
+                border-radius: 10px; -webkit-border-radius: 10px;
+                transition: width 1.2s ease-in-out; -webkit-transition: width 1.2s ease-in-out;
+            }
+            
+            
+            
+            
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(2){grid-column: 7/12; grid-row: 2; margin-left: 0;}
+            
+            
+            
+            
+            
+            
+            
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table{display: block; width: 100%; border-collapse: collapse;  margin-top: 0 !important;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody{display: block;width: 100%;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody:after{content: ""; display: block; clear: both;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:first-child{float: left; display: block; width: 50%;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(2){display: none;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3){float: left; display: block; width: 50%; padding: 5px 0 15px 23px; border-left: 1px solid #DEDEDE; box-sizing: border-box;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) > th{padding-top: 0 !important;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table{font-size: 1em !important; display: table; table-layout: fixed; width: 100%; border-collapse: collapse; padding: 0 !important; box-sizing: border-box;}
+            /*.totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tbody{display: block;}*/
+            /*.totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr{display: block; width: 100%;}*/
+            /*.totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr:after{content: ""; display: block; clear: both;}*/
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(1) th,
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) th{font-size: 22px; margin-bottom: 17px; line-height: 1; color: #0A347E;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table{display: block;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tbody{display: block;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr{display: table; table-layout: fixed; width: 100%; height: 60px; border-bottom: 1px solid #EEF0F2; box-sizing: border-box;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr td{display: table-cell; vertical-align: middle;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table colgroup col:first-child{width: 70px !important;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr td:first-child{position: relative; text-align: center !important; color: #fff; font-size: 16px; letter-spacing: -0.05em; width: 70px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr td:first-child:before{
+                content: ""; display: block; position: absolute; top: 50%; left: 50%; z-index: -1; width: 68px; height: 32px; margin-left: -34px; margin-top: -16px;
+                border-radius: 500px; -webkit-border-radius: 500px;
+            }
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr:first-child td:first-child:before{background-color: #F59E0B;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr:nth-child(2) td:first-child:before{background-color: #0A347E;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr:nth-child(3) td:first-child:before{background-color: #52A1F1;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr:nth-child(4) td:first-child:before{background-color: #10B981;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr td:nth-child(2){text-align: right !important; font-size: 41px; letter-spacing: -0.05em; color: #403B5C; font-weight: 700; width: auto;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(3) table tr td:nth-child(3){width: 65px; text-align: right !important;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(4){position: absolute; top: -47px; right: 30px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr td{float: none; clear: both; text-align: left !important; vertical-align: top;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:not(:nth-child(4)) th,
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:not(:nth-child(4)) td{display: block; float: none; clear: none; text-align: left;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(1) td{display: inline-block; margin-left: 0; width: auto !important; }
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(1) td:first-of-type{font-size: 41px; letter-spacing: -0.05em; color: #403B5C; font-weight: 700; line-height: 41px;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(1) td:nth-of-type(2){vertical-align:bottom; color: #8F93A2;/*  line-height: 41px;*/}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(4) th,
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(4) td{font-size: 16px; font-weight: 400; line-height: 1; letter-spacing: -0.05em; color: #8F93A2;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .dataDiv >table > tbody > tr:nth-child(4) td{padding-left: 8px !important;}
+            .totalPage[data-names="mgp2p_admin"] .totalPageWrap:nth-child(3) #separate .right .bottomPanelDiv .chartDiv{position: absolute; bottom: 30px; left: 30px;}
+            
+            
+            
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+
+
+
+            <div class="wrap">
+                <div id="subpage_top_menu" data-status="large" class="slider_bar">
+                    <div class="top_menu">
+                        <span class="logo" onclick="location.href='http://portal.magok.kr:22202'"><img src="http://tvpp.magok.kr:22217/img/logo-2.png"></span>
+                        <div class="menu">
+                            <div class="button"></div>
+                            <div class="button"></div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="subpage_dept1_menu" data-menu-id="M010000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_01"><i></i></span> <span class="title">데이터 수집</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M010100" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/collectionMonitor.do?menu-id=M010100" target="_blank">데이터 연계처리 현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010200" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0001.do?menu-id=M010200" target="_self">데이터 수집 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010300" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0003.do?menu-id=M010300" target="_self">전력 정보 수집</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010400" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0005.do?menu-id=M010400" target="_self">비전력 정보 수집</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010500" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0004.do?menu-id=M010500" target="_self">공공 정보 수집</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M020000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_02"><i></i></span> <span class="title">데이터 저장소</span> </a>
+                            <ul class="sub_menu">
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M130000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_03"><i></i></span> <span class="title">현황/통계</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M130100" data-menu-depth="2"> <a href="http://support.magok.kr:22205/ver1/test?menu-id=M130100" target="_blank">통합 운영 대시보드</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130200" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sa/sa1201.do?menu-id=M130200" target="_self">에너지 종합현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130300" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sa/sa1301.do?menu-id=M130300" target="_self">건물별 사용 현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130500" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sa/sa1400.do?menu-id=M130500" target="_self">에너지 품질</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130600" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sd/sd0000.do?menu-id=M130600" target="_self">분산자원 현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M100000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_04"><i></i></span> <span class="title">에너지 맵</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M101000" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M101000&amp;flag=analysis" target="_self">사용량분석</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M101100" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M101100&amp;flag=gas" target="_self">온실가스</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M101200" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M101200&amp;flag=nature" target="_self">수질/대기질</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M101300" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M101300&amp;flag=evc" target="_self">전기차 충전소</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M100900" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M100900&amp;flag=equipment" target="_self">에너지 설비</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M110000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_05"><i></i></span> <span class="title">예측/API</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M110100" data-menu-depth="2"> <a href="http://revalleypred.seoul.go.kr:8080/sf/sf0101.do?menu-id=M110100" target="_self">데이터 관리 </a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M110200" data-menu-depth="2"> <a href="http://revalleypred.seoul.go.kr:8080/sf/sf0201.do?menu-id=M110200&amp;fcType=GF" target="_self">신재생 발전 예측</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M110300" data-menu-depth="2"> <a href="http://revalleypred.seoul.go.kr:8080/sf/sf0201.do?menu-id=M110300&amp;fcType=DF" target="_self">에너지 수요 예측</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M110800" data-menu-depth="2"> <a href="http://evalleyapiadm.seoul.go.kr/?menu-id=M110800" target="_blank">오픈API관리자</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M110900" data-menu-depth="2"> <a href="http://openapi.magok.kr:22012/dev/introduce/api/main?menu-id=M110900" target="_blank">오픈API개발자</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu active" data-menu-id="M120000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_06"><i></i></span> <span class="title">응용 서비스</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M121100" data-menu-depth="2"> <a href="javascript:void(0);">가상발전소 관리자</a>
+                                    <ul>
+                                        <li data-menu-id="M121101" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22217/main/main.do?menu-id=M121101" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M121102" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22217/agent/agent.do?menu-id=M121102" target="_self">중개사업자 관리</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120200" data-menu-depth="2"> <a href="javascript:void(0);">가상발전소 중개사업자</a>
+                                    <ul>
+                                        <li data-menu-id="M120206" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/main/main.do?menu-id=M120206" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M120207" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/res/res0101.do?menu-id=M120207" target="_self">자원관리</a> </li>
+                                        <li data-menu-id="M120208" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/pred/pred0101.do?menu-id=M120208" target="_self">예측모형관리</a> </li>
+                                        <li data-menu-id="M120209" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/oper/oper0101.do?menu-id=M120209" target="_self">집합전력자원운영</a> </li>
+                                        <li data-menu-id="M120210" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/pay/pay0101.do?menu-id=M120210" target="_self">정산분석</a> </li>
+                                        <li data-menu-id="M120204" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/stat/stat0101.do?menu-id=M120204" target="_self">통계분석</a> </li>
+                                        <li data-menu-id="M120205" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/support/support0101.do?menu-id=M120205" target="_self">고객지원</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120500" data-menu-depth="2"> <a href="javascript:void(0);">가상발전소 전력보유자</a>
+                                    <ul>
+                                        <li data-menu-id="M120505" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/main/main.do?menu-id=M120505" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M120501" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/res/res0201.do?menu-id=M120501" target="_self">나의 자원정보</a> </li>
+                                        <li data-menu-id="M120502" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/oper/oper0101.do?menu-id=M120502" target="_self">운영현황</a> </li>
+                                        <li data-menu-id="M120503" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/stat/stat0201.do?menu-id=M120503" target="_self">통계</a> </li>
+                                        <li data-menu-id="M120504" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/support/support0101.do?menu-id=M120504" target="_self">고객지원</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120300" data-menu-depth="2" class=" active"> <a href="javascript:void(0);">에너지 쉐어링 관리</a>
+                                    <ul>
+                                        <li data-menu-id="M120301" data-menu-depth="3" class=" selectedMenuEntry"> <a href="http://tvpp.magok.kr:22217/dashboard/dashboard_dashboard.do?menu-id=M120301" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M120302" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22217/custMng/custMng_getCustMngList.do?menu-id=M120302" target="_self">고객관리</a> </li>
+                                        <li data-menu-id="M120303" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22217/bidding/bidding_getBiddingList.do?menu-id=M120303" target="_self">입찰현황</a> </li>
+                                        <li data-menu-id="M120304" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22217/matching/matching_getMatchingList.do?menu-id=M120304" target="_self">매칭</a> </li>
+                                        <li data-menu-id="M120305" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22217/calculation/calculation_getCalculationList.do?menu-id=M120305" target="_self">정산</a> </li>
+                                        <li data-menu-id="M120306" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22217/board/board_getArticleList.do?menu-id=M120306" target="_self">공지사항</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120800" data-menu-depth="2"> <a href="javascript:void(0);">에너지 쉐어링 고객</a>
+                                    <ul>
+                                        <li data-menu-id="M120801" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/introduction/introduction.do?menu-id=M120801" target="_self">서비스 소개</a> </li>
+                                        <li data-menu-id="M120802" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/dashboard/dashboard.do?menu-id=M120802" target="_self">My E-Sharing</a> </li>
+                                        <li data-menu-id="M120803" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/bidding/biddingList.do?menu-id=M120803" target="_self">E-Sharing 입찰</a> </li>
+                                        <li data-menu-id="M120805" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/calculation/calculationList.do?menu-id=M120805" target="_self">E-Sharing 정산</a> </li>
+                                        <li data-menu-id="M120804" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/board/noticeList.do?menu-id=M120804" target="_self">공지사항</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120600" data-menu-depth="2"> <a href="javascript:void(0);">에너지 계획</a>
+                                    <ul>
+                                        <li data-menu-id="M120601" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/dm/hist.do?menu-id=M120601" target="_self">통계실적데이터</a> </li>
+                                        <li data-menu-id="M120606" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/rpt/soeco.do?menu-id=M120606" target="_self">사회경제데이터</a> </li>
+                                        <li data-menu-id="M120603" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/dm/coef.do?menu-id=M120603" target="_self">계량경제모형계수</a> </li>
+                                        <li data-menu-id="M120604" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/rpt/bau.do?menu-id=M120604" target="_self">에너지수요전망</a> </li>
+                                        <li data-menu-id="M120605" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/rpt/edm.do?menu-id=M120605" target="_self">에너지계획산출</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120900" data-menu-depth="2"> <a href="http://home.magok.kr:22016/smtHomeMgr/main/main.do?menu-id=M120900" target="_blank">@Home 아파트관리자</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M121000" data-menu-depth="2"> <a href="http://home.magok.kr:22016/smtHome/home/home.do?menu-id=M121000" target="_blank">@Home 아파트세대</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M090000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_07"><i></i></span> <span class="title">커뮤니티</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M090100" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/board/list?menu-id=M090100&amp;boardType=0001&amp;test=asdf" target="_self">공지사항</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M090200" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/board/list?menu-id=M090200&amp;boardType=0002" target="_self">홍보자료</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M090300" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/board/list?menu-id=M090300&amp;boardType=0003" target="_self">질문과 답변</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M090400" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/board/list?menu-id=M090400&amp;boardType=0004" target="_self">자유게시판</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M990000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_08"><i></i></span> <span class="title">환경설정</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M990400" data-menu-depth="2"> <a href="javascript:void(0);">가이드</a>
+                                    <ul>
+                                        <li data-menu-id="M990403" data-menu-depth="3"> <a href="http://portal.magok.kr:22202/guide/sso?menu-id=M990403&amp;type=adm" target="_self">플랫폼 활용 가이드</a> </li>
+                                        <li data-menu-id="M990401" data-menu-depth="3"> <a href="http://portal.magok.kr:22202/guide/design?menu-id=M990401" target="_self">디자인가이드</a> </li>
+                                        <li data-menu-id="M990402" data-menu-depth="3"> <a href="http://portal.magok.kr:22202/guide/sub?menu-id=M990402" target="_self">페이지가이드</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990800" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/userRequestManage?menu-id=M990800" target="_self">가입요청 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990100" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/developer/ssoManage?menu-id=M990100" target="_self">SSO 서비스 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990300" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/developer/menuManage?menu-id=M990300&amp;target=adm" target="_self">메뉴 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990200" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/userManage?menu-id=M990200" target="_self">사용자 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M991100" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/roleManage?menu-id=M991100" target="_self">권한 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990500" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/untyCodeManage?menu-id=M990500" target="_self">통합코드 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990700" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/boardManage?menu-id=M990700" target="_self">게시판 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990900" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/my/infoEnter?menu-id=M990900" target="_self">나의 정보 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990600" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/loginHistory?menu-id=M990600" target="_self">로그인 이력</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M991000" data-menu-depth="2"> <a href="javascript:void(0);">약관 및 정책 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="top_navbar">
+                    <div class="top_menu">
+                        <nav id="login"> <span class="user">P2P관리자(p2padmin)</span> <span>님 로그인했습니다.</span> <a href="/sso/logout" class="logout"></a>
+                            <div class="setbox"> <a href="http://portal.magok.kr:22202/guide/sso?menu-id=M990403&amp;type=adm" title="환경설정" class="setting"></a> </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="mid_navbar">
+                        <div class="titlebox">
+                            <h2>대시보드</h2>
+                        </div>
+                        <nav class="navi">
+                            <ul>
+                                <li> <span class="navi_home">home</span> </li>
+                                <li> <span>응용 서비스</span> </li>
+                                <li> <span>에너지 쉐어링 관리</span> </li>
+                                <li> <span>대시보드</span> </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <script>
+                        $(document).ready(function() {
+                            // 특정 글자수가 넘어가면 넘어가는 글자는 자르고 마지막에 대체문자 처리
+                            for (var i = 0; i < $("[class*='text_over']").length; i++) {
+                                var txt = $("[class*='text_over']:eq(" + i + ")").text();
+                                //var rtn = textLengthOverCut(txt, 10, '...');
+                                //$("[class*='text_over']:eq("+i+")").text(rtn);
+                            }
+
+                            // 날씨정보 조회
+                            getWeagherInfo();
+                        });
+
+                        // 날씨정보 조회
+                        function getWeagherInfo() {
+                            $.ajax({ // ajax s
+                                method: "POST",
+                                url: "/dashboard/weather_getWeatherInfo.json",
+                                data: {
+                                    sch_lately_date_cnt: '2'
+                                },
+                                dataType: "json",
+                                success: function(data) { //success s
+                                    var data = data.weatherInfoVO;
+                                    if (data.max_temp == null) {
+                                        data.max_temp = "-";
+                                    }
+                                    if (data.min_temp == null) {
+                                        data.min_temp = "-";
+                                    }
+                                    $("#weatherTime").html(data.weather_time);
+                                    $("#weatherIcon").html("<div id='weatherIcon" + data.weather_icon + "'></div>");
+                                    if (data.current_temp == null) {
+                                        $("#weatherIcon").html("<div id='notWeather'></div>");
+                                        $("#weatherTemp").html("<span>현재 날씨 정보를<br>가져올 수 없습니다.<br></span>");
+                                        $("#weatherTemp").css("text-align", "left");
+                                        $("#weatherTemp").css("font-size", "0.8em");
+                                        $("#weatherTemp").css("padding", "6px 0px 20px 0px");
+                                    } else {
+                                        $("#weatherTemp").html(data.current_temp + '℃');
+                                        $("#weatherTempMaxMin").html('<span class="red">최고</span> ' + data.max_temp +
+                                            '℃ <span class="blue">최저</span> ' + data.min_temp + '℃');
+                                    }
+
+                                    var latelyWeatherInfoData = data.latelyWeatherInfoList;
+
+                                    if (latelyWeatherInfoData == "undefined" || latelyWeatherInfoData == null || latelyWeatherInfoData == ",") {
+                                        $("#weatherBottom").html("<div style='padding : 10px; font-size : 0.8em; font-weight : bold; color : white;text-align : center;'>최근 2일 간 날씨 정보를 <br>가져올 수 없습니다.</div>");
+                                    } else {
+                                        for (var i = 0; i < latelyWeatherInfoData.length; i++) { // for s
+                                            if (latelyWeatherInfoData[i] != null) {
+                                                if (latelyWeatherInfoData[i].max_temp != null && latelyWeatherInfoData[i].min_temp != null) {
+                                                    var tr = $("<tr/>");
+                                                    var td1 = $("<td/>");
+                                                    var td2 = $("<td/>");
+                                                    td1.html(latelyWeatherInfoData[i].weather_time);
+                                                    tr.append(td1);
+                                                    var wIcon = "<div id='weatherSmallIcon" + latelyWeatherInfoData[i].weather_icon + "'></div> ";
+                                                    td2.html(wIcon + latelyWeatherInfoData[i].max_temp + "℃ / " + latelyWeatherInfoData[i].min_temp + "℃");
+                                                    tr.append(td2);
+                                                    $("#dPlusWeather").append(tr);
+                                                }
+                                            }
+                                        } // for e
+                                    }
+
+                                } //success e
+                            }); // ajax e
+                        }
+                    </script>
+                    <!--
+    <div id="leftPart">
+        <div id="weatherTop">
+            <div id="weatherTitle">Today</div>
+                <div id="weatherTime"></div>
+                <div id="weatherView">
+                <div id="weatherIcon">
+                </div>
+                <div id="weatherTemp"></div>
+                <div id="weatherTempMaxMin">
+                    -- <span class="red">최고</span> <span class="blue">최저</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="weatherBottom">
+            <table class="typeWeather">
+                <colgroup>
+                    <col width="85px;" />
+                    <col width="*" />
+                </colgroup>
+                <tbody id="dPlusWeather">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="boardSimpleView">
+            <div class="boardSimpleTitle">공지사항</div>
+            <a href="/board/board_getArticleList.do?menu_id=M120306&sch_board_id=NOTICE"><div class="boardSimpleMore">more</div></a>
+            <div class="boardLineMain"></div>
+            <div class="boardLineSub"></div>
+            <ul class="boardSimpleEntry">
+
+
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=12" class="text_over0">[공지사항]매칭 내역</a></li>
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=11" class="text_over1">[공지사항]정산 수행 시</a></li>
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=10" class="text_over2">[공지사항]E-Sharing</a></li>
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=9" class="text_over3">[공지사항]입찰 등록</a></li>
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=8" class="text_over4">[공지사항]에너지 쉐어링 서비스</a></li>
+
+
+            </ul>
+        </div>
+
+        <div class="boardSimpleView">
+            <div class="boardSimpleTitle">블록체인 연계 알림</div>
+            <a href="/bcLinkLog/bcLinkLog_getBcLinkLogList.do"><div class="boardSimpleMore">more</div></a>
+            <div class="boardLineMain"></div>
+            <div class="boardLineSub"></div>
+            <ul class="boardSimpleEntry">
+                <li>
+                    <span>고객 정보</span>
+
+
+
+
+                            <img src='../images/layout/bclinklog_03.png'>
+
+
+                </li>
+                <li>
+                    <span>입찰 정보</span>
+
+
+
+
+                            <img src='../images/layout/bclinklog_03.png'>
+
+
+                </li>	
+                <li>
+                    <span>매칭 정보</span>
+
+
+
+
+                            <img src='../images/layout/bclinklog_03.png'>
+
+
+                </li>
+                <li>
+                    <span>정산 정보</span>
+
+
+
+
+                            <img src='../images/layout/bclinklog_03.png'>
+
+
+                </li>
+            </ul>
+        </div>
+        <div class="bottomImg"></div>
+    </div>
+    -->
+
+                    <div class="totalPage" data-names="mgp2p_admin">
+                        <div class="totalPageWrap">
+                            <div id="separate">
+                                <div class="contentWrap left" style="width:50%;">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">Today</h4>
+                                    </div>
+                                    <div class="weatherSimpleEntry">
+                                        <div id="weatherTime"></div>
+                                        <div id="weatherView"></div>
+                                        <div id="weatherIcon">
+                                            <div id="notWeather"></div>
+                                        </div>
+                                        <!-- <img src="/images/weather/weather_img01.png" width="" height="" /> -->
+                                        <!-- weatherIcon 으로 안나와서 임시로 띄워봄 -->
+                                        <div id="weatherTemp" style="text-align: left; font-size: 0.8em; padding: 6px 0px 20px;"><span>현재 날씨 정보를<br>가져올 수 없습니다.<br></span></div>
+                                        <div id="weatherTempMaxMin"></div>
+                                    </div>
+                                </div>
+
+                                <div class="contentWrap right">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">
+                                            <a href="/board/board_getArticleList.do?menu-id=M120306&amp;sch_board_id=NOTICE">공지사항</a>
+                                        </h4>
+                                    </div>
+                                    <div class="boardLineMain"></div>
+                                    <div class="boardLineSub"></div>
+                                    <ul class="boardSimpleEntry">
+
+
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=12" class="text_over0">[공지사항]매칭 내역</a></li>
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=11" class="text_over1">[공지사항]정산 수행 시</a></li>
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=10" class="text_over2">[공지사항]E-Sharing</a></li>
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=9" class="text_over3">[공지사항]입찰 등록</a></li>
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=8" class="text_over4">[공지사항]에너지 쉐어링 서비스</a></li>
+
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="totalPageWrap">
+                            <div id="separate">
+                                <div class="contentWrap left" style="width:50%;">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">월별 입찰 현황</h4>
+                                    </div>
+
+
+
+
+
+
+
+
+
+                                    <div class="topPanelDiv">
+                                        <div class="selectArea">
+                                            <form method="formSearchbox" name="form">
+                                                <select name="sch_cntr_cd" id="sch_cntr_cd" onchange="getBiddingMonthlyChart(); showLoadTypeCdByCntr();">
+
+                                                    <option value="100" id="calTypeCd" class="HOUSING">주택용전력</option>
+
+                                                    <option value="213" id="calTypeCd" class="SINGLE">교육용(갑)저압</option>
+
+                                                    <option value="222" id="calTypeCd" class="DIVISION">일반용(갑)II고압A</option>
+
+                                                    <option value="311" id="calTypeCd" class="SINGLE">산업용(갑)I저압</option>
+
+                                                    <option value="726" id="calTypeCd" class="DIVISION">산업용(을)고압A</option>
+
+                                                </select>
+                                                &nbsp;
+                                                <div class="loadTypeCdDiv" id="loadTypeCd" style="display: none;">
+                                                    <select name="sch_load_type_cd" id="sch_load_type_cd" onchange="getBiddingMonthlyChart();">
+
+                                                        <option value="LIGHT" label="경부하">
+
+                                                        </option>
+                                                        <option value="HEAVY" label="중부하">
+
+                                                        </option>
+                                                        <option value="MAX" label="최대부하">
+
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="loadTypeCdDiv" id="touTypeCd" style="">
+                                                    <select name="sch_load_type_cd" id="touTypeCdValue" onchange="getBiddingMonthlyChart();">
+                                                        <option value="" label="구분없음">
+
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="dataDiv">
+                                            <div id="biddingMonthlyChart" data-highcharts-chart="0">
+                                                
+                                            </div>
+                                            <div id="biddingMonthlyChartTable">
+                                                <table class="type01">
+                                                    <caption>테이블 : 월별 입찰 현황 의 상세 내역 리스트입니다. (일자, 희망 판매량 합계, 희망 판매단가 평균 등의 내용을 확인 하실 수 있습니다.)</caption>
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">일자</th>
+                                                            <th scope="col">희망 판매량<br> 합계(kWh)</th>
+                                                            <th scope="col">희망 판매단가 <br>평균(원/kWh)</th>
+                                                            <th scope="col">희망 구매량<br> 합계(kWh)</th>
+                                                            <th scope="col">희망 구매단가<br> 평균(원/kWh)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="center">181.33</td>
+                                                            <td class="center">49</td>
+                                                            <td class="center">2022-09</td>
+                                                            <td class="center">152.33</td>
+                                                            <td class="center">62 </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center">181.33</td>
+                                                            <td class="center">49</td>
+                                                            <td class="center">2022-10</td>
+                                                            <td class="center">152.33</td>
+                                                            <td class="center">62 </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center">181.33</td>
+                                                            <td class="center">91</td>
+                                                            <td class="center">2022-11</td>
+                                                            <td class="center">152.33</td>
+                                                            <td class="center">64 </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center">203.33</td>
+                                                            <td class="center">26</td>
+                                                            <td class="center">2022-12</td>
+                                                            <td class="center">135.60</td>
+                                                            <td class="center">50 </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="contentWrap right">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">월별 E-Sharing 결과</h4>
+                                    </div>
+
+
+
+
+
+
+
+
+                                    
+                                    <form id="formSearchbox" onsubmit="return false;">
+                                        <div class="topPanelDiv">
+                                            <span class="radioArea">
+                                                <input type="radio" name="sch_calculation_type_cd" value="SELLER" checked="checked" onchange="getCalculationMonthlyChart();">판매
+                                                <input type="radio" name="sch_calculation_type_cd" value="BUYER" onchange="getCalculationMonthlyChart();">구매
+                                            </span>
+
+                                            <div class="dataDiv">
+                                                <div id="calculationMonthlyChart" data-highcharts-chart="1">
+                                                    
+                                                </div>
+                                                <div id="calculationMonthlyChartTable">
+                                                    <table class="type01">
+                                                        <colgroup>
+                                                            <col style="width: 15%">
+                                                            <col style="width: 18%">
+                                                            <col style="width: 18%">
+                                                            <col style="width: *%">
+                                                            <col style="width: 12%">
+                                                            <col style="width: 12%">
+                                                            <col style="width: 12%">
+                                                        </colgroup>
+                                                        <caption>테이블 : 월별 E-Sharing 결과 의 상세 내역 리스트입니다. (전력 거래량, 거래단가 평균, 납부금액 등의 내용을 확인 하실 수 있습니다.)</caption>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">일자</th>
+                                                                <th scope="col">전력 거래량<br>(kWh)</th>
+                                                                <th scope="col">거래단가 평균<br>(원/kWh)</th>
+                                                                <th scope="col">납부 <br>금액(원)</th>
+                                                                <th scope="col">판매 <br>수익(원)</th>
+                                                                <th scope="col">운영 <br>수익(원)</th>
+                                                                <th scope="col">편익(원)</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="center">2022-01</td>
+                                                                <td class="center">9,053</td>
+                                                                <td class="center">2,253</td>
+                                                                <td class="center">2,715.9</td>
+                                                                <td class="center">16 </td>
+                                                                <td class="center">124.58</td>
+                                                                <td class="center">7,345,360</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="center">2022-02</td>
+                                                                <td class="center">11,926</td>
+                                                                <td class="center">5,166</td>
+                                                                <td class="center">3,577.8</td>
+                                                                <td class="center">5 </td>
+                                                                <td class="center">125.92</td>
+                                                                <td class="center">5,515,130</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="center">2022-03</td>
+                                                                <td class="center">8,168</td>
+                                                                <td class="center">2,998</td>
+                                                                <td class="center">2,450.4</td>
+                                                                <td class="center">11 </td>
+                                                                <td class="center">123.16</td>
+                                                                <td class="center">4,778,810</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="center">2022-04</td>
+                                                                <td class="center">9,858</td>
+                                                                <td class="center">4,588</td>
+                                                                <td class="center">2,957.4</td>
+                                                                <td class="center">8 </td>
+                                                                <td class="center">132.36</td>
+                                                                <td class="center">5,246,010</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="totalPageWrap">
+                            <div id="separate">
+                                <div class="contentWrap left" style="width:50%;">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">고객 정보</h4>
+                                    </div>
+
+
+
+
+
+
+
+                                    <script>
+                                        // data set Array
+                                        chartSetData1 = [];
+                                        chartSetData2 = [];
+                                        //기본설정
+                                        $(function() {
+                                            /** 차트 초기화 */
+                                            // 판매자 차트
+                                            //drawSellerChart();
+                                            // 구매자 차트
+                                            //drawBuyerChart();
+                                            // 판매자 차트 데이터 조회
+                                            getSellerChart();
+                                            // 구매자 차트 데이터 조회
+                                            getBuyerChart();
+                                        });
+
+                                        //판매자 차트
+                                        function drawSellerChart() {
+                                            // Build the chart
+                                            Highcharts.chart('sellerChart', {
+                                                colors: ['#E03847', '#2A9DCC', '#20CA99', '#FEC858'],
+                                                chart: {
+                                                    plotBackgroundColor: null,
+                                                    plotBorderWidth: null,
+                                                    plotShadow: false,
+                                                    type: 'pie',
+                                                    width: 380
+                                                },
+                                                title: {
+                                                    text: ''
+                                                },
+                                                tooltip: {
+                                                    shared: false,
+                                                },
+                                                legend: {
+                                                    layout: 'vertical',
+                                                    align: 'left',
+                                                    verticalAlign: 'middle'
+                                                },
+                                                navigation: {
+                                                    buttonOptions: {
+                                                        enabled: false
+                                                    }
+                                                },
+                                                plotOptions: {
+                                                    pie: {
+                                                        allowPointSelect: true,
+                                                        cursor: 'pointer',
+                                                        dataLabels: {
+                                                            enabled: false
+                                                        },
+                                                        showInLegend: true
+                                                    }
+                                                },
+                                                series: [{
+                                                    name: '고객수',
+                                                    data: chartSetData1,
+                                                    colorByPoint: true
+                                                }]
+                                            });
+                                        }
+
+                                        //구매자 차트
+                                        function drawBuyerChart() {
+                                            // Build the chart
+                                            window.buyerChart = new Highcharts.Chart({
+                                                colors: ['#E03847', '#2A9DCC', '#20CA99', '#FEC858'],
+                                                chart: {
+                                                    renderTo: 'buyerChart',
+                                                    plotBackgroundColor: null,
+                                                    plotBorderWidth: null,
+                                                    plotShadow: false,
+                                                    type: 'pie',
+                                                    width: 380
+                                                },
+                                                title: {
+                                                    text: ''
+                                                },
+                                                tooltip: {
+                                                    shared: true,
+                                                },
+                                                legend: {
+                                                    layout: 'vertical',
+                                                    align: 'left',
+                                                    verticalAlign: 'middle'
+                                                },
+                                                navigation: {
+                                                    buttonOptions: {
+                                                        enabled: false
+                                                    }
+                                                },
+                                                plotOptions: {
+                                                    pie: {
+                                                        allowPointSelect: true,
+                                                        cursor: 'pointer',
+                                                        dataLabels: {
+                                                            enabled: false
+                                                        },
+                                                        showInLegend: true
+                                                    }
+                                                },
+                                                series: [{
+                                                    name: '고객수',
+                                                    data: chartSetData2,
+                                                    colorByPoint: true
+                                                }]
+                                            });
+
+                                        }
+
+                                        // 판매자 차트 데이터 조회
+                                        function getSellerChart() {
+                                            $.ajax({
+                                                type: "POST",
+                                                async: true,
+                                                url: "/dashboard/custInfo_getCustCntListByType.json?sch_esharing_cust_type_cd=SELLER",
+                                                dataType: "json",
+                                                success: function(data) {
+                                                    //판매자 차트 그리기
+                                                    buildSellerChart(data.numberOfCustByTypeList);
+                                                }
+                                            });
+                                        }
+                                        // 구매자 차트 데이터 조회
+                                        function getBuyerChart() {
+                                            $.ajax({
+                                                type: "POST",
+                                                async: true,
+                                                url: "/dashboard/custInfo_getCustCntListByType.json?sch_esharing_cust_type_cd=BUYER",
+                                                dataType: "json",
+                                                success: function(data) {
+                                                    //구매자 차트 그리기
+                                                    buildBuyerChart(data.numberOfCustByTypeList);
+                                                }
+                                            });
+                                        }
+
+                                        //판매자 차트 그리기
+                                        function buildSellerChart(resultList) {
+
+                                            if (resultList.length > 0) {
+                                                // 데이터 초기화
+                                                var custCntData = new Array();
+                                                var cntrGroupNmData = new Array();
+
+                                                // List 반복문
+                                                $.each(resultList, function(index, result) {
+
+                                                    // Json 반복문 (차트에서 사용할 데이터 추출)
+                                                    $.each(result, function(key, value) {
+                                                        // 차트에서 사용하지 않는 컬럼 제외
+                                                        if (key == 'cust_cnt') {
+                                                            custCntData.push(parseFloat(isNullCheck(value, '0')));
+                                                        } else if (key == 'cntr_group_nm') {
+                                                            cntrGroupNmData.push(value);
+                                                        }
+                                                    });
+                                                    // set data
+                                                    chartSetData1.push({
+                                                        name: cntrGroupNmData[index],
+                                                        y: custCntData[index]
+                                                    });
+                                                });
+                                            }
+                                            // chart redraw
+                                            drawSellerChart();
+                                        }
+
+                                        //구매자 차트 그리기
+                                        function buildBuyerChart(resultList) {
+
+                                            if (resultList.length > 0) {
+                                                // 데이터 초기화
+                                                var custCntData = new Array();
+                                                var cntrGroupNmData = new Array();
+
+                                                // List 반복문
+                                                $.each(resultList, function(index, result) {
+
+                                                    // Json 반복문 (차트에서 사용할 데이터 추출)
+                                                    $.each(result, function(key, value) {
+                                                        // 차트에서 사용하지 않는 컬럼 제외
+                                                        if (key == 'cust_cnt') {
+                                                            custCntData.push(parseFloat(isNullCheck(value, '0')));
+                                                        } else if (key == 'cntr_group_nm') {
+                                                            cntrGroupNmData.push(value);
+                                                        }
+                                                    });
+                                                    // set data
+                                                    chartSetData2.push({
+                                                        name: cntrGroupNmData[index],
+                                                        y: custCntData[index]
+                                                    });
+
+                                                });
+                                            }
+                                            // chart redraw
+                                            drawBuyerChart();
+                                        }
+                                    </script>
+
+                                    <div class="bottomPanelDiv">
+                                        <div class="bottomPanelDivArea">
+                                            <div class="subPanel">
+                                                <h4>판매자</h4>
+                                                <div class="chartDiv" id="sellerChart" data-highcharts-chart="3">
+                                                    <div class="highcharts-container" id="highcharts-6" style="position: relative; overflow: hidden; width: 380px; height: 153px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="380" height="153">
+                                                            <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                            <defs>
+                                                                <clipPath id="highcharts-7">
+                                                                    <rect x="0" y="0" width="275" height="128"></rect>
+                                                                </clipPath>
+                                                            </defs>
+                                                            <rect x="0" y="0" width="380" height="153" strokeWidth="0" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                            <g class="highcharts-series-group" zIndex="3">
+                                                                <path fill="#E03847" fill-opacity="0.25" d="M 0 0"></path>
+                                                                <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(95,10) scale(1 1)" style="cursor:pointer;">
+                                                                    <path fill="#E03847" d="M 137.48900164700046 10.00000112003491 A 54 54 0 0 1 189.67115037924802 77.93452791112381 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#2A9DCC" d="M 189.6571897680863 77.98669208554449 A 54 54 0 0 1 110.56526873614928 110.802994046793 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#20CA99" d="M 110.5184792172675 110.7760359185232 A 54 54 0 0 1 83.50000948343322 64.03200329197537 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#FEC858" d="M 83.50000448013958 63.97800329445716 A 54 54 0 0 1 137.42499508334413 10.000052090187367 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                </g>
+                                                                <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(95,10) scale(1 1)"></g>
+                                                            </g>
+                                                            <g class="highcharts-legend" zIndex="7" transform="translate(10,33)">
+                                                                <g zIndex="1">
+                                                                    <g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)"><text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2" y="15">일반용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#E03847"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,21)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">산업용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#2A9DCC"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,39)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">교육용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#20CA99"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,57)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">주택용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#FEC858"></rect>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                            <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(205,-9999)" opacity="0" visibility="visible">
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#E03847" stroke-width="1"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="20">
+                                                                    <tspan style="font-size: 10px">일반용</tspan>
+                                                                    <tspan style="fill:#E03847" x="8" dy="15">●</tspan>
+                                                                    <tspan dx="0"> 고객수: </tspan>
+                                                                    <tspan style="font-weight:bold" dx="0">7</tspan>
+                                                                </text>
+                                                            </g><text x="370" text-anchor="end" zIndex="8" style="cursor:pointer;color:#909090;font-size:9px;fill:#909090;" y="148">Highcharts.com</text>
+                                                        </svg></div>
+                                                </div>
+                                                <table class="paddingTable">
+                                                    <colgroup>
+                                                        <col style="width : 40%;">
+                                                        <col style="width : 40%;">
+                                                        <col style="width : 20%;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr data-percent="42">
+                                                            <td class="bold">발전량 </td>
+                                                            <td class="right red">3,239</td>
+                                                            <td>kWh</td>
+                                                        </tr>
+                                                        <tr data-percent="23">
+                                                            <td class="bold">PV 용량</td>
+                                                            <td class="right red">580 </td>
+                                                            <td class="bold">kW</td>
+                                                        </tr>
+                                                        <tr data-percent="56">
+                                                            <td class="bold">ESS 용량</td>
+                                                            <td class="right red">311 </td>
+                                                            <td class="bold">kW</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="bottomPanelDivArea">
+                                            <div class="subPanel">
+                                                <h4>구매자</h4>
+                                                <div class="chartDiv" id="buyerChart" data-highcharts-chart="4">
+                                                    <div class="highcharts-container" id="highcharts-10" style="position: relative; overflow: hidden; width: 380px; height: 153px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="380" height="153">
+                                                            <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                            <defs>
+                                                                <clipPath id="highcharts-11">
+                                                                    <rect x="0" y="0" width="275" height="128"></rect>
+                                                                </clipPath>
+                                                            </defs>
+                                                            <rect x="0" y="0" width="380" height="153" strokeWidth="0" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                            <g class="highcharts-series-group" zIndex="3">
+                                                                <path fill="#20CA99" fill-opacity="0.25" d="M 0 0"></path>
+                                                                <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(95,10) scale(1 1)" style="cursor:pointer;">
+                                                                    <path fill="#E03847" d="M 137.48900164700046 10.00000112003491 A 54 54 0 0 1 191.49997300000226 63.946000009 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#2A9DCC" d="M 191.5 64 A 54 54 0 0 1 164.5559845528401 110.73300439599917 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#20CA99" d="M 164.50923802824178 110.76003700954243 A 54 54 0 0 1 83.50000948343322 64.03200329197537 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#FEC858" d="M 83.50000448013958 63.97800329445716 A 54 54 0 0 1 137.42499508334413 10.000052090187367 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                </g>
+                                                                <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(95,10) scale(1 1)"></g>
+                                                            </g>
+                                                            <g class="highcharts-legend" zIndex="7" transform="translate(10,33)">
+                                                                <g zIndex="1">
+                                                                    <g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)"><text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2" y="15">일반용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#E03847"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,21)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">산업용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#2A9DCC"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,39)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">교육용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#20CA99"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,57)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">주택용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#FEC858"></rect>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                            <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(139,-9999)" opacity="0" visibility="visible">
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#20CA99" stroke-width="1"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="20">
+                                                                    <tspan style="font-size: 10px">교육용</tspan>
+                                                                    <tspan style="fill:#20CA99" x="8" dy="15">●</tspan>
+                                                                    <tspan dx="0"> 고객수: </tspan>
+                                                                    <tspan style="font-weight:bold" dx="0">8</tspan>
+                                                                </text>
+                                                            </g><text x="370" text-anchor="end" zIndex="8" style="cursor:pointer;color:#909090;font-size:9px;fill:#909090;" y="148">Highcharts.com</text>
+                                                        </svg></div>
+                                                </div>
+                                                <table class="paddingTable">
+                                                    <colgroup>
+                                                        <col style="width : 40%;">
+                                                        <col style="width : 40%;">
+                                                        <col style="width : 20%;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr data-percent="11">
+                                                            <td class="bold">소비 전력량 </td>
+                                                            <td class="right red">14,166</td>
+                                                            <td>kWh</td>
+                                                        </tr>
+                                                        <tr data-percent="95">
+                                                            <td class="bold">최대 수요</td>
+                                                            <td class="right red">3,541 </td>
+                                                            <td class="bold">kWh</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="contentWrap right">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">매칭 요약정보</h4>
+                                    </div>
+
+
+
+
+
+
+
+                                    <script>
+                                        //기본설정
+                                        $(function() {
+                                            // 차트 초기화
+                                            matchingSummaryChart();
+                                        });
+
+                                        function matchingSummaryChart() {
+                                            Highcharts.chart('matchingSummaryChart', {
+                                                colors: ['#3498DB', '#E74C3C'],
+                                                chart: {
+                                                    plotBackgroundColor: null,
+                                                    plotBorderWidth: 0,
+                                                    plotShadow: false,
+                                                    width: 300
+                                                },
+                                                title: {
+                                                    text: ''
+                                                },
+                                                tooltip: {
+                                                    shared: true,
+                                                },
+                                                legend: {
+                                                    layout: 'vertical',
+                                                    align: 'right',
+                                                    verticalAlign: 'middle'
+                                                },
+                                                plotOptions: {
+                                                    pie: {
+                                                        dataLabels: '',
+                                                        startAngle: -90,
+                                                        endAngle: 90,
+                                                        center: ['50%', '65%'],
+                                                        size: '110%'
+                                                    }
+                                                },
+                                                series: [{
+                                                    type: 'pie',
+                                                    name: '건 수',
+                                                    innerSize: '50%',
+                                                    data: [
+                                                        ['거래체결', 20],
+                                                        ['미체결', 22]
+                                                    ]
+                                                }]
+                                            });
+                                        }
+                                    </script>
+                                    <div class="bottomPanelDiv bottomImg">
+                                        <div class="dataDiv">
+                                            <table style="margin-top: 15px;">
+                                                <colgroup>
+                                                    <col style="width : 30%;">
+                                                    <col style="width : 45%;">
+                                                    <col style="width : 25%;">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="bold"><span>체결량</span></th>
+                                                        <td class="right blue bold">86 </td>
+                                                        <td>kWh</td>
+                                                    </tr>
+                                                    <tr>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="bold" style="vertical-align: top;padding-top: 15px;">체결 단가</th>
+                                                        <td colspan="2" style="height: 15%;vertical-align: text-top;">
+                                                            <table style="font-size: 0.91em;padding: 4px;">
+                                                                <colgroup>
+                                                                    <col style="width : 30%;">
+                                                                    <col style="width : 35%;">
+                                                                    <col style="width : 35%;">
+                                                                </colgroup>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>주택용</td>
+                                                                        <td>151.67 </td>
+                                                                        <td>원/kWh</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>일반용</td>
+                                                                        <td>139 </td>
+                                                                        <td>원/kWh</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>산업용</td>
+                                                                        <td>101 </td>
+                                                                        <td>원/kWh</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>교육용</td>
+                                                                        <td>0 </td>
+                                                                        <td>원/kWh</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="1">매칭 수행 일시</th>
+                                                        <td colspan="2" style="padding-left: 15px;">2022-02-15 11:47 </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="chartDiv" id="matchingSummaryChart" data-highcharts-chart="2">
+                                            <div class="highcharts-container" id="highcharts-4" style="position: relative; overflow: hidden; width: 300px; height: 200px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="300" height="400">
+                                                    <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                    <defs>
+                                                        <clipPath id="highcharts-5">
+                                                            <rect x="0" y="0" width="280" height="175"></rect>
+                                                        </clipPath>
+                                                    </defs>
+                                                    <rect x="0" y="0" width="300" height="200" strokeWidth="0" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                    <g class="highcharts-button" style="cursor:default;" stroke-linecap="round" transform="translate(266,10)">
+                                                        <title>Chart context menu</title>
+                                                        <rect x="0.5" y="0.5" width="24" height="22" strokeWidth="1" fill="white" stroke="none" stroke-width="1" rx="2" ry="2"></rect>
+                                                        <path fill="#E0E0E0" d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5" stroke="#666" stroke-width="3" zIndex="1"></path><text x="0" zIndex="1" style="color:black;fill:black;" y="12"></text>
+                                                    </g>
+                                                    <g class="highcharts-series-group" zIndex="3">
+                                                        <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(10,10) scale(1 1)" style="">
+                                                            <path fill="#3498DB" d="M 55.75000698984739 107.78431893411081 A 84.25 84.25 0 0 1 133.5860523727226 23.744501514278596 L 136.7930261863613 65.7472507571393 A 42.125 42.125 0 0 0 97.8750034949237 107.76715946705541 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                            <path fill="#E74C3C" d="M 133.67006106418094 23.738129570466043 A 84.25 84.25 0 0 1 224.24995787500353 107.66575001404166 L 182.12497893750177 107.70787500702083 A 42.125 42.125 0 0 0 136.83503053209046 65.74406478523302 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                        </g>
+                                                        <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(10,10) scale(1 1)"></g>
+                                                    </g>
+                                                    <g class="highcharts-legend" zIndex="7">
+                                                        <g zIndex="1">
+                                                            <g></g>
+                                                        </g>
+                                                    </g>
+                                                    <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(0,-9999)">
+                                                        <path fill="none" d="M 3.5 0.5 L 13.5 0.5 C 16.5 0.5 16.5 0.5 16.5 3.5 L 16.5 13.5 C 16.5 16.5 16.5 16.5 13.5 16.5 L 3.5 16.5 C 0.5 16.5 0.5 16.5 0.5 13.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></path>
+                                                        <path fill="none" d="M 3.5 0.5 L 13.5 0.5 C 16.5 0.5 16.5 0.5 16.5 3.5 L 16.5 13.5 C 16.5 16.5 16.5 16.5 13.5 16.5 L 3.5 16.5 C 0.5 16.5 0.5 16.5 0.5 13.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></path>
+                                                        <path fill="none" d="M 3.5 0.5 L 13.5 0.5 C 16.5 0.5 16.5 0.5 16.5 3.5 L 16.5 13.5 C 16.5 16.5 16.5 16.5 13.5 16.5 L 3.5 16.5 C 0.5 16.5 0.5 16.5 0.5 13.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></path>
+                                                        <path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 13.5 0.5 C 16.5 0.5 16.5 0.5 16.5 3.5 L 16.5 13.5 C 16.5 16.5 16.5 16.5 13.5 16.5 L 3.5 16.5 C 0.5 16.5 0.5 16.5 0.5 13.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="20"></text>
+                                                    </g><text x="290" text-anchor="end" zIndex="8" style="cursor:pointer;color:#909090;font-size:9px;fill:#909090;" y="195">Highcharts.com</text>
+                                                </svg></div>
+                                        </div>
+                                        <div class="chartLegend">
+                                            <span style="background-color: #3498DB;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<span style="font-size: 13px;">거래체결 건수</span>&nbsp;&nbsp;
+                                            <span style="background-color: #E74C3C;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<span style="font-size: 13px;">미체결 건수</span>&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                <footer id="ft">
+                    <p class="copyright">
+                        <img src="/img/smlogo.png" alt=""> <span>COPTRIGHT
+                            2020 SMART ENERGY CITY ALL RIGHTS RESERVED.</span>
+                    </p>
+                </footer>
+            </div>
+
+
+        </div>
+    </body>
+</html>

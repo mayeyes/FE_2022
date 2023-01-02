@@ -1,0 +1,1989 @@
+<html lang="ko" data-livestyle-extension="available">
+
+<head>
+    <title>P2P 전력거래</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="http://tvpp.magok.kr:22211/css/favicon.svg" sizes="any" type="image/svg+xml">
+
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/ui.jqgrid.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/bootstrap-material-datetimepicker.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/yearpicker.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/toastr.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/bulma.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/bulma-custom.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/swiper-bundle.min.css">
+    <!-- kbet 추가 -->
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/vpp.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/fullcalendar.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/common.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/navibar.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/layout.css">
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/head.css">
+    <!-- p2p 추가 -->
+
+    <link rel="stylesheet" href="http://tvpp.magok.kr:22211/css/table.css">
+
+    <script src="http://tvpp.magok.kr:22211/js/jquery-3.4.1.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/jquery.jqgrid.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/jquery-ui.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/jquery.cookie.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/jquery.mousewheel.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/grid.locale-kr.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/jquery.twbsPagination.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/highcharts-custom.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/highcharts-export-clientside.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/highcharts-default.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/handlebars.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/handlebars-templates.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/moment.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/moment-with-locales.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/common.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/yearpicker.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/validator.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/toastr.custom.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/bulma-custom.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/swiper-bundle.min.js"></script>
+    <!-- kbet 추가 -->
+    <script src="http://tvpp.magok.kr:22211/js/jqGrid/jquery-1.7.2.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/jqGrid/i18n/grid.locale-kr.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/jqGrid/jquery.jqGrid.min.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/layout.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/secosChart.js"></script>
+    <script src="http://tvpp.magok.kr:22211/js/jquery.serializeObject.js"></script>
+    <!-- 후 순위로 변경 -->
+    <script src="http://tvpp.magok.kr:22211/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- p2p 추가 -->
+    <script src="http://tvpp.magok.kr:22211/js/jquery.bpopup.min.js"></script>
+
+    <!-- 추후 서울시 제공 GNB로 대체 start -->
+    <link rel="stylesheet" type="text/css" media="all" href="https://www.seoul.go.kr/seoulgnb/seoul-common-gnb.css">
+    <!-- 추후 서울시 제공 GNB로 대체 end -->
+    
+    <style>
+        main{background-color: #F0F4F5; padding-bottom: 30px;}
+        .totalPage[data-names="eshare"]{padding: 0; background-color: transparent;}
+        .totalPage[data-names="eshare"]{display: grid; width: 100%; grid-template-columns: repeat(2, 1fr);  grid-template-rows: auto; gap: 0 30px;}
+        [data-names="eshare"] .totalPageWrap{width: 100%; margin: 40px auto 0; }
+        [data-names="eshare"] .totalPageWrap:first-child{grid-column: 1 / 3; grid-row: 1;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2){grid-column: 1 / 3; grid-row: 2;}
+        [data-names="eshare"] .totalPageWrap #separate{display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; gap: 0 30px;}
+        [data-names="eshare"] .totalPageWrap #separate .contentWrap{width: 100% !important; float: none; clear: none;}
+        [data-names="eshare"] .totalPageWrap #separate .contentWrap:first-child{grid-column: 1 / 2; grid-row: 1;}
+        [data-names="eshare"] .totalPageWrap #separate .contentWrap:nth-child(2){grid-column: 2 / 3; grid-row: 1;}
+        [data-names="eshare"] .contentWrap{
+            margin-bottom: 0; border: 0;
+            box-shadow: 1px 1px 20px rgba(212, 224, 235, 0.5);
+            border-radius: 10px; -webkit-border-radius: 10px;
+        }
+        [data-names="eshare"] .underBar{
+            padding: 16px 30px; background-color: #485FC7; border-bottom: 0; box-sizing: border-box;
+            border-radius: 10px 10px 0 0; -webkit-border-radius: 10px 10px 0 0;
+        }
+        [data-names="eshare"] .titleName,
+        [data-names="eshare"] .titleName span{font-size: 20px; line-height: 1; color: #fff; font-weight: 600}
+        [data-names="eshare"] .titleName:before{display: none;}
+        [data-names="eshare"] .totalPageWrap #separate .contentWrap .panelDiv{padding: 30px; box-sizing: border-box;}
+        
+        
+        
+        
+        
+        
+        [data-names="eshare"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(1){position: relative;}
+        [data-names="eshare"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(1) .energyStatusSellerImg{display: none;}
+        [data-names="eshare"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(1) .energySellerChartLegend{
+            position: absolute; bottom: 20px; left: 50%;
+            transform: translateX(-50%); -webkit-transform: translateX(-50%);
+        }
+        
+        
+        
+        
+        
+        
+        
+        [data-names="eshare"] .totalPageWrap:nth-child(1) #separate .contentWrap:nth-child(2){}
+        
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1){}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv{padding: 0;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .tabList{height: auto; border-bottom: 1px solid rgba(72, 95, 199, 0.2);}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .tabList .tabListWrap{margin-left: 0; padding-top: 0; padding: 0 30px; text-align: center;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .tabList .tabListWrap ul{display: inline-block; margin: 0 auto;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .tabList .tabListWrap ul li{margin-right: 0; padding: 15px 0; color: #666; font-weight: 700; font-size: 20px; letter-spacing: -0.03em; line-height: 1; box-sizing: border-box;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .tabList .tabListWrap ul li:not(:first-child){margin-left: 40px;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .tabList .tabListWrap ul li.active{color: #222;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .tabList .tabListWrap ul li.active:after{bottom: 0; width: 100%; height: 3px; border-bottom: 0; background: linear-gradient(270.41deg, #485FC7 -2.73%, #29A1E4 232.98%); }
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2{ }
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1{position: relative; padding: 26px 30px; border-bottom: 1px solid rgba(72, 95, 199, 0.2); box-sizing: border-box;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1:after{content: ""; display: block; clear: both;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm{} 
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm:after{content: ""; display: block; clear: both;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm hr{display: none;} 
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm select{display: block; margin-bottom: 14px; width: 132px; min-width: 132px; height: 26px; line-height: 24px; border: 1px solid #DADFF4; background: url(../img/power_icon07.svg) no-repeat right 9px center; background-size: 8px 5px; vertical-align: middle; box-sizing: border-box;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table{display: inline-block; float: left; width: 50%;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:first-of-type{}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table tbody,
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table tbody tr{display: block;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table tbody tr:not(:first-child){margin-top: 14px;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table tbody tr th,
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table tbody tr td{display: inline-block; vertical-align: middle;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table tbody tr th,
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(1){width: 110px; color: #222; font-size: 18px; line-height: 1; letter-spacing: -0.03em; font-weight: 400;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:first-of-type tbody tr td{float: none; clear: none; color: #666;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(1) tbody tr td:nth-of-type(1),
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(2){width: calc(100% - 8px - 110px - 70px); margin: 0 5px; text-align: right; font-size: 18px; color: #666;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(2){width: calc(100% - 8px - 105px - 70px); margin: 0 10px 0 15px;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table tbody tr td:nth-of-type(1) input,
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(2) input{width: 100%; border: 1px solid #DADFF4; text-align: right; box-sizing: border-box;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(1) tbody tr td:nth-of-type(2),
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(3){width: 60px !important; font-size: 18px; letter-spacing: -0.03em; line-height: 1;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 >button{
+            position: absolute; right: 50%; margin-right: -284px; display: block; width: 132px; font-size: 17px; padding: 1.5px 0 3.5px;
+            border-radius: 5px; -webkit-border-radius: 5px;
+        }
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2){text-align: right;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(3){width: auto !important;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 >button:nth-of-type(1){bottom: 60px; background-color: #2995EC;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 >button:nth-of-type(2){bottom: 22px; background-color: 003C76;}
+        
+        
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02{}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 .inputArea{padding: 62.5px 30px; border-bottom: 1px solid rgba(72, 95, 199, 0.2); box-sizing: border-box;}
+        
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 #autoBiddingForm{text-align: center;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 #autoBiddingForm select{display: inline-block;width: 132px; min-width: 132px; height: 26px; line-height: 24px; border: 1px solid #DADFF4; background: url(../img/power_icon07.svg) no-repeat right 9px center; background-size: 8px 5px; vertical-align: middle; box-sizing: border-box;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 #autoBiddingForm select:not(:first-of-type){margin-left: 6px;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 #autoBiddingForm br{display: none;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 #autoBiddingForm button{
+            width: 132px; padding: 4.5px 0 6.5px; margin-left: 6px; vertical-align: middle; background-color: 2995EC; font-size: 17px; line-height: 1; letter-spacing: -0.03em; box-sizing: border-box;
+            border-radius: 5px; -webkit-border-radius: 5px;
+        }
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 .chartArea{padding: 0 30px 30px; box-sizing: border-box;}
+        
+        
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_2{padding: 5px 30px 15px; box-sizing: border-box;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea{margin-top: 30px;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table,
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table tbody{display: block;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table tbody:after{content: ""; display: block; clear: both;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table tbody tr{float: left; display: inline-block; margin-top: 15px;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table tbody tr:not(:last-child){margin-right: 15px;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table tbody tr td{display: inline-block; padding-top: 0 !important; font-size: 18px !important; line-height: 1; letter-spacing: -0.03em; color: #666;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table tbody tr td[colspan="3"]{width: auto !important;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table tbody tr td:not(:last-child){margin-right: 10px;}
+        [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table tbody tr td:first-child{width: 100px; color: #222;}
+        
+        @media screen and (min-width: 1216px){
+            .container:not(.is-max-desktop){
+                max-width: 100%; width: calc(1344px + 40px); padding: 0 20px;
+            }
+            [data-names="eshare"].totalPage{min-width: 100%;}
+        }
+        
+        @media screen and (max-width: 1400px){
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1{text-align: center;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table{width: 100%; margin-top: 14px;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2){text-align: left;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(2){width: calc(100% - 8px - 110px - 70px); margin: 0 5px;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 >button{position: relative; right: auto; margin-right: 0; bottom: auto; display: inline-block;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 >button:nth-of-type(1),
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 >button:nth-of-type(2){bottom: auto; margin: 14px auto 0;}
+        }
+        
+        @media screen and (min-width: 1024px){            
+            .container{max-width: 100%; padding: 0 20px; box-sizing: border-box;}
+            [data-names="eshare"].totalPage{min-width: auto;}
+        }
+        @media screen and (max-width: 1024px){
+            .container:not(.is-max-desktop):not(.is-max-widescreen){
+                width: 100%; max-width: 100%; padding: 0 20px; box-sizing: border-box;
+            }
+            [data-names="eshare"].totalPage{min-width: 100%;}
+            
+            [data-names="eshare"].totalPage{grid-template-columns: repeat(1, 1fr); gap: 20px 0;}
+            [data-names="eshare"] .totalPageWrap{margin: 0 auto;}
+            [data-names="eshare"] .totalPageWrap:first-of-type{margin: 20px auto 0;}
+            [data-names="eshare"] .totalPageWrap #separate{grid-template-columns: repeat(1, 1fr); grid-template-rows: auto auto;  gap: 20px 0;}
+            [data-names="eshare"] .totalPageWrap #separate .contentWrap:first-child{grid-column: 1/2; }
+            [data-names="eshare"] .totalPageWrap #separate .contentWrap:nth-child(2){grid-column: 1/2; grid-row: 2;}
+        }
+        @media screen and (max-width: 740px){
+            [data-names="eshare"] .underBar{padding: 14.5px 20px;}
+            [data-names="eshare"] .titleName{font-size: 18px;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1{padding: 20px;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 .chartArea{padding: 0 20px 20px; box-sizing: border-box;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_2{padding: 5px 20px 15px; box-sizing: border-box;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table tbody tr th, [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(1),
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .tabList .tabListWrap ul li,
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(1) tbody tr td:nth-of-type(2), [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(3),
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(1) tbody tr td:nth-of-type(1), [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 #directBiddingForm table:nth-of-type(2) tbody tr td:nth-child(2){font-size: 16px;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(2) .panelDiv .dataArea table tbody tr td{font-size: 16px !important;}
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2 .dashboard_dir_bid_1 >button,
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 #autoBiddingForm button{font-size: 15px;}
+        }
+        @media screen and (max-width: 640px){
+            [data-names="eshare"] .totalPageWrap:nth-child(2) #separate .contentWrap:nth-child(1) .panelDiv .no_box2#tab_view_02 #autoBiddingForm select{display: block; margin: 8px auto !important;}
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <header>
+        <!-- 추후 서울시 제공 GNB로 대체 start -->
+        <div id="seoul-common-gnb">
+            <div id="seoul-gnb-plugin">
+                <div class="seoul-gnb-holder">
+                    <p class="seoul-gnb-link"><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=logo&amp;link=https://www.seoul.go.kr" target="_blank" title="새창열림" class="seoul-gnb-icon-link wise-link" data-kind="logo">서울특별시 로고</a></p>
+                    <dl class="seoul-gnb-news">
+                        <dt><a href="https://www.seoul.go.kr/realmnews/in/list.do" target="_blank" title="새창열림(서울소식)" class="seoul-gnb-icon-notice">서울소식</a></dt>
+                        <dd><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=hotissue&amp;link=https://news.seoul.go.kr/safe/archives/509337" target="_blank" title="새창열림">재난초기대응능력을 갖춘 시민을 양성하기 위한 시민안전파수꾼 양성 정책 관련 설문조사</a></dd>
+                    </dl>
+                    <dl class="seoul-gnb-menu">
+                        <dt>주요메뉴</dt>
+                        <dd><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=seoulnews&amp;link=https://www.seoul.go.kr/realmnews/in/list.do" target="_blank" title="새창열림" class="seoul-gnb-icon-menu1 wise-link" data-kind="seoulnews">서울소식</a></dd>
+                        <dd><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=eungdapso&amp;link=http://eungdapso.seoul.go.kr" target="_blank" title="새창열림" class="seoul-gnb-icon-menu2 wise-link" data-kind="eungdapso">응답소</a></dd>
+                        <dd><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=opengov&amp;link=http://opengov.seoul.go.kr" target="_blank" title="새창열림" class="seoul-gnb-icon-menu3 wise-link" data-kind="opengov">정보공개</a></dd>
+                        <dd><button type="button" class="seoul-gnb-icon-menu4">분야별정보</button>
+                            <div class="seoul-gnb-menu-section" style="display: none;">
+                                <dl>
+                                    <dt>분야별정보</dt>
+                                    <dd>
+                                        <ul>
+                                            <li><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=citybuild&amp;link=http://news.seoul.go.kr/citybuild/" target="_blank" title="새창열림" class="wise-link" data-kind="citybuild">주택</a></li>
+                                            <li><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=economy&amp;link=http://news.seoul.go.kr/economy/" target="_blank" title="새창열림" class="wise-link" data-kind="economy">경제</a></li>
+                                            <li><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=traffic&amp;link=http://news.seoul.go.kr/traffic/" target="_blank" title="새창열림" class="wise-link" data-kind="traffic">교통</a></li>
+                                            <li><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=env&amp;link=http://news.seoul.go.kr/env/" target="_blank" title="새창열림" class="wise-link" data-kind="env">환경</a></li>
+                                            <li><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=welfare&amp;link=http://news.seoul.go.kr/welfare/" target="_blank" title="새창열림" class="wise-link" data-kind="welfare">복지</a></li>
+                                            <li><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=safe&amp;link=http://news.seoul.go.kr/safe/" target="_blank" title="새창열림" class="wise-link" data-kind="safe">안전</a></li>
+                                            <li><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=culture&amp;link=http://news.seoul.go.kr/culture/" target="_blank" title="새창열림" class="wise-link" data-kind="culture">문화</a></li>
+                                            <li><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=gov&amp;link=http://news.seoul.go.kr/gov/" target="_blank" title="새창열림" class="wise-link" data-kind="gov">행정</a></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <p><a href="//www.seoul.go.kr/sgnb/seoulgnblog.do?gid=G172&amp;kind=allservice&amp;link=https://www.seoul.go.kr/service/all.do" target="_blank" title="새창열림" class="wise-link" data-kind="allservice"><span class="seoul-gnb-icon-service"></span> 서비스 전체보기</a></p><button type="button"><span class="seoul-gnb-icon-service-close"></span><span class="hd-element">분야별 정보 닫기</span></button>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!-- 추후 서울시 제공 GNB로 대체 end -->
+        <div class="container">
+            <nav class="navbar" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a class="main-logo" href="http://tvpp.magok.kr:22211/introduction/introduction.do?menu-id=M120801" style="display: flex; align-items: center;">
+                        <img src="http://tvpp.magok.kr:22211/img/bi-black.svg" alt="로고">
+                    </a>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" style="background-color:#fff;">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="navbar-menu" style="">
+                    <div class="navbar-end">
+                        <div class="navbar-item nav-setting" style="padding: 0;">
+                            <a href="/sso/logout" class="button is-link">로그아웃</a><a class="button is-light" style="width: 50% !important;">판매자-일반용 테스터11(test11)</a><a class="button is-light sitemapOpen">사이트맵</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="menu-background">
+            <div class="container">
+                <nav class="navbar second-navbar" aria-label="main navigation">
+                    <div class="navbar-menu">
+                        <!-- start -->
+                        <div class="navbar-start">
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">서비스 소개</a>
+                                <div class="navbar-dropdown" style="">
+                                    <a href="http://tvpp.magok.kr:22211/introduction/introduction.do?menu-id=M120801" target="_self" class="navbar-item">E-Sharing 소개</a>
+                                    <hr class="navbar-divider">
+                                    <a href="http://tvpp.magok.kr:22211/introduction/howToUseService.do?menu-id=M120801" target="_self" class="navbar-item">서비스 사용방법</a>
+                                </div>
+                            </div>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a href="http://tvpp.magok.kr:22211/dashboard/dashboard.do?menu-id=M120802" target="_self" class="navbar-link">MY E-Sharing</a>
+                            </div>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a href="http://tvpp.magok.kr:22211/bidding/biddingList.do?menu-id=M120803" target="_self" class="navbar-link">E-Sharing 입찰</a>
+                            </div>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a href="http://tvpp.magok.kr:22211/calculation/calculationList.do?menu-id=M120805" target="_self" class="navbar-link">E-Sharing 정산</a>
+                            </div>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a href="http://tvpp.magok.kr:22211/board/noticeList.do?menu-id=M120804" target="_self" class="navbar-link">공지사항</a>
+                            </div>
+                        </div>
+
+                        <!-- END -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="banner ">
+            <div class="container">
+                <div class="bannerWrap">
+                    <div class="titleBox">
+                        <h1 class="title" style="margin: 0;">My E-Sharing</h1>
+                    </div>
+                    <div class="navigator">
+                        <ul>
+                            <li><span class="home"></span></li>
+                            <li><span>응용 서비스</span></li>
+                            <li><span>에너지 쉐어링 고객</span></li>
+                            <li><span>My E-Sharing</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+
+
+
+
+
+
+
+
+            <div class="totalPage" data-names="eshare">
+                <div class="totalPageWrap">
+                    <div id="separate">
+                        <div class="contentWrap left" style="width:50%;">
+                            <div class="underBar">
+                                <h4 class="titleBullet titleName">나의 에너지 현황</h4>
+                            </div>
+
+
+
+
+
+
+
+
+                            <script type="text/javascript">
+                                $(function() {
+                                    // 차트 초기화
+                                    energyStatusChart();
+                                });
+
+                                function energyStatusChart() {
+                                    Highcharts.setOptions({
+                                        lang: {
+                                            thousandsSep: ','
+                                        }
+                                    });
+                                    var gaugeOptions = {
+                                        chart: {
+                                            type: 'solidgauge'
+                                        },
+                                        title: null,
+                                        pane: {
+                                            center: ['50%', '55%'], // 그래프 위치
+                                            size: '100%', // 그래프 크기
+                                            startAngle: -90,
+                                            endAngle: 90,
+                                            background: {
+                                                backgroundColor: '#EEE',
+                                                innerRadius: '60%',
+                                                outerRadius: '100%',
+                                                shape: 'arc'
+                                            }
+                                        },
+                                        tooltip: {
+                                            enabled: false
+                                        },
+                                        // the value axis
+                                        yAxis: {
+                                            lineWidth: 0, // 그래프 겉 line
+                                            minorTickInterval: null, // 보조 눈금에 대한 축 단위의 특정 눈금 간격
+                                            tickAmount: 2, // 눈금 (0~2 : 변화 없음)
+                                            title: {
+                                                y: -50
+                                            },
+                                            labels: { // 0~max 나타내는 값 위치
+                                                y: 13,
+                                                style: { // style 지정 가능
+                                                    fontSize: '10px'
+                                                },
+                                                formatter: function() {
+                                                    // 					return this.value;
+                                                }
+                                            }
+                                        },
+                                        plotOptions: {
+                                            solidgauge: {
+                                                dataLabels: {
+                                                    y: 10, // 데이터 값 위치(y축)
+                                                    borderWidth: 0, // 값 bordor
+                                                    useHTML: true
+                                                }
+                                            }
+                                        },
+                                        // 		 legend: {
+                                        // 			align: 'center',
+                                        // 			verticalAlign: 'bottom',
+                                        // 			itemMarginBottom : 20,
+                                        // 			labelFormatter: function() {
+                                        // 				return '<span style="font-size:13px;color:' + this.userOptions.color + '">' + this.name +'</span>';
+                                        // 			},
+                                        // 			symbolWidth: 0
+                                        // 		}
+                                    };
+
+                                    // The gauge
+                                    var chartSpeed = Highcharts.chart('energyStatusChart', Highcharts.merge(gaugeOptions, {
+                                        yAxis: {
+                                            min: 0,
+                                            max: 6048,
+                                            tickInterval: 0.01, // 0.1로 설정해서 세팅된 max 값(data1)과 그래프 max가 일치하도록 보임 
+                                            title: {
+                                                text: '' // gauge title(전체) - gauge 내부에서만 보임
+                                                    ,
+                                                style: {
+                                                    fontSize: '10px'
+                                                }
+                                            }
+                                        },
+                                        series: [{
+                                                name: '잉여발전량',
+                                                color: '#E8000F',
+                                                // 			 marker: {enabled:false}, //범례 마커
+                                                data: [{
+                                                    color: '#E8000F',
+                                                    radius: '60%',
+                                                    innerRadius: '30%',
+                                                    y: 533
+                                                }],
+                                                dataLabels: {
+                                                    format: '<div style="text-align:left; width:150px;">' +
+                                                        '<span style="font-size:15px;display:inline-block;">{point.y:,0f}</span>&nbsp;' +
+                                                        '<span style="font-size:10px;color:silver;">kWh</span>' +
+                                                        '&nbsp;&nbsp<span style="font-size : 17px; color:#566573">/</span>&nbsp;' +
+                                                        '</div>'
+                                                },
+                                                // 				showInLegend:true // 범례 보이기
+                                            },
+                                            {
+                                                name: '수전전력량',
+                                                color: '#0092E1',
+                                                // 			 marker: {enabled:false},
+                                                data: [{
+                                                    color: '#0092E1',
+                                                    radius: '100%',
+                                                    innerRadius: '60%',
+                                                    y: 6048
+                                                }],
+                                                dataLabels: {
+                                                    format: '<div style="text-align:right;min-width : 170px;">' +
+                                                        '<span style="font-size:15px;white-space:pre-line;">{point.y:,0f}</span>&nbsp;' +
+                                                        '<span style="font-size:10px;color:silver">kWh</span>' +
+                                                        '</div>'
+                                                },
+                                                // 			showInLegend:true // 범례 보이기
+                                            }
+                                        ]
+                                    }));
+                                }
+                            </script>
+                            <!--<div class="panelDiv">
+                                <div class="energyStatusSellerImg">
+                                    <div class="eRemainInfo">533</div>
+                                    <div class="eTotalInfo">6,048</div>
+                                </div>
+                                <div class="energySellerChartLegend">
+                                    <span style="background-color: #0092E1;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<span style="font-size: 13px;">수전 전력량</span>&nbsp;&nbsp;
+                                    <span style="background-color: #E8000F;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<span style="font-size: 13px;">잉여 발전량</span>&nbsp;&nbsp;
+                                </div>
+                                <div id="energyStatusChart" data-highcharts-chart="0">
+                                    <div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 646px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: dotum, Arial, Verdana, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" style="font-family:dotum, Arial, Verdana, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="646" height="400">
+                                            <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                            <defs>
+                                                <clipPath id="highcharts-1">
+                                                    <rect x="0" y="0" width="626" height="375"></rect>
+                                                </clipPath>
+                                            </defs>
+                                            <rect x="0" y="0" width="646" height="400" strokeWidth="0" rx="5" ry="5" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                            <path fill="#EEE" d="M 135.5 216.24999999999997 A 187.5 187.5 0 1 1 510.4999062500078 216.06250003125 L 435.4999437500047 216.13750001875 A 112.5 112.5 0 1 0 210.5 216.25 Z" stroke="silver" stroke-width="1"></path>
+                                            <g class="highcharts-button" style="cursor:default;" stroke-linecap="round" transform="translate(630,5)">
+                                                <title>Chart context menu</title>
+                                                <rect x="0.5" y="0.5" width="11" height="10" strokeWidth="1" fill="white" stroke="#CCCCCC" stroke-width="1" rx="2" ry="2"></rect>
+                                                <path fill="#E0E0E0" d="M 2 3.5 L 10 3.5 M 2 5.5 L 10 5.5 M 2 7.5 L 10 7.5" stroke="#aaa" stroke-width="1" zIndex="1"></path><text x="0" zIndex="1" style="color:black;fill:black;" y="12"></text>
+                                            </g>
+                                            <g class="highcharts-grid" zIndex="1">
+                                                <path fill="none" d="M 323 216.25 L 135.5 216.24999999999997" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                <path fill="none" d="M 323 216.25 L 510.5 216.25" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                            </g>
+                                            <g class="highcharts-axis" zIndex="2">
+                                                <path fill="none" d="M 135.5 216.24999999999997 L 145.5 216.24999999999997" stroke="#C0D0E0" stroke-width="2" opacity="1"></path>
+                                                <path fill="none" d="M 510.5 216.25 L 500.5 216.25" stroke="#C0D0E0" stroke-width="2" opacity="1"></path>
+                                            </g>
+                                            <g class="highcharts-data-labels highcharts-series-0 highcharts-tracker" zIndex="2" visibility="visible" transform="translate(10,10) scale(1 1)" style="">
+                                                <g zIndex="1" style="" transform="translate(233,216)"></g>
+                                            </g>
+                                            <g class="highcharts-data-labels highcharts-series-1 highcharts-tracker" zIndex="2" visibility="visible" transform="translate(10,10) scale(1 1)" style="">
+                                                <g zIndex="1" style="" transform="translate(223,216)"></g>
+                                            </g>
+                                            <g class="highcharts-series-group" zIndex="3">
+                                                <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(10,10) scale(1 1)" style="" clip-path="url(#highcharts-1)">
+                                                    <path fill="#E8000F" d="M 200.5 206.25 A 112.5 112.5 0 0 1 204.75353471299442 175.60766404353123 L 258.8767673564972 190.92883202176563 A 56.25 56.25 0 0 0 256.75 206.25 Z" sweep-flag="0"></path>
+                                                </g>
+                                                <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(10,10) scale(1 1)" clip-path="none"></g>
+                                                <g class="highcharts-series highcharts-series-1 highcharts-tracker" zIndex="0.1" transform="translate(10,10) scale(1 1)" style="" clip-path="url(#highcharts-1)">
+                                                    <path fill="#0092E1" d="M 125.5 206.24999999999997 A 187.5 187.5 0 0 1 500.49990330538867 206.0595781790597 L 425.4999419832332 206.13574690743582 A 112.5 112.5 0 0 0 200.5 206.25 Z" sweep-flag="0"></path>
+                                                </g>
+                                                <g class="highcharts-markers highcharts-series-1" zIndex="0.1" transform="translate(10,10) scale(1 1)" clip-path="none"></g>
+                                            </g>
+                                            <g class="highcharts-legend" zIndex="7">
+                                                <rect x="0.5" y="0.5" width="7" height="7" strokeWidth="1" stroke="#CCC" stroke-width="1" fill="#FFFFFF" visibility="hidden"></rect>
+                                                <g zIndex="1">
+                                                    <g></g>
+                                                </g>
+                                            </g>
+                                            <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"></g>
+                                        </svg>
+                                        <div class="highcharts-data-labels highcharts-series-0" style="position: absolute; left: 10px; top: 10px;">
+                                            <div style="position: absolute; left: 233px; top: 216px;"><span style="position: absolute; font-family: dotum, Arial, Verdana, Helvetica, sans-serif; font-size: 11px; white-space: nowrap; font-weight: bold; color: rgb(0, 0, 0); margin-left: 0px; margin-top: 0px; left: 5px; top: 5px;" zindex="1">
+                                                    <div style="text-align:left; width:150px;"><span style="font-size:15px;display:inline-block;">533</span>&nbsp;<span style="font-size:10px;color:silver;">kWh</span>&nbsp;&nbsp;<span style="font-size : 17px; color:#566573">/</span>&nbsp;</div>
+                                                </span></div>
+                                        </div>
+                                        <div class="highcharts-data-labels highcharts-series-1" style="position: absolute; left: 10px; top: 10px;">
+                                            <div style="position: absolute; left: 223px; top: 216px;"><span style="position: absolute; font-family: dotum, Arial, Verdana, Helvetica, sans-serif; font-size: 11px; white-space: nowrap; font-weight: bold; color: rgb(0, 0, 0); margin-left: 0px; margin-top: 0px; left: 5px; top: 5px;" zindex="1">
+                                                    <div style="text-align:right;min-width : 170px;"><span style="font-size:15px;white-space:pre-line;">6,048</span>&nbsp;<span style="font-size:10px;color:silver">kWh</span></div>
+                                                </span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+-->
+
+                        </div>
+
+                        <div class="contentWrap right">
+                            <div class="underBar">
+                                <h4 class="titleBullet titleName">월별 에너지 쉐어링 현황</h4>
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <script>
+                                //기본설정
+                                $(function() {
+                                    // 차트 초기화
+                                    getCalculationChart();
+                                    // 최근 3개월간 정산 내역 데이터 조회
+                                    getCalculationPrevThreeMonthsChart();
+                                });
+
+                                //차트 초기화
+                                function getCalculationChart() {
+                                    Highcharts.setOptions({
+                                        lang: {
+                                            thousandsSep: ','
+                                        }
+                                    });
+                                    window.calculationChart = new Highcharts.Chart({
+                                        colors: ['#0092E1', '#E8000F'],
+                                        chart: {
+                                            renderTo: 'calculationChart',
+                                            type: 'column'
+                                        },
+                                        title: {
+                                            text: ''
+                                        },
+                                        xAxis: [{
+                                            categories: 'category',
+                                        }],
+                                        yAxis: {
+                                            labels: {
+                                                formatter: function() {
+                                                    return Highcharts.numberFormat(this.value, 0, ".", ",") + "원";
+                                                },
+                                                style: {
+                                                    color: '#8c8b9f'
+                                                }
+                                            },
+                                            title: {
+                                                text: ''
+                                            }
+                                        },
+                                        tooltip: {
+                                            // 			pointFormat : '{series.name} : <b>{point.y:,0f}원</b><br/>'
+                                            shared: true
+                                        },
+                                        series: [{
+                                            name: '납부 금액',
+                                        }, {
+                                            name: '판매 수익',
+                                        }],
+                                        legend: {
+                                            layout: 'vertical',
+                                            align: 'right',
+                                            verticalAlign: 'middle'
+                                        }
+                                    });
+                                }
+
+                                //최근 3개월간 정산 내역 데이터 조회
+                                function getCalculationPrevThreeMonthsChart() {
+                                    $.ajax({
+                                        method: "POST",
+                                        //data : param,
+                                        url: "/calculation/calculation_getCalculationPrevThreeMonthsChart.do",
+                                        dataType: "json",
+                                        success: function(data) {
+                                            // 차트 그리기
+                                            buildSharingStatusChart(data.resultList);
+                                        }
+                                    });
+                                }
+
+                                //차트 그리기
+                                function buildSharingStatusChart(resultList) {
+                                    var category = new Array();
+                                    for (var i = 0; i < resultList.length; i++) {
+                                        var yyyy = resultList[i].calculation_ym.substring(0, 4);
+                                        var mm = resultList[i].calculation_ym.substring(4, 6);
+                                        var calculationYm = yyyy + "-" + mm;
+                                        category.push([calculationYm]);
+                                    }
+                                    // categrory setting
+                                    window.calculationChart.xAxis[0].setCategories(category, false); //setCategories (Array cateories, [Boolean redraw])
+
+                                    if (resultList.length > 0) {
+
+                                        // 데이터 초기화
+                                        var chargeData = new Array();
+                                        var expenseData = new Array();
+
+                                        // List 반복문
+                                        $.each(resultList, function(index, result) {
+                                            // Json 반복문 (차트에서 사용할 데이터 추출)
+                                            $.each(result, function(key, value) {
+                                                // 차트에서 사용하지 않는 컬럼 제외
+                                                if (key == 'req_charge') {
+                                                    // 데이터 셋팅
+                                                    chargeData.push(parseFloat(isNullCheck(value, '0')));
+                                                } else if (key == 'revenue_expense') {
+                                                    expenseData.push(parseFloat(isNullCheck(value, '0')));
+                                                }
+                                            });
+                                        });
+                                        // set data
+                                        window.calculationChart.series[0].setData(chargeData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                        window.calculationChart.series[1].setData(expenseData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                    }
+                                    // chart redraw
+                                    window.calculationChart.redraw();
+                                }
+
+                                // 월별 에너지 쉐어링 현황 상세보기 - 정산 상세 내역 팝업
+                                function calculationDetailViewPopup(calculationId) {
+                                    /* var popupKey = 'calculationViewPopup';
+                                    var popupUrl = "/calculation/calculation_calculationViewPopup.do?menu_id=100303" +  
+                                    					"&sch_calculation_id=" + calculationId;
+                                    var popupName = 'calculationViewPopup';
+                                    var popupWidth = '620';
+                                    var popupHeight = '610';
+                                    var popupOptions = 'scrollbars=yes';
+
+                                    popupMultiPreventManager(popupKey, popupUrl, popupName, popupWidth, popupHeight, popupOptions); */
+                                    fn_page_move('/calculation/calculation_calculationView.do?menu-id=M120805&sch_calculation_id=' + calculationId + '&Cntr_cd=100');
+
+                                }
+                            </script>
+                            <!--<div class="panelDiv">
+                                <div id="calculationChart" data-highcharts-chart="1">
+                                    <div class="highcharts-container" id="highcharts-2" style="position: relative; overflow: hidden; width: 646px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: dotum, Arial, Verdana, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" style="font-family:dotum, Arial, Verdana, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="646" height="400">
+                                            <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                            <defs>
+                                                <clipPath id="highcharts-3">
+                                                    <rect x="0" y="0" width="518" height="375"></rect>
+                                                </clipPath>
+                                            </defs>
+                                            <rect x="0" y="0" width="646" height="400" strokeWidth="0" rx="5" ry="5" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                            <g class="highcharts-button" style="cursor:default;" stroke-linecap="round" transform="translate(630,5)">
+                                                <title>Chart context menu</title>
+                                                <rect x="0.5" y="0.5" width="11" height="10" strokeWidth="1" fill="white" stroke="#CCCCCC" stroke-width="1" rx="2" ry="2"></rect>
+                                                <path fill="#E0E0E0" d="M 2 3.5 L 10 3.5 M 2 5.5 L 10 5.5 M 2 7.5 L 10 7.5" stroke="#aaa" stroke-width="1" zIndex="1"></path><text x="0" zIndex="1" style="color:black;fill:black;" y="12"></text>
+                                            </g>
+                                            <g class="highcharts-no-data" style="" transform="translate(266,195)"><text x="3" zIndex="1" style="font-size:12px;font-weight:bold;color:#60606a;fill:#60606a;" y="15"></text></g>
+                                            <g class="highcharts-grid" zIndex="1"></g>
+                                            <g class="highcharts-grid" zIndex="1"></g>
+                                            <g class="highcharts-axis" zIndex="2">
+                                                <path fill="none" d="M 9.5 10 L 9.5 385" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                            </g>
+                                            <g class="highcharts-axis" zIndex="2">
+                                                <path fill="none" d="M 10 385.5 L 528 385.5" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                            </g>
+                                            <g class="highcharts-series-group" zIndex="3">
+                                                <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(10,10) scale(1 1)" style="" clip-path="url(#highcharts-3)"></g>
+                                                <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(10,10) scale(1 1)" clip-path="none"></g>
+                                                <g class="highcharts-series highcharts-series-1 highcharts-tracker" zIndex="0.1" transform="translate(10,10) scale(1 1)" style="" clip-path="url(#highcharts-3)"></g>
+                                                <g class="highcharts-markers highcharts-series-1" zIndex="0.1" transform="translate(10,10) scale(1 1)" clip-path="none"></g>
+                                            </g>
+                                            <g class="highcharts-legend" zIndex="7" transform="translate(540,184)">
+                                                <rect x="0.5" y="0.5" width="95" height="46" strokeWidth="1" stroke="#CCC" stroke-width="1" fill="#FFFFFF" visibility="visible"></rect>
+                                                <g zIndex="1">
+                                                    <g>
+                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)"><text x="21" style="color:#666;font-size:12px;font-weight:bold;cursor:pointer;fill:#666;" text-anchor="start" zIndex="2" y="18">
+                                                                <tspan>납부 금액</tspan>
+                                                            </text>
+                                                            <rect x="0" y="7" width="16" height="12" zIndex="3" fill="#0092E1"></rect>
+                                                        </g>
+                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,21)"><text x="21" y="18" style="color:#666;font-size:12px;font-weight:bold;cursor:pointer;fill:#666;" text-anchor="start" zIndex="2">
+                                                                <tspan>판매 수익</tspan>
+                                                            </text>
+                                                            <rect x="0" y="7" width="16" height="12" zIndex="3" fill="#E8000F"></rect>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"></g>
+                                            <g class="highcharts-axis-labels highcharts-xaxis-labels" zIndex="7"></g>
+                                            <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(0,-9999)">
+                                                <path fill="rgba(255,255,255,0.8)" d="M 3.5 0.5 L 9.5 0.5 C 12.5 0.5 12.5 0.5 12.5 3.5 L 12.5 9.5 C 12.5 12.5 12.5 12.5 9.5 12.5 L 3.5 12.5 C 0.5 12.5 0.5 12.5 0.5 9.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"></path><text x="6" zIndex="1" style="font-size:12px;color:#666;fill:#666;" y="18"></text>
+                                            </g>
+                                        </svg></div>
+                                </div>
+
+                                <div class="legend">
+                                    <table style="width:100%">
+                                        <tbody>
+                                            <tr>
+                                                <td>누적 판매 수익 </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="right">
+                                                    126,119원
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="btnDiv">
+
+                                </div>
+                            </div>-->
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="totalPageWrap">
+                    <div id="separate">
+                        <div class="contentWrap left" style="width:50%;">
+                            <div class="underBar">
+                                <h4 class="titleBullet titleName">에너지 쉐어링 입찰</h4>
+                            </div>
+
+
+
+
+
+
+
+
+                            <script>
+                                //기본설정
+                                $(function() {
+                                    $("#tab_view_02").hide();
+                                    $("#TabType_01").attr("class", "active");
+                                    $("#tabType").val("DIRECT");
+
+                                    // 차트 초기화
+                                    directBiddingChart();
+                                    autoBiddingChart();
+                                    // 입찰 판매단가 차트 데이터 조회
+                                    getDataBiddingAvgPriceChart();
+                                    // 자동 옵션 안내
+                                    optionInfo();
+                                });
+
+                                //차트 초기화
+                                function directBiddingChart() {
+                                    Highcharts.setOptions({
+                                        lang: {
+                                            thousandsSep: ','
+                                        }
+                                    });
+                                    window.directBiddingChart = new Highcharts.Chart({
+                                        colors: ['#273746'],
+                                        chart: {
+                                            renderTo: 'directBiddingChart',
+                                            plotBackgroundColor: '#FDFEFD' // 차트 내부 색상
+                                        },
+                                        title: {
+                                            text: ''
+                                        },
+                                        xAxis: {
+                                            categories: 'category',
+                                            labels: {
+                                                style: {
+                                                    fontSize: '10px'
+                                                }
+                                            }
+                                        },
+                                        yAxis: {
+                                            labels: {
+                                                format: '{}',
+                                                style: {
+                                                    color: '#8c8b9f'
+                                                }
+                                            },
+                                            title: {
+                                                text: '원/kWh'
+                                            }
+                                        },
+                                        tooltip: {
+                                            pointFormat: '{series.name} : <b>{point.y:,0f}원/kWh</b><br/>'
+                                        },
+                                        series: [{
+                                            name: '판매단가',
+                                            marker: {
+                                                fillColor: '#E8000F',
+                                                lineWidth: 2,
+                                                lineColor: '#E8000F'
+                                            }
+                                        }]
+                                    });
+                                }
+                                //차트 초기화
+                                function autoBiddingChart() {
+
+                                    window.autoBiddingChart = new Highcharts.Chart({
+                                        colors: ['#273746'],
+                                        chart: {
+                                            renderTo: 'autoBiddingChart',
+                                            plotBackgroundColor: '#FDFEFD' // 차트 내부 색상
+                                        },
+                                        title: {
+                                            text: ''
+                                        },
+                                        xAxis: {
+                                            categories: 'category',
+                                            labels: {
+                                                style: {
+                                                    fontSize: '10px'
+                                                }
+                                            }
+                                        },
+                                        yAxis: {
+                                            labels: {
+                                                format: '{}',
+                                                style: {
+                                                    color: '#8c8b9f'
+                                                }
+                                            },
+                                            title: {
+                                                text: '원/kWh'
+                                            }
+                                        },
+                                        tooltip: {
+                                            pointFormat: "{point.y: , .0f}원"
+                                        },
+                                        series: [{
+                                            name: '판매단가',
+                                            marker: {
+                                                fillColor: '#E8000F',
+                                                lineWidth: 2,
+                                                lineColor: '#E8000F'
+                                            }
+                                        }]
+                                    });
+                                }
+                                // 입찰 판매단가 차트 데이터 조회
+                                function getDataBiddingAvgPriceChart() {
+                                    $.ajax({
+                                        method: "POST",
+                                        //data : param,
+                                        url: "/bidding/bidding_getBiddingAvgPriceChart.json",
+                                        dataType: "json",
+                                        success: function(data) {
+                                            // 차트 그리기
+                                            buildBiddingChart(data.resultList);
+                                        }
+                                    });
+                                }
+
+                                //차트 그리기
+                                function buildBiddingChart(resultList) {
+                                    var category = new Array();
+                                    for (var i = 0; i < resultList.length; i++) {
+                                        var yyyy = resultList[i].calculation_ym.substring(0, 4);
+                                        var mm = resultList[i].calculation_ym.substring(4, 6);
+                                        var calculationYm = yyyy + "." + mm;
+                                        category.push([calculationYm]);
+                                    }
+                                    // categrory setting
+                                    window.directBiddingChart.xAxis[0].setCategories(category, false); //setCategories (Array cateories, [Boolean redraw])
+                                    window.autoBiddingChart.xAxis[0].setCategories(category, false); //setCategories (Array cateories, [Boolean redraw])
+                                    if (resultList.length > 0) {
+
+                                        // 데이터 초기화
+                                        var directChartData = new Array();
+                                        var autoChartData = new Array();
+
+                                        var tabType = $("#tabType").val();
+                                        // List 반복문
+                                        $.each(resultList, function(index, result) {
+                                            // Json 반복문 (차트에서 사용할 데이터 추출)
+                                            $.each(result, function(key, value) {
+
+                                                // tabType에 따라 selectBox 지정해서 차트 redraw 
+                                                if (tabType == "" || tabType == "DIRECT") {
+                                                    // 차트에서 사용하지 않는 컬럼 제외
+                                                    if ($("#load_type_cd").val() == 'LIGHT' || $("#load_type_cd").val() == 'NONE') {
+                                                        if (key == 'avg_light_price') {
+                                                            // 데이터 셋팅
+                                                            directChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                            autoChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                        }
+                                                    } else if ($("#load_type_cd").val() == 'HEAVY') {
+                                                        if (key == 'avg_heavy_price') {
+                                                            // 데이터 셋팅
+                                                            directChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                            autoChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                        }
+                                                    } else if ($("#load_type_cd").val() == 'MAX') {
+                                                        if (key == 'avg_max_price') {
+                                                            // 데이터 셋팅
+                                                            directChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                            autoChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                        }
+                                                    }
+                                                } else if (tabType == "AUTO") {
+                                                    // 차트에서 사용하지 않는 컬럼 제외
+                                                    if ($("#load_type_cd_auto").val() == 'LIGHT' || $("#load_type_cd_auto").val() == 'NONE') {
+                                                        if (key == 'avg_light_price') {
+                                                            // 데이터 셋팅
+                                                            directChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                            autoChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                        }
+                                                    } else if ($("#load_type_cd_auto").val() == 'HEAVY') {
+                                                        if (key == 'avg_heavy_price') {
+                                                            // 데이터 셋팅
+                                                            directChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                            autoChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                        }
+                                                    } else if ($("#load_type_cd_auto").val() == 'MAX') {
+                                                        if (key == 'avg_max_price') {
+                                                            // 데이터 셋팅
+                                                            directChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                            autoChartData.push(parseFloat(isNullCheck(value, '0')));
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        });
+                                        // set data
+                                        window.autoBiddingChart.series[0].setData(directChartData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                        window.directBiddingChart.series[0].setData(autoChartData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                    }
+
+                                    // chart redraw
+                                    window.directBiddingChart.redraw();
+                                    window.autoBiddingChart.redraw();
+                                }
+
+                                //자동옵션 안내
+                                function optionInfo() {
+                                    console.log("auto_bidding_cd: " + $("#auto_bidding_cd").val());
+                                    var cd = $("[name=auto_bidding_cd]").val();
+                                    if (cd == "AUTO_1") {
+                                        $("#optionInfo1").css("display", "block");
+                                        $("#optionInfo2").css("display", "none");
+                                    } else if (cd == "AUTO_2") {
+                                        $("#optionInfo1").css("display", "none");
+                                        $("#optionInfo2").css("display", "block");
+                                    }
+                                }
+
+                                //예상 편익 계산
+                                function getExpBenefit() {
+                                    var param = $('#directBiddingForm').searchObject();
+                                    if (chkForm()) {
+                                        var desirePrice = $("#desire_price").val();
+                                        var desireQty = $("#desire_qty").val();
+                                        $.ajax({
+                                            url: "/bidding/bidding_getExpBenefit.json",
+                                            method: "POST",
+                                            datatype: 'json',
+                                            data: param,
+                                            success: function(data) {
+                                                $("#exp_benefit").val(data.result.exp_benefit); // 예상 편익
+                                                $("#limitPriceTd").text(data.result.limit_price); // 판매가격 하한
+                                                //alert("계산이 완료 되었습니다.");
+                                            }
+                                        });
+                                    }
+                                }
+
+                                //입찰 실행
+                                function insertBidding(tabType) {
+                                    if ($("#isPossibleBidding").val() != "false") { // 정산이 실행되지 않아 입찰 수정이 가능한 경우
+                                        // 직접 입찰 실행
+                                        if (tabType == "DIRECT") {
+                                            if (chkForm()) {
+                                                var limitPrice = $("#limitPriceTd").text().replace(/(^\s*)|(\s*$)/gi, "");
+                                                if (limitPrice == 0) { // 판매(구매) 가격 하한(상한) 값 안내 후 입찰 진행하도록 설정
+                                                    alert("예상 편익 계산을 먼저 실행해주시기 바랍니다.");
+                                                    return false;
+                                                }
+                                                var desirePrice = $("#desire_price").val();
+                                                if ('SELLER' == 'BUYER') {
+                                                    if (parseInt(limitPrice) < parseInt(desirePrice)) {
+                                                        alert("희망 구매단가는 구매가격 상한값보다 낮아야 합니다.");
+                                                        $("#desire_price").focus();
+                                                        return false;
+                                                    }
+                                                } else if ('SELLER' == 'SELLER') {
+                                                    if (parseInt(limitPrice) > parseInt(desirePrice)) {
+                                                        alert("희망 판매단가는 판매가격 하한값보다 높아야 합니다.");
+                                                        $("#desire_price").focus();
+                                                        return false;
+                                                    }
+                                                }
+                                                if (confirm("입찰을 실행하시겠습니까?")) {
+
+                                                    $.ajax({
+                                                        method: "POST",
+                                                        datatype: 'json',
+                                                        url: "/bidding/bidding_insertBidding.json",
+                                                        data: {
+                                                            cust_id: $("[name=cust_id]").val(),
+                                                            cust_type_cd: $("[name=cust_type_cd]").val(),
+                                                            bidding_type_cd: $("[name=bidding_type_cd]").val(),
+                                                            load_type_cd: $("[name=load_type_cd]").val(),
+                                                            desire_price: $("[name=desire_price]").val(),
+                                                            desire_qty: $("[name=desire_qty]").val(),
+                                                            cntr_cd: $("[name=cntr_cd]").val(),
+                                                            sel_bill_cd: $("[name=sel_bill_cd]").val()
+                                                        },
+                                                        cache: false,
+                                                        success: function(data) {
+                                                            if (data = 1) {
+                                                                alert("입찰이(가) 등록되었습니다.");
+                                                            } else {
+                                                                alert("요청한 작업을 처리하지 못하였습니다.");
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                            // 자동 입찰 실행
+                                        } else if (tabType == "AUTO") {
+                                            if (confirm("자동입찰을(를) 실행하시겠습니까?")) {
+                                                $.ajax({
+                                                    method: "POST",
+                                                    datatype: 'json',
+                                                    url: "/bidding/bidding_insertBidding.json",
+                                                    data: {
+                                                        cust_id: $("[name=cust_id]").val(),
+                                                        cust_type_cd: $("[name=cust_type_cd]").val(),
+                                                        bidding_type_cd: $("[name=bidding_type_cd]").val(),
+                                                        load_type_cd: $("#load_type_cd_auto").val(),
+                                                        auto_bidding_cd: $("[name=auto_bidding_cd]").val(),
+                                                        cntr_cd: $("[name=cntr_cd]").val(),
+                                                        sel_bill_cd: $("[name=sel_bill_cd]").val()
+                                                    },
+                                                    datatype: 'json',
+                                                    cache: false,
+                                                    success: function(data) {
+                                                        if (data = 1) {
+                                                            alert("입찰이(가) 등록되었습니다.");
+                                                        } else {
+                                                            alert("요청한 작업을 처리하지 못하였습니다.");
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    } else {
+                                        alert("매칭 수행이 완료되었으므로 더이상 입찰에 참여할 수 없습니다.");
+                                        return;
+                                    }
+                                }
+
+                                //부하구분별 데이터 조회
+                                function changeLoadTypeCdList() {
+                                    var loadTypeCd = $("#load_type_cd").val();
+                                    $.ajax({
+                                        method: "POST",
+                                        dataType: "json",
+                                        url: "/bidding/bidding_changeLoadTypeCdList.json?sch_load_type_cd=" + loadTypeCd,
+                                        success: function(data) {
+                                            if (data.result != null) {
+                                                $("#limitPriceTd").text(data.result.limit_price); // 판매가격 하한
+                                                $("#desire_price").val(data.result.desire_price); // 희망판매단가
+                                                $("#desire_qty").val(data.result.desire_qty); // 희망 판매량
+                                                $("#exp_benefit").val(data.result.exp_benefit); // 예상편익
+                                            } else {
+                                                $("#limitPriceTd").text("0"); // 판매가격 하한
+                                                $("#desire_price").val(''); // 희망판매단가
+                                                $("#desire_qty").val(''); // 희망 판매량
+                                                $("#exp_benefit").val(''); // 예상편익
+                                            }
+                                        }
+                                    });
+                                }
+
+                                // tabType에 따라 selectBox 지정해서 차트 redraw 
+                                function getTabType(val) {
+                                    console.log("getTabType: " + val);
+
+                                    if (val == "DIRECT") {
+                                        $("#tabType").val("DIRECT");
+                                        $("#load_type_cd").val($("#load_type_cd_auto").val());
+                                        $("#tab_view_01").show();
+                                        $("#tab_view_02").hide();
+                                        $("#TabType_01").attr("class", "active");
+                                        $("#TabType_02").attr("class", "none");
+                                    } else if (val == "AUTO") {
+                                        $("#load_type_cd_auto").val($("#load_type_cd").val());
+                                        $("#tabType").val("AUTO");
+                                        $("#tab_view_01").hide();
+                                        $("#tab_view_02").show();
+                                        $("#TabType_01").attr("class", "none");
+                                        $("#TabType_02").attr("class", "active");
+                                    }
+                                }
+
+                                //폼검증
+                                function chkForm() {
+                                    // 기본 필수항목 체크
+                                    if (!valueNotNullCheck("을(를) 입력하세요.")) {
+                                        return false;
+                                    }
+
+                                    // 편익 계산 시 입력 값 check
+                                    var desirePrice = $("#desire_price").val();
+                                    var desireQty = $("#desire_qty").val();
+                                    if (desirePrice == 0) {
+                                        if ('SELLER' == 'BUYER') {
+                                            alert("희망 구매단가 값이 올바르지 않습니다. 다시 입력해주세요.");
+                                        } else {
+                                            alert("희망 판매단가 값이 올바르지 않습니다. 다시 입력해주세요.");
+                                        }
+                                        $("#desire_price").focus();
+                                        return false;
+                                    } else if (desireQty == 0) {
+                                        if ('SELLER' == 'BUYER') {
+                                            alert("희망 구매량 값이 올바르지 않습니다. 다시 입력해주세요.");
+                                        } else {
+                                            alert("희망 판매량 값이 올바르지 않습니다. 다시 입력해주세요.");
+                                        }
+                                        $("#desire_qty").focus();
+                                        return false;
+                                    }
+                                    return true;
+                                }
+                            </script>
+                            <!-- 입찰 참여 가능 여부 flag -->
+                            <input type="hidden" id="isPossibleBidding" value="">
+
+                            <div class="panelDiv">
+
+                                <!-- 탭 필요시 사용 start -->
+                                <div class="tabList">
+                                    <div class="tabListWrap">
+                                        <ul>
+                                            <li id="TabType_01" onclick="getTabType('DIRECT');" class="active">직접 입찰</li>
+                                            <li id="TabType_02" onclick="getTabType('AUTO');">자동 입찰</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- 탭 필요시 사용 end -->
+
+                                <input type="hidden" id="tabType" value="DIRECT">
+
+                                <!-- 직접 입찰 ::s:: -->
+                                <div id="tab_view_01" class="no_box2">
+                                    <div class="dashboard_dir_bid_1">
+                                        <form id="directBiddingForm" onsubmit="return false;">
+                                            <input type="hidden" name="cust_id" value="test11">
+
+
+
+
+                                            <input type="hidden" name="bidding_type_cd" value="SALE">
+
+
+
+
+                                            <input type="hidden" name="cust_type_cd" value="SELLER">
+                                            <input type="hidden" name="mr_dd" value="10">
+                                            <input type="hidden" name="bidding_ym" value="">
+
+                                            <input type="hidden" name="cntr_cd" value="222">
+                                            <input type="hidden" name="sel_bill_cd" value="2">
+                                            <input type="hidden" name="limit_price" value="">
+                                            <input type="hidden" name="tabType" id="tabType" value="">
+
+
+
+
+                                            <select path="load_type_cd" id="load_type_cd" name="load_type_cd" onchange="getDataBiddingAvgPriceChart(); changeLoadTypeCdList();" cssstyle="margin-left : 10px;">
+
+                                                <option value="LIGHT" label="경부하">
+
+                                                </option>
+                                                <option value="HEAVY" label="중부하">
+
+                                                </option>
+                                                <option value="MAX" label="최대부하">
+
+                                                </option>
+                                            </select>
+
+
+
+
+
+                                            <table class="type02">
+                                                <colgroup>
+                                                    <col style="width: 45%">
+                                                    <col style="width: 30%">
+                                                    <col style="width: *%">
+
+
+
+
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>판매가격 하한</th>
+                                                        <td class="valueTd" id="limitPriceTd">
+                                                            0
+                                                        </td>
+                                                        <td class="left unitTd">원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th> 희망 판매단가</th>
+                                                        <td class="valueTd"><input path="desire_price" name="desire_price" id="desire_price" title=" 희망 판매단가" cssclass="onlyNumber _ValueNotNull _InputElement"></td>
+                                                        <td class="left unitTd">원/kWh</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th> 희망 판매량</th>
+                                                        <td class="valueTd"><input path="desire_qty" name="desire_qty" id="desire_qty" title=" 희망 판매량" cssclass=" forFloat _ValueNotNull _InputElement"></td>
+                                                        <td class="left unitTd">kWh</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <hr>
+
+                                            <table class="type02">
+                                                <colgroup>
+                                                    <col style="width: 45%">
+                                                    <col style="width:*%">
+                                                    <col style="width: 30%">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>예상 편익</td>
+                                                        <td><input path="exp_benefit" id="exp_benefit" cssstyle="width : 100px;" disabled="true"> </td>
+                                                        <td>원</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </form>
+                                        <button type="button" class="btn color-1" onclick="getExpBenefit(); return false;">예상 편익 계산</button>
+                                        <button type="button" class="btn color-2" onclick="insertBidding('DIRECT'); return false;">입찰 실행</button>
+                                    </div>
+                                    <!--<div class="dashboard_dir_bid_2">
+                                        <div id="directBiddingChart" data-highcharts-chart="2">
+                                            <div class="highcharts-container" id="highcharts-4" style="position: relative; overflow: hidden; width: 646px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: dotum, Arial, Verdana, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" style="font-family:dotum, Arial, Verdana, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="646" height="400">
+                                                    <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                    <defs>
+                                                        <clipPath id="highcharts-5">
+                                                            <rect x="0" y="0" width="577" height="326"></rect>
+                                                        </clipPath>
+                                                    </defs>
+                                                    <rect x="0" y="0" width="646" height="400" strokeWidth="0" rx="5" ry="5" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                    <rect x="59" y="10" width="577" height="326" fill="#FDFEFD"></rect>
+                                                    <g class="highcharts-button" style="cursor:default;" stroke-linecap="round" transform="translate(630,5)">
+                                                        <title>Chart context menu</title>
+                                                        <rect x="0.5" y="0.5" width="11" height="10" strokeWidth="1" fill="white" stroke="#CCCCCC" stroke-width="1" rx="2" ry="2"></rect>
+                                                        <path fill="#E0E0E0" d="M 2 3.5 L 10 3.5 M 2 5.5 L 10 5.5 M 2 7.5 L 10 7.5" stroke="#aaa" stroke-width="1" zIndex="1"></path><text x="0" zIndex="1" style="color:black;fill:black;" y="12"></text>
+                                                    </g>
+                                                    <g class="highcharts-grid" zIndex="1">
+                                                        <path fill="none" d="M 59 336.5 L 636 336.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                        <path fill="none" d="M 59 255.5 L 636 255.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                        <path fill="none" d="M 59 173.5 L 636 173.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                        <path fill="none" d="M 59 92.5 L 636 92.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                        <path fill="none" d="M 59 9.5 L 636 9.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                    </g>
+                                                    <g class="highcharts-grid" zIndex="1"></g>
+                                                    <g class="highcharts-axis" zIndex="2"><text x="22" zIndex="7" text-anchor="middle" transform="translate(0,0) rotate(270 22 173)" class=" highcharts-yaxis-title" style="color:#707070;fill:#707070;" y="173">원/kWh</text>
+                                                        <path fill="none" d="M 58.5 10 L 58.5 336" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                                    </g>
+                                                    <g class="highcharts-axis" zIndex="2">
+                                                        <path fill="none" d="M 59 336.5 L 636 336.5" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                                    </g>
+                                                    <g class="highcharts-series-group" zIndex="3">
+                                                        <path fill="#273746" fill-opacity="0.25" d="M 0 0"></path>
+                                                        <g class="highcharts-series highcharts-series-0" zIndex="0.1" transform="translate(59,10) scale(1 1)" clip-path="url(#highcharts-5)">
+                                                            <path fill="none" d="M 57.7 326 L 173.10000000000002 326 L 288.5 16.30000000000001 L 403.90000000000003 326 L 519.3000000000001 16.30000000000001" stroke="#273746" stroke-width="1" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path>
+                                                            <path fill="none" d="M 47.7 326 L 57.7 326 L 173.10000000000002 326 L 288.5 16.30000000000001 L 403.90000000000003 326 L 519.3000000000001 16.30000000000001 L 529.3000000000001 16.30000000000001" stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="21" zIndex="2" class=" highcharts-tracker" style=""></path>
+                                                        </g>
+                                                        <g class="highcharts-markers highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(59,10) scale(1 1)" clip-path="url(#highcharts-6)" style="">
+                                                            <path fill="#E8000F" d="M 519 12.300000000000011 C 524.328 12.300000000000011 524.328 20.30000000000001 519 20.30000000000001 C 513.672 20.30000000000001 513.672 12.300000000000011 519 12.300000000000011 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                            <path fill="#E8000F" d="M 403 322 C 408.328 322 408.328 330 403 330 C 397.672 330 397.672 322 403 322 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                            <path fill="#E8000F" d="M 288 12.300000000000011 C 293.328 12.300000000000011 293.328 20.30000000000001 288 20.30000000000001 C 282.672 20.30000000000001 282.672 12.300000000000011 288 12.300000000000011 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                            <path fill="#E8000F" d="M 173 322 C 178.328 322 178.328 330 173 330 C 167.672 330 167.672 322 173 322 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                            <path fill="#E8000F" d="M 57 322 C 62.328 322 62.328 330 57 330 C 51.672 330 51.672 322 57 322 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                        </g>
+                                                    </g>
+                                                    <g class="highcharts-legend" zIndex="7" transform="translate(278,366)">
+                                                        <rect x="0.5" y="0.5" width="90" height="28" strokeWidth="1" stroke="#CCC" stroke-width="1" fill="#FFFFFF" visibility="visible"></rect>
+                                                        <g zIndex="1">
+                                                            <g>
+                                                                <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)">
+                                                                    <path fill="none" d="M 0 14 L 16 14" stroke="#273746" stroke-width="1"></path>
+                                                                    <path fill="#E8000F" d="M 8 10 C 13.328 10 13.328 18 8 18 C 2.6719999999999997 18 2.6719999999999997 10 8 10 Z" stroke="#E8000F" stroke-width="2"></path><text x="21" style="color:#666;font-size:12px;font-weight:bold;cursor:pointer;fill:#666;" text-anchor="start" zIndex="2" y="18">판매단가</text>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:203px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="342" opacity="1">0</text><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:203px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="260" opacity="1">20</text><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:203px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="179" opacity="1">40</text><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:203px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="97" opacity="1">60</text><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:203px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="16" opacity="1">80</text></g>
+                                                    <g class="highcharts-axis-labels highcharts-xaxis-labels" zIndex="7"><text x="116.7" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:119px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2021.12</text><text x="232.10000000000002" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:119px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2022.01</text><text x="347.5" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:119px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2022.02</text><text x="462.90000000000003" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:119px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2022.03</text><text x="578.3000000000001" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:119px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2022.04</text></g>
+                                                    <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(536,-9999)" opacity="0" visibility="visible">
+                                                        <path fill="rgba(255,255,255,0.8)" d="M 3.5 0.5 L 35.5 0.5 41.5 -5.5 47.5 0.5 81 0.5 C 84.5 0.5 84.5 0.5 84.5 3.5 L 84.5 36.5 C 84.5 39.5 84.5 39.5 81.5 39.5 L 3.5 39.5 C 0.5 39.5 0.5 39.5 0.5 36.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#273746" stroke-width="1"></path><text x="6" zIndex="1" style="font-size:12px;color:#666;fill:#666;" y="18">
+                                                            <tspan style="font-weight:bold;">판매단가</tspan>
+                                                            <tspan style="font-weight:bold" x="6" dy="15">2022.04</tspan>
+                                                            <tspan dx="0"> : 76</tspan>
+                                                        </text>
+                                                    </g>
+                                                </svg></div>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <!-- 직접 입찰 ::e:: -->
+
+                                <!-- 자동 입찰 ::s:: -->
+                                <div id="tab_view_02" class="no_box2" style="display: none;">
+                                    <div class="inputArea">
+                                        <form id="autoBiddingForm" onsubmit="return false;">
+                                            <input type="hidden" name="cust_id" value="test11">
+
+
+
+
+                                            <input type="hidden" name="bidding_type_cd" value="SALE">
+
+
+
+
+                                            <input type="hidden" name="cust_type_cd" value="SELLER">
+                                            <input type="hidden" name="mr_dd" value="10">
+                                            <input type="hidden" name="bidding_ym" value="">
+                                            <input type="hidden" name="cntr_cd" value="222">
+                                            <input type="hidden" name="sel_bill_cd" value="2">
+                                            <input type="hidden" name="limit_price" value="">
+                                            <input type="hidden" name="tabType" id="tabType" value="">
+
+
+
+
+                                            <select path="load_type_cd" id="load_type_cd_auto" onchange="getDataBiddingAvgPriceChart(); changeLoadTypeCdList();" cssstyle="margin-left : 10px;">
+
+                                                <option value="LIGHT" label="경부하">
+
+                                                </option>
+                                                <option value="HEAVY" label="중부하">
+
+                                                </option>
+                                                <option value="MAX" label="최대부하">
+
+                                                </option>
+                                            </select>
+
+
+
+
+
+
+                                            <select path="auto_bidding_cd" id="auto_bidding_cd" name="auto_bidding_cd" onchange="optionInfo();">
+
+                                                <option value="AUTO_1" label="자동옵션1">
+
+                                                </option>
+                                                <option value="AUTO_2" label="자동옵션2">
+
+                                                </option>
+                                            </select>
+                                            <br>
+                                            <button type="button" class="btn color-2" onclick="insertBidding('AUTO'); return false;">자동 입찰 실행</button>
+                                            <!--여기수정함 20220415 위치수정-->
+                                        </form>
+                                    </div>
+                                    <!--<div class="chartArea">
+                                        <div id="autoBiddingChart" data-highcharts-chart="3">
+                                            <div class="highcharts-container" id="highcharts-8" style="position: relative; overflow: hidden; width: 600px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: dotum, Arial, Verdana, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" style="font-family:dotum, Arial, Verdana, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+                                                    <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                    <defs>
+                                                        <clipPath id="highcharts-9">
+                                                            <rect x="0" y="0" width="531" height="326"></rect>
+                                                        </clipPath>
+                                                    </defs>
+                                                    <rect x="0" y="0" width="600" height="400" strokeWidth="0" rx="5" ry="5" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                    <rect x="59" y="10" width="531" height="326" fill="#FDFEFD"></rect>
+                                                    <g class="highcharts-button" style="cursor:default;" stroke-linecap="round" transform="translate(584,5)">
+                                                        <title>Chart context menu</title>
+                                                        <rect x="0.5" y="0.5" width="11" height="10" strokeWidth="1" fill="white" stroke="#CCCCCC" stroke-width="1" rx="2" ry="2"></rect>
+                                                        <path fill="#E0E0E0" d="M 2 3.5 L 10 3.5 M 2 5.5 L 10 5.5 M 2 7.5 L 10 7.5" stroke="#aaa" stroke-width="1" zIndex="1"></path><text x="0" zIndex="1" style="color:black;fill:black;" y="12"></text>
+                                                    </g>
+                                                    <g class="highcharts-grid" zIndex="1">
+                                                        <path fill="none" d="M 59 336.5 L 590 336.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                        <path fill="none" d="M 59 255.5 L 590 255.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                        <path fill="none" d="M 59 173.5 L 590 173.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                        <path fill="none" d="M 59 92.5 L 590 92.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                        <path fill="none" d="M 59 9.5 L 590 9.5" stroke="#ccc" stroke-width="1" stroke-dasharray="1,3" zIndex="1" opacity="1"></path>
+                                                    </g>
+                                                    <g class="highcharts-grid" zIndex="1"></g>
+                                                    <g class="highcharts-axis" zIndex="2"><text x="22" zIndex="7" text-anchor="middle" transform="translate(0,0) rotate(270 22 173)" class=" highcharts-yaxis-title" style="color:#707070;fill:#707070;" y="173">원/kWh</text>
+                                                        <path fill="none" d="M 58.5 10 L 58.5 336" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                                    </g>
+                                                    <g class="highcharts-axis" zIndex="2">
+                                                        <path fill="none" d="M 59 336.5 L 590 336.5" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                                    </g>
+                                                    <g class="highcharts-series-group" zIndex="3">
+                                                        <g class="highcharts-series highcharts-series-0" zIndex="0.1" transform="translate(59,10) scale(1 1)" clip-path="url(#highcharts-9)">
+                                                            <path fill="none" d="M 53.1 326 L 159.3 326 L 265.5 16.30000000000001 L 371.70000000000005 326 L 477.90000000000003 16.30000000000001" stroke="#273746" stroke-width="1" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path>
+                                                            <path fill="none" d="M 43.1 326 L 53.1 326 L 159.3 326 L 265.5 16.30000000000001 L 371.70000000000005 326 L 477.90000000000003 16.30000000000001 L 487.90000000000003 16.30000000000001" stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="21" zIndex="2" class=" highcharts-tracker" style=""></path>
+                                                        </g>
+                                                        <g class="highcharts-markers highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(59,10) scale(1 1)" clip-path="url(#highcharts-10)" style="">
+                                                            <path fill="#E8000F" d="M 477 12.300000000000011 C 482.328 12.300000000000011 482.328 20.30000000000001 477 20.30000000000001 C 471.672 20.30000000000001 471.672 12.300000000000011 477 12.300000000000011 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                            <path fill="#E8000F" d="M 371 322 C 376.328 322 376.328 330 371 330 C 365.672 330 365.672 322 371 322 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                            <path fill="#E8000F" d="M 265 12.300000000000011 C 270.328 12.300000000000011 270.328 20.30000000000001 265 20.30000000000001 C 259.672 20.30000000000001 259.672 12.300000000000011 265 12.300000000000011 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                            <path fill="#E8000F" d="M 159 322 C 164.328 322 164.328 330 159 330 C 153.672 330 153.672 322 159 322 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                            <path fill="#E8000F" d="M 53 322 C 58.328 322 58.328 330 53 330 C 47.672 330 47.672 322 53 322 Z" stroke="#E8000F" stroke-width="2"></path>
+                                                        </g>
+                                                    </g>
+                                                    <g class="highcharts-legend" zIndex="7" transform="translate(255,366)">
+                                                        <rect x="0.5" y="0.5" width="90" height="28" strokeWidth="1" stroke="#CCC" stroke-width="1" fill="#FFFFFF" visibility="visible"></rect>
+                                                        <g zIndex="1">
+                                                            <g>
+                                                                <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)">
+                                                                    <path fill="none" d="M 0 14 L 16 14" stroke="#273746" stroke-width="1"></path>
+                                                                    <path fill="#E8000F" d="M 8 10 C 13.328 10 13.328 18 8 18 C 2.6719999999999997 18 2.6719999999999997 10 8 10 Z" stroke="#E8000F" stroke-width="2"></path><text x="21" style="color:#666;font-size:12px;font-weight:bold;cursor:pointer;fill:#666;" text-anchor="start" zIndex="2" y="18">판매단가</text>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:188px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="342" opacity="1">0</text><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:188px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="260" opacity="1">20</text><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:188px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="179" opacity="1">40</text><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:188px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="97" opacity="1">60</text><text x="44" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:188px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="16" opacity="1">80</text></g>
+                                                    <g class="highcharts-axis-labels highcharts-xaxis-labels" zIndex="7"><text x="112.1" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:110px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2021.12</text><text x="218.3" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:110px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2022.01</text><text x="324.5" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:110px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2022.02</text><text x="430.70000000000005" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:110px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2022.03</text><text x="536.9000000000001" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:110px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="354" opacity="1">2022.04</text></g>
+                                                    <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(0,-9999)">
+                                                        <path fill="rgba(255,255,255,0.8)" d="M 3.5 0.5 L 9.5 0.5 C 12.5 0.5 12.5 0.5 12.5 3.5 L 12.5 9.5 C 12.5 12.5 12.5 12.5 9.5 12.5 L 3.5 12.5 C 0.5 12.5 0.5 12.5 0.5 9.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"></path><text x="6" zIndex="1" style="font-size:12px;color:#666;fill:#666;" y="18"></text>
+                                                    </g>
+                                                </svg></div>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <!-- 자동 입찰 ::e:: -->
+                            </div>
+                        </div>
+
+                        <div class="contentWrap right">
+                            <div class="underBar">
+                                <h4 class="titleBullet titleName">04월의 에너지 쉐어링 결과</h4>
+                            </div>
+
+
+
+
+
+
+
+
+                            <script>
+                                //기본설정
+                                $(function() {
+                                    // 차트 초기화
+                                    getSharingResultChart();
+                                    // 현재 년월 정산 내역 데이터 조회
+                                    getCalculationCurrentMonthChart();
+                                });
+
+                                //차트 초기화
+                                function getSharingResultChart() {
+                                    Highcharts.setOptions({
+                                        lang: {
+                                            thousandsSep: ','
+                                        }
+                                    });
+                                    window.sharingResultChart = new Highcharts.Chart({
+                                        colors: ['#0092E1', '#E8000F'],
+                                        chart: {
+                                            renderTo: 'sharingResultChart',
+                                            type: 'column'
+                                        },
+                                        title: {
+                                            text: ''
+                                        },
+                                        xAxis: [{
+                                            categories: 'category',
+                                            // 			,crosshair: true  // mouse hover
+                                        }],
+                                        yAxis: {
+                                            labels: {
+                                                format: '{}'
+                                            },
+                                            title: {
+                                                text: '원'
+                                            }
+                                        },
+                                        tooltip: {
+                                            // 			pointFormat : '{series.name} : <b>{point.y:,0f}원</b><br/>'
+                                            shared: true
+                                        },
+                                        series: [{
+                                            name: '납부 금액',
+                                        }, {
+                                            name: '판매 수익',
+                                        }],
+                                        legend: {
+                                            layout: 'vertical',
+                                            align: 'right',
+                                            verticalAlign: 'top'
+                                        },
+                                    });
+                                }
+
+                                // 현재 년월 정산 내역 데이터 조회
+                                function getCalculationCurrentMonthChart() {
+                                    $.ajax({
+                                        method: "POST",
+                                        //data : param,
+                                        url: "/calculation/calculation_getCalculationCurrentMonthChart.do",
+                                        dataType: "json",
+                                        success: function(data) {
+                                            // 차트 그리기
+                                            buildSharingResultChart(data.resultList);
+                                        }
+                                    });
+                                }
+
+                                //차트 그리기
+                                function buildSharingResultChart(resultList) {
+                                    var category = new Array();
+                                    for (var i = 0; i < resultList.length; i++) {
+                                        var yyyy = resultList[i].calculation_ym.substring(0, 4);
+                                        var mm = resultList[i].calculation_ym.substring(4, 6);
+                                        var calculationYm = yyyy + "-" + mm;
+                                        category.push([calculationYm]);
+                                    }
+                                    // categrory setting
+                                    window.sharingResultChart.xAxis[0].setCategories(category, false); //setCategories (Array cateories, [Boolean redraw])
+
+                                    if (resultList.length > 0) {
+
+                                        // 데이터 초기화
+                                        var chargeData = new Array();
+                                        var expenseData = new Array();
+
+                                        // List 반복문
+                                        $.each(resultList, function(index, result) {
+                                            // Json 반복문 (차트에서 사용할 데이터 추출)
+                                            $.each(result, function(key, value) {
+                                                // 차트에서 사용하지 않는 컬럼 제외
+                                                if (key == 'req_charge') {
+                                                    // 데이터 셋팅
+                                                    chargeData.push(parseFloat(isNullCheck(value, '0')));
+                                                } else if (key == 'revenue_expense') {
+                                                    expenseData.push(parseFloat(isNullCheck(value, '0')));
+                                                }
+                                            });
+                                        });
+                                        // set data
+                                        window.sharingResultChart.series[0].setData(chargeData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                        window.sharingResultChart.series[1].setData(expenseData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                    }
+                                    // chart redraw
+                                    window.sharingResultChart.redraw();
+                                }
+                            </script>
+                            <!--<div class="panelDiv">
+                                <div id="sharingResultChart" data-highcharts-chart="4">
+                                    <div class="highcharts-container" id="highcharts-12" style="position: relative; overflow: hidden; width: 646px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: dotum, Arial, Verdana, Helvetica, sans-serif; font-size: 12px;"><svg version="1.1" style="font-family:dotum, Arial, Verdana, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="646" height="400">
+                                            <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                            <defs>
+                                                <clipPath id="highcharts-13">
+                                                    <rect x="0" y="0" width="496" height="375"></rect>
+                                                </clipPath>
+                                            </defs>
+                                            <rect x="0" y="0" width="646" height="400" strokeWidth="0" rx="5" ry="5" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                            <g class="highcharts-button" style="cursor:default;" stroke-linecap="round" transform="translate(630,5)">
+                                                <title>Chart context menu</title>
+                                                <rect x="0.5" y="0.5" width="11" height="10" strokeWidth="1" fill="white" stroke="#CCCCCC" stroke-width="1" rx="2" ry="2"></rect>
+                                                <path fill="#E0E0E0" d="M 2 3.5 L 10 3.5 M 2 5.5 L 10 5.5 M 2 7.5 L 10 7.5" stroke="#aaa" stroke-width="1" zIndex="1"></path><text x="0" zIndex="1" style="color:black;fill:black;" y="12"></text>
+                                            </g>
+                                            <g class="highcharts-no-data" style="" transform="translate(277,195)"><text x="3" zIndex="1" style="font-size:12px;font-weight:bold;color:#60606a;fill:#60606a;" y="15"></text></g>
+                                            <g class="highcharts-grid" zIndex="1"></g>
+                                            <g class="highcharts-grid" zIndex="1"></g>
+                                            <g class="highcharts-axis" zIndex="2"><text x="22" zIndex="7" text-anchor="middle" transform="translate(0,0) rotate(270 22 197.5)" class=" highcharts-yaxis-title" style="color:#707070;fill:#707070;" y="197.5">원</text>
+                                                <path fill="none" d="M 31.5 10 L 31.5 385" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                            </g>
+                                            <g class="highcharts-axis" zIndex="2">
+                                                <path fill="none" d="M 32 385.5 L 528 385.5" stroke="#bbb" stroke-width="1" zIndex="7"></path>
+                                            </g>
+                                            <g class="highcharts-series-group" zIndex="3">
+                                                <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(32,10) scale(1 1)" style="" clip-path="url(#highcharts-13)"></g>
+                                                <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(32,10) scale(1 1)" clip-path="none"></g>
+                                                <g class="highcharts-series highcharts-series-1 highcharts-tracker" zIndex="0.1" transform="translate(32,10) scale(1 1)" style="" clip-path="url(#highcharts-13)"></g>
+                                                <g class="highcharts-markers highcharts-series-1" zIndex="0.1" transform="translate(32,10) scale(1 1)" clip-path="none"></g>
+                                            </g>
+                                            <g class="highcharts-legend" zIndex="7" transform="translate(540,20)">
+                                                <rect x="0.5" y="0.5" width="95" height="46" strokeWidth="1" stroke="#CCC" stroke-width="1" fill="#FFFFFF" visibility="visible"></rect>
+                                                <g zIndex="1">
+                                                    <g>
+                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)"><text x="21" style="color:#666;font-size:12px;font-weight:bold;cursor:pointer;fill:#666;" text-anchor="start" zIndex="2" y="18">
+                                                                <tspan>납부 금액</tspan>
+                                                            </text>
+                                                            <rect x="0" y="7" width="16" height="12" zIndex="3" fill="#0092E1"></rect>
+                                                        </g>
+                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,21)"><text x="21" y="18" style="color:#666;font-size:12px;font-weight:bold;cursor:pointer;fill:#666;" text-anchor="start" zIndex="2">
+                                                                <tspan>판매 수익</tspan>
+                                                            </text>
+                                                            <rect x="0" y="7" width="16" height="12" zIndex="3" fill="#E8000F"></rect>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"></g>
+                                            <g class="highcharts-axis-labels highcharts-xaxis-labels" zIndex="7"></g>
+                                            <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(0,-9999)">
+                                                <path fill="rgba(255,255,255,0.8)" d="M 3.5 0.5 L 9.5 0.5 C 12.5 0.5 12.5 0.5 12.5 3.5 L 12.5 9.5 C 12.5 12.5 12.5 12.5 9.5 12.5 L 3.5 12.5 C 0.5 12.5 0.5 12.5 0.5 9.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"></path><text x="6" zIndex="1" style="font-size:12px;color:#666;fill:#666;" y="18"></text>
+                                            </g>
+                                        </svg></div>
+                                </div>
+                                <div class="dataArea">
+                                    <table class="type02">
+                                        <colgroup>
+                                            <col style="width: 40%;">
+                                            <col style="width: 30%;">
+                                            <col style="width: 30%;">
+
+
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3" class="center" style="font-size: 15px;padding-top: 25px;">
+                                                    이번 달 정산 대상 고객이 아닙니다.
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </main>
+    <footer id="ft">
+        <div class="ftWrap container">
+            <div class="columns" style="margin:0; width:100%;">
+                <div class="column is-3 ft-img" style=" margin:0; display: flex; align-items: center;"><img src="http://tvpp.magok.kr:22211/img/ft-logo.svg" alt="" class="ft-logo"></div>
+                <div class="column is-1" style="padding:0;"></div>
+                <div class="ft-info column is-8" style="font-size: 1em; display:block;">
+                    <span class="ft-txt" style="font-size:1em;">COPTRIGHT 2020 SMART ENERGY CITY ALL RIGHTS RESERVED.</span>
+                    <div class="fnb">
+                        <a class="ft-txt" href="javascript:void(0);" onclick="handleWrapAgreement();" style="font-size:1em;">이용약관</a>
+                        <i class="split">|</i>
+                        <a class="ft-txt" href="javascript:void(0);" onclick="handleWrapPrivacy();" style="font-size:1em;">개인정보취급방침</a>
+                        <i class="split">|</i>
+                        <span class="ft-txt" style="font-size:1em;">기관명:한국전력공사 사업자등록번호:120-82-00052 대표자명:정승일 담당자:042-865-5243</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="agreementWrap" class="footerModal">
+        <div class="footerDialog">
+            <div class="footerDialogCloser foot-close" onclick="handleWrapAgreement();">&nbsp;</div>
+            <div class="footerDialogTitle">이용약관</div>
+            <div class="footerDialogContent">
+                <h3>제1장 총칙</h3>
+                <h4>제1조(목적)</h4>
+                <p>본 약관은 스마트에너지시티 서비스 제공 및 운영자(이하 '운영자'라 한다)가 당 사이트를 통해 제공하는 모든 서비스를 이용함에 있어 당 사이트와 이용자의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+                <h4>제2조(약관의 효력과 변경)</h4>
+                <p>본 약관은 서비스를 이용하고자 하는 자가 본 약관에 동의함으로써 그 효력이 발생합니다.</p>
+                <p>당 사이트는 합리적인 사유가 발생한 경우 본 약관을 사전 고지 없이 변경할 수 있으며, 변경된 약관은 당 사이트내의 게시판에 공지합니다.</p>
+                <p>이용자는 변경된 약관에 동의하지 않는 경우 아무 때나 서비스 이용을 중단하고, 가입을 해지할 수 있으며, 약관의 효력발생 이후 계속적인 서비스 이용은 약관의 변경에 대하여 동의한 것으로 간주됩니다.</p>
+                <h4>제3조(약관 외 준칙)</h4>
+                <p>본 약관에 명시되지 않은 사항은 전기통신법, 전기통신사업법, 정보통신윤리위원회심의규정, 정보통신윤리강령, 프로그램보호법 및 기타 대한민국의 관계법령의 규정에 의합니다.</p>
+                <h4>제4조(용어의 정의)</h4>
+                <p>'이용자'란 본 약관에 따라 당 사이트가 제공하는 서비스를 받는 자로 회원과 비회원을 말합니다.</p>
+                <p>'회원'이란 당 사이트에 개인정보를 제공하여 회원등록을 한 자로써, 당 사이트의 서비스를 이용하는 자를 말합니다.</p>
+                <p>'비회원'이란 회원에 가입하지 않고 당 사이트에서 제공하는 서비스를 이용하는 자를 말합니다.</p>
+                <h3>제2장 이용신청 및 승인</h3>
+                <h4>제5조(서비스 이용의 성립)</h4>
+                <p>서비스 이용의 성립은 이용 희망자가 약관에 동의하고 당 사이트에서 제공하는 소정의 가입신청 양식에 의해 이용신청을 할 경우 당 사이트에서 이를 승인함으로써 성립됩니다.</p>
+                <h4>제6조(이용신청)</h4>
+                <p>서비스 이용 희망자는 소정의 가입 신청서를 당 사이트에 제출함으로써 이용신청을 할 수 있습니다.</p>
+                <p>서비스 이용 희망자는 반드시 실명으로 이용신청을 하여야 하며, 이용신청의 행위는 본 약관의 내용을 숙지하고 동의한 것으로 간주됩니다.</p>
+                <h4>제7조(이용신청의 승인)</h4>
+                <p>당 사이트는 제6조에 대한 이용신청에 대하여 특별한 사유가 없는 한 접수순서에 따라 이용신청을 승인합니다. 다만, 다음 각 호의 1에 해당하는 경우 이용신청에 대한 승인을 제한 또는 유보할 수 있습니다.</p>
+                <p>이용신청의 제한</p>
+                <p>타인의 명의사용 등 이용신청서를 허위로 기재하였을 경우</p>
+                <p>사회의 안녕과 질서 또는 미풍양속을 저해할 목적으로 신청한 경우</p>
+                <p>기타 당 사이트가 정한 이용신청 요건이 미비 되었을 경우</p>
+                <p>이용신청 승인의 유보</p>
+                <p>설비의 여유가 없는 경우</p>
+                <p>기술상 또는 업무수행상 지장이 있는 경우</p>
+                <p>기타 당 사이트가 필요하다고 인정되는 경우</p>
+                <h3>제3장 권리 및 의무</h3>
+                <h4>제8조(당 사이트의 의무)</h4>
+                <p>당 사이트는 특별한 사유가 없는 한 서비스에 관련된 설비를 항상 운용할 수 있는 상태로 유지 관리하고, 장애가 발생하는 경우 지체없이 이를 복구할 수 있도록 하며, 안정적으로 서비스를 제공할 수 있도록 최선의 노력을 다 하여야 합니다.</p>
+                <p>당 사이트는 서비스와 관련된 회원의 불만사항이 접수되었을 경우 이를 즉시 처리하여야 하며, 즉시처리가 곤란한 경우 그 사유와 처리일정을 전자우편 또는 기타의 방법으로 회원에게 통지하여야 합니다.</p>
+                <p>당 사이트는 당 사이트가 제정한 개인정보보호방침에 따라 회원의 정보를 보호할 의무가 있습니다.</p>
+                <p>당 사이트는 서비스 제공과 관련하여 취득한 회원의 개인정보를 본인의 사전동의 없이 제3자에게 제공할 수 없으며, 서비스 관련업무 이외의 목적으로 사용할 수 없습니다. 다만, 다음 각 호에 해당하는 경우에는 예외로 합니다.</p>
+                <p>관계법령에 의하여 수사상의 목적으로 관계기관으로부터 요구받는 경우</p>
+                <p>정보통신윤리위원회의 요청이 있는 경우</p>
+                <p>기타 관계법령에 의한 경우</p>
+                <h4>제9조(회원의 의무)</h4>
+                <p>회원가입 시에 입력하는 회원정보는 정확하여야 하며, 변경사항이 발생할 경우 즉시 변경하여야 합니다. 정확하지 않는 회원정보로 인한 손해 및 손실에 대한 책임은 회원 본인에게 있습니다.</p>
+                <p>이용자ID와 비밀번호의 관리책임은 회원 본인에게 있으며, 회원에게 부여된 이용자ID와 비밀번호의 관리 소홀 시 발생된 모든 결과에 대한 책임은 회원 본인에게 있습니다.</p>
+                <p>본인의 이용자ID가 부정하게 사용될 경우 회원은 반드시 당 사이트에 그 사실을 통보해야 합니다.</p>
+                <p>회원은 당 사이트의 사전 승낙 없이는 서비스를 이용하여 어떠한 영리행위도 할 수 없으며, 회원이 약관에 위반한 영리행위로 발생한 결과에 대하여 당 사이트는 책임을 지지 않습니다.</p>
+                <p>회원은 서비스 이용과 관련하여 다음 각 호의 행위를 하여서는 안됩니다.</p>
+                <p>다른 회원의 ID를 부정 사용하거나 자신의 ID를 제3자에게 사용하게 하는 행위</p>
+                <p>범죄행위를 목적으로 하거나, 기타 범죄행위와 관련된 행위</p>
+                <p>선량한 풍속, 기타 사회질서를 해하는 행위</p>
+                <p>타인의 명예훼손, 모욕 또는 지적재산권 등의 권리를 침해하는 행위</p>
+                <p>컴퓨터 바이러스를 유포시키거나 타인의 컴퓨터를 해킹하는 행위</p>
+                <p>당 사이트의 서비스를 통하여 얻은 정보를 당 사이트의 사전 승인 없이 복제 또는 유통시키거나 상업적으로 이용하는 경우</p>
+                <p>당 사이트의 승인을 받지 않은 광고, 판촉물, 스팸매일 등 기타 서비스의 안정적인 운영에 지장을 주거나 줄 우려가 있는 일체의 행위</p>
+                <p>기타 전기통신법 제53조와 전기통신사업법시행령 제16조, 통신사업법 제53조3항에 위배되는 행위</p>
+                <p>회원은 서비스의 이용권한, 기타 이용상의 지위를 타인에게 양도 · 증여할 수 없으며, 이를 담보로 제공할 수 없습니다.</p>
+                <h3>제4장 서비스의 이용</h3>
+                <h4>제10조(서비스의 이용시간)</h4>
+                <p>서비스 이용시간은 연중무휴, 1일 24시간을 원칙으로 합니다. 다만, 업무상 또는 기술상의 사유 및 운영상의 목적으로 서비스가 일시 중지될 수 있습니다. 이러한 경우 사전 또는 사후에 이를 공지합니다.</p>
+                <p>당 사이트는 서비스를 일정범위로 분할하여 각 범위별로 이용가능한 시간을 별도로 정할수 있으며 이 경우 사전에 그 내용을 공지합니다.</p>
+                <h4>제11조(서비스 제공의 중지)</h4>
+                <p>당 사이트는 다음 각 호에 해당하는 경우 서비스 제공을 중지할 수 있습니다.</p>
+                <p>서비스 설비의 증설, 보수 등 공사로 인한 경우</p>
+                <p>전기통신사업법에 규정된 기간통신사업자가 전기통신 서비스를 중지했을 경우</p>
+                <p>천재지변, 국가의 비상사태 등 기타 불가항력적인 경우</p>
+                <p>천재지변, 국가비상사태 등의 불가항력적인 경우를 제외하고는 서비스 제공 중지 전에 회원에게 공지함을 원칙으로 합니다.</p>
+                <h4>제12조(게시물에 대한 권리와 책임)</h4>
+                <p>회원이 게시한 게시물에 대한 권리와 책임은 회원 본인에게 있습니다.</p>
+                <p>당 사이트는 게시된 내용을 사전 통지 없이 편집, 이동할 수 있는 권리를 보유하며, 다음 각 호에 해당하는 경우 사전 동의 없이 삭제할 수 있습니다.</p>
+                <p>국가의 안전이나 보안에 위배되는 경우</p>
+                <p>정치적 목적이나 성향이 있는 경우</p>
+                <p>영리 목적의 상업성 광고를 게재하는 경우</p>
+                <p>본 서비스 약관에 위배되거나 불법 또는 음란, 저속하다고 판단되는 게시물</p>
+                <p>다른 회원 또는 제3자를 비방하거나 명예를 훼손시키는 내용인 경우</p>
+                <p>공공질서 및 미풍양속에 위반되는 내용인 경우</p>
+                <p>지적재산권 등 기타 타인의 권리를 침해하는 내용인 경우</p>
+                <p>기타 관계법령에 위배되는 경우</p>
+                <h4>제13조(서비스의 해지 및 이용제한)</h4>
+                <p>회원이 서비스를 해지하고자 할 때에는 회원가입해지 화면에서 해지신청을 하여야 합니다.</p>
+                <p>당 사이트는 회원이 다음 각 호에 해당하는 행위를 했을 경우 사전 통지 없이 서비스를 해지하거나 이용을 중지시킬 수 있습니다.</p>
+                <p>고의로 당 사이트 운영을 방해한 경우</p>
+                <p>공공질서 및 미풍양속에 저해되는 내용을 유포시킨 경우</p>
+                <p>타인의 이용자ID 및 비밀번호를 도용한 경우</p>
+                <p>풍기 문란, 명예훼손, 컴퓨터 바이러스 유포 등 사회질서를 해하는 행위</p>
+                <p>서비스 가입신청 후 6개월 이상 사용하지 않을 경우</p>
+                <p>기타 법령이나 당 사이트가 정한 이용조건에 위반한 경우</p>
+                <h3>제5장 손해배상 및 기타</h3>
+                <h4>제14조(손해배상)</h4>
+                <p>당 사이트는 회원 본인의 부주의로 인해 발생한 어떠한 소해에 관하여도 책임을 지지 않습니다.</p>
+                <h4>15조(면책)</h4>
+                <p>당 사이트는 서비스를 통해 게제한 의견이나 정보에 대하여 어떠한 보증도 하지 아니하며, 회원이 서비스를 이용하여 발생하는 이득이나 손해에 대한 책임을 지지 않습니다.</p>
+                <p>당 사이트는 회원의 귀책사유로 인한 서비스 이용의 장애나 천재지변 등의 불가항력으로 인해 서비스를 제공할 수 없는 경우에는 서비스 제공에 대한 책임을 지지 않습니다.</p>
+                <p>당 사이트는 회원상호간 또는 회원과 제3자간의 서비스를 매개로 발생한 분쟁에 대해서 개입할 의무가 없으며, 어떠한 책임도 지지 않습니다.</p>
+                <p>당 사이트는 제휴사이트가 전송, 제공한 자료의 신뢰도, 정확성 등 내용에 관하여는 책임을 지지 않습니다.</p>
+                <h4>제16조(지적재산권)</h4>
+                <p>당 사이트에 회원이 게제한 자료의 권리와 책임은 회원에게 있으며 회원의 동의 없이 이를 영리목적으로 사용할 수 없습니다.</p>
+                <p>당 사이트가 지적재산권을 가지고 있는 자료, 서비스, 소프트웨어, 상표 등을 당 사이트의 서면 동의 없이 전부 또는 일부를 수정, 대여, 대출, 배포, 제작, 양도, 재라이센스, 담보권 설정, 상업적 이용 행위 등을 할 수 없습니다.</p>
+                <h4>제17조(관할법원)</h4>
+                <p>당 사이트와 회원은 서비스와 관련하여 발생한 분쟁을 원활하게 해결하기 위하여 필요한 모든 노력을 기울여야 합니다.</p>
+                <p>제1항의 규정에도 불구하고 서비스와 관련되어 분쟁이 발생한 경우, 당 사이트의 소재지를 관할하는 법원을 관할법원으로 합니다.</p>
+            </div>
+        </div>
+    </div>
+    <div id="privacyWrap" class="footerModal">
+        <div class="footerDialog">
+            <div class="footerDialogCloser foot-close" onclick="handleWrapPrivacy();">&nbsp;</div>
+            <div class="footerDialogTitle">개인정보취급방침</div>
+            <div class="footerDialogContent">
+                <h3>제1조(개인정보의 처리목적)</h3>
+                <p>한국전력공사(이)가 개인정보 보호법 제32조에 따라 등록․공개하는 개인정보파일의 처리목적은 다음과 같습니다.</p>
+                <p>1. 개인정보 파일명 : 개인정보처리방침</p>
+                <p>개인정보의 처리목적 : 회원가입 및 관리</p>
+                <p>수집방법 : 홈페이지</p>
+                <p>보유근거 : 회원가입 시 동의</p>
+                <p>보유기간 : 회원탈퇴시까지</p>
+                <p><br></p>
+                <h3>제2조(정보주체와 법정대리인의 권리·의무 및 그 행사방법)</h3>
+                <p>① 정보주체는 한국전력공사에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다.</p>
+                <p>② 제1항에 따른 권리 행사는한국전력공사에 대해 「개인정보 보호법」 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며 한국전력공사은(는) 이에 대해 지체 없이 조치하겠습니다.</p>
+                <p>③ 제1항에 따른 권리 행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수 있습니다.이 경우 “개인정보 처리 방법에 관한 고시(제2020-7호)” 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.</p>
+                <p>④ 개인정보 열람 및 처리정지 요구는 「개인정보 보호법」 제35조 제4항, 제37조 제2항에 의하여 정보주체의 권리가 제한 될 수 있습니다.</p>
+                <p>⑤ 개인정보의 정정 및 삭제 요구는 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없습니다.</p>
+                <p>⑥ 한국전력공사은(는) 정보주체 권리에 따른 열람의 요구, 정정·삭제의 요구, 처리정지의 요구 시 열람 등 요구를 한 자가 본인이거나 정당한 대리인인지를 확인합니다.</p>
+                <p><br></p>
+                <h3>제3조(처리하는 개인정보의 항목 작성)</h3>
+                <p>① 한국전력공사은(는) 다음의 개인정보 항목을 처리하고 있습니다.</p>
+                <p>1 개인정보처리방침</p>
+                <p>필수항목 : 비밀번호, 로그인ID, 이름, 접속 로그, 쿠키</p>
+                <p>선택항목 : 이메일</p>
+                <p><br></p>
+                <h3>제4조(개인정보의 파기)</h3>
+                <p>① 한국전력공사 은(는) 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</p>
+                <p>② 개인정보 파기의 절차 및 방법은 다음과 같습니다.</p>
+                <p>1. 파기절차</p>
+                <p>한국전력공사 은(는) 파기 사유가 발생한 개인정보를 선정하고, 한국전력공사 의 개인정보 보호책임자의 승인을 받아 개인정보를 파기합니다.</p>
+                <p>2. 파기방법</p>
+                <p>전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용합니다.</p>
+                <p>종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다</p>
+                <p><br></p>
+                <h3>제5조(개인정보의 안전성 확보 조치)</h3>
+                <p>한국전력공사은(는) 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</p>
+                <p>1. 개인정보 취급 직원의 최소화 및 교육</p>
+                <p>개인정보를 취급하는 직원을 지정하고 담당자에 한정시켜 최소화 하여 개인정보를 관리하는 대책을 시행하고 있습니다.</p>
+                <p>2. 내부관리계획의 수립 및 시행</p>
+                <p>개인정보의 안전한 처리를 위하여 내부관리계획을 수립하고 시행하고 있습니다.</p>
+                <p>3. 해킹 등에 대비한 기술적 대책</p>
+                <p>한국전력공사('스마트시티 에너지 플랫폼')은 해킹이나 컴퓨터 바이러스 등에 의한 개인정보 유출 및 훼손을 막기 위하여 보안프로그램을 설치하고 주기적인 갱신·점검을 하며 외부로부터 접근이 통제된 구역에 시스템을 설치하고 기술적/물리적으로 감시 및 차단하고 있습니다.</p>
+                <p>4. 접속기록의 보관 및 위변조 방지</p>
+                <p>개인정보처리시스템에 접속한 기록을 최소 6개월 이상 보관, 관리하고 있으며, 접속 기록이 위변조 및 도난, 분실되지 않도록 보안기능 사용하고 있습니다.</p>
+                <p>5. 문서보안을 위한 잠금장치 사용</p>
+                <p>개인정보가 포함된 서류, 보조저장매체 등을 잠금장치가 있는 안전한 장소에 보관하고 있습니다.</p>
+                <p>6. 비인가자에 대한 출입 통제</p>
+                <p>개인정보를 보관하고 있는 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립, 운영하고 있습니다.</p>
+                <p><br></p>
+                <h3>제6조(개인정보 자동 수집 장치의 설치•운영 및 거부에 관한 사항)</h3>
+                <p>① 한국전력공사 은(는) 이용자에게 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 ‘쿠키(cookie)’를 사용합니다. ② 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다. 가. 쿠키의 사용 목적 : 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 인기 검색어, 보안접속 여부, 등을 파악하여 이용자에게 최적화된 정보 제공을 위해 사용됩니다. 나. 쿠키의 설치•운영 및 거부 : 웹브라우저 상단의 도구&gt;인터넷 옵션&gt;개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부 할 수 있습니다. 다. 쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.</p>
+                <p><br></p>
+                <h3>제7조 (개인정보 보호책임자)</h3>
+                <p>① 한국전력공사 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+                <p>▶ 개인정보 보호책임자</p>
+                <p>성명 : 이승준</p>
+                <p>직책 : 연구원</p>
+                <p>직급 : 일반연구원</p>
+                <p>연락처 : 042-865-5114</p>
+                <p>※ 개인정보 보호 담당부서로 연결됩니다.</p>
+                <p>▶ 개인정보 보호 담당부서</p>
+                <p>부서명 : 디지털솔루션연구소</p>
+                <p>담당자 : 이승준</p>
+                <p>연락처 : 042-865-5114</p>
+                <p>② 정보주체께서는 한국전력공사 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. 한국전력공사 은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.</p>
+                <p><br></p>
+                <h3>제8조(권익침해 구제방법)</h3>
+                <p>정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 이 밖에 기타 개인정보침해의 신고, 상담에 대하여는 아래의 기관에 문의하시기 바랍니다.</p>
+                <p>1. 개인정보분쟁조정위원회 : (국번없이) 1833-6972 (www.kopico.go.kr)</p>
+                <p>2. 개인정보침해신고센터 : (국번없이) 118 (privacy.kisa.or.kr)</p>
+                <p>3. 대검찰청 : (국번없이) 1301 (www.spo.go.kr)</p>
+                <p>4. 경찰청 : (국번없이) 182 (cyberbureau.police.go.kr)</p>
+                <p>「개인정보보호법」제35조(개인정보의 열람), 제36조(개인정보의 정정·삭제), 제37조(개인정보의 처리정지 등)의 규정에 의한 요구에 대 하여 공공기관의 장이 행한 처분 또는 부작위로 인하여 권리 또는 이익의 침해를 받은 자는 행정심판법이 정하는 바에 따라 행정심판을 청구할 수 있습니다.</p>
+                <p>※ 행정심판에 대해 자세한 사항은 중앙행정심판위원회(www.simpan.go.kr) 홈페이지를 참고하시기 바랍니다.</p>
+                <p><br></p>
+                <h3>제9조(개인정보 처리방침 변경)</h3>
+                <p>① 이 개인정보처리방침은 2021년 1월 1부터 적용됩니다.</p>
+            </div>
+        </div>
+    </div>
+    <div id="siteMap">
+        <div class="sitemapTitle title">
+            <p>사이트맵</p>
+        </div>
+        <div class="sitemapClose"></div>
+        <div class="sitemapContent container">
+            <div class="sitemapList  container">
+                <div class="sitemap-entry-wrap">
+                    <div class="sitemap-entry"><a class="sitemap-link sitemap-depth-1">플랫폼 소개</a>
+                        <ul style=" line-height: 1.7; letter-spacing: -1px;">
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/intro/energyIntegratedPlatform?menu-id=Z010100" target="_self">에너지 통합 플랫폼</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/intro/portal?menu-id=Z010200" target="_self">에너지 운영 서비스</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/intro/citizenPortal?menu-id=Z010300" target="_self">시민 체감 서비스</a></li>
+                        </ul>
+                    </div>
+                    <div class="sitemap-entry"><a class="sitemap-link sitemap-depth-1">에너지 현황</a>
+                        <ul style=" line-height: 1.7; letter-spacing: -1px;">
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/energy/totalStatus?menu-id=Z020100" target="_self">에너지 종합 현황</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/energy/energyUsage?menu-id=Z020200" target="_self">에너지 사용 패턴</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/energy/energyUsagePattern?menu-id=Z020400" target="_self">에너지 사용 현황</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/energy/renewGen?menu-id=Z020500" target="_self">태양광 발전 현황</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/energy/custEnergyUsage?menu-id=Z020700" target="_self">온실가스 배출 현황</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/energy/energyCompare?menu-id=Z020600" target="_self">에너지 사용 비교체험</a></li>
+                        </ul>
+                    </div>
+                    <div class="sitemap-entry"><a class="sitemap-link sitemap-depth-1">에너지 맵</a>
+                        <ul style=" line-height: 1.7; letter-spacing: -1px;">
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/map/energyMap?menu-id=Z040200" target="_self">도시 에너지 현황</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/energy/buildSaverate?menu-id=Z040300" target="_self">건물 에너지 자립현황</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/map/evcStatus?menu-id=Z040100" target="_self">전기차 충전소 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="sitemap-entry"><a class="sitemap-link sitemap-depth-1">탄소 배출량 감축</a>
+                        <ul style=" line-height: 1.7; letter-spacing: -1px;">
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/carbon/emissionStatus?menu-id=Z070100" target="_self">탄소 배출량 현황</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/carbon/point?menu-id=Z070200" target="_self">탄소 포인트 안내</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/carbon/emissionCalculator?menu-id=Z070300" target="_self">탄소 배출량 계산기</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/carbon/reductionCalculator?menu-id=Z070400" target="_self">탄소 감축량 계산기</a></li>
+                        </ul>
+                    </div>
+                    <div class="sitemap-entry"><a class="sitemap-link sitemap-depth-1">응용 서비스</a>
+                        <ul style=" line-height: 1.7; letter-spacing: -1px;">
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/openapi/serviceIntro?menu-id=Z080100" target="_self">OpenAPI</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/homeEnergy/serviceIntro?menu-id=Z080200" target="_self">홈 에너지</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/vpp/serviceIntro?menu-id=Z080400" target="_self">가상 발전소</a>
+                                <ul style=" line-height: 1.7; letter-spacing: -0.5px;">
+                                    <li><a class="sitemap-link sitemap-depth-3" href="http://tvpp.magok.kr:22020/main/main.do?menu-id=Z080401" target="_self">중개사업자</a></li>
+                                    <li><a class="sitemap-link sitemap-depth-3" href="http://tvpp.magok.kr:22021/main/main.do?menu-id=Z080402" target="_self">전력보유자</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/p2p/serviceIntro?menu-id=Z080300" target="_self">에너지 거래</a>
+                                <ul style=" line-height: 1.7; letter-spacing: -0.5px;">
+                                    <li><a class="sitemap-link sitemap-depth-3" href="http://tvpp.magok.kr:22211/introduction/introduction.do?menu-id=Z080301" target="_self">에너지쉐어링 고객</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sitemap-entry"><a class="sitemap-link sitemap-depth-1">커뮤니티</a>
+                        <ul style=" line-height: 1.7; letter-spacing: -1px;">
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/board/list?menu-id=Z110100&amp;boardType=0001" target="_self">공지사항</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/board/list?menu-id=Z110200&amp;boardType=0002" target="_self">홍보마당</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/board/list?menu-id=Z110300&amp;boardType=0005" target="_self">자주묻는 질문</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/board/list?menu-id=Z110400&amp;boardType=0003" target="_self">질의 및 응답</a></li>
+                            <li><a class="sitemap-link sitemap-depth-2" href="http://www.magok.kr:22202/board/list?menu-id=Z110500&amp;boardType=0006" target="_self">자료실</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

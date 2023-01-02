@@ -1,0 +1,2028 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>P2P전력거래서비스</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="../css/favicon.svg" sizes="any" type="image/svg+xml">
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/eSharing.css" />
+        <link rel="stylesheet" href="../css/navibar.css" />
+        <link rel="stylesheet" href="../css/layout.css" />
+        <link rel="stylesheet" href="../css/head.css" />
+        <link rel="stylesheet" href="../css/ui.jqgrid.css" />
+        <link rel="stylesheet" href="../css/bootstrap-material-datetimepicker.css" />
+        <link rel="stylesheet" href="../css/vpp.css" />
+        <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="../js/jqGrid/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../js/jqGrid/i18n/grid.locale-kr.js"></script>
+		<script type="text/javascript" src="../js/jqGrid/jquery.jqGrid.min.js"></script>
+        <script type="text/javascript" src="../js/moment.min.js"></script>
+        <script type="text/javascript" src="../js/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap-material-datetimepicker.js"></script>
+        <script type="text/javascript" src="../js/layout.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/highcharts-custom.js"></script>
+        <script type="text/javascript" src="../js/secosChart.js"></script>
+        <script type="text/javascript" src="../js/jquery.bpopup.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.serializeObject.js"></script>
+        
+        <script>
+            $(function(){
+                var obj = $(".totalPage[data-names='mgp2p_admin'] .totalPageWrap:nth-child(3) #separate .contentWrap:nth-child(1) .bottomPanelDiv .bottomPanelDivArea .subPanel table tbody");
+                    obj.gph = obj.find(" [data-percent]");
+                
+                
+                $('<td>\
+                    <div class="span_box"><span></span></div>\
+                </td>').appendTo(obj.gph);
+                setTimeout(function(){
+                    for(var i=0; i<obj.gph.size(); i++){
+                        obj.gph.eq(i).find(".span_box span").css("width",obj.gph.eq(i).attr("data-percent")+"%");
+                    }
+                },300);
+            });
+        </script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    </head>
+    <body>
+        <div class="container">
+
+
+
+            <div class="wrap">
+                <div id="subpage_top_menu" data-status="large" class="slider_bar">
+                    <div class="top_menu">
+                        <span class="logo" onclick="location.href='http://portal.magok.kr:22202'"><img src="../img/logo-2.png"></span>
+                        <div class="menu">
+                            <div class="button"></div>
+                            <div class="button"></div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="subpage_dept1_menu" data-menu-id="M010000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_01"><i></i></span> <span class="title">데이터 수집</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M010100" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/collectionMonitor.do?menu-id=M010100" target="_blank">데이터 연계처리 현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010200" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0001.do?menu-id=M010200" target="_self">데이터 수집 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010300" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0003.do?menu-id=M010300" target="_self">전력 정보 수집</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010400" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0005.do?menu-id=M010400" target="_self">비전력 정보 수집</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M010500" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sh/sh0004.do?menu-id=M010500" target="_self">공공 정보 수집</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M020000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_02"><i></i></span> <span class="title">데이터 저장소</span> </a>
+                            <ul class="sub_menu">
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M130000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_03"><i></i></span> <span class="title">현황/통계</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M130100" data-menu-depth="2"> <a href="http://support.magok.kr:22205/ver1/test?menu-id=M130100" target="_blank">통합 운영 대시보드</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130200" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sa/sa1201.do?menu-id=M130200" target="_self">에너지 종합현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130300" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sa/sa1301.do?menu-id=M130300" target="_self">건물별 사용 현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130500" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sa/sa1400.do?menu-id=M130500" target="_self">에너지 품질</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M130600" data-menu-depth="2"> <a href="http://portal.magok.kr:22208/sd/sd0000.do?menu-id=M130600" target="_self">분산자원 현황</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M100000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_04"><i></i></span> <span class="title">에너지 맵</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M101000" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M101000&amp;flag=analysis" target="_self">사용량분석</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M101100" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M101100&amp;flag=gas" target="_self">온실가스</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M101200" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M101200&amp;flag=nature" target="_self">수질/대기질</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M101300" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M101300&amp;flag=evc" target="_self">전기차 충전소</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M100900" data-menu-depth="2"> <a href="http://revalleymap.seoul.go.kr:8080/main?menu-id=M100900&amp;flag=equipment" target="_self">에너지 설비</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M110000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_05"><i></i></span> <span class="title">예측/API</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M110100" data-menu-depth="2"> <a href="http://revalleypred.seoul.go.kr:8080/sf/sf0101.do?menu-id=M110100" target="_self">데이터 관리 </a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M110200" data-menu-depth="2"> <a href="http://revalleypred.seoul.go.kr:8080/sf/sf0201.do?menu-id=M110200&amp;fcType=GF" target="_self">신재생 발전 예측</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M110300" data-menu-depth="2"> <a href="http://revalleypred.seoul.go.kr:8080/sf/sf0201.do?menu-id=M110300&amp;fcType=DF" target="_self">에너지 수요 예측</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M110800" data-menu-depth="2"> <a href="http://evalleyapiadm.seoul.go.kr/?menu-id=M110800" target="_blank">오픈API관리자</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M110900" data-menu-depth="2"> <a href="http://openapi.magok.kr:22012/dev/introduce/api/main?menu-id=M110900" target="_blank">오픈API개발자</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu active" data-menu-id="M120000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_06"><i></i></span> <span class="title">응용 서비스</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M121100" data-menu-depth="2"> <a href="javascript:void(0);">가상발전소 관리자</a>
+                                    <ul>
+                                        <li data-menu-id="M121101" data-menu-depth="3"> <a href="../main/main.do?menu-id=M121101" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M121102" data-menu-depth="3"> <a href="../agent/agent.do?menu-id=M121102" target="_self">중개사업자 관리</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120200" data-menu-depth="2"> <a href="javascript:void(0);">가상발전소 중개사업자</a>
+                                    <ul>
+                                        <li data-menu-id="M120206" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/main/main.do?menu-id=M120206" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M120207" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/res/res0101.do?menu-id=M120207" target="_self">자원관리</a> </li>
+                                        <li data-menu-id="M120208" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/pred/pred0101.do?menu-id=M120208" target="_self">예측모형관리</a> </li>
+                                        <li data-menu-id="M120209" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/oper/oper0101.do?menu-id=M120209" target="_self">집합전력자원운영</a> </li>
+                                        <li data-menu-id="M120210" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/pay/pay0101.do?menu-id=M120210" target="_self">정산분석</a> </li>
+                                        <li data-menu-id="M120204" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/stat/stat0101.do?menu-id=M120204" target="_self">통계분석</a> </li>
+                                        <li data-menu-id="M120205" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22210/support/support0101.do?menu-id=M120205" target="_self">고객지원</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120500" data-menu-depth="2"> <a href="javascript:void(0);">가상발전소 전력보유자</a>
+                                    <ul>
+                                        <li data-menu-id="M120505" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/main/main.do?menu-id=M120505" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M120501" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/res/res0201.do?menu-id=M120501" target="_self">나의 자원정보</a> </li>
+                                        <li data-menu-id="M120502" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/oper/oper0101.do?menu-id=M120502" target="_self">운영현황</a> </li>
+                                        <li data-menu-id="M120503" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/stat/stat0201.do?menu-id=M120503" target="_self">통계</a> </li>
+                                        <li data-menu-id="M120504" data-menu-depth="3"> <a href="http://tvpp.magok.kr:22211/support/support0101.do?menu-id=M120504" target="_self">고객지원</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120300" data-menu-depth="2" class=" active"> <a href="javascript:void(0);">에너지 쉐어링 관리</a>
+                                    <ul>
+                                        <li data-menu-id="M120301" data-menu-depth="3" class=" selectedMenuEntry"> <a href="../dashboard/dashboard_dashboard.do?menu-id=M120301" target="_self">대시보드</a> </li>
+                                        <li data-menu-id="M120302" data-menu-depth="3"> <a href="../custMng/custMng_getCustMngList.do?menu-id=M120302" target="_self">고객관리</a> </li>
+                                        <li data-menu-id="M120303" data-menu-depth="3"> <a href="../bidding/bidding_getBiddingList.do?menu-id=M120303" target="_self">입찰현황</a> </li>
+                                        <li data-menu-id="M120304" data-menu-depth="3"> <a href="../matching/matching_getMatchingList.do?menu-id=M120304" target="_self">매칭</a> </li>
+                                        <li data-menu-id="M120305" data-menu-depth="3"> <a href="../calculation/calculation_getCalculationList.do?menu-id=M120305" target="_self">정산</a> </li>
+                                        <li data-menu-id="M120306" data-menu-depth="3"> <a href="../board/board_getArticleList.do?menu-id=M120306" target="_self">공지사항</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120800" data-menu-depth="2"> <a href="javascript:void(0);">에너지 쉐어링 고객</a>
+                                    <ul>
+                                        <li data-menu-id="M120801" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/introduction/introduction.do?menu-id=M120801" target="_self">서비스 소개</a> </li>
+                                        <li data-menu-id="M120802" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/dashboard/dashboard.do?menu-id=M120802" target="_self">My E-Sharing</a> </li>
+                                        <li data-menu-id="M120803" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/bidding/biddingList.do?menu-id=M120803" target="_self">E-Sharing 입찰</a> </li>
+                                        <li data-menu-id="M120805" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/calculation/calculationList.do?menu-id=M120805" target="_self">E-Sharing 정산</a> </li>
+                                        <li data-menu-id="M120804" data-menu-depth="3"> <a href="http://p2p.magok.kr:22213/board/noticeList.do?menu-id=M120804" target="_self">공지사항</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120600" data-menu-depth="2"> <a href="javascript:void(0);">에너지 계획</a>
+                                    <ul>
+                                        <li data-menu-id="M120601" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/dm/hist.do?menu-id=M120601" target="_self">통계실적데이터</a> </li>
+                                        <li data-menu-id="M120606" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/rpt/soeco.do?menu-id=M120606" target="_self">사회경제데이터</a> </li>
+                                        <li data-menu-id="M120603" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/dm/coef.do?menu-id=M120603" target="_self">계량경제모형계수</a> </li>
+                                        <li data-menu-id="M120604" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/rpt/bau.do?menu-id=M120604" target="_self">에너지수요전망</a> </li>
+                                        <li data-menu-id="M120605" data-menu-depth="3"> <a href="http://tlongtermplanning.magok.kr:22216/rpt/edm.do?menu-id=M120605" target="_self">에너지계획산출</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M120900" data-menu-depth="2"> <a href="http://home.magok.kr:22016/smtHomeMgr/main/main.do?menu-id=M120900" target="_blank">@Home 아파트관리자</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M121000" data-menu-depth="2"> <a href="http://home.magok.kr:22016/smtHome/home/home.do?menu-id=M121000" target="_blank">@Home 아파트세대</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M090000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_07"><i></i></span> <span class="title">커뮤니티</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M090100" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/board/list?menu-id=M090100&amp;boardType=0001&amp;test=asdf" target="_self">공지사항</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M090200" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/board/list?menu-id=M090200&amp;boardType=0002" target="_self">홍보자료</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M090300" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/board/list?menu-id=M090300&amp;boardType=0003" target="_self">질문과 답변</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M090400" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/board/list?menu-id=M090400&amp;boardType=0004" target="_self">자유게시판</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subpage_dept1_menu" data-menu-id="M990000" data-menu-depth="1"> <a href="javascript:void(0);"> <span class="icon icon_08"><i></i></span> <span class="title">환경설정</span> </a>
+                            <ul class="sub_menu">
+                                <li data-menu-id="M990400" data-menu-depth="2"> <a href="javascript:void(0);">가이드</a>
+                                    <ul>
+                                        <li data-menu-id="M990403" data-menu-depth="3"> <a href="http://portal.magok.kr:22202/guide/sso?menu-id=M990403&amp;type=adm" target="_self">플랫폼 활용 가이드</a> </li>
+                                        <li data-menu-id="M990401" data-menu-depth="3"> <a href="http://portal.magok.kr:22202/guide/design?menu-id=M990401" target="_self">디자인가이드</a> </li>
+                                        <li data-menu-id="M990402" data-menu-depth="3"> <a href="http://portal.magok.kr:22202/guide/sub?menu-id=M990402" target="_self">페이지가이드</a> </li>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990800" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/userRequestManage?menu-id=M990800" target="_self">가입요청 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990100" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/developer/ssoManage?menu-id=M990100" target="_self">SSO 서비스 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990300" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/developer/menuManage?menu-id=M990300&amp;target=adm" target="_self">메뉴 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990200" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/userManage?menu-id=M990200" target="_self">사용자 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M991100" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/roleManage?menu-id=M991100" target="_self">권한 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990500" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/untyCodeManage?menu-id=M990500" target="_self">통합코드 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990700" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/boardManage?menu-id=M990700" target="_self">게시판 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990900" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/my/infoEnter?menu-id=M990900" target="_self">나의 정보 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M990600" data-menu-depth="2"> <a href="http://portal.magok.kr:22202/manage/loginHistory?menu-id=M990600" target="_self">로그인 이력</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                                <li data-menu-id="M991000" data-menu-depth="2"> <a href="javascript:void(0);">약관 및 정책 관리</a>
+                                    <ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="top_navbar">
+                    <div class="top_menu">
+                        <nav id="login"> <span class="user">P2P관리자(p2padmin)</span> <span>님 로그인했습니다.</span> <a href="/sso/logout" class="logout"></a>
+                            <div class="setbox"> <a href="http://portal.magok.kr:22202/guide/sso?menu-id=M990403&amp;type=adm" title="환경설정" class="setting"></a> </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="mid_navbar">
+                        <div class="titlebox">
+                            <h2>대시보드</h2>
+                        </div>
+                        <nav class="navi">
+                            <ul>
+                                <li> <span class="navi_home">home</span> </li>
+                                <li> <span>응용 서비스</span> </li>
+                                <li> <span>에너지 쉐어링 관리</span> </li>
+                                <li> <span>대시보드</span> </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <script>
+                        $(document).ready(function() {
+                            // 특정 글자수가 넘어가면 넘어가는 글자는 자르고 마지막에 대체문자 처리
+                            for (var i = 0; i < $("[class*='text_over']").length; i++) {
+                                var txt = $("[class*='text_over']:eq(" + i + ")").text();
+                                //var rtn = textLengthOverCut(txt, 10, '...');
+                                //$("[class*='text_over']:eq("+i+")").text(rtn);
+                            }
+
+                            // 날씨정보 조회
+                            getWeagherInfo();
+                        });
+
+                        // 날씨정보 조회
+                        function getWeagherInfo() {
+                            $.ajax({ // ajax s
+                                method: "POST",
+                                url: "/dashboard/weather_getWeatherInfo.json",
+                                data: {
+                                    sch_lately_date_cnt: '2'
+                                },
+                                dataType: "json",
+                                success: function(data) { //success s
+                                    var data = data.weatherInfoVO;
+                                    if (data.max_temp == null) {
+                                        data.max_temp = "-";
+                                    }
+                                    if (data.min_temp == null) {
+                                        data.min_temp = "-";
+                                    }
+                                    $("#weatherTime").html(data.weather_time);
+                                    $("#weatherIcon").html("<div id='weatherIcon" + data.weather_icon + "'></div>");
+                                    if (data.current_temp == null) {
+                                        $("#weatherIcon").html("<div id='notWeather'></div>");
+                                        $("#weatherTemp").html("<span>현재 날씨 정보를<br>가져올 수 없습니다.<br></span>");
+                                        $("#weatherTemp").css("text-align", "left");
+                                        $("#weatherTemp").css("font-size", "0.8em");
+                                        $("#weatherTemp").css("padding", "6px 0px 20px 0px");
+                                    } else {
+                                        $("#weatherTemp").html(data.current_temp + '℃');
+                                        $("#weatherTempMaxMin").html('<span class="red">최고</span> ' + data.max_temp +
+                                            '℃ <span class="blue">최저</span> ' + data.min_temp + '℃');
+                                    }
+
+                                    var latelyWeatherInfoData = data.latelyWeatherInfoList;
+
+                                    if (latelyWeatherInfoData == "undefined" || latelyWeatherInfoData == null || latelyWeatherInfoData == ",") {
+                                        $("#weatherBottom").html("<div style='padding : 10px; font-size : 0.8em; font-weight : bold; color : white;text-align : center;'>최근 2일 간 날씨 정보를 <br>가져올 수 없습니다.</div>");
+                                    } else {
+                                        for (var i = 0; i < latelyWeatherInfoData.length; i++) { // for s
+                                            if (latelyWeatherInfoData[i] != null) {
+                                                if (latelyWeatherInfoData[i].max_temp != null && latelyWeatherInfoData[i].min_temp != null) {
+                                                    var tr = $("<tr/>");
+                                                    var td1 = $("<td/>");
+                                                    var td2 = $("<td/>");
+                                                    td1.html(latelyWeatherInfoData[i].weather_time);
+                                                    tr.append(td1);
+                                                    var wIcon = "<div id='weatherSmallIcon" + latelyWeatherInfoData[i].weather_icon + "'></div> ";
+                                                    td2.html(wIcon + latelyWeatherInfoData[i].max_temp + "℃ / " + latelyWeatherInfoData[i].min_temp + "℃");
+                                                    tr.append(td2);
+                                                    $("#dPlusWeather").append(tr);
+                                                }
+                                            }
+                                        } // for e
+                                    }
+
+                                } //success e
+                            }); // ajax e
+                        }
+                    </script>
+                    <!--
+    <div id="leftPart">
+        <div id="weatherTop">
+            <div id="weatherTitle">Today</div>
+                <div id="weatherTime"></div>
+                <div id="weatherView">
+                <div id="weatherIcon">
+                </div>
+                <div id="weatherTemp"></div>
+                <div id="weatherTempMaxMin">
+                    -- <span class="red">최고</span> <span class="blue">최저</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="weatherBottom">
+            <table class="typeWeather">
+                <colgroup>
+                    <col width="85px;" />
+                    <col width="*" />
+                </colgroup>
+                <tbody id="dPlusWeather">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="boardSimpleView">
+            <div class="boardSimpleTitle">공지사항</div>
+            <a href="/board/board_getArticleList.do?menu_id=M120306&sch_board_id=NOTICE"><div class="boardSimpleMore">more</div></a>
+            <div class="boardLineMain"></div>
+            <div class="boardLineSub"></div>
+            <ul class="boardSimpleEntry">
+
+
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=12" class="text_over0">[공지사항]매칭 내역</a></li>
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=11" class="text_over1">[공지사항]정산 수행 시</a></li>
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=10" class="text_over2">[공지사항]E-Sharing</a></li>
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=9" class="text_over3">[공지사항]입찰 등록</a></li>
+
+
+                        <li><a href="/board/board_getArticleView.do?index=&menu_id=3006&elementPerPage=&sch_board_id=NOTICE&sch_article_seq=8" class="text_over4">[공지사항]에너지 쉐어링 서비스</a></li>
+
+
+            </ul>
+        </div>
+
+        <div class="boardSimpleView">
+            <div class="boardSimpleTitle">블록체인 연계 알림</div>
+            <a href="/bcLinkLog/bcLinkLog_getBcLinkLogList.do"><div class="boardSimpleMore">more</div></a>
+            <div class="boardLineMain"></div>
+            <div class="boardLineSub"></div>
+            <ul class="boardSimpleEntry">
+                <li>
+                    <span>고객 정보</span>
+
+
+
+
+                            <img src='../images/layout/bclinklog_03.png'>
+
+
+                </li>
+                <li>
+                    <span>입찰 정보</span>
+
+
+
+
+                            <img src='../images/layout/bclinklog_03.png'>
+
+
+                </li>	
+                <li>
+                    <span>매칭 정보</span>
+
+
+
+
+                            <img src='../images/layout/bclinklog_03.png'>
+
+
+                </li>
+                <li>
+                    <span>정산 정보</span>
+
+
+
+
+                            <img src='../images/layout/bclinklog_03.png'>
+
+
+                </li>
+            </ul>
+        </div>
+        <div class="bottomImg"></div>
+    </div>
+    -->
+
+                    <div class="totalPage" data-names="mgp2p_admin">
+                        <div class="totalPageWrap">
+                            <div id="separate">
+                                <div class="contentWrap left" style="width:50%;">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">Today</h4>
+                                    </div>
+                                    <div class="weatherSimpleEntry">
+                                        <div id="weatherTime"></div>
+                                        <div id="weatherView"></div>
+                                        <div id="weatherIcon">
+                                            <div id="notWeather"></div>
+                                        </div>
+                                        <!-- <img src="/images/weather/weather_img01.png" width="" height="" /> -->
+                                        <!-- weatherIcon 으로 안나와서 임시로 띄워봄 -->
+                                        <div id="weatherTemp" style="text-align: left; font-size: 0.8em; padding: 6px 0px 20px;"><span>현재 날씨 정보를<br>가져올 수 없습니다.<br></span></div>
+                                        <div id="weatherTempMaxMin"></div>
+                                    </div>
+                                </div>
+
+                                <div class="contentWrap right">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">
+                                            <a href="/board/board_getArticleList.do?menu-id=M120306&amp;sch_board_id=NOTICE">공지사항</a>
+                                        </h4>
+                                    </div>
+                                    <div class="boardLineMain"></div>
+                                    <div class="boardLineSub"></div>
+                                    <ul class="boardSimpleEntry">
+
+
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=12" class="text_over0">[공지사항]매칭 내역</a></li>
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=11" class="text_over1">[공지사항]정산 수행 시</a></li>
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=10" class="text_over2">[공지사항]E-Sharing</a></li>
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=9" class="text_over3">[공지사항]입찰 등록</a></li>
+
+
+                                        <li><a href="/board/board_getArticleView.do?menu-id=M120306&amp;sch_board_id=NOTICE&amp;sch_article_seq=8" class="text_over4">[공지사항]에너지 쉐어링 서비스</a></li>
+
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="totalPageWrap">
+                            <div id="separate">
+                                <div class="contentWrap left" style="width:50%;">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">월별 입찰 현황</h4>
+                                    </div>
+
+
+
+
+
+
+
+
+                                   <script>
+                                        //기본설정
+                                        $(function() {
+                                            // 차트 초기화
+                                            biddingMonthlyChart();
+                                            //월별 입찰 현황 차트 데이터 조회
+                                            getBiddingMonthlyChart();
+                                            //fnGetList();
+                                            //계약종에 따라 loadType selectBox 핸들링
+                                            showLoadTypeCdByCntr();
+                                        });
+
+                                        //차트 초기화
+                                        function biddingMonthlyChart() {
+                                            Highcharts.setOptions({
+                                                lang: {
+                                                    thousandsSep: ','
+                                                }
+                                            });
+                                            window.biddingMonthlyChart = new Highcharts.Chart({
+                                                colors: ['#4263EB', '#08AA58'],
+                                                chart: {
+                                                    renderTo: 'biddingMonthlyChart'
+                                                    // 			plotBackgroundColor : '#FDFEFD' // 차트 내부 색상
+                                                },
+                                                title: {
+                                                    text: ''
+                                                },
+                                                xAxis: [{
+                                                    categories: 'category',
+                                                    labels: {
+                                                        style: {
+                                                            fontSize: '10px'
+                                                        }
+                                                    }
+                                                }],
+                                                yAxis: { // Primary yAxis
+                                                    labels: {
+                                                        formatter: function() {
+                                                            return Highcharts.numberFormat(this.value, 0, ".", ",") + "kWh";
+                                                        },
+                                                        style: {
+                                                            color: '#8c8b9f'
+                                                        }
+                                                    },
+                                                    title: {
+                                                        text: ''
+                                                    },
+                                                    // 			visible: false
+                                                },
+                                                tooltip: {
+                                                    // 			pointFormat : '{series.name} : <b>{point.y:,0f}kWh</b><br/>',
+                                                    shared: true
+                                                },
+                                                legend: {
+                                                    layout: 'horizontal',
+                                                    align: 'center',
+                                                    verticalAlign: 'bottom'
+                                                },
+                                                plotOptions: {
+                                                    series: {
+                                                        label: {
+                                                            connectorAllowed: false
+                                                        },
+                                                    }
+                                                },
+                                                responsive: {
+                                                    rules: [{
+                                                        condition: {
+                                                            maxWidth: 5000
+                                                        },
+                                                        chartOptions: {
+                                                            legend: {
+                                                                layout: 'horizontal',
+                                                                align: 'center',
+                                                                verticalAlign: 'bottom'
+                                                            }
+                                                        }
+                                                    }]
+                                                }
+                                            });
+                                        }
+
+                                        //월별 입찰 현황 차트 데이터 조회
+                                        function getBiddingMonthlyChart() {
+                                            var cntrCd = $("#sch_cntr_cd").val();
+                                            var loadTypeCd = "";
+                                            if ($("#sch_cntr_cd option:selected").hasClass("DIVISION")) {
+                                                loadTypeCd = $("#sch_load_type_cd").val();
+                                            } else if ($("#sch_cntr_cd option:selected").hasClass("HOUSING")) { // 주택용인 경우
+                                                if ($("#touTypeCdValue").val() != "") {
+                                                    loadTypeCd = $("#touTypeCdValue").val();
+                                                } else {
+                                                    loadTypeCd = 'NONE';
+                                                }
+                                            } else {
+                                                // 부하 구분 코드가 없을 시 NONE 설정
+                                                loadTypeCd = 'NONE';
+                                            }
+
+                                            $.ajax({
+                                                method: "POST",
+                                                async: true,
+                                                url: "/bidding/bidding_getBiddingMonthlyChart.json?sch_cntr_cd=" + cntrCd + "&sch_load_type_cd=" + loadTypeCd,
+                                                dataType: "json",
+                                                success: function(data) {
+                                                    // 차트 그리기
+                                                    buildBiddingMonthlyChart(data.biddingMonthlyChartTable);
+                                                    // 차트 테이블 그리기
+                                                    buildBiddingMonthlyChartTable("biddingMonthlyChartTable", data.biddingMonthlyChartTable);
+                                                }
+                                            });
+                                        }
+
+                                        //차트 그리기
+                                        function buildBiddingMonthlyChart(resultList) {
+                                            // series 제거(초기화)
+                                            $.each(window.biddingMonthlyChart.series, function(i) {
+                                                window.biddingMonthlyChart.series[0].remove(true);
+                                            });
+                                            var category = new Array();
+                                            for (var i = 0; i < resultList.length; i++) {
+                                                var yyyy = resultList[i].bidding_ym.substring(0, 4);
+                                                var mm = resultList[i].bidding_ym.substring(4, 6);
+                                                var biddingYm = yyyy + "-" + mm;
+                                                category.push([biddingYm]);
+                                            }
+                                            // categrory setting
+                                            window.biddingMonthlyChart.xAxis[0].setCategories(category, false); //setCategories (Array cateories, [Boolean redraw])
+
+                                            if (resultList.length > 0) {
+                                                // series 초기화
+                                                var saleSeries = {
+                                                    name: '',
+                                                    data: []
+                                                };
+                                                var buySeries = {
+                                                    name: '',
+                                                    data: []
+                                                };
+
+                                                saleSeries.name = '희망 판매량';
+                                                buySeries.name = '희망 구매량';
+                                                saleSeries.type = "line";
+                                                buySeries.type = "line";
+
+                                                // 데이터 초기화
+                                                var saleDesireQtyData = new Array();
+                                                var buyDesireQtyData = new Array();
+                                                // List 반복문
+                                                $.each(resultList, function(index, result) {
+                                                    // Json 반복문 (차트에서 사용할 데이터 추출)
+                                                    $.each(result, function(key, value) {
+                                                        // 차트에서 사용하지 않는 컬럼 제외
+                                                        if (key == 'sum_sale_desire_qty') {
+                                                            saleDesireQtyData.push(parseFloat(isNullCheck(value, '0')));
+                                                        } else if (key == 'sum_buy_desire_qty') {
+                                                            buyDesireQtyData.push(parseFloat(isNullCheck(value, '0')));
+                                                        }
+                                                    });
+                                                });
+                                                // add series
+                                                window.biddingMonthlyChart.addSeries(saleSeries, false); //addSeries (Object options, [Boolean redraw], [Mixed animation])
+                                                window.biddingMonthlyChart.addSeries(buySeries, false); //addSeries (Object options, [Boolean redraw], [Mixed animation])
+                                                // set data
+                                                window.biddingMonthlyChart.series[0].setData(saleDesireQtyData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                                window.biddingMonthlyChart.series[1].setData(buyDesireQtyData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                            }
+                                            // chart redraw
+                                            window.biddingMonthlyChart.redraw();
+                                        }
+
+                                        //차트 테이블 그리기
+                                        function buildBiddingMonthlyChartTable(tableDivId, resultList) {
+                                            // 데이터 내림차순 정렬
+                                            //resultList = resultList.reverse();
+                                            // x축 카테고리
+                                            var tableHeader = ['일자', '희망 판매량<br> 합계(kWh)', '희망 판매단가 <br>평균(원/kWh)', '희망 구매량<br> 합계(kWh)', '희망 구매단가<br> 평균(원/kWh)'];
+
+                                            var htmls = "";
+
+                                            htmls += '<table class="type01">';
+                                            htmls += '	<caption>테이블 : 월별 입찰 현황 의 상세 내역 리스트입니다. (일자, 희망 판매량 합계, 희망 판매단가 평균 등의 내용을 확인 하실 수 있습니다.)</caption>';
+                                            htmls += '	<thead>';
+                                            htmls += '		<tr>';
+                                            $.each(tableHeader, function(i, v) {
+                                                htmls += '		<th scope="col">' + v + '</th>';
+                                            });
+                                            htmls += '		</tr>';
+                                            htmls += '	</thead>';
+
+                                            htmls += '	<tbody>';
+                                            if (resultList.length > 0) {
+                                                // List 반복문
+                                                $.each(resultList, function(index, result) {
+                                                    htmls += '		<tr>';
+
+                                                    // Json 반복문 (차트에서 사용할 데이터 추출)
+                                                    $.each(result, function(key, value) {
+
+                                                        // 차트에서 사용하지 않는 컬럼 제외
+                                                        if (key == 'bidding_ym') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).substr(0, 4) + "-" + String(parseFloat(isNullCheck(value, '0'))).substring(4, 6) + '</td>';
+                                                        } else if (key == 'sum_sale_desire_qty') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' </td>';
+                                                        } else if (key == 'avg_sale_desire_price') {
+                                                            htmls += '			<td class="center">' + parseFloat(isNullCheck(value, '0')).toFixed(2) + '</td>';
+                                                        } else if (key == 'sum_buy_desire_qty') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td>';
+                                                        } else if (key == 'avg_buy_desire_price') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td>';
+                                                        }
+                                                    });
+                                                    htmls += '		</tr>';
+                                                });
+                                            } else {
+                                                htmls += '		<tr>';
+                                                htmls += '			<td colspan="' + (tableHeader.length) + '" class="center">데이터가 없습니다.</td>';
+                                                htmls += '		</tr>';
+                                            }
+
+                                            htmls += '	</tbody>';
+                                            htmls += '</table>';
+
+                                            $("#" + tableDivId).html(htmls);
+                                        }
+
+                                        function fnGetList() {
+                                            var cntrCd = $("#sch_cntr_cd").val();
+                                            var loadTypeCd = "";
+                                            if ($("#sch_cntr_cd option:selected").hasClass("DIVISION")) {
+                                                loadTypeCd = $("#sch_load_type_cd").val();
+                                            } else if ($("#sch_cntr_cd option:selected").hasClass("HOUSING")) { // 주택용인 경우
+                                                // 주택용인 고객 중 TOU 요금제를 선택한 경우
+                                                if ($("#touTypeCdValue").val() != "") {
+                                                    loadTypeCd = $("#touTypeCdValue").val();
+                                                } else {
+                                                    loadTypeCd = 'NONE';
+                                                }
+                                            } else {
+                                                // 부하 구분 코드가 없을 시 NONE 설정
+                                                loadTypeCd = 'NONE';
+                                            }
+
+                                            var param = $('#formSearchbox').searchObject();
+                                            $.ajax({
+                                                url: "/bidding/bidding_getBiddingMonthlyChart.json",
+                                                method: "POST",
+                                                data: param,
+                                                //data : {"" : ""},
+                                                dataType: "json",
+                                                success: function(resultList) {
+
+                                                    buildBiddingMonthlyChart(resultList);
+                                                    // 로직처리 부분
+                                                    //drawGrid(resultList.biddingMonthlyChartTable);
+                                                },
+                                                error: function(x, o, e) {
+                                                    alert(x.status + " : " + o + " : " + e + "111");
+                                                }
+                                            });
+                                        }
+
+
+
+                                        /*  function drawGrid(data){
+                                            $('#grid1').jqGrid('GridUnload');
+                                            $("#grid1").jqGrid({
+                                                mtype: "POST"
+                                                , postData: {}
+                                                , jsonReader: "{repeatitems: false}"
+                                                , datatype: "local"
+                                                , data: data
+                                                , height: "10%"
+                                                , autowidth: false
+                                                //, cmTemplate: {sortable: true, align: "right"}
+                                                , colNames: [
+                                                '일자',
+                                                '희망판매랑 합계(kWh)',
+                                                '희망 판매단가 평균(원/kWh)',
+                                                '희망 구매량 팝계(원)',
+                                                '희망 구매단가 평균(원)',
+
+                                            ]
+                                                , colModel: [
+                                                { name : 'bidding_ym', index : 'calculation_ym', width: 1, align : 'left'},
+                                                { name : 'sum_sale_desire_qty', index : 'qty_sum', width:1, align : 'left'},
+                                                { name : 'avg_sale_desire_price', index : 'price_avg', width: 1, align : 'left' },
+                                                { name : 'sum_buy_desire_qty', index : 'sum_req_charge', width: 1, align : 'left' },
+                                                { name : 'avg_buy_desire_price', index : 'sum_revenue_expense', width: 1, align : 'left' },
+
+                                            ]
+                                                , viewsortcols: "[false, 'vertical', false]"
+                                                , rownumbers:false
+                                                , rowNum: 10
+                                                , rowList: [10, 20, 30]
+                                                , viewrecords: true
+                                                , pager: "#pager1"
+                                                //, sortable: "false"
+                                                , serializeGridData: function(data){
+                                                    return JSON.stringify(data);
+                                                },onSelectRow : function(rowid, status, e){            // row를 선택했을 때 발생하는 이벤트
+                                                    //fn_page_move('/bidding/custMng_getCustMngView.do?menu-id=M120302&custId='+$(this).getRowData(rowid).cust_id);  
+                                                },loadComplete  : function(){             // 그리드가 완전히 모든 작업을 완료한 후 발생하는 이벤트
+                                                    jqGridResizeGap = 55;
+                                                    jqGridResizeAll();
+                                                }
+                                            });
+                                        }  */
+
+                                        //계약종에 따라 loadType selectBox 핸들링
+                                        function showLoadTypeCdByCntr() {
+                                            // cal_type_cd == DIVISION일때
+                                            if ($("#sch_cntr_cd option:selected").hasClass("DIVISION")) {
+                                                $("#loadTypeCd").show();
+                                            } else {
+                                                $("#loadTypeCd").hide();
+                                            }
+                                            // cal_type_cd == HOUSING일때
+                                            if ($("#sch_cntr_cd option:selected").hasClass("HOUSING")) {
+                                                $("#touTypeCd").show();
+                                            } else {
+                                                $("#touTypeCd").hide();
+                                            }
+                                        }
+                                    </script>
+                                    <div class="topPanelDiv">
+                                        <div class="selectArea">
+                                            <form method="formSearchbox" name="form">
+                                                <select name="sch_cntr_cd" id="sch_cntr_cd" onchange="getBiddingMonthlyChart(); showLoadTypeCdByCntr();">
+
+                                                    <option value="100" id="calTypeCd" class="HOUSING">주택용전력</option>
+
+                                                    <option value="213" id="calTypeCd" class="SINGLE">교육용(갑)저압</option>
+
+                                                    <option value="222" id="calTypeCd" class="DIVISION">일반용(갑)II고압A</option>
+
+                                                    <option value="311" id="calTypeCd" class="SINGLE">산업용(갑)I저압</option>
+
+                                                    <option value="726" id="calTypeCd" class="DIVISION">산업용(을)고압A</option>
+
+                                                </select>
+                                                &nbsp;
+                                                <div class="loadTypeCdDiv" id="loadTypeCd" style="display: none;">
+                                                    <select name="sch_load_type_cd" id="sch_load_type_cd" onchange="getBiddingMonthlyChart();">
+
+                                                        <option value="LIGHT" label="경부하">
+
+                                                        </option>
+                                                        <option value="HEAVY" label="중부하">
+
+                                                        </option>
+                                                        <option value="MAX" label="최대부하">
+
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="loadTypeCdDiv" id="touTypeCd" style="">
+                                                    <select name="sch_load_type_cd" id="touTypeCdValue" onchange="getBiddingMonthlyChart();">
+                                                        <option value="" label="구분없음">
+
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="dataDiv">
+                                            <div id="biddingMonthlyChart" data-highcharts-chart="0">
+                                                <div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 100% !important; height: 162px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="598" height="162">
+                                                        <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                        <defs>
+                                                            <clipPath id="highcharts-1">
+                                                                <rect x="0" y="0" width="519" height="73"></rect>
+                                                            </clipPath>
+                                                        </defs>
+                                                        <rect x="0" y="0" width="598" height="162" strokeWidth="0" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                        <g class="highcharts-button" style="cursor:default;" stroke-linecap="round" transform="translate(564,10)">
+                                                            <title>Chart context menu</title>
+                                                            <rect x="0.5" y="0.5" width="24" height="22" strokeWidth="1" fill="white" stroke="none" stroke-width="1" rx="2" ry="2"></rect>
+                                                            <path fill="#E0E0E0" d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5" stroke="#666" stroke-width="3" zIndex="1"></path><text x="0" zIndex="1" style="color:black;fill:black;" y="12"></text>
+                                                        </g>
+                                                        <g class="highcharts-grid" zIndex="1"></g>
+                                                        <g class="highcharts-grid" zIndex="1">
+                                                            <path fill="none" d="M 69 83.5 L 588 83.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                            <path fill="none" d="M 69 47.5 L 588 47.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                            <path fill="none" d="M 69 9.5 L 588 9.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                        </g>
+                                                        <g class="highcharts-axis" zIndex="2">
+                                                            <path fill="none" d="M 198.5 83 L 198.5 93" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                            <path fill="none" d="M 328.5 83 L 328.5 93" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                            <path fill="none" d="M 457.5 83 L 457.5 93" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                            <path fill="none" d="M 588.5 83 L 588.5 93" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                            <path fill="none" d="M 68.5 83 L 68.5 93" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                            <path fill="none" d="M 69 83.5 L 588 83.5" stroke="#C0D0E0" stroke-width="1" zIndex="7"></path>
+                                                        </g>
+                                                        <g class="highcharts-axis" zIndex="2"></g>
+                                                        <g class="highcharts-series-group" zIndex="3">
+                                                            <path fill="#0092E1" fill-opacity="0.25" d="M 0 0"></path>
+                                                            <path fill="#E8000F" fill-opacity="0.25" d="M 0 0"></path>
+                                                            <g class="highcharts-series highcharts-series-0" zIndex="0.1" transform="translate(69,10) scale(1 1)" clip-path="url(#highcharts-1)">
+                                                                <path fill="none" d="M 64.875 27.740000000000002 L 194.625 27.740000000000002 L 324.375 26.28 L 454.125 36.5" stroke="#4263EB" stroke-width="2" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path>
+                                                                <path fill="none" d="M 54.875 27.740000000000002 L 64.875 27.740000000000002 L 194.625 27.740000000000002 L 324.375 26.28 L 454.125 36.5 L 464.125 36.5" stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="22" zIndex="2" class=" highcharts-tracker" style=""></path>
+                                                            </g>
+                                                            <g class="highcharts-markers highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(69,10) scale(1 1)" clip-path="url(#highcharts-8)" style="">
+                                                                <path fill="#4263EB" d="M 454 32.5 C 459.328 32.5 459.328 40.5 454 40.5 C 448.672 40.5 448.672 32.5 454 32.5 Z"></path>
+                                                                <path fill="#4263EB" d="M 324 22.28 C 329.328 22.28 329.328 30.28 324 30.28 C 318.672 30.28 318.672 22.28 324 22.28 Z"></path>
+                                                                <path fill="#4263EB" d="M 194 23.740000000000002 C 199.328 23.740000000000002 199.328 31.740000000000002 194 31.740000000000002 C 188.672 31.740000000000002 188.672 23.740000000000002 194 23.740000000000002 Z" stroke-width="1"></path>
+                                                                <path fill="#4263EB" d="M 64 23.740000000000002 C 69.328 23.740000000000002 69.328 31.740000000000002 64 31.740000000000002 C 58.672 31.740000000000002 58.672 23.740000000000002 64 23.740000000000002 Z"></path>
+                                                            </g>
+                                                            <g class="highcharts-series highcharts-series-1" zIndex="0.1" transform="translate(69,10) scale(1 1)" clip-path="url(#highcharts-1)">
+                                                                <path fill="none" d="M 64.875 37.230000000000004 L 194.625 37.230000000000004 L 324.375 6.570000000000007 L 454.125 54.019999999999996" stroke="#08AA58" stroke-width="2" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path>
+                                                                <path fill="none" d="M 54.875 37.230000000000004 L 64.875 37.230000000000004 L 194.625 37.230000000000004 L 324.375 6.570000000000007 L 454.125 54.019999999999996 L 464.125 54.019999999999996" stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="22" zIndex="2" class=" highcharts-tracker" style=""></path>
+                                                            </g>
+                                                            <g class="highcharts-markers highcharts-series-1 highcharts-tracker" zIndex="0.1" transform="translate(69,10) scale(1 1)" clip-path="url(#highcharts-8)" style="">
+                                                                <path fill="#08AA58" d="M 454 50.019999999999996 L 458 54.019999999999996 454 58.019999999999996 450 54.019999999999996 Z"></path>
+                                                                <path fill="#08AA58" d="M 324 2.5700000000000074 L 328 6.570000000000007 324 10.570000000000007 320 6.570000000000007 Z"></path>
+                                                                <path fill="#08AA58" d="M 194 33.230000000000004 L 198 37.230000000000004 194 41.230000000000004 190 37.230000000000004 Z" stroke-width="1"></path>
+                                                                <path fill="#08AA58" d="M 64 33.230000000000004 L 68 37.230000000000004 64 41.230000000000004 60 37.230000000000004 Z"></path>
+                                                            </g>
+                                                        </g>
+                                                        <g class="highcharts-legend" zIndex="7" transform="translate(196,118)">
+                                                            <g zIndex="1">
+                                                                <g>
+                                                                    <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)">
+                                                                        <path fill="none" d="M 0 11 L 16 11" stroke="#4263EB" stroke-width="2"></path>
+                                                                        <path fill="#4263EB" d="M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z"></path><text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2" y="15">
+                                                                            <tspan>희망 판매량</tspan>
+                                                                        </text>
+                                                                    </g>
+                                                                    <g class="highcharts-legend-item" zIndex="1" transform="translate(112.796875,3)">
+                                                                        <path fill="none" d="M 0 11 L 16 11" stroke="#08AA58" stroke-width="2"></path>
+                                                                        <path fill="#08AA58" d="M 8 7 L 12 11 8 15 4 11 Z"></path><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">
+                                                                            <tspan>희망 구매량</tspan>
+                                                                        </text>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                        <g class="highcharts-axis-labels highcharts-xaxis-labels" zIndex="7"><text x="133.875" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:120px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="101" opacity="1">2022-09</text><text x="263.625" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:120px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="101" opacity="1">2022-10</text><text x="393.375" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:120px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="101" opacity="1">2022-11</text><text x="523.125" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:120px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="101" opacity="1">2022-12</text></g>
+                                                        <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"><text x="54" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:187px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="86" opacity="1">0kWh</text><text x="54" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:187px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="49" opacity="1">50kWh</text><text x="54" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:187px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="13" opacity="1">100kWh</text></g>
+                                                        <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(131,-9999)" opacity="0" visibility="visible">
+                                                            <path fill="none" d="M 3.5 0.5 L 114.5 0.5 C 117.5 0.5 117.5 0.5 117.5 3.5 L 117.5 59.5 C 117.5 62.5 117.5 62.5 114.5 62.5 L 3.5 62.5 C 0.5 62.5 0.5 62.5 0.5 59.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)" width="117" height="62"></path>
+                                                            <path fill="none" d="M 3.5 0.5 L 114.5 0.5 C 117.5 0.5 117.5 0.5 117.5 3.5 L 117.5 59.5 C 117.5 62.5 117.5 62.5 114.5 62.5 L 3.5 62.5 C 0.5 62.5 0.5 62.5 0.5 59.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)" width="117" height="62"></path>
+                                                            <path fill="none" d="M 3.5 0.5 L 114.5 0.5 C 117.5 0.5 117.5 0.5 117.5 3.5 L 117.5 59.5 C 117.5 62.5 117.5 62.5 114.5 62.5 L 3.5 62.5 C 0.5 62.5 0.5 62.5 0.5 59.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)" width="117" height="62"></path>
+                                                            <path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 114.5 0.5 C 117.5 0.5 117.5 0.5 117.5 3.5 L 117.5 59.5 C 117.5 62.5 117.5 62.5 114.5 62.5 L 3.5 62.5 C 0.5 62.5 0.5 62.5 0.5 59.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#0092E1" stroke-width="1"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="20">
+                                                                <tspan style="font-size: 10px">2022-10</tspan>
+                                                                <tspan style="fill:#0092E1" x="8" dy="15">●</tspan>
+                                                                <tspan dx="0"> 희망 판매량: </tspan>
+                                                                <tspan style="font-weight:bold" dx="0">62</tspan>
+                                                                <tspan style="fill:#E8000F" x="8" dy="15">●</tspan>
+                                                                <tspan dx="0"> 희망 구매량: </tspan>
+                                                                <tspan style="font-weight:bold" dx="0">49</tspan>
+                                                            </text>
+                                                        </g><text x="588" text-anchor="end" zIndex="8" style="cursor:pointer;color:#909090;font-size:9px;fill:#909090;" y="157">Highcharts.com</text>
+                                                    </svg></div>
+                                            </div>
+                                            <div id="biddingMonthlyChartTable">
+                                                <table class="type01">
+                                                    <caption>테이블 : 월별 입찰 현황 의 상세 내역 리스트입니다. (일자, 희망 판매량 합계, 희망 판매단가 평균 등의 내용을 확인 하실 수 있습니다.)</caption>
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">일자</th>
+                                                            <th scope="col">희망 판매량<br> 합계(kWh)</th>
+                                                            <th scope="col">희망 판매단가 <br>평균(원/kWh)</th>
+                                                            <th scope="col">희망 구매량<br> 합계(kWh)</th>
+                                                            <th scope="col">희망 구매단가<br> 평균(원/kWh)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="center">181.33</td>
+                                                            <td class="center">49</td>
+                                                            <td class="center">2022-09</td>
+                                                            <td class="center">152.33</td>
+                                                            <td class="center">62 </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center">181.33</td>
+                                                            <td class="center">49</td>
+                                                            <td class="center">2022-10</td>
+                                                            <td class="center">152.33</td>
+                                                            <td class="center">62 </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center">181.33</td>
+                                                            <td class="center">91</td>
+                                                            <td class="center">2022-11</td>
+                                                            <td class="center">152.33</td>
+                                                            <td class="center">64 </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center">203.33</td>
+                                                            <td class="center">26</td>
+                                                            <td class="center">2022-12</td>
+                                                            <td class="center">135.60</td>
+                                                            <td class="center">50 </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="contentWrap right">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">월별 E-Sharing 결과</h4>
+                                    </div>
+
+
+
+
+
+
+
+
+                                    <script>
+                                        //기본설정
+                                        $(function() {
+                                            // 차트 초기화
+                                            calculationMonthlyChart();
+                                            //월별 입찰 현황 차트 데이터 조회
+                                            getCalculationMonthlyChart();
+
+                                        });
+
+                                        function calculationMonthlyChart() {
+                                            Highcharts.setOptions({
+                                                lang: {
+                                                    thousandsSep: ','
+                                                }
+                                            });
+                                            window.calculationMonthlyChart = new Highcharts.Chart({
+                                                colors: ['#4263EB', '#08AA58'],
+                                                chart: {
+                                                    renderTo: 'calculationMonthlyChart',
+                                                    //	 			plotBackgroundColor : '#FDFEFD' // 차트 내부 색상
+                                                    zoomType: 'xy'
+                                                },
+                                                title: {
+                                                    text: ''
+                                                },
+                                                xAxis: [{
+                                                    categories: 'category',
+                                                    labels: {
+                                                        style: {
+                                                            fontSize: '10px'
+                                                        }
+                                                    }
+                                                }],
+                                                yAxis: [{ // Primary yAxis
+                                                    labels: {
+                                                        formatter: function() {
+                                                            return Highcharts.numberFormat(this.value, 0, ".", ",") + "kWh";
+                                                        },
+                                                        style: {
+                                                            color: '#8c8b9f'
+                                                        }
+                                                    },
+                                                    title: {
+                                                        text: ''
+                                                    }
+                                                }, { // Secondary yAxis
+                                                    title: {
+                                                        text: ''
+                                                    },
+                                                    labels: {
+                                                        formatter: function() {
+                                                            return Highcharts.numberFormat(this.value, 0, ".", ",") + "원";
+                                                        },
+                                                        style: {
+                                                            color: '#8c8b9f'
+                                                        }
+                                                    },
+                                                    opposite: true
+                                                }],
+                                                tooltip: {
+                                                    shared: true,
+                                                    // 			pointFormat: "{point.y: , .0f}kWh"
+                                                    // 			pointFormat : '{series.name} : <b>{point.y:,0f}kWh</b><br/>'
+                                                    // 								+'{series.name} : <b>{point.y:,0f}원</b><br/>'
+                                                },
+                                                legend: {
+                                                    layout: 'horizontal',
+                                                    align: 'center',
+                                                    verticalAlign: 'bottom',
+                                                },
+                                                series: [{
+                                                    name: '전력거래량',
+                                                    type: 'column'
+                                                }, {
+                                                    name: '편익',
+                                                    // 			type: 'line',
+                                                    type: 'column',
+                                                    yAxis: 1
+                                                }]
+                                            });
+                                        }
+
+                                        //월별 E-Sharting 결과 차트 데이터 조회
+                                        function getCalculationMonthlyChart() {
+                                            var calculationTypeCd = $("input:radio[name=sch_calculation_type_cd]:checked").val();
+                                            $.ajax({
+                                                method: "POST",
+                                                async: true,
+                                                url: "/calculation/calculation_getCalculationMonthlyChart.json?sch_calculation_type_cd=" + calculationTypeCd,
+                                                dataType: "json",
+                                                success: function(data) {
+                                                    // 차트 그리기
+                                                    buildCalculationMonthlyChart(data.calculationMonthlyChartTable);
+                                                    // 차트 테이블 그리기
+                                                    buildCalculationMonthlyChartTable("calculationMonthlyChartTable", data.calculationMonthlyChartTable, calculationTypeCd);
+                                                    //buildCalculationMonthlyChartTable(resultList.calculationMonthlyList)
+                                                }
+                                            });
+                                        }
+
+                                        //차트 그리기
+                                        function buildCalculationMonthlyChart(resultList) {
+                                            var category = new Array();
+                                            for (var i = 0; i < resultList.length; i++) {
+                                                var yyyy = resultList[i].calculation_ym.substring(0, 4);
+                                                var mm = resultList[i].calculation_ym.substring(4, 6);
+                                                var calculationYm = yyyy + "-" + mm;
+                                                category.push([calculationYm]);
+                                            }
+                                            // categrory setting
+                                            window.calculationMonthlyChart.xAxis[0].setCategories(category, false); //setCategories (Array cateories, [Boolean redraw])
+
+                                            if (resultList.length > 0) {
+
+                                                // 데이터 초기화
+                                                var qtySumData = new Array();
+                                                var allSumBenefitData = new Array();
+
+                                                // List 반복문
+                                                $.each(resultList, function(index, result) {
+                                                    // Json 반복문 (차트에서 사용할 데이터 추출)
+                                                    $.each(result, function(key, value) {
+                                                        // 차트에서 사용하지 않는 컬럼 제외
+                                                        if (key == 'qty_sum') {
+                                                            qtySumData.push(parseFloat(isNullCheck(value, '0')));
+                                                        } else if (key == 'all_sum_benefit') {
+                                                            allSumBenefitData.push(parseFloat(isNullCheck(value, '0')));
+                                                        }
+                                                    });
+                                                });
+                                                // set data
+                                                window.calculationMonthlyChart.series[0].setData(qtySumData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                                window.calculationMonthlyChart.series[1].setData(allSumBenefitData, false); //setData (Array<Mixed> data, [Boolean redraw])
+                                            }
+
+                                            // chart redraw
+                                            window.calculationMonthlyChart.redraw();
+                                        }
+
+                                        //차트 테이블 그리기
+                                        function buildCalculationMonthlyChartTable(tableDivId, resultList, calculationTypeCd) {
+                                            // 데이터 내림차순 정렬
+                                            //resultList = resultList.reverse();
+                                            // x축 카테고리
+                                            var tableHeader = [];
+                                            if (calculationTypeCd == 'BUYER') {
+                                                tableHeader = ['일자', '전력 거래량<br>(kWh)', '거래단가 평균<br>(원/kWh)', '납부 <br>금액(원)', '구매 <br>수익(원)', '운영 <br>수익(원)', '편익(원)'];
+                                            } else if (calculationTypeCd == 'SELLER') {
+                                                tableHeader = ['일자', '전력 거래량<br>(kWh)', '거래단가 평균<br>(원/kWh)', '납부 <br>금액(원)', '판매 <br>수익(원)', '운영 <br>수익(원)', '편익(원)'];
+                                            }
+                                            var htmls = "";
+
+                                            htmls += '<table class="type01">';
+                                            htmls += '	<col style="width: 15%"/>';
+                                            htmls += '	<col style="width: 18%"/>';
+                                            htmls += '	<col style="width: 18%"/>';
+                                            htmls += '	<col style="width: *%"/>';
+                                            htmls += '	<col style="width: 12%"/>';
+                                            htmls += '	<col style="width: 12%"/>';
+                                            htmls += '	<col style="width: 12%"/>';
+                                            htmls += '	<caption>테이블 : 월별 E-Sharing 결과 의 상세 내역 리스트입니다. (전력 거래량, 거래단가 평균, 납부금액 등의 내용을 확인 하실 수 있습니다.)</caption>';
+                                            htmls += '	<thead>';
+                                            htmls += '		<tr>';
+                                            $.each(tableHeader, function(i, v) {
+                                                htmls += '		<th scope="col">' + v + '</th>';
+                                            });
+                                            htmls += '		</tr>';
+                                            htmls += '	</thead>';
+
+                                            htmls += '	<tbody>';
+                                            if (resultList.length > 0) {
+                                                // List 반복문
+                                                $.each(resultList, function(index, result) {
+                                                    htmls += '		<tr>';
+
+                                                    // Json 반복문 (차트에서 사용할 데이터 추출)
+                                                    $.each(result, function(key, value) {
+                                                        // 차트에서 사용하지 않는 컬럼 제외
+                                                        if (key == 'calculation_ym') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).substr(0, 4) + "-" + String(parseFloat(isNullCheck(value, '0'))).substring(4, 6) + '</td>';
+                                                        } else if (key == 'qty_sum') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' </td>';
+                                                        } else if (key == 'price_avg') {
+                                                            htmls += '			<td class="center">' + parseFloat(isNullCheck(value, '0')).toFixed(2) + '</td>';
+                                                        } else if (key == 'sum_req_charge') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td>';
+                                                        } else if (key == 'sum_revenue_expense') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td>';
+                                                        } else if (key == 'revenue_operating') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td>';
+                                                        } else if (key == 'all_sum_benefit') {
+                                                            htmls += '			<td class="center">' + String(parseFloat(isNullCheck(value, '0'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td>';
+                                                        }
+                                                    });
+
+                                                    htmls += '		</tr>';
+                                                });
+
+                                            } else {
+                                                htmls += '		<tr>';
+                                                htmls += '			<td colspan="' + (tableHeader.length) + '"  class="center">데이터가 없습니다.</td>';
+                                                htmls += '		</tr>';
+                                            }
+
+                                            htmls += '	</tbody>';
+                                            htmls += '</table>';
+
+                                            $("#" + tableDivId).html(htmls);
+                                        }
+                                    </script>
+                                    <form id="formSearchbox" onsubmit="return false;">
+                                        <div class="topPanelDiv">
+                                            <span class="radioArea">
+                                                <input type="radio" name="sch_calculation_type_cd" value="SELLER" checked="checked" onchange="getCalculationMonthlyChart();">판매
+                                                <input type="radio" name="sch_calculation_type_cd" value="BUYER" onchange="getCalculationMonthlyChart();">구매
+                                            </span>
+
+                                            <div class="dataDiv">
+                                                <div id="calculationMonthlyChart" data-highcharts-chart="1">
+                                                    <div class="highcharts-container" id="highcharts-2" style="position: relative; overflow: hidden; width: 598px; height: 205px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); touch-action: none;"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="598" height="205">
+                                                            <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                            <defs>
+                                                                <clipPath id="highcharts-3">
+                                                                    <rect x="0" y="0" width="469" height="116"></rect>
+                                                                </clipPath>
+                                                                <linearGradient x1="0" y1="0" x2="0" y2="1" id="highcharts-17">
+                                                                    <stop offset="0" stop-color="#FFF" stop-opacity="1"></stop>
+                                                                    <stop offset="1" stop-color="#ACF" stop-opacity="1"></stop>
+                                                                </linearGradient>
+                                                            </defs>
+                                                            <rect x="0" y="0" width="598" height="205" strokeWidth="0" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                            <g class="highcharts-button" style="cursor:default;" stroke-linecap="round" transform="translate(564,10)">
+                                                                <title>Chart context menu</title>
+                                                                <rect x="0.5" y="0.5" width="24" height="22" strokeWidth="1" fill="white" stroke="none" stroke-width="1" rx="2" ry="2"></rect>
+                                                                <path fill="#E0E0E0" d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5" stroke="#666" stroke-width="3" zIndex="1"></path><text x="0" zIndex="1" style="color:black;fill:black;" y="12"></text>
+                                                            </g>
+                                                            <g class="highcharts-grid" zIndex="1">
+                                                                <path fill="none" d="M 62 126.5 L 531 126.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                                <path fill="none" d="M 62 68.5 L 531 68.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                                <path fill="none" d="M 62 9.5 L 531 9.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                            </g>
+                                                            <g class="highcharts-grid" zIndex="1">
+                                                                <path fill="none" d="M 62 126.5 L 531 126.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                                <path fill="none" d="M 62 68.5 L 531 68.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                                <path fill="none" d="M 62 9.5 L 531 9.5" stroke="#D8D8D8" stroke-width="1" zIndex="1" opacity="1"></path>
+                                                            </g>
+                                                            <g class="highcharts-grid" zIndex="1"></g>
+                                                            <g class="highcharts-axis" zIndex="2"></g>
+                                                            <g class="highcharts-axis" zIndex="2"></g>
+                                                            <g class="highcharts-axis" zIndex="2">
+                                                                <path fill="none" d="M 178.5 126 L 178.5 136" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                                <path fill="none" d="M 296.5 126 L 296.5 136" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                                <path fill="none" d="M 413.5 126 L 413.5 136" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                                <path fill="none" d="M 531.5 126 L 531.5 136" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                                <path fill="none" d="M 61.5 126 L 61.5 136" stroke="#C0D0E0" stroke-width="1" opacity="1"></path>
+                                                                <path fill="none" d="M 62 126.5 L 531 126.5" stroke="#C0D0E0" stroke-width="1" zIndex="7"></path>
+                                                            </g>
+                                                            <g class="highcharts-series-group" zIndex="3">
+                                                                <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(62,10) scale(1 1)" style="" clip-path="url(#highcharts-3)">
+                                                                    <rect x="26.5" y="23.5" width="29" height="93" stroke="#FFFFFF" stroke-width="1" fill="#0092E1" rx="0" ry="0"></rect>
+                                                                    <rect x="143.5" y="87.5" width="29" height="29" stroke="#FFFFFF" stroke-width="1" fill="#0092E1" rx="0" ry="0"></rect>
+                                                                    <rect x="260.5" y="52.5" width="29" height="64" stroke="#FFFFFF" stroke-width="1" fill="#0092E1" rx="0" ry="0"></rect>
+                                                                    <rect x="378.5" y="70.5" width="29" height="46" stroke="#FFFFFF" stroke-width="1" fill="#0092E1" rx="0" ry="0"></rect>
+                                                                </g>
+                                                                <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(62,10) scale(1 1)" clip-path="none"></g>
+                                                                <g class="highcharts-series highcharts-series-1 highcharts-tracker" zIndex="0.1" transform="translate(62,10) scale(1 1)" style="" clip-path="url(#highcharts-3)">
+                                                                    <rect x="61.5" y="83.5" width="29" height="33" stroke="#FFFFFF" stroke-width="1" fill="#E8000F" rx="0" ry="0"></rect>
+                                                                    <rect x="178.5" y="41.5" width="29" height="75" stroke="#FFFFFF" stroke-width="1" fill="#E8000F" rx="0" ry="0"></rect>
+                                                                    <rect x="296.5" y="73.5" width="29" height="43" stroke="#FFFFFF" stroke-width="1" fill="#E8000F" rx="0" ry="0"></rect>
+                                                                    <rect x="413.5" y="49.5" width="29" height="67" stroke="#FFFFFF" stroke-width="1" fill="#E8000F" rx="0" ry="0"></rect>
+                                                                </g>
+                                                                <g class="highcharts-markers highcharts-series-1" zIndex="0.1" transform="translate(62,10) scale(1 1)" clip-path="none"></g>
+                                                            </g>
+                                                            <g class="highcharts-legend" zIndex="7" transform="translate(218,161)">
+                                                                <g zIndex="1">
+                                                                    <g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)"><text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2" y="15">전력거래량</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#0092E1"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(108.99996948242188,3)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">편익</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#E8000F"></rect>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                            <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"><text x="47" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:187px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="129" opacity="1">0kWh</text><text x="47" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:187px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="71" opacity="1">10kWh</text><text x="47" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:187px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="13" opacity="1">20kWh</text></g>
+                                                            <g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"><text x="546" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:187px;text-overflow:clip;" text-anchor="start" transform="translate(0,0)" y="129" opacity="1">0원</text><text x="546" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:187px;text-overflow:clip;" text-anchor="start" transform="translate(0,0)" y="71" opacity="1">4,000원</text><text x="546" style="color:#8c8b9f;cursor:default;font-size:11px;fill:#8c8b9f;width:187px;text-overflow:clip;" text-anchor="start" transform="translate(0,0)" y="13" opacity="1">8,000원</text></g>
+                                                            <g class="highcharts-axis-labels highcharts-xaxis-labels" zIndex="7"><text x="120.625" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:107px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="144" opacity="1">2022-01</text><text x="237.875" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:107px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="144" opacity="1">2022-02</text><text x="355.125" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:107px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="144" opacity="1">2022-03</text><text x="472.375" style="color:#606060;cursor:default;font-size:10px;fill:#606060;width:107px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="144" opacity="1">2022-04</text></g>
+                                                            <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(343,-9999)" opacity="0" visibility="visible">
+                                                                <path fill="none" d="M 3.5 0.5 L 103.5 0.5 C 106.5 0.5 106.5 0.5 106.5 3.5 L 106.5 59.5 C 106.5 62.5 106.5 62.5 103.5 62.5 L 3.5 62.5 C 0.5 62.5 0.5 62.5 0.5 59.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)" width="106" height="62"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 103.5 0.5 C 106.5 0.5 106.5 0.5 106.5 3.5 L 106.5 59.5 C 106.5 62.5 106.5 62.5 103.5 62.5 L 3.5 62.5 C 0.5 62.5 0.5 62.5 0.5 59.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)" width="106" height="62"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 103.5 0.5 C 106.5 0.5 106.5 0.5 106.5 3.5 L 106.5 59.5 C 106.5 62.5 106.5 62.5 103.5 62.5 L 3.5 62.5 C 0.5 62.5 0.5 62.5 0.5 59.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)" width="106" height="62"></path>
+                                                                <path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 103.5 0.5 C 106.5 0.5 106.5 0.5 106.5 3.5 L 106.5 59.5 C 106.5 62.5 106.5 62.5 103.5 62.5 L 3.5 62.5 C 0.5 62.5 0.5 62.5 0.5 59.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#0092E1" stroke-width="1"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="20">
+                                                                    <tspan style="font-size: 10px">2022-04</tspan>
+                                                                    <tspan style="fill:#0092E1" x="8" dy="15">●</tspan>
+                                                                    <tspan dx="0"> 전력거래량: </tspan>
+                                                                    <tspan style="font-weight:bold" dx="0">8</tspan>
+                                                                    <tspan style="fill:#E8000F" x="8" dy="15">●</tspan>
+                                                                    <tspan dx="0"> 편익: </tspan>
+                                                                    <tspan style="font-weight:bold" dx="0">4,588</tspan>
+                                                                </text>
+                                                            </g><text x="588" text-anchor="end" zIndex="8" style="cursor:pointer;color:#909090;font-size:9px;fill:#909090;" y="200">Highcharts.com</text>
+                                                        </svg></div>
+                                                </div>
+                                                <div id="calculationMonthlyChartTable">
+                                                    <table class="type01">
+                                                        <colgroup>
+                                                            <col style="width: 15%">
+                                                            <col style="width: 18%">
+                                                            <col style="width: 18%">
+                                                            <col style="width: *%">
+                                                            <col style="width: 12%">
+                                                            <col style="width: 12%">
+                                                            <col style="width: 12%">
+                                                        </colgroup>
+                                                        <caption>테이블 : 월별 E-Sharing 결과 의 상세 내역 리스트입니다. (전력 거래량, 거래단가 평균, 납부금액 등의 내용을 확인 하실 수 있습니다.)</caption>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">일자</th>
+                                                                <th scope="col">전력 거래량<br>(kWh)</th>
+                                                                <th scope="col">거래단가 평균<br>(원/kWh)</th>
+                                                                <th scope="col">납부 <br>금액(원)</th>
+                                                                <th scope="col">판매 <br>수익(원)</th>
+                                                                <th scope="col">운영 <br>수익(원)</th>
+                                                                <th scope="col">편익(원)</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="center">2022-01</td>
+                                                                <td class="center">9,053</td>
+                                                                <td class="center">2,253</td>
+                                                                <td class="center">2,715.9</td>
+                                                                <td class="center">16 </td>
+                                                                <td class="center">124.58</td>
+                                                                <td class="center">7,345,360</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="center">2022-02</td>
+                                                                <td class="center">11,926</td>
+                                                                <td class="center">5,166</td>
+                                                                <td class="center">3,577.8</td>
+                                                                <td class="center">5 </td>
+                                                                <td class="center">125.92</td>
+                                                                <td class="center">5,515,130</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="center">2022-03</td>
+                                                                <td class="center">8,168</td>
+                                                                <td class="center">2,998</td>
+                                                                <td class="center">2,450.4</td>
+                                                                <td class="center">11 </td>
+                                                                <td class="center">123.16</td>
+                                                                <td class="center">4,778,810</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="center">2022-04</td>
+                                                                <td class="center">9,858</td>
+                                                                <td class="center">4,588</td>
+                                                                <td class="center">2,957.4</td>
+                                                                <td class="center">8 </td>
+                                                                <td class="center">132.36</td>
+                                                                <td class="center">5,246,010</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="totalPageWrap">
+                            <div id="separate">
+                                <div class="contentWrap left" style="width:50%;">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">고객 정보</h4>
+                                    </div>
+
+
+
+
+
+
+
+                                    <script>
+                                        // data set Array
+                                        chartSetData1 = [];
+                                        chartSetData2 = [];
+                                        //기본설정
+                                        $(function() {
+                                            /** 차트 초기화 */
+                                            // 판매자 차트
+                                            //drawSellerChart();
+                                            // 구매자 차트
+                                            //drawBuyerChart();
+                                            // 판매자 차트 데이터 조회
+                                            getSellerChart();
+                                            // 구매자 차트 데이터 조회
+                                            getBuyerChart();
+                                        });
+
+                                        //판매자 차트
+                                        function drawSellerChart() {
+                                            // Build the chart
+                                            Highcharts.chart('sellerChart', {
+                                                colors: ['#E03847', '#2A9DCC', '#20CA99', '#FEC858'],
+                                                chart: {
+                                                    plotBackgroundColor: null,
+                                                    plotBorderWidth: null,
+                                                    plotShadow: false,
+                                                    type: 'pie',
+                                                    width: 380
+                                                },
+                                                title: {
+                                                    text: ''
+                                                },
+                                                tooltip: {
+                                                    shared: false,
+                                                },
+                                                legend: {
+                                                    layout: 'vertical',
+                                                    align: 'left',
+                                                    verticalAlign: 'middle'
+                                                },
+                                                navigation: {
+                                                    buttonOptions: {
+                                                        enabled: false
+                                                    }
+                                                },
+                                                plotOptions: {
+                                                    pie: {
+                                                        allowPointSelect: true,
+                                                        cursor: 'pointer',
+                                                        dataLabels: {
+                                                            enabled: false
+                                                        },
+                                                        showInLegend: true
+                                                    }
+                                                },
+                                                series: [{
+                                                    name: '고객수',
+                                                    data: chartSetData1,
+                                                    colorByPoint: true
+                                                }]
+                                            });
+                                        }
+
+                                        //구매자 차트
+                                        function drawBuyerChart() {
+                                            // Build the chart
+                                            window.buyerChart = new Highcharts.Chart({
+                                                colors: ['#0A347E', '#52A1F1', '#10B981', '#F59E0B'],
+                                                chart: {
+                                                    renderTo: 'buyerChart',
+                                                    plotBackgroundColor: null,
+                                                    plotBorderWidth: null,
+                                                    plotShadow: false,
+                                                    type: 'pie',
+                                                    width: 380
+                                                },
+                                                title: {
+                                                    text: ''
+                                                },
+                                                tooltip: {
+                                                    shared: true,
+                                                },
+                                                legend: {
+                                                    layout: 'vertical',
+                                                    align: 'left',
+                                                    verticalAlign: 'middle'
+                                                },
+                                                navigation: {
+                                                    buttonOptions: {
+                                                        enabled: false
+                                                    }
+                                                },
+                                                plotOptions: {
+                                                    pie: {
+                                                        allowPointSelect: true,
+                                                        cursor: 'pointer',
+                                                        dataLabels: {
+                                                            enabled: false
+                                                        },
+                                                        showInLegend: true
+                                                    }
+                                                },
+                                                series: [{
+                                                    name: '고객수',
+                                                    data: chartSetData2,
+                                                    colorByPoint: true
+                                                }]
+                                            });
+
+                                        }
+
+                                        // 판매자 차트 데이터 조회
+                                        function getSellerChart() {
+                                            $.ajax({
+                                                type: "POST",
+                                                async: true,
+                                                url: "/dashboard/custInfo_getCustCntListByType.json?sch_esharing_cust_type_cd=SELLER",
+                                                dataType: "json",
+                                                success: function(data) {
+                                                    //판매자 차트 그리기
+                                                    buildSellerChart(data.numberOfCustByTypeList);
+                                                }
+                                            });
+                                        }
+                                        // 구매자 차트 데이터 조회
+                                        function getBuyerChart() {
+                                            $.ajax({
+                                                type: "POST",
+                                                async: true,
+                                                url: "/dashboard/custInfo_getCustCntListByType.json?sch_esharing_cust_type_cd=BUYER",
+                                                dataType: "json",
+                                                success: function(data) {
+                                                    //구매자 차트 그리기
+                                                    buildBuyerChart(data.numberOfCustByTypeList);
+                                                }
+                                            });
+                                        }
+
+                                        //판매자 차트 그리기
+                                        function buildSellerChart(resultList) {
+
+                                            if (resultList.length > 0) {
+                                                // 데이터 초기화
+                                                var custCntData = new Array();
+                                                var cntrGroupNmData = new Array();
+
+                                                // List 반복문
+                                                $.each(resultList, function(index, result) {
+
+                                                    // Json 반복문 (차트에서 사용할 데이터 추출)
+                                                    $.each(result, function(key, value) {
+                                                        // 차트에서 사용하지 않는 컬럼 제외
+                                                        if (key == 'cust_cnt') {
+                                                            custCntData.push(parseFloat(isNullCheck(value, '0')));
+                                                        } else if (key == 'cntr_group_nm') {
+                                                            cntrGroupNmData.push(value);
+                                                        }
+                                                    });
+                                                    // set data
+                                                    chartSetData1.push({
+                                                        name: cntrGroupNmData[index],
+                                                        y: custCntData[index]
+                                                    });
+                                                });
+                                            }
+                                            // chart redraw
+                                            drawSellerChart();
+                                        }
+
+                                        //구매자 차트 그리기
+                                        function buildBuyerChart(resultList) {
+
+                                            if (resultList.length > 0) {
+                                                // 데이터 초기화
+                                                var custCntData = new Array();
+                                                var cntrGroupNmData = new Array();
+
+                                                // List 반복문
+                                                $.each(resultList, function(index, result) {
+
+                                                    // Json 반복문 (차트에서 사용할 데이터 추출)
+                                                    $.each(result, function(key, value) {
+                                                        // 차트에서 사용하지 않는 컬럼 제외
+                                                        if (key == 'cust_cnt') {
+                                                            custCntData.push(parseFloat(isNullCheck(value, '0')));
+                                                        } else if (key == 'cntr_group_nm') {
+                                                            cntrGroupNmData.push(value);
+                                                        }
+                                                    });
+                                                    // set data
+                                                    chartSetData2.push({
+                                                        name: cntrGroupNmData[index],
+                                                        y: custCntData[index]
+                                                    });
+
+                                                });
+                                            }
+                                            // chart redraw
+                                            drawBuyerChart();
+                                        }
+                                    </script>
+
+                                    <div class="bottomPanelDiv">
+                                        <div class="bottomPanelDivArea">
+                                            <div class="subPanel">
+                                                <h4>판매자</h4>
+                                                <div class="chartDiv" id="sellerChart" data-highcharts-chart="3">
+                                                    <div class="highcharts-container" id="highcharts-6" style="position: relative; overflow: hidden; width: 300px; height: 153px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="380" height="153">
+                                                            <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                            <defs>
+                                                                <clipPath id="highcharts-7">
+                                                                    <rect x="0" y="0" width="275" height="128"></rect>
+                                                                </clipPath>
+                                                            </defs>
+                                                            <rect x="0" y="0" width="300" height="153" strokeWidth="0" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                            <g class="highcharts-series-group" zIndex="3">
+                                                                <path fill="#E03847" fill-opacity="0.25" d="M 0 0"></path>
+                                                                <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(95,10) scale(1 1)" style="cursor:pointer;">
+                                                                    <path fill="#0A347E" d="M 137.48900164700046 10.00000112003491 A 54 54 0 0 1 189.67115037924802 77.93452791112381 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#52A1F1" d="M 189.6571897680863 77.98669208554449 A 54 54 0 0 1 110.56526873614928 110.802994046793 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#10B981" d="M 110.5184792172675 110.7760359185232 A 54 54 0 0 1 83.50000948343322 64.03200329197537 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#F59E0B" d="M 83.50000448013958 63.97800329445716 A 54 54 0 0 1 137.42499508334413 10.000052090187367 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                </g>
+                                                                <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(95,10) scale(1 1)"></g>
+                                                            </g>
+                                                            <g class="highcharts-legend" zIndex="7" transform="translate(10,33)">
+                                                                <g zIndex="1">
+                                                                    <g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)"><text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2" y="15">일반용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#0A347E"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,21)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">산업용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#52A1F1"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,39)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">교육용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#10B981"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,57)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">주택용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#F59E0B"></rect>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                            <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(205,-9999)" opacity="0" visibility="visible">
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#E03847" stroke-width="1"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="20">
+                                                                    <tspan style="font-size: 10px">일반용</tspan>
+                                                                    <tspan style="fill:#E03847" x="8" dy="15">●</tspan>
+                                                                    <tspan dx="0"> 고객수: </tspan>
+                                                                    <tspan style="font-weight:bold" dx="0">7</tspan>
+                                                                </text>
+                                                            </g><text x="370" text-anchor="end" zIndex="8" style="cursor:pointer;color:#909090;font-size:9px;fill:#909090;" y="148">Highcharts.com</text>
+                                                        </svg></div>
+                                                </div>
+                                                <table class="paddingTable">
+                                                    <colgroup>
+                                                        <col style="width : 40%;">
+                                                        <col style="width : 40%;">
+                                                        <col style="width : 20%;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr data-percent="42">
+                                                            <td class="bold">발전량 </td>
+                                                            <td class="right red">3,239</td>
+                                                            <td>kWh</td>
+                                                        </tr>
+                                                        <tr data-percent="23">
+                                                            <td class="bold">PV 용량</td>
+                                                            <td class="right red">580 </td>
+                                                            <td class="bold">kW</td>
+                                                        </tr>
+                                                        <tr data-percent="56">
+                                                            <td class="bold">ESS 용량</td>
+                                                            <td class="right red">311 </td>
+                                                            <td class="bold">kW</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="bottomPanelDivArea">
+                                            <div class="subPanel">
+                                                <h4>구매자</h4>
+                                                <div class="chartDiv" id="buyerChart" data-highcharts-chart="4">
+                                                    <div class="highcharts-container" id="highcharts-10" style="position: relative; overflow: hidden; width: 300px; height: 153px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="300" height="153">
+                                                            <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                            <defs>
+                                                                <clipPath id="highcharts-11">
+                                                                    <rect x="0" y="0" width="275" height="128"></rect>
+                                                                </clipPath>
+                                                            </defs>
+                                                            <rect x="0" y="0" width="380" height="153" strokeWidth="0" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                            <g class="highcharts-series-group" zIndex="3">
+                                                                <path fill="#20CA99" fill-opacity="0.25" d="M 0 0"></path>
+                                                                <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(95,10) scale(1 1)" style="cursor:pointer;">
+                                                                    <path fill="#0A347E" d="M 137.48900164700046 10.00000112003491 A 54 54 0 0 1 191.49997300000226 63.946000009 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#52A1F1" d="M 191.5 64 A 54 54 0 0 1 164.5559845528401 110.73300439599917 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#10B981" d="M 164.50923802824178 110.76003700954243 A 54 54 0 0 1 83.50000948343322 64.03200329197537 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                    <path fill="#F59E0B" d="M 83.50000448013958 63.97800329445716 A 54 54 0 0 1 137.42499508334413 10.000052090187367 L 137.5 64 A 0 0 0 0 0 137.5 64 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                                </g>
+                                                                <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(95,10) scale(1 1)"></g>
+                                                            </g>
+                                                            <g class="highcharts-legend" zIndex="7" transform="translate(10,33)">
+                                                                <g zIndex="1">
+                                                                    <g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,3)"><text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2" y="15">일반용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#0A347E"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,21)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">산업용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#52A1F1"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,39)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">교육용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#10B981"></rect>
+                                                                        </g>
+                                                                        <g class="highcharts-legend-item" zIndex="1" transform="translate(8,57)"><text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;" text-anchor="start" zIndex="2">주택용</text>
+                                                                            <rect x="0" y="4" width="16" height="12" zIndex="3" fill="#F59E0B"></rect>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                            <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(139,-9999)" opacity="0" visibility="visible">
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="none" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)" width="82" height="47"></path>
+                                                                <path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 79.5 0.5 C 82.5 0.5 82.5 0.5 82.5 3.5 L 82.5 44.5 C 82.5 47.5 82.5 47.5 79.5 47.5 L 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#20CA99" stroke-width="1"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="20">
+                                                                    <tspan style="font-size: 10px">교육용</tspan>
+                                                                    <tspan style="fill:#20CA99" x="8" dy="15">●</tspan>
+                                                                    <tspan dx="0"> 고객수: </tspan>
+                                                                    <tspan style="font-weight:bold" dx="0">8</tspan>
+                                                                </text>
+                                                            </g><text x="370" text-anchor="end" zIndex="8" style="cursor:pointer;color:#909090;font-size:9px;fill:#909090;" y="148">Highcharts.com</text>
+                                                        </svg></div>
+                                                </div>
+                                                <table class="paddingTable">
+                                                    <colgroup>
+                                                        <col style="width : 40%;">
+                                                        <col style="width : 40%;">
+                                                        <col style="width : 20%;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr data-percent="11">
+                                                            <td class="bold">소비 전력량 </td>
+                                                            <td class="right red">14,166</td>
+                                                            <td>kWh</td>
+                                                        </tr>
+                                                        <tr data-percent="95">
+                                                            <td class="bold">최대 수요</td>
+                                                            <td class="right red">3,541 </td>
+                                                            <td class="bold">kWh</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="contentWrap right">
+                                    <div class="underBar">
+                                        <h4 class="titleBullet titleName">매칭 요약정보</h4>
+                                    </div>
+
+
+
+
+
+
+
+                                    <script>
+                                        //기본설정
+                                        $(function() {
+                                            // 차트 초기화
+                                            matchingSummaryChart();
+                                        });
+
+                                        function matchingSummaryChart() {
+                                            Highcharts.chart('matchingSummaryChart', {
+                                                colors: ['#4263EB', '#A9ACBB'],
+                                                chart: {
+                                                    plotBackgroundColor: null,
+                                                    plotBorderWidth: 0,
+                                                    plotShadow: false,
+                                                    width: 300
+                                                },
+                                                title: {
+                                                    text: ''
+                                                },
+                                                tooltip: {
+                                                    shared: true,
+                                                },
+                                                legend: {
+                                                    layout: 'vertical',
+                                                    align: 'right',
+                                                    verticalAlign: 'middle'
+                                                },
+                                                plotOptions: {
+                                                    pie: {
+                                                        dataLabels: '',
+                                                        startAngle: -90,
+                                                        endAngle: 90,
+                                                        center: ['50%', '65%'],
+                                                        size: '110%'
+                                                    }
+                                                },
+                                                series: [{
+                                                    type: 'pie',
+                                                    name: '건 수',
+                                                    innerSize: '50%',
+                                                    data: [
+                                                        ['거래체결', 20],
+                                                        ['미체결', 22]
+                                                    ]
+                                                }]
+                                            });
+                                        }
+                                    </script>
+                                    <div class="bottomPanelDiv bottomImg">
+                                        <div class="dataDiv">
+                                            <table style="margin-top: 15px;">
+                                                <colgroup>
+                                                    <col style="width : 30%;">
+                                                    <col style="width : 45%;">
+                                                    <col style="width : 25%;">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="bold"><span>체결량</span></th>
+                                                        <td class="right blue bold">86 </td>
+                                                        <td>kWh</td>
+                                                    </tr>
+                                                    <tr>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="bold" style="vertical-align: top;padding-top: 15px;">체결 단가</th>
+                                                        <td colspan="2" style="height: 15%;vertical-align: text-top;">
+                                                            <table style="font-size: 0.91em;padding: 4px;">
+                                                                <colgroup>
+                                                                    <col style="width : 30%;">
+                                                                    <col style="width : 35%;">
+                                                                    <col style="width : 35%;">
+                                                                </colgroup>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>주택용</td>
+                                                                        <td>151.67 </td>
+                                                                        <td>원/kWh</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>일반용</td>
+                                                                        <td>139 </td>
+                                                                        <td>원/kWh</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>산업용</td>
+                                                                        <td>101 </td>
+                                                                        <td>원/kWh</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>교육용</td>
+                                                                        <td>0 </td>
+                                                                        <td>원/kWh</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="1">매칭 수행 일시</th>
+                                                        <td colspan="2" style="padding-left: 15px;">2022-02-15 11:47 </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="chartDiv" id="matchingSummaryChart" data-highcharts-chart="2">
+                                            <div class="highcharts-container" id="highcharts-4" style="position: relative; overflow: hidden; width: 300px; height: 200px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="300" height="400">
+                                                    <desc>Created with Highcharts 4.2.1 /Highstock 4.2.1</desc>
+                                                    <defs>
+                                                        <clipPath id="highcharts-5">
+                                                            <rect x="0" y="0" width="280" height="175"></rect>
+                                                        </clipPath>
+                                                    </defs>
+                                                    <rect x="0" y="0" width="300" height="200" strokeWidth="0" fill="#FFFFFF" class=" highcharts-background"></rect>
+                                                    <g class="highcharts-button" style="cursor:default;" stroke-linecap="round" transform="translate(266,10)">
+                                                        <title>Chart context menu</title>
+                                                        <rect x="0.5" y="0.5" width="24" height="22" strokeWidth="1" fill="white" stroke="none" stroke-width="1" rx="2" ry="2"></rect>
+                                                        <path fill="#E0E0E0" d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5" stroke="#666" stroke-width="3" zIndex="1"></path><text x="0" zIndex="1" style="color:black;fill:black;" y="12"></text>
+                                                    </g>
+                                                    <g class="highcharts-series-group" zIndex="3">
+                                                        <g class="highcharts-series highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(10,10) scale(1 1)" style="">
+                                                            <path fill="#3498DB" d="M 55.75000698984739 107.78431893411081 A 84.25 84.25 0 0 1 133.5860523727226 23.744501514278596 L 136.7930261863613 65.7472507571393 A 42.125 42.125 0 0 0 97.8750034949237 107.76715946705541 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                            <path fill="#E74C3C" d="M 133.67006106418094 23.738129570466043 A 84.25 84.25 0 0 1 224.24995787500353 107.66575001404166 L 182.12497893750177 107.70787500702083 A 42.125 42.125 0 0 0 136.83503053209046 65.74406478523302 Z" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" transform="translate(0,0)"></path>
+                                                        </g>
+                                                        <g class="highcharts-markers highcharts-series-0" zIndex="0.1" transform="translate(10,10) scale(1 1)"></g>
+                                                    </g>
+                                                    <g class="highcharts-legend" zIndex="7">
+                                                        <g zIndex="1">
+                                                            <g></g>
+                                                        </g>
+                                                    </g>
+                                                    <g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(0,-9999)">
+                                                        <path fill="none" d="M 3.5 0.5 L 13.5 0.5 C 16.5 0.5 16.5 0.5 16.5 3.5 L 16.5 13.5 C 16.5 16.5 16.5 16.5 13.5 16.5 L 3.5 16.5 C 0.5 16.5 0.5 16.5 0.5 13.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></path>
+                                                        <path fill="none" d="M 3.5 0.5 L 13.5 0.5 C 16.5 0.5 16.5 0.5 16.5 3.5 L 16.5 13.5 C 16.5 16.5 16.5 16.5 13.5 16.5 L 3.5 16.5 C 0.5 16.5 0.5 16.5 0.5 13.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></path>
+                                                        <path fill="none" d="M 3.5 0.5 L 13.5 0.5 C 16.5 0.5 16.5 0.5 16.5 3.5 L 16.5 13.5 C 16.5 16.5 16.5 16.5 13.5 16.5 L 3.5 16.5 C 0.5 16.5 0.5 16.5 0.5 13.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></path>
+                                                        <path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 13.5 0.5 C 16.5 0.5 16.5 0.5 16.5 3.5 L 16.5 13.5 C 16.5 16.5 16.5 16.5 13.5 16.5 L 3.5 16.5 C 0.5 16.5 0.5 16.5 0.5 13.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="20"></text>
+                                                    </g><text x="290" text-anchor="end" zIndex="8" style="cursor:pointer;color:#909090;font-size:9px;fill:#909090;" y="195">Highcharts.com</text>
+                                                </svg></div>
+                                        </div>
+                                        <div class="chartLegend">
+                                            <span style="background-color: #4263EB;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<span style="font-size: 13px;">거래체결 건수</span>&nbsp;&nbsp;
+                                            <span style="background-color: #A9ACBB;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<span style="font-size: 13px;">미체결 건수</span>&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                <footer id="ft">
+                    <p class="copyright">
+                        <img src="/img/smlogo.png" alt=""> <span>COPTRIGHT
+                            2020 SMART ENERGY CITY ALL RIGHTS RESERVED.</span>
+                    </p>
+                </footer>
+            </div>
+
+
+        </div>
+    </body>
+</html>
