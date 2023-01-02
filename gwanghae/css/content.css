@@ -1,0 +1,1175 @@
+@charset "utf-8";
+
+
+
+/***** Skin *****/
+/*구성*/
+div[data-bx="h3"],
+div[data-bx="h4"]{margin-top:8em;}
+div[data-type="1"]{position:relative; padding-left:34em; box-sizing:border-box;}
+
+div[data-type="1"] h3,
+div[data-type="1"] h4{position:absolute; top:0; left:0; display:block; padding-right:3em; width:34em; vertical-align:top; box-sizing:border-box;}
+h3,
+h4{margin-bottom:2em;}
+h5{margin-bottom:0.5em;}
+
+/*text style*/
+h3>span{display:block; font-size:3.4em; font-weight:700; letter-spacing:-1px; color:#121212;}
+h4>span{display:block; font-size:2.4em; font-weight:500; color:#3480CD;}
+h5{margin-top:6em;}
+h5>span{position:relative; display:block; padding-bottom:0.4em; font-size:2.2em; font-weight:500; color:#121212; box-sizing:border-box;}
+h5>span:after{content:""; position:absolute; bottom:0; left:0; width:4.5em; height:0.2em; background:url(../images/layout/h5_bul.svg) no-repeat 0 0;}
+h6{margin-top:2.5em;}
+h6>span{display:block; padding-bottom:0.7em; font-size:2.1em; font-weight:500; color:#121212; box-sizing:border-box;}
+p{font-size:1.8em; font-weight:400;}
+p.big{font-size:2em;}
+.red{color:#DE1818;}
+.blue{color:#3480CD;}
+
+@media screen and (max-width:1024px){
+    div[data-type="1"]{padding-left:0;}
+    div[data-type="1"] h3,
+    div[data-type="1"] h4{position:static; width:100%; padding-right:0;}
+}
+@media screen and (max-width:640px){
+    div[data-bx="h3"],
+    div[data-bx="h4"]{margin-top:4em;}
+    h5{margin-top:4em;}
+}
+
+/*box*/
+[data-type="box"]{padding:3em; background-color:#E9F3FD; box-sizing:border-box;}
+[data-type="box"] p{font-size:1.8em;}
+
+[data-type="box"][data-style="2"]{background-color:transparent; border:1px solid #DBDBDB;}
+
+/*table*/
+.caption{text-align:right; font-size:1.6em;}
+[data-type="table"]{width:100%; border-top:2px solid #000; font-size:1em;}
+[data-type="table"] tr th,
+[data-type="table"] tr td{padding:0.4em; border-bottom:1px solid #DBDBDB; box-sizing:border-box;}
+[data-type="table"] tr th{font-weight:500; color:#121212;}
+/*스크롤*/
+.tb_scroll{}
+
+@media screen and (max-width:640px){
+    .tb_scroll{overflow-y:auto;}
+    .tb_scroll [data-type="table"]{width:80em;}
+}
+/*col*/
+[data-type="table"]:not([data-dir="row"]) tr th,
+[data-type="table"]:not([data-dir="row"]) tr td{height:3em; font-size:1.8em;}
+[data-type="table"]:not([data-dir="row"]) tr th{background-color:#F6F6F6;}
+[data-type="table"]:not([data-dir="row"]) tr th:not(:last-child){border-right:1px solid #DBDBDB;}
+[data-type="table"]:not([data-dir="row"]) tr td:not(:last-child){border-right:1px solid #DBDBDB;}
+[data-type="table"]:not([data-dir="row"]) tr td:last-child[rowspan]{border-left:1px solid #DBDBDB;}
+[data-type="table"]:not([data-dir="row"]) tr td{text-align:center;}
+/*row*/
+[data-type="table"][data-dir="row"] tr th,
+[data-type="table"][data-dir="row"] tr td{height:3.78em; font-size:1.8em;}
+[data-type="table"][data-dir="row"] tr th{padding:0 1.8em; text-align:left;}
+
+/*list*/
+ul[data-type]>li,
+ol[data-type]>li{line-height:1.7em; font-size:1.8em; font-weight:400;}
+ul[data-type="1"]>li{position:relative; padding-left:0.9em; box-sizing:border-box;}
+ul[data-type="1"]>li:before{content:"・"; position:absolute; top:0; left:0;}
+ul[data-type="2"]>li{position:relative; padding-left:0.5em; box-sizing:border-box;}
+ul[data-type="2"]>li:before{content:"-"; position:absolute; top:0; left:0;}
+
+/*btn*/
+a[data-type="btn"]{display:inline-block; background-color:#fff; border:1px solid #BFBFBF; text-decoration:none; font-size:1em;}
+a[data-type="btn"]>span{position:relative; display:block; padding:0.5em 3.438em 0.5em 1em; font-size:1.6em; font-weight:500; color:#666; box-sizing:border-box;}
+a[data-type="btn"]>span:after{
+    content:""; position:absolute; top:0; right:0; width:2.438em; height:100%; background-color:#eee; background-repeat:no-repeat; background-position:0 0; background-size:100% auto;
+    transition:background 0.3s ease; -webkit-transition:background 0.3s ease;
+}
+a[data-type="btn"][data-ico="1"]>span:after{background-image:url(../images/layout/btn_icon_link.svg);}
+a[data-type="btn"][data-ico="2"]>span:after{background-image:url(../images/layout/btn_icon_down.svg);}
+
+a[data-type="btn"]:hover{background-color:#3480CD; border-color:#3480CD;}
+a[data-type="btn"]:hover>span{color:#fff;}
+a[data-type="btn"]:hover>span:after{background-color:#2A66A4; background-position:0 -2.438em;}
+
+@media screen and (max-width:1024px){
+    a[data-type="btn"]:hover>span:after{background-position:0 0;}
+}
+
+
+/*간격*/
+[data-bx="h4"]>h4 + .caption{margin-top:-2.5em;}
+p + [data-type="box"]{margin-top:4em;}
+p + ul[data-type]{margin-top:1.3em;}
+p + [data-type="btn"]{margin-top:2.8em;}
+
+h5 + .tb_scroll,
+h5 + [data-type="table"]{margin-top:2em;}
+p + .tb_scroll,
+p + [data-type="table"]{margin-top:3em;}
+.caption + .tb_scroll,
+.caption + [data-type="table"]{margin-top:1.5em;}
+p + .tip{margin-top:0.6em;}
+.tb_scroll + .tip,
+[data-type="table"] + .tip{margin-top:1.12em;}
+.tb_scroll + ul[data-type]{margin-top:2em;}
+.tb_scroll + .tb_scroll,
+[data-type="table"] + [data-type="table"]{margin-top:3em;}
+
+p.big + .img_boxs,
+[data-type="box"] + .img_boxs{margin-top:6em;}
+p + .img_list{margin-top:3em;}
+
+p + p:not(.tip),
+p + .tb_scroll,
+p + [data-type="table"],
+div + .img_list,
+.tb_scroll + .img_list,
+[data-type="table"] + .img_list{margin-top:3em;}
+
+@media screen and (max-width:640px){
+    p + [data-type="btn"]{margin-top:1.8em;}
+
+    p.big + .img_boxs,
+    [data-type="box"] + .img_boxs{margin-top:4em;}
+    p + .img_list{margin-top:2em;}
+
+    p + p:not(.tip),
+    p + .tb_scroll,
+    p + [data-type="table"],
+    div + .img_list,
+    .tb_scroll + .img_list,
+    [data-type="table"] + .img_list,
+    .tb_scroll + .tb_scroll,
+    [data-type="table"] + [data-type="table"],
+    .tb_scroll + [data-type="1"],
+    [data-type="table"] + [data-type="1"]{margin-top:2em;}
+    
+}
+@media screen and (max-width:420px){
+    p + [data-type="btn"]{margin-top:1.4em;}
+
+    p.big + .img_boxs,
+    [data-type="box"] + .img_boxs{margin-top:3em;}
+    p + .img_list{margin-top:1.5em;}
+
+    p + p:not(.tip),
+    p + .tb_scroll,
+    p + [data-type="table"],
+    div + .img_list,
+    .tb_scroll + .img_list,
+    [data-type="table"] + .img_list,
+    .tb_scroll + .tb_scroll,
+    [data-type="table"] + [data-type="table"],
+    .tb_scroll + [data-type="1"],
+    [data-type="table"] + [data-type="1"]{margin-top:1.5em;}
+    
+}
+
+
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 기관소개 > 인사말
+	연관단어 : #sub_01_01
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_01_01 .box_wrapss .imgss,
+#sub_01_01 .box_wrapss .imgss .name_t,
+#sub_01_01 .box_wrapss .imgss .name_t >img,
+#sub_01_01 .box_wrapss .titless,
+#sub_01_01 .box_wrapss .textss{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+
+#sub_01_01{}
+#sub_01_01 .box_wrapss:after{content: ""; display: block; clear: both;}
+#sub_01_01 .box_wrapss .imgss{position: relative; float: right; width: 43.5%; margin-left: 8.5%; padding-bottom: 5.175em; margin-bottom: 1em;}
+#sub_01_01 .box_wrapss .imgss > img{display: block; width: 100%; box-shadow: 10px 28px 30px rgba(25, 53, 116, 0.09);}
+#sub_01_01 .box_wrapss .imgss .name_t{position: absolute; bottom: 0; left: 0; display: block; width: 100%; max-width: 69.7%; padding: 1.8em 1.8em 1.8em 2em; font-size: 2em; color: #fff; background-color: #3480CD; box-sizing: border-box;}
+#sub_01_01 .box_wrapss .imgss .name_t >img{
+    position: absolute; display: block; top: 50%; right: 1.8em; width: 3.7em;
+    transform: translateY(-50%); -webkit-transform: translateY(-50%);
+}
+
+#sub_01_01 .box_wrapss{padding:4em 4.5em; border:1px solid #DBDBDB; box-sizing:border-box;}
+#sub_01_01 .box_wrapss .titless .titles{font-size:3.5em; line-height: 1.3;}
+
+#sub_01_01 .box_wrapss .textss{position: relative; padding-top: 4em; box-sizing: border-box;}
+#sub_01_01 .box_wrapss .textss ul{margin:2em 0;}
+#sub_01_01 .box_wrapss .textss ul li{line-height:1.7em; font-size:1.8em;}
+#sub_01_01 .box_wrapss .textss p+p{margin-top: 1.5em;}
+
+#sub_01_01 .box_wrapss .textss .names{display:block; margin-top:3em; font-size:2.5em; font-weight:400;}
+
+@media screen and (max-width:1100px){
+    #sub_01_01 .box_wrapss .imgss .name_t{padding: 1.8em 1.6em 1.8em 1.8em;}
+    #sub_01_01 .box_wrapss .imgss .name_t >img{right: 1.6em;}
+}
+@media screen and (max-width:1024px){
+    #sub_01_01 .box_wrapss .imgss{margin-left: 7%;}
+    #sub_01_01 .box_wrapss .imgss .name_t{max-width: 100%; padding: 1.6em 1.6em 1.6em 1.6em;}
+}
+@media screen and (max-width:640px){
+    #sub_01_01 .box_wrapss .imgss{width: 48%; margin-left: 5%;}
+    #sub_01_01 .box_wrapss .imgss .name_t{padding: 1.4em;}
+    #sub_01_01 .box_wrapss .imgss .name_t >img{right: 1.4em;}
+        
+}
+@media screen and (max-width:570px){
+    #sub_01_01 .box_wrapss .imgss .name_t{padding: 1.2em;}
+    #sub_01_01 .box_wrapss .imgss .name_t >img{right: 1.2em;}
+}
+@media screen and (max-width:540px){
+    #sub_01_01 .box_wrapss >.imgss{float: none; width: 100%; max-width: 30em; margin: 0 auto 3em;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+    메뉴구조 : 기관소개 > 설립목적
+    연관단어 : #sub_01_02_01
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_01_02_01 .tboxs .titles,
+#sub_01_02_01 .tboxs .db_wraps{transition: all 0.2s ease;}
+#sub_01_02_01{}
+#sub_01_02_01 .tboxs{position: relative; margin-top: 6.4em; min-height: 16em; padding-left: 17.4em; box-sizing: border-box;}
+#sub_01_02_01 .tboxs:first-child{margin-top: 0;}
+#sub_01_02_01 .tboxs .titles{
+    position: absolute;  display: table; table-layout: fixed; top: 50%; left: 0; height: 100%; min-height: 17.4em; width: 17.4em; text-align: center;
+    border-radius: 200px; -webkit-border-radius: 200px;
+    transform: translateY(-50%); -webkit-transform: translateY(-50%);
+}
+#sub_01_02_01 .tboxs:first-child .titles{background: #3480CD url(../images/content/01_02_01_01.svg) no-repeat left 2em bottom;}
+#sub_01_02_01 .tboxs:nth-child(2) .titles{background: #1E489B url(../images/content/01_02_01_01.svg) no-repeat left 2em bottom;}
+#sub_01_02_01 .tboxs:nth-child(3) .titles{background: #707070 url(../images/content/01_02_01_05.svg) no-repeat left 2em bottom;}
+#sub_01_02_01 .tboxs .titles strong{display: table-cell; vertical-align: middle; font-size: 2.5em; font-weight: 700; color: #fff; }
+#sub_01_02_01 .tboxs .db_wraps{position: relative; width: 100%; padding-left: 8.9em; height: auto; padding-left: 8.9em; box-sizing: border-box;}
+#sub_01_02_01 .tboxs ul.db_wraps{padding-left: 3.6em; }
+#sub_01_02_01 .tboxs .db_wraps:before{
+    content: ""; position: absolute; top: 50%; left: 0; display: block; width: 8.9em; height: 1px; border-top: 1px dashed #C4C4C4; box-sizing: border-box;
+    transform: translateY(-50%); -webkit-transform: translateY(-50%);
+}
+#sub_01_02_01 .tboxs ul.db_wraps:before{width: 3.6em;}
+#sub_01_02_01 .tboxs .db_wraps:after{
+    content: ""; position: absolute; top: 50%; left: -0.75em; display: block; width: 1.5em; height: 1.5em; background-color: #3480CD; border: 3px solid #fff; box-sizing: border-box; 
+    border-radius: 50%; -webkit-border-radius: 50%;
+    transform: translateY(-50%); -webkit-transform: translateY(-50%);
+}
+#sub_01_02_01 .tboxs:nth-child(2) .db_wraps:after{background-color: #1E489B;}
+#sub_01_02_01 .tboxs:nth-child(3) .db_wraps:after{background-color: #707070;}
+#sub_01_02_01 .tboxs .db_wraps .dboxs{
+    border: 1px dashed #C4C4C4; box-sizing: border-box;
+    border-radius: 2em; -webkit-border-radius: 2em;
+}
+#sub_01_02_01 .tboxs .db_wraps div.dboxs{display: table; table-layout: fixed; width: 100%; min-height: 16em; padding: 2.6em 5.8%;}
+#sub_01_02_01 .tboxs ul.db_wraps li.dboxs{position: relative; margin-top: 1.8em; margin-left: 5.3em; padding: 2.4em 5.55%;}
+#sub_01_02_01 .tboxs ul.db_wraps li.dboxs:first-child{margin-top: 0;}
+#sub_01_02_01 .tboxs ul.db_wraps li.dboxs:before{
+    content: ""; position: absolute; top: 50%; left: -5.3em; display: block; width: 5.3em; height: 1px; border-top: 1px dashed #C4C4C4; box-sizing: border-box;
+    transform: translateY(-50%); -webkit-transform: translateY(-50%);
+}
+#sub_01_02_01 .tboxs ul.db_wraps li.dboxs:after{
+    content: ""; position: absolute; top: 50%; left: -5.3em; display: block; width: 1px; height: calc(100% + 1.8em); border-left: 1px dashed #C4C4C4; box-sizing: border-box;
+    transform: translateY(-50%); -webkit-transform: translateY(-50%);
+}
+#sub_01_02_01 .tboxs ul.db_wraps li.dboxs:first-child:after{
+    height: calc(50% + 0.9em);
+    transform: translateY(0); -webkit-transform: translateY(0);
+}
+#sub_01_02_01 .tboxs ul.db_wraps li.dboxs:last-child:after{
+    height: calc(50% + 0.9em);
+    transform: translateY(-100%); -webkit-transform: translateY(-100%);
+}
+#sub_01_02_01 .tboxs .db_wraps .dboxs p{line-height: 1.6;}
+#sub_01_02_01 .tboxs .db_wraps div.dboxs p{display: table-cell; vertical-align: middle;}
+#sub_01_02_01 .tboxs ul.db_wraps li.dboxs p{font-size: 2em;}
+@media screen and (max-width:1024px){
+    #sub_01_02_01 .tboxs{padding-left: 15em; margin-top: 4em;}
+    #sub_01_02_01 .tboxs .titles{width: 15em; min-height: 15em;}
+    #sub_01_02_01 .tboxs .db_wraps{padding-left: 6em;}
+    #sub_01_02_01 .tboxs .db_wraps:before{width: 6em;}
+    #sub_01_02_01 .tboxs ul.db_wraps{padding-left: 2.5em;}
+    #sub_01_02_01 .tboxs ul.db_wraps:before{width: 2.5em;}
+    #sub_01_02_01 .tboxs ul.db_wraps li.dboxs{margin-left: 3.5em;}
+    #sub_01_02_01 .tboxs ul.db_wraps li.dboxs:after{left: -3.5em;}
+    #sub_01_02_01 .tboxs ul.db_wraps li.dboxs:before{left: -3.5em; width: 3.5em;}
+}
+@media screen and (max-width:840px){
+    #sub_01_02_01 .tboxs .titles{
+        border-radius: 2em; -webkit-border-radius: 2em;
+    }
+}
+@media screen and (max-width:640px){
+    #sub_01_02_01 .tboxs{padding-left: 12em; margin-top: 3em;}
+    #sub_01_02_01 .tboxs .titles{width: 12em; min-height: 12em;}
+    #sub_01_02_01 .tboxs .db_wraps div.dboxs,
+    #sub_01_02_01 .tboxs ul.db_wraps li.dboxs{padding: 2em ;}
+}
+@media screen and (max-width:420px){
+    #sub_01_02_01 .tboxs .db_wraps{padding-left: 4em;}
+    #sub_01_02_01 .tboxs .db_wraps:before{width: 4em;}
+    #sub_01_02_01 .tboxs ul.db_wraps{padding-left: 1.5em;}
+    #sub_01_02_01 .tboxs ul.db_wraps:before{width: 1.5em;}
+    #sub_01_02_01 .tboxs ul.db_wraps li.dboxs{margin-left: 2.5em;}
+    #sub_01_02_01 .tboxs ul.db_wraps li.dboxs:after{left: -2.5em;}
+    #sub_01_02_01 .tboxs ul.db_wraps li.dboxs:before{left: -2.5em; width: 2.5em;}
+}
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+    메뉴구조 : 기관소개 > 비전과 전략
+    연관단어 : #sub_01_02_02
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_01_02_02 .misbx .tt
+{transition:all 0.2s ease; -webkit-transition:all 0.2s ease;}
+
+#sub_01_02_02{}
+#sub_01_02_02 .misbx{margin-top:8em;}
+#sub_01_02_02 .misbx:before{
+    content:""; position:absolute; top:11em; left:50%; z-index:-1; width:90%; max-width:108em; height:100%; background:url(../images/content/01_02_02_bg.jpg) no-repeat center top 18em; background-size:100% auto;
+    transform:translateX(-50%); -webkit-transform:translateX(-50%);
+}
+#sub_01_02_02 .misbx .tt{position:relative; z-index:1; margin-top:2em; margin-bottom:3em; padding-bottom:2em; box-sizing:border-box;}
+#sub_01_02_02 .misbx .tt:before{
+    content:""; position:absolute; top:0; left:50%; z-index:-1; width:100%; max-width:115.4em; height:100%; background:url(../images/content/01_02_02_tt_line.svg) no-repeat center bottom; background-size:100% auto;
+    transform:translateX(-50%); -webkit-transform:translateX(-50%);
+}
+#sub_01_02_02 .misbx .tt>strong{position:relative; display:block; width:24.9em; height:24.9em; margin:0 auto; background-color:#fff; border:1px solid rgba(52,128,205,0.5); box-shadow:2em 4em 3em rgb(25,53,116,0.1); border-radius:50%;}
+#sub_01_02_02 .misbx .tt>strong:before{
+    content:""; position:absolute; top:0; left:0; z-index:-1; display:block; width:100%; height:100%; background-color:#fff; border:1px dashed rgba(52,128,205,0.5); border-radius:50%; font-size:2.8em; text-align:center;
+    transform:scale(1.17); -webkit-transform:scale(1.17);
+}
+#sub_01_02_02 .misbx .tt>strong>span{display:block; padding-top:2.2em; text-align:center; font-size:2.8em; box-sizing:border-box;}
+#sub_01_02_02 .misbx .tt>strong>span:before{content:""; display:block; width:2.2em; height:2.2em; margin:0 auto 0.4em; background:url(../images/content/01_02_02_logo.svg) no-repeat 0 0; background-size:100% auto;}
+
+#sub_01_02_02 .misbx .txts{max-width:115.4em; margin:0 auto;}
+#sub_01_02_02 .misbx .txts:before{content:""; display:block; width: 6.7em; height: 4.4em;  margin:0 auto; background:url(../images/content/01_02_02_arrow.svg) no-repeat 0 0; background-size:100% auto;}
+#sub_01_02_02 .misbx .txts>ul{margin-top:calc(2.5em + 1.5em);}
+#sub_01_02_02 .misbx .txts>ul>li{position:relative; padding-top:2.5em; background-color:#fff; border:1px dotted #C4C4C4; border-radius:2em; box-sizing:border-box;}
+#sub_01_02_02 .misbx .txts>ul>li:not(:first-child){margin-top:6.5em;}
+#sub_01_02_02 .misbx .txts>ul>li>strong{position:absolute; top:-2.5em; left:calc(50% - 9em); width:18em; height:5em; line-height:5em; background-image:url(../images/content/01_02_02_title_bg.svg); background-repeat:no-repeat; background-position:right bottom; background-size:auto 100%;}
+#sub_01_02_02 .misbx .txts>ul>li:first-child>strong{background-color:#289DEA;}
+#sub_01_02_02 .misbx .txts>ul>li:nth-child(2)>strong{background-color:#2278D7;}
+#sub_01_02_02 .misbx .txts>ul>li:nth-child(3)>strong{background-color:#154F9A;}
+#sub_01_02_02 .misbx .txts>ul>li>strong>span{display:block; text-align:center; font-weight:500; font-size:2em; color:#fff;}
+#sub_01_02_02 .misbx .txts>ul>li>p{margin:2em 0; padding:0 2em; font-size:2em; text-align:center; box-sizing:border-box;}
+
+@media screen and (max-width:1024px){
+    #sub_01_02_02 .misbx .tt{font-size:0.9em;}
+    #sub_01_02_02 .misbx .tt:before{display:none;}
+}
+@media screen and (max-width:640px){
+    #sub_01_02_02 .misbx .tt{font-size:0.8em;}
+
+    #sub_01_02_02 .misbx .txts>ul>li>p{margin:1.5em 0;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+    메뉴구조 : 기관소개 > CI소개
+    연관단어 : #sub_01_02_03
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_01_02_03 .cibx{border:1px solid #dbdbdb;}
+#sub_01_02_03 .cibx .logos{}
+#sub_01_02_03 .cibx .logos>img{display:block; max-width:45.3em; width:80%; margin:6em auto;}
+#sub_01_02_03 .cibx .txts{padding:2.5em 2em; background-color:#E9F3FD; box-sizing:border-box;}
+#sub_01_02_03 .cibx .txts>p{text-align:center;}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+    메뉴구조 : 기관소개 > 이사회
+    연관단어 : #sub_01_02_04
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_01_02_04{}
+#sub_01_02_04 .isa+.isa{margin-top:8em;}
+#sub_01_02_04 .isa .tt{display:block; margin-bottom:1.5em; padding-bottom:0.9em; border-bottom:1px solid #d8d8d8; font-size:2.4em; font-weight:500; color:#3480CD;}
+#sub_01_02_04 .isa>ul{overflow:hidden;}
+#sub_01_02_04 .isa>ul>li{overflow:hidden; display:inline-block; width:calc((100% - 0.2em)/2); margin-top:8em; vertical-align:top;}
+#sub_01_02_04 .isa>ul>li:first-child,
+#sub_01_02_04 .isa>ul>li:nth-child(2){margin-top:0;}
+#sub_01_02_04 .isa>ul>li .photos{
+    float:left; width:16.2em; height:16.2em;
+    transition:all 0.2s ease; -webkit-transition:all 0.2s ease;
+}
+#sub_01_02_04 .isa>ul>li .photos>img{display:block; width:100%;}
+#sub_01_02_04 .isa>ul>li .txts{
+    float:left; width:calc(100% - 16.4em); padding-left:4.2em; box-sizing:border-box;
+    transition:all 0.2s ease; -webkit-transition:all 0.2s ease;
+}
+#sub_01_02_04 .isa>ul>li .txts .names{display:block; font-size:2.3em; font-weight:500;}
+#sub_01_02_04 .isa>ul>li .txts em{display:block; margin-bottom:0.9em; font-size:1.5em; font-style:normal;}
+#sub_01_02_04 .isa>ul>li .txts .date{display:block; font-size:1.6em; font-style:normal;}
+#sub_01_02_04 .isa>ul>li .txts>span{display:block; font-size:1.6em;}
+
+#sub_01_02_04 [data-type="btn"]{margin-top:10em;}
+
+
+@media screen and (max-width:1024px){
+    #sub_01_02_04 .isa>ul>li .photos{width:14em; height:14em;}
+    #sub_01_02_04 .isa>ul>li .txts{width:calc(100% - 14em); padding-left:3em;}
+
+    #sub_01_02_04 [data-type="btn"]{margin-top:8em;}
+}
+@media screen and (max-width:640px){
+    #sub_01_02_04 .isa+.isa{margin-top:6em;}
+    #sub_01_02_04 .isa>ul>li{width:100%; margin-top:4em;}
+    #sub_01_02_04 .isa>ul>li:nth-child(2){margin-top:4em;}
+
+    #sub_01_02_04 [data-type="btn"]{margin-top:6em;}
+}
+@media screen and (max-width:380px){
+    #sub_01_02_04 .isa>ul>li .photos{width:12em; height:12em;}
+    #sub_01_02_04 .isa>ul>li .txts{width:calc(100% - 12em);}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 기관소개 > 조직도
+	연관단어 : #sub_01_03
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_01_03{}
+#sub_01_03 h3 + img{display: block; width: 100%;}
+#sub_01_03 .opp_div{width: 0; height: 0; opacity: 0; visibility: hidden; overflow: hidden;}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 기관소개 > 오시는 길
+	연관단어 : #maps_wrap
+
+////////////////////////////////////////////////////////////////////////////// */
+#maps_wrap{}
+#maps_wrap #map{width: 100%; height: 43.2em; background-color: #eee;}
+#maps_wrap #map + .tb_scroll,
+#maps_wrap #map + [data-type="table"]{margin-top: 5em;}
+@media screen and (max-width:640px){
+    #maps_wrap #map{height: 30em;}
+    #maps_wrap #map + .tb_scroll{margin-top: 3.5em;}
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 광해안전분야 > 광해방지사업
+	연관단어 : #sub_02_01
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_01 .img_list li{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_01{}
+#sub_02_01 .img_boxs img{display: block; width: 100%;}
+#sub_02_01 .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_01 .img_list li{position: relative; float: left; overflow: hidden; width: calc((100% - 1px - 4em) / 3); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_01 .img_list li:nth-child(3n-2){margin-left: 0;}
+#sub_02_01 .img_list li:nth-child(n+4){margin-top: 2em;}
+#sub_02_01 .img_list li img{display: block; width: 100%;}
+#sub_02_01 .img_list li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+#sub_02_01 .img_list li span i{font-style: normal;}
+
+@media screen and (max-width:1350px){
+    #sub_02_01 .img_list li span i{display: block;}
+    #sub_02_01 .img_list li:nth-child(n+4) span{padding: 0.25em 0.2em;}
+}
+@media screen and (max-width:1024px){
+    #sub_02_01 .img_list li span i{display: block;}
+}
+@media screen and (max-width:640px){
+    #sub_02_01 .img_list li{width: calc((100% - 5% - 1px) / 3); margin-left: 2.5%;}
+    #sub_02_01 .img_list li:nth-child(3n-2){margin-left: 0;}
+    #sub_02_01 .img_list li:nth-child(n+4){margin-top: 2.5%;}
+    #sub_02_01 .img_list li span i{display: block;}
+    #sub_02_01 .img_list li:nth-child(5) span i{display: inline;}
+}
+@media screen and (max-width:480px){
+    #sub_02_01 .img_list li:nth-child(n+4) span{max-width: 8em; margin: 0 auto;}
+    #sub_02_01 .img_list li span i{display: inline;}
+}
+@media screen and (max-width:370px){
+    #sub_02_01 .img_list li:nth-child(4) span,
+    #sub_02_01 .img_list li:nth-child(5) span{padding: 0.914em 0.2em;}
+    #sub_02_01 .img_list li:nth-child(6) span i{display: block;}
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 광물자원분야 > 광산안전사업
+	연관단어 : #sub_02_02_01
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_02_01{}
+#sub_02_02_01 .img_boxs img{display: block; width: 100%;}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 광물자원분야 > 해외지원사업
+	연관단어 : #sub_02_02_02
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_02_02 .img_list li,
+#sub_02_02_02 .line_boxs,
+#sub_02_02_02 .line_boxs .img_wraps,
+#sub_02_02_02 .line_boxs >ul{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_02_02{}
+#sub_02_02_02 [data-bx="h4"] p+ p{margin-top: 3em;}
+#sub_02_02_02 [data-bx="h4"] p + [data-type="btn"]{margin-top: 2.8em;}
+#sub_02_02_02 .img_boxs{}
+#sub_02_02_02 .img_boxs img{display: block; width: 100%;}
+#sub_02_02_02 .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_02_02 .img_list li{position: relative; float: left; overflow: hidden; width: calc((100% - 1px - 4em) / 3); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_02_02 .img_list li:nth-child(3n-2){margin-left: 0;}
+#sub_02_02_02 .img_list li img{display: block; width: 100%;}
+#sub_02_02_02 .img_list li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+#sub_02_02_02 .line_boxs{margin-top: 3.4em; padding: 4em; border: 1px solid #DBDBDB; box-sizing: border-box;}
+#sub_02_02_02 .line_boxs:after{content: ""; display: block; clear: both;}
+#sub_02_02_02 .line_boxs .img_wraps{float: right; display: inline-block; width: 29.5em; height: 28.2em; margin-top: -1em; margin-right: -2em;}
+#sub_02_02_02 .line_boxs .img_wraps img{display: block; width: 100%; height: 100%;}
+#sub_02_02_02 .line_boxs >ul{}
+#sub_02_02_02 .line_boxs >ul >li:not(:first-child){margin-top: 4em;}
+#sub_02_02_02 .line_boxs >ul >li strong{font-size: 1.8em; font-weight: 500; color: #121212;}
+#sub_02_02_02 .line_boxs >ul >li >ul{margin-top: 1.4em;}
+
+@media screen and (max-width:640px){
+    #sub_02_02_02 .img_list li{width: calc((100% - 5% - 1px) / 3); margin-left: 2.5%;}
+    #sub_02_02_02 .line_boxs{margin-top: 2.4em; padding: 3em;}
+    #sub_02_02_02 .line_boxs .img_wraps{width: 23.6em; height: 22.56em;}
+}
+@media screen and (max-width:480px){
+    #sub_02_02_02 .line_boxs .img_wraps{width: 17.7em; height: 16.92em;}
+}
+@media screen and (max-width:400px){
+    #sub_02_02_02 .line_boxs{margin-top:  1.7em;}
+    #sub_02_02_02 .img_list li span{max-width: 7em; margin: 0 auto; padding: 0.25em 0.2em;}
+    #sub_02_02_02 .img_list li:first-child span,
+    #sub_02_02_02 .img_list li:nth-child(2) span{padding: 0.914em 0.2em;}
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 광물자원분야 > 해외지원사업
+	연관단어 : #sub_02_02_03
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_02_03 .img_list li{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_02_03{}
+#sub_02_02_03 .img_boxs{}
+#sub_02_02_03 .img_boxs img{display: block; width: 100%;}
+#sub_02_02_03 .img_list{}
+#sub_02_02_03 .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_02_03 .img_list li{position: relative; float: left; overflow: hidden; width: calc((100% - 1px - 4em) / 3); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_02_03 .img_list li:nth-child(3n-2){margin-left: 0;}
+#sub_02_02_03 .img_list li img{display: block; width: 100%;}
+#sub_02_02_03 .img_list li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+#sub_02_02_03 .img_list li span i{font-style: normal;}
+@media screen and (max-width:640px){
+    #sub_02_02_03 .img_list li{width: calc((100% - 5% - 1px) / 3); margin-left: 2.5%;}
+}
+@media screen and (max-width:520px){
+    #sub_02_02_03 .img_list li span i{display: block;}
+    #sub_02_02_03 .img_list li:nth-child(1) span,
+    #sub_02_02_03 .img_list li:nth-child(2) span,
+    #sub_02_02_03 [data-bx="h4"]:nth-of-type(3) .img_list li:nth-child(1) span,
+    #sub_02_02_03 [data-bx="h4"]:nth-of-type(3) .img_list li:nth-child(3) span{padding: 0.914em 0.2em;}
+    #sub_02_02_03 .img_list li:nth-child(3) span,
+    #sub_02_02_03 [data-bx="h4"]:nth-of-type(3) .img_list li:nth-child(2) span{padding: 0.25em 0.2em;}
+}
+@media screen and (max-width:360px){
+    #sub_02_02_03 [data-bx="h4"]:nth-of-type(3) .img_list li:nth-child(1) span,
+    #sub_02_02_03 [data-bx="h4"]:nth-of-type(4) .img_list li:nth-child(1) span,
+    #sub_02_02_03 [data-bx="h4"]:nth-of-type(4) .img_list li:nth-child(2) span{max-width: 4em; margin: 0 auto; padding: 0.25em 0.2em;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 광물자원분야 > 광산물비축사업
+	연관단어 : #sub_02_02_04
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_02_04 .timg_wraps,
+#sub_02_02_04 .timg_wraps .img_boxs,
+#sub_02_02_04 .timg_wraps .img_list,
+#sub_02_02_04 .timg_wraps .img_list li{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_02_04{}
+#sub_02_02_04 .timg_wraps{margin-top: 8em;}
+#sub_02_02_04 .timg_wraps .img_boxs{}
+#sub_02_02_04 .timg_wraps .img_boxs img{display: block; width: 100%;}
+#sub_02_02_04 .timg_wraps .img_list{margin-top: 3em;}
+#sub_02_02_04 .timg_wraps .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_02_04 .timg_wraps .img_list li{position: relative; float: left; overflow: hidden; width: calc((100% - 1px - 4em) / 3); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_02_04 .timg_wraps .img_list li:nth-child(3n-2){margin-left: 0;}
+#sub_02_02_04 .timg_wraps .img_list li img{display: block; width: 100%;}
+#sub_02_02_04 .timg_wraps .img_list li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+#sub_02_02_04 .tel_boxs{position: relative; margin-top: 1.28em; padding-left: 3.7em; box-sizing: border-box;}
+#sub_02_02_04 .tel_boxs:before{content: ""; position: absolute; top: -0.2em; left: 1.22em; display: block; width: 2em; height: 2em; background: url(../images/content/02_02_04_05.svg) no-repeat center center; background-size: contain;}
+#sub_02_02_04 .tel_boxs a{text-decoration: none;}
+
+@media screen and (max-width:640px){
+    #sub_02_02_04 .timg_wraps{margin-top: 6em;}
+    #sub_02_02_04 .timg_wraps .img_list{margin-top: 4%;}
+    #sub_02_02_04 .timg_wraps .img_list li{width: calc((100% - 5% - 1px) / 3); margin-left: 2.5%;}
+}
+@media screen and (max-width:420px){
+    #sub_02_02_04 .timg_wraps{margin-top: 4em;}
+    #sub_02_02_04 .timg_wraps .img_list li:nth-child(2) span{max-width: 6em; margin: 0 auto; padding: 0.25em 0.2em;}
+    #sub_02_02_04 .timg_wraps .img_list li:first-child span,
+    #sub_02_02_04 .timg_wraps .img_list li:nth-child(3) span{padding: 0.914em 0.2em;}
+}
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 광물자원분야 > 협력사업
+	연관단어 : #sub_02_02_05
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_02_05 .img_list li{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_02_05{}
+#sub_02_02_05 .img_boxs{}
+#sub_02_02_05 .img_boxs img{display: block; width: 100%;}
+#sub_02_02_05 .img_list{}
+#sub_02_02_05 .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_02_05 .img_list li{position: relative; float: left; overflow: hidden; width: calc((100% - 2em) / 2); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_02_05 .img_list li:nth-child(2n-1){margin-left: 0;}
+#sub_02_02_05 .img_list li img{display: block; width: 100%;}
+#sub_02_02_05 .img_list li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+@media screen and (max-width:640px){
+    #sub_02_02_05 .img_list li{width: calc((100% - 2.5%) / 2); margin-left: 2.5%;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 해외사업분야 > 투자사업
+	연관단어 : #sub_02_03
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_03 .img_list li{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_03{}
+#sub_02_03 .img_boxs img{display: block; width: 100%;}
+#sub_02_03 .img_list{}
+#sub_02_03 .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_03 .img_list li{position: relative; float: left; overflow: hidden; width: calc((100% - 2em) / 2); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_03 .img_list li:nth-child(2n-1){margin-left: 0;}
+#sub_02_03 .img_list li img{display: block; width: 100%;}
+#sub_02_03 .img_list li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+@media screen and (max-width:640px){
+    #sub_02_03 .img_list li{width: calc((100% - 2.6%) / 2); margin-left: 2.5%;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 지역·산업분야 > 국가기술자격검증
+	연관단어 : #sub_02_04_01
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_04_01{}
+#sub_02_04_01 .tb_tt{position:relative; display:block; padding-bottom:0.8em; font-size:2.2em; font-weight:500; color:#121212; box-sizing:border-box;}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 지역·산업분야 > 국가기술자격검증
+	연관단어 : #sub_02_04_02
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_04_02 .img_list li{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_04_02{}
+#sub_02_04_02 .img_boxs img{display: block; width: 100%;}
+#sub_02_04_02 .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_04_02 .img_list li{position: relative; float: left; overflow: hidden; width: calc((100% - 2em) / 2); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_04_02 .img_list li:nth-child(2n-1){margin-left: 0;}
+#sub_02_04_02 .img_list li:nth-child(n+3){margin-top: 2em;}
+#sub_02_04_02 .img_list li img{display: block; width: 100%;}
+#sub_02_04_02 .img_list li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+@media screen and (max-width:1024px){
+    #sub_02_04_02 [data-bx="h4"] h4 span br{display: none;}
+}
+@media screen and (max-width:640px){
+    #sub_02_04_02 .img_list li{width: calc((100% - 2.6%) / 2); margin-left: 2.5%;}
+    #sub_02_04_02 .img_list li:nth-child(n+3){margin-top: 2.5%;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 지역·산업분야 > 석·연탄산업지원사업
+	연관단어 : #sub_02_04_03
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_04_03 .img_list,
+#sub_02_04_03 .img_list .l_bx,
+#sub_02_04_03 .img_list .l_bx li,
+#sub_02_04_03 .img_list .r_bx,
+#sub_02_04_03 .img_list > li{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_04_03{}
+#sub_02_04_03 .img_boxs img{display: block; width: 100%;}
+#sub_02_04_03  .img_list{}
+#sub_02_04_03  .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_04_03  .img_list .l_bx,
+#sub_02_04_03  .img_list .r_bx{float: left;}
+#sub_02_04_03  .img_list .l_bx{width: calc(100% - 32% - 2em);}
+#sub_02_04_03  .img_list .l_bx:after{content: ""; display: block; clear: both;}
+#sub_02_04_03  .img_list .l_bx li{float: left; width: calc((100% - 2.1em) / 2); margin-left: 2em; overflow: hidden;}
+#sub_02_04_03  .img_list .l_bx li img{display: block; width: 100%;}
+#sub_02_04_03  .img_list .l_bx li:nth-child(2n-1){margin-left: 0;}
+#sub_02_04_03  .img_list .l_bx li:nth-child(n+3){margin-top: 2em;}
+#sub_02_04_03  .img_list .r_bx{width: 32%; margin-left: 2em; overflow: hidden;}
+#sub_02_04_03  .img_list .r_bx img{display: block; width: 100%;}
+
+#sub_02_04_03 .img_list > li{position: relative; float: left; overflow: hidden; width: calc((100% - 4.1em) / 3); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_04_03 .img_list > li:nth-child(3n-2){margin-left: 0;}
+#sub_02_04_03 .img_list > li img{display: block; width: 100%;}
+#sub_02_04_03 .img_list > li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+@media screen and (max-width:640px){
+    #sub_02_04_03 .img_list .l_bx{width: calc(100% - 32% - 2.5%);}
+    #sub_02_04_03 .img_list .r_bx{margin-left: 2.5%;}
+    #sub_02_04_03 .img_list .l_bx li{width: calc((100% - 4.1%) / 2); margin-left: 4.05%;}
+    #sub_02_04_03 .img_list .l_bx li:nth-child(n+3){margin-top: 4.05%;}
+    #sub_02_04_03 .img_list > li{width: calc((100% - 5% - 1px) / 3); margin-left: 2.5%;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 지역·산업분야 > 융자사업
+	연관단어 : #sub_02_04_05
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_04_05{}
+#sub_02_04_05 .img_boxs img{display: block; width: 100%;}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업안내 > 글로벌협력사업
+	연관단어 : #sub_02_05
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_05{}
+#sub_02_05 .img_boxs img{display: block; width: 100%;}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업소개 > R&D > 광해방지R&D
+	연관단어 : #sub_02_06_01
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_06_01 .img_list li{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_06_01{}
+#sub_02_06_01 .img_boxs img{display: block; width: 100%;}
+#sub_02_06_01 .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_06_01 .img_list li{position: relative; float: left; overflow: hidden; width: calc((100% - 2em) / 2); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_06_01 .img_list li:nth-child(2n-1){margin-left: 0;}
+#sub_02_06_01 .img_list li:nth-child(n+3){margin-top: 2em;}
+#sub_02_06_01 .img_list li img{display: block; width: 100%;}
+#sub_02_06_01 .img_list li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+@media screen and (max-width:640px){
+    #sub_02_06_01 .img_list li{width: calc((100% - 2.5% - 1px) / 2); margin-left: 2.5%;}
+    #sub_02_06_01 .img_list li:nth-child(n+3){margin-top: 2.5%;}
+}
+@media screen and (max-width:480px){
+    #sub_02_06_01 .img_list li:nth-child(3) span{max-width: 10em; margin: 0 auto; padding: 0.25em 0.2em;}
+    #sub_02_06_01 .img_list li:nth-child(4) span{max-width: 10em; margin: 0 auto; padding: 0.25em 0.2em;}    
+}
+@media screen and (max-width:420px){
+    #sub_02_06_01 .img_list li span{max-width: 9em; margin: 0 auto; padding: 0.25em 0.2em;}
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업소개 > R&D > 자원개발R&D
+	연관단어 : #sub_02_06_02
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_06_02 .img_list li,
+#sub_02_06_02 .line_boxs{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_06_02{}
+#sub_02_06_02 .img_boxs img{display: block; width: 100%;}
+#sub_02_06_02 .img_list:after{content: ""; display: block; clear: both;}
+#sub_02_06_02 .img_list li{position: relative; float: left; overflow: hidden; width: calc((100% - 6em) / 4); margin-left: 2em; background-color: #EBEBEB; text-align: center; box-sizing: border-box;}
+#sub_02_06_02 .img_list li:nth-child(4n+1){margin-left: 0;}
+#sub_02_06_02 .img_list li img{display: block; width: 100%;}
+#sub_02_06_02 .img_list li span{display: block; padding: 0.688em 0.2em; line-height: 1.4; font-size: 1.6em; box-sizing: border-box;}
+#sub_02_06_02 .line_boxs{margin-top: 3.4em; border: 1px solid #DBDBDB; box-sizing: border-box;}
+#sub_02_06_02 .line_boxs img{display: block; width: 100%;}
+#sub_02_06_02 .line_boxs + .img_list{margin-top: 3em;}
+#sub_02_06_02 .line_boxs + .img_list li{width: calc((100% - 4em - 1px) / 3);}
+#sub_02_06_02 .line_boxs + .img_list li:nth-child(4n+1){margin-left: 2em;}
+#sub_02_06_02 .line_boxs + .img_list li:nth-child(3n+1){margin-left: 0;}
+@media screen and (max-width:640px){
+    #sub_02_06_02 div:not(.line_boxs) + .img_list li{width: calc((100% - 2.5% - 1px) / 2); margin-left: 2.5%;}
+    #sub_02_06_02 div:not(.line_boxs) + .img_list li:nth-child(2n-1){margin-left: 0;}
+    #sub_02_06_02 div:not(.line_boxs) + .img_list li:nth-child(n+3){margin-top: 2.5%;}
+    #sub_02_06_02 .line_boxs + .img_list{margin-top: 4%;}
+    #sub_02_06_02 .line_boxs + .img_list li{width: calc((100% - 5% - 1px) / 3); margin-left: 2.5%;}
+    #sub_02_06_02 .line_boxs{margin-top: 2.4em;}    
+}
+@media screen and (max-width:420px){
+    #sub_02_06_02 .line_boxs{margin-top: 1.7em;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업소개 > 시험분석의뢰 > 시험분야
+	연관단어 : #sub_02_07_01
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_07_01{}
+#sub_02_07_01 .img_boxs img{display: block; width: 100%;}
+#sub_02_07_01 .str_txts:not(:first-of-type){margin-top: 0.55em;}
+#sub_02_07_01 .str_txts strong{font-weight: 500; color: #121212;}
+#sub_02_07_01 .str_txts span{position: relative; display: inline-block; text-indent: 1em; color: #888;}
+#sub_02_07_01 .str_txts span:before{content: ""; position: absolute; top: 0.45em; left: 0.4em; display: block; width: 1px; height: 0.75em; background-color: #DBDDBD;}
+#sub_02_07_01 [data-bx="h4"] >div{margin-top: 3em;}
+#sub_02_07_01 [data-bx="h4"] >div >ul{border-top: 2px solid #000000; box-sizing: border-box;}
+#sub_02_07_01 [data-bx="h4"] >div >ul >li{display: table; table-layout: fixed; width: 100%; border-bottom: 1px solid #DBDBDB; font-size: 1.8em; box-sizing: border-box;}
+#sub_02_07_01 [data-bx="h4"] >div >ul >li strong,
+#sub_02_07_01 [data-bx="h4"] >div >ul >li span{display: table-cell; vertical-align: middle; padding: 1.3888em 1.666667em; box-sizing: border-box;}
+#sub_02_07_01 [data-bx="h4"] >div >ul >li strong{width: 12.666667em; padding: 1.3888em 0 1.3888em 1.666667em; font-weight: 500; color: #121212; line-height: 1.8;}
+#sub_02_07_01 [data-bx="h4"] >div >ul >li strong.ver_top,
+#sub_02_07_01 [data-bx="h4"] >div >ul >li span.ver_top{vertical-align: top;}
+@media screen and (max-width:1024px){
+    #sub_02_07_01 [data-bx="h4"] >div >ul >li strong,
+    #sub_02_07_01 [data-bx="h4"] >div >ul >li span{padding: 1em 1.2em;}
+    #sub_02_07_01 [data-bx="h4"] >div >ul >li strong{width: 10em; padding: 1em 0 1em 1.2em;}
+}
+@media screen and (max-width:640px){
+    #sub_02_07_01 [data-bx="h4"] >div >ul >li strong{width: 7em;}
+    #sub_02_07_01 [data-bx="h4"] >div{margin-top: 2em;}
+}
+@media screen and (max-width:420px){
+    #sub_02_07_01 [data-bx="h4"] >div{margin-top: 1.4em;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업소개 > 시험분석의뢰 > 시험의뢰절차
+	연관단어 : #sub_02_07_02
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_07_02 .pros{}
+#sub_02_07_02 .pros>ul>li{position:relative; min-height:9.1em; margin-bottom:6em; padding:3em; border:1px solid #8F92AA; box-sizing:border-box;}
+#sub_02_07_02 .pros>ul>li:not(:last-child):before{
+    content: ""; position: absolute; bottom:-4.9em; left: 50%; display: block; width: 3.7em; height: 3.7em; background: url(../images/content/02_07_02_01.svg) no-repeat center center; background-size:100% auto;
+    transform: translateX(-50%); -webkit-transform: translateX(-50%);
+}
+#sub_02_07_02 .pros>ul>li>em{position:absolute; top:3.2em; right:3em;}
+#sub_02_07_02 .pros>ul>li>em>span{display:block; font-size:1.6em; font-weight:700; font-style:normal; color:rgba(0,0,0,0.3);}
+#sub_02_07_02 .pros>ul>li .tt{position:absolute; top:3em; left:3em; display:block; width:17em;}
+#sub_02_07_02 .pros>ul>li .tt>span{display:block; font-size:2em; font-weight:500;}
+#sub_02_07_02 .pros>ul>li .bxs{width:100%; padding-left:17em; box-sizing:border-box;}
+#sub_02_07_02 .pros>ul>li .bxs>p:first-child{padding-right:3em; box-sizing:border-box;}
+#sub_02_07_02 .pros>ul>li .bxs .btnbx{position:relative; width:100%; padding:3em 21em 3em 0; border-bottom:1px dashed #DBDBDB; box-sizing:border-box;}
+#sub_02_07_02 .pros>ul>li .bxs .btnbx .tels{position:relative; display:block; margin:0.7em 0 0.3em; padding-left:2.5em; font-size:1.8em; box-sizing:border-box;}
+#sub_02_07_02 .pros>ul>li .bxs .btnbx .tels:before{content: ""; position: absolute; top: -0.2em; left: 0; display: block; width: 2em; height: 2em; background: url(../images/content/02_02_04_05.svg) no-repeat center center; background-size: contain;}
+#sub_02_07_02 .pros>ul>li .bxs .btnbx .tels>a{text-decoration:none;}
+#sub_02_07_02 .pros>ul>li .bxs .btnbx a[data-type="btn"]{position:absolute !important; top:3em; right:0;}
+#sub_02_07_02 .pros>ul>li .bxs .red{margin-top:1.4em;}
+
+@media screen and (max-width:640px){
+    #sub_02_07_02 .pros>ul>li{min-height:auto;}
+    #sub_02_07_02 .pros>ul>li .tt{position:static; width:100%;}
+    #sub_02_07_02 .pros>ul>li .bxs{margin-top:1em; padding-left:0;}
+    #sub_02_07_02 .pros>ul>li .bxs>p:first-child{padding-right:0;}
+    #sub_02_07_02 .pros>ul>li .bxs .btnbx{padding:3em 0;}
+    #sub_02_07_02 .pros>ul>li .bxs .btnbx a[data-type="btn"]{position:relative !important; top:auto; right:auto; margin-top:1em;}
+}
+
+/*#sub_02_07_02 .exam_list li,
+#sub_02_07_02 .exam_list li > div > .steps,
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div p{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_07_02{}
+#sub_02_07_02 .exam_list{}
+#sub_02_07_02 .exam_list >li{position: relative; margin-bottom: 5.7em; padding: 2.8em 4em; border: 1px solid #8F92AA; box-sizing: border-box;}
+#sub_02_07_02 .exam_list >li:last-child{margin-bottom: 0;}
+#sub_02_07_02 .exam_list >li:last-child:before{display: none;}
+#sub_02_07_02 .exam_list >li:before{
+    content: ""; position: absolute; bottom: -4.7em; left: 50%; display: block; width: 3.7em; height: 3.7em; background: url(../images/content/02_07_02_01.svg) no-repeat center center; background-size: contain;
+    transform: translateX(-50%); -webkit-transform: translateX(-50%);
+}
+#sub_02_07_02 .exam_list >li > div{position: relative;}
+#sub_02_07_02 .exam_list >li > div > span,
+#sub_02_07_02 .exam_list >li > div > strong{font-size: 1.8em;}
+#sub_02_07_02 .exam_list >li > div > strong.blue{font-size: 2em;}
+#sub_02_07_02 .exam_list >li > div > strong{font-weight: 500;}
+#sub_02_07_02 .exam_list >li > div > .steps{
+    position: absolute; bottom: 50%; right: 0; font-size: 1.6em; font-weight: 700; color: rgba(0, 0, 0, 0.3);
+    transform: translateY(50%); -webkit-transform: translateY(50%);
+}
+#sub_02_07_02 .exam_list >li:nth-child(2) > div > .steps{
+    bottom: auto; top: 0;
+    transform: translateY(0); -webkit-transform: translateY(0);
+}
+#sub_02_07_02 .exam_list >li.tabless >.table_div{display: table; table-layout: fixed; width: 100%; padding-right: 10em; box-sizing: border-box;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div strong,
+#sub_02_07_02 .exam_list >li.tabless >.table_div .d_text{display: table-cell; vertical-align: middle;}
+#sub_02_07_02 .exam_list >li.tabless:nth-child(2) >.table_div strong{vertical-align: top;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div > strong{width: 8em;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div .d_text{width: 100%;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div .d_text > div{font-size: 0.555556em;}
+
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div{margin-top: 1.9em;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div ul{}
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li{display: table; table-layout: fixed; width: 100%; padding: 2.8em 0 2.8em 16em; border-bottom: 1px dashed #DBDBDB; box-sizing: border-box;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li strong{display: table-cell; width: 17em; vertical-align: middle; font-size: 1.8em; vertical-align: middle; font-weight: 400;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li [data-type="btn"]{float: right;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div p{padding: 1.555556em 0 0 8.8888889em; box-sizing: border-box;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div p.tel_box{margin-top: 1.45em; padding: 0 0 0.95em 8.8888889em;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div p.tel_box span{position: relative; padding-left: 2.4445em; box-sizing: border-box;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div p.tel_box span:before{content: ""; position: absolute; top: -0.2em; left: 0; display: block; width: 2em; height: 2em; background: url(../images/content/02_02_04_05.svg) no-repeat center center; background-size: contain;}
+#sub_02_07_02 .exam_list >li.tabless >.table_div + div p.tel_box span a{text-decoration: none;}
+
+
+
+@media screen and (max-width:1170px) and (min-width:1025px){
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li strong{display: block;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li [data-type="btn"]{float: none; margin-top: 1em;}
+}
+
+@media screen and (max-width:1024px){
+    #sub_02_07_02 .exam_list >li.tabless >.table_div >strong{width: 6.5em;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div{padding-right: 11em;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li{padding: 2.8em 0 2.8em 13em;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div p{padding: 1.555556em 0 0 7.2222em;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div p.tel_box{padding: 0 0 0.95em 7.2222em;}
+}
+@media screen and (max-width:720px){
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li strong{display: block;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li [data-type="btn"]{float: none; margin-top: 1em;}
+}
+@media screen and (max-width:640px){
+    #sub_02_07_02 [data-type="table"] colgroup col:first-child{width: 12em !important;}
+    
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div{margin-top: 0.6em;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li{padding: 1.8em 0 1.8em 13em;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div p{padding: 1em 0 0 7.2222em;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div p.tel_box{margin-top: 1em; padding: 0 0 0.55em 7.2222em;}
+}
+@media screen and (max-width:480px){
+    #sub_02_07_02 .exam_list >li{margin-bottom: 5em; padding: 1.8em 3em;}
+    #sub_02_07_02 .exam_list >li:before{width: 3em; height: 4em;}
+    #sub_02_07_02 .exam_list >li.tabless > .table_div > .steps{
+        bottom: auto; top: 0; 
+        transform: translateY(0); -webkit-transform: translateY(0);
+    }
+    #sub_02_07_02 .exam_list >li.tabless >.table_div{display: block; padding-right: 0;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div >strong, 
+    #sub_02_07_02 .exam_list >li.tabless >.table_div .d_text{display: block;}
+    #sub_02_07_02 .exam_list >li.tabless > .table_div > span.d_text{margin-top: 10px;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div{margin-top: 0.6em;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div ul li{padding: 1.8em 0 1.8em 0;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div p{padding: 1em 0 0 0;}
+    #sub_02_07_02 .exam_list >li.tabless >.table_div + div p.tel_box{margin-top: 1em; padding: 0 0 0.55em 0;}
+}*/
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업소개 > 시험분석의뢰 > 수수료 안내
+	연관단어 : #sub_02_07_03
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_07_03{}
+#sub_02_07_03 .border_left{border-left: 1px solid #DBDBDB;}
+#sub_02_07_03 .tip + div{margin-top: 0.5em;}
+#sub_02_07_03 [data-type="table"] td.gray{background-color:#F6F6F6;}
+#sub_02_07_03 ul[data-type] + .tb_scroll{margin:3em 0;}
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사업소개 > 시험분석의뢰 > 시험의뢰서 다운로드
+	연관단어 : #sub_02_07_04
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_02_07_04 .box_wraps .boxss,
+#sub_02_07_04 .box_wraps .boxss >li >ul.btns,
+#sub_02_07_04 .box_wraps .boxss >li >ul.btns >li{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_02_07_04{}
+#sub_02_07_04 [data-bx="h3"] > h3 span{max-width: 5em;}
+#sub_02_07_04 .box_wraps{margin-top:3em;}
+#sub_02_07_04 .box_wraps:after{content: ""; display: block; clear: both;}
+#sub_02_07_04 .box_wraps .boxss{float: left; width: calc((100% - 6em)/ 2); border-top: 2px solid #000; box-sizing: border-box;}
+#sub_02_07_04 .box_wraps .boxss >li{display: table; table-layout: fixed; width: 100%; padding: 2.8em 0; border-bottom: 1px solid #DBDBDB; box-sizing: border-box;}
+#sub_02_07_04 .box_wraps .boxss >li >strong,
+#sub_02_07_04 .box_wraps .boxss >li >ul.btns{display: table-cell; vertical-align: middle;}
+
+#sub_02_07_04 .box_wraps .boxss >li >strong{width:4em; font-size: 2em; color: #121212; font-weight: 500;}
+#sub_02_07_04 .box_wraps .boxss.l_box >li >strong{width: 8em;}
+#sub_02_07_04 .box_wraps .boxss >li >ul.btns{width: auto; text-align: right; padding-top: 0.3em;}
+
+#sub_02_07_04 .box_wraps .boxss >li >ul.btns:after{content: ""; display: block; clear: both;}
+#sub_02_07_04 .box_wraps .boxss >li >ul.btns >li{float: left; margin-left: 0.8em; text-align: left;}
+#sub_02_07_04 .box_wraps .boxss >li >ul.btns >li:first-child{margin-left: 0;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep{display: block; padding: 2.9em 0 0;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >strong{float: none;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul{}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li{padding: 2.8em 0 2.3em; box-sizing: border-box;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li > span{display: block; margin-top: 0.5em; font-size: 1.6em;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li:after{content: ""; display: block; clear: both;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li:first-child{padding: 0.6em 0 2.3em; border-bottom: 1px dashed #DBDBDB;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >strong{font-size: 1.8em; font-weight: 500;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >p{margin-top: 0.4em; margin-bottom: 0.5em;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >ul{float: right; margin-top: 2em;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >ul:after{content: ""; display: block; clear: both;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >ul >li{float: left; margin-left: 0.8em;}
+#sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >ul >li:first-child{margin-left: 0;}
+#sub_02_07_04 .box_wraps .l_box{margin-right: 6em;}
+#sub_02_07_04 .box_wraps .l_box{}
+
+@media screen and (max-width:1370px){
+    #sub_02_07_04 .box_wraps .boxss >li{display: block;}
+    #sub_02_07_04 .box_wraps .boxss >li:after{content: ""; display: block; clear: both;}
+    #sub_02_07_04 .box_wraps .boxss >li >strong, 
+    #sub_02_07_04 .box_wraps .boxss >li >ul.btns{display: block;}
+    #sub_02_07_04 .box_wraps .boxss >li >ul.btns{float: right; margin-top: 1.5em; padding-top: 0;}
+    #sub_02_07_04 .box_wraps .boxss >li >strong{width: auto; }
+}
+@media screen and (max-width:1190px) and (min-width:1025px){
+    #sub_02_07_04 .box_wraps .boxss >li >ul.btns{text-align: right; width: 100%; max-width: 25em}
+    #sub_02_07_04 .box_wraps .boxss >li >ul.btns >li{float: none; display: inline-block;}
+    #sub_02_07_04 .box_wraps .boxss >li >ul.btns >li:not(:first-child){margin-top: 0.8em;}
+}
+@media screen and (max-width:1024px){
+    #sub_02_07_04 [data-bx="h3"] > h3 span{max-width: 100%;}
+    #sub_02_07_04 [data-bx="h4"] h4 span br{display: none;}
+}
+@media screen and (max-width:780px){
+    #sub_02_07_04 .box_wraps .boxss{width: calc((100% - 4em)/ 2);}
+    #sub_02_07_04 .box_wraps .l_box{margin-right: 4em;}
+    #sub_02_07_04 .box_wraps .boxss >li >ul.btns,
+    #sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >ul{text-align: right; width: 100%; max-width: 25em;}
+    #sub_02_07_04 .box_wraps .boxss >li >ul.btns >li,
+    #sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >ul >li{float: none; display: inline-block;}
+    #sub_02_07_04 .box_wraps .boxss >li >ul.btns >li:not(:first-child),
+    #sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >ul >li{margin-top: 0.8em;}
+    #sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >p{margin-bottom: 0;}
+}
+@media screen and (max-width:480px){
+    #sub_02_07_04 .box_wraps .boxss{width: 100%;}
+    #sub_02_07_04 .box_wraps .l_box{margin-right: 0; margin-bottom: 3em;}
+    #sub_02_07_04 .box_wraps .boxss >li >ul.btns, 
+    #sub_02_07_04 .box_wraps .boxss >li.box_2dep >ul >li >ul{max-width: 100%;}
+}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 민원안내 > 온라인민원
+	연관단어 : #sub_04_01
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_04_01{}
+#sub_04_01 .img_boxs img{display: block; width: 100%;}
+#sub_04_01 .comp_list + [data-type="btn"]{margin-top: 2em;}
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 민원안내 > 국민신문고
+	연관단어 : 
+    
+////////////////////////////////////////////////////////////////////////////// */
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 민원안내 > 클린신고센터
+	연관단어 : #sub_04_03
+
+////////////////////////////////////////////////////////////////////////////// */
+#sub_04_03 .dec_list >li >div,
+#sub_04_03 .dec_list >li .titles:before{transition: all 0.2s ease; -webkit-transition: all 0.2s ease;}
+#sub_04_03{} 
+#sub_04_03 .img_boxs img{display: block; width: 100%;}
+#sub_04_03 .dec_list{width: 100%;}
+#sub_04_03 .dec_list:after{content: ""; display: block; clear: both;}
+#sub_04_03 .dec_list >li{border-top: 1px solid #DBDBDB;}
+#sub_04_03 .dec_list >li:first-child{border-top: none;}
+#sub_04_03 .dec_list >li:after{content: ""; display: block; clear: both;}
+#sub_04_03 .dec_list >li >div{float: left; width: 50%; padding: 5.8em 0; box-sizing: border-box;}
+#sub_04_03 .dec_list >li >div:nth-child(1){padding: 5.6em 2.9em 5.6em 0;}
+#sub_04_03 .dec_list >li >div:nth-child(2){padding: 5.6em 0 5.6em 2.9em;}
+#sub_04_03 .dec_list >li:first-child >div:nth-child(1){padding: 0 2.9em 5.6em 0;}
+#sub_04_03 .dec_list >li:first-child >div:nth-child(2){padding: 0 0 5.6em 2.9em;}
+
+#sub_04_03 .dec_list >li >div >ul >li{font-size: 1.8em;}
+#sub_04_03 .dec_list >li >div >ul >li >div{margin-top:1em;}
+#sub_04_03 .dec_list >li >div >ul >li >div >ul{margin-top: 0.7em; font-size: 0.555556em;}
+
+#sub_04_03 .dec_list >li .titles{position: relative; display: block; padding-top: 3.25em; font-size: 2em; font-weight: 500; color: #121212;}
+#sub_04_03 .dec_list >li .titles:before{content: ""; position: absolute; top: 0; left: 0; display: block; width: 2.2em; height: 2.2em; background-repeat: no-repeat; background-position: center center; background-size: contain;}
+#sub_04_03 .dec_list >li:nth-child(1) >div:nth-child(1) .titles:before{background-image: url(../images/content/04_03_02.svg);}
+#sub_04_03 .dec_list >li:nth-child(1) >div:nth-child(2) .titles:before{background-image: url(../images/content/04_03_03.svg);}
+#sub_04_03 .dec_list >li:nth-child(2) >div:nth-child(1) .titles:before{background-image: url(../images/content/04_03_04.svg);}
+#sub_04_03 .dec_list >li:nth-child(2) >div:nth-child(2) .titles:before{background-image: url(../images/content/04_03_05.svg);}
+#sub_04_03 .dec_list >li:nth-child(3) >div:nth-child(1) .titles:before{background-image: url(../images/content/04_03_06.svg);}
+#sub_04_03 .dec_list >li:nth-child(3) >div:nth-child(2) .titles:before{background-image: url(../images/content/04_03_07.svg);}
+#sub_04_03 .dec_list >li:nth-child(4) >div:nth-child(1) .titles:before{background-image: url(../images/content/04_03_08.svg);}
+#sub_04_03 .dec_list >li:nth-child(4) >div:nth-child(2) .titles:before{background-image: url(../images/content/04_03_09.svg);}
+#sub_04_03 .dec_list >li:nth-child(5) >div:nth-child(1) .titles:before{background-image: url(../images/content/04_03_10.svg);}
+#sub_04_03 .dec_list >li:nth-child(5) >div:nth-child(2) .titles:before{background-image: url(../images/content/04_03_11.svg);}
+#sub_04_03 .dec_list >li .titles + p{margin-top: 0.4em;}
+#sub_04_03 .dec_list >li .titles + p + [data-type="btn"]{margin-top: 2em;}
+#sub_04_03 .dec_list >li >div [data-type="btn"] + ul{margin-top: 2.4em;}
+#sub_04_03 .dec_list >li  ul + span{display: block; font-size: 1.6em; margin-top: 30px;}
+
+@media screen and (max-width:640px){
+    #sub_04_03 .dec_list >li >div{float: none; width: 100%;}
+    #sub_04_03 .dec_list >li >div:nth-child(1){padding: 2.8em 0;}
+    #sub_04_03 .dec_list >li:first-child >div:nth-child(1){padding: 0 0 2.8em 0;}
+    #sub_04_03 .dec_list >li:first-child >div:nth-child(2){padding: 2.8em 0;}
+    #sub_04_03 .dec_list >li >div:nth-child(2){padding: 2.8em 0; border-top: 1px solid #DBDBDB;}
+    #sub_04_03 .dec_list >li:last-child >div >ul >li{float: none; width: 100%;}
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+    메뉴구조 : 개인정보처리방침
+    연관단어 : #personal
+    
+////////////////////////////////////////////////////////////////////////////// */
+/*간격*/
+#personal ol + a[data-type="btn"]{margin-top:1em;}
+#personal .tip{margin-top:0.6em;}
+
+/*상속리셋*/
+#personal [data-type="box"],
+#personal ol>li>ol>li,
+#personal ol>li>a[data-type="btn"]{line-height:1.5; font-size:10px;}
+
+/*리스트*/
+#personal ol>li{line-height:1.7em; font-size:1.8em;}
+#personal ol>li>ol{margin-top:0.2em; padding-left:1em;}
+#personal ol>li>ol>li{font-size:0.9em;}
+
+/*리스트 안에 버튼*/
+#personal ol>li>span{display:block;}
+#personal ol>li>span+a[data-type="btn"]{margin:0.6em 0;}
+
+/*박스*/
+#personal [data-type="box"]{margin:1.5em 0;}
+#personal [data-type="box"] .bx_list>li:not(:first-child){margin-top:1em;}
+#personal [data-type="box"] .bx_list>li>strong{margin-bottom:0.6em;}
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 준비중
+	연관단어 : #prepering
+    
+////////////////////////////////////////////////////////////////////////////// */
+#prepering{padding: 10.35em 2em; text-align: center; border: 1px solid #DBDBDB; box-sizing: border-box;}
+#prepering .titles{position: relative; display: block; padding-top: 2.45em; font-size: 4.8em; font-weight: 400; letter-spacing: -1px; line-height: 1.3; box-sizing: border-box;}
+#prepering .titles:before{
+    content: ""; position: absolute; top: 0; left: 50%; display: block; width: 1.5em; height: 1.5em; background: url(../images/content/prepering_01.svg) no-repeat center center; background-size: contain;
+    transform: translateX(-50%); -webkit-transform: translateX(-50%);
+}
+#prepering .titles b{font-weight: 500;}
+#prepering .grayss{display: block; margin-top: 1.9em; font-size: 2.4em; line-height: 1.3; color: #666;}
+@media screen and (max-width:1024px){
+    #prepering{font-size: 0.9em;}
+}
+@media screen and (max-width:640px){
+    #prepering{font-size: 0.8em; padding: 8em 2em;}

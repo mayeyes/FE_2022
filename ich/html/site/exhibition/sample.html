@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+     <link rel="stylesheet" type="text/css" href="../../../css/site/core/core.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../../../css/site/exhibition/layout.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../../../css/site/exhibition/main.css" media="all" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script>
+      $(function(){
+        main_full_scroll();
+      });
+      function main_full_scroll(){
+        var box = $('[data-view-scroll="box"]');
+        var cnt = 0;
+        function scrollEvent(event,c,callback){
+          var target = ($(event.target).attr('data-view-scroll')==='box')?$(event.target):$(event.target).parents('[data-view-scroll="box"]');
+          var scrollBottom = target.find(">.in").innerHeight() - $(document).height() - target.scrollTop();
+          if(c === "down" && scrollBottom <= 0){
+              target = target.next();
+              target.check = target.attr('data-view-scroll-position');
+              if(target.length !== 0){
+                  if(target.check === 'y'){
+                      box.css({"z-index":"0"});
+                      if(!target.is(":animated")) target.stop().css({"left":"0","top":"100%","z-index":"2000"}).animate({"top":"0"},500,"linear");
+                  } else if(target.check === 'x'){
+                      box.css({"z-index":"0"});
+                      if(!target.is(":animated")) target.stop().css({"left":"100%","top":"0","z-index":"2000"}).animate({"left":"0"},500,"linear");
+                  }
+              }
+          } else if(c === "up" && target.scrollTop() === 0){
+              if(box.index(target) !== 0){
+                  target.check = target.attr('data-view-scroll-position');
+                  if(target.length !== 0){
+                      if(target.check === 'y'){
+                          box.css({"z-index":"0"});
+                          if(!target.is(":animated")) target.stop().animate({"top":"100%"},500,"linear");
+                      } else if(target.check === 'x'){
+                          box.css({"z-index":"0"});
+                          if(!target.is(":animated")) target.stop().animate({"left":"100%"},500,"linear");
+                      }
+                  }
+              }
+          }
+          callback();
+        }
+        
+        var scrollCheck = true;
+        $(window).on("wheel", function (event){
+          if(scrollCheck){
+            scrollCheck = false;
+            var c = (event.originalEvent.deltaY < 0) ? "up":"down";
+            scrollEvent(event,c,function(){
+              scrollCheck = true;
+            });
+          }
+        });
+        box.on("scroll",function(){
+          var target = $(this);
+          var scrollBottom = target.find(">.in").innerHeight() - $(document).height() - target.scrollTop();
+          var per = scrollBottom / (target.find(">.in").innerHeight() - $(document).height()) * 100;
+              per = 100 - per;
+              per = ~~(per/10);
+
+          target.attr('data-per',per);
+        });
+    }
+    </script>
+    <style>
+      html,body{height:100%; margin:0; padding:0;}
+      body{background-color:rgb(104, 31, 31);}
+      [data-view-scroll="wrap"]{overflow:hidden; position:relative; height:100%;}
+      [data-view-scroll="box"]{
+        overflow:auto; position:absolute; left:100%; top:0; z-index:0; width:100%; height:100%;
+      }
+      [data-view-scroll="box"]>.in>p{margin:0;}
+      [data-view-scroll="box"]:nth-child(1){left:0; background-color:rgb(0, 0, 0);}
+      [data-view-scroll="box"]:nth-child(2){background-color:rgb(30, 30, 30);}
+      [data-view-scroll="box"]:nth-child(3){background-color:rgb(60, 60, 60);}
+      [data-view-scroll="box"]:nth-child(4){background-color:rgb(90, 90, 90);}
+      [data-view-scroll="box"]:nth-child(5){background-color:rgb(120, 120, 120);}
+      [data-view-scroll="box"]:nth-child(6){background-color:rgb(150, 150, 150);}
+    </style>
+  </head>
+  <body>
+    <div data-view-scroll="wrap">
+      <div data-view-scroll="box" data-view-scroll-position="y">
+        <div class="in" style="position:absolute; left:0; top:0; width:100%; height:100%;"></div>
+        <div data-page="1" id="sec01">
+            <div class="inner">
+                <div class="fix_box">
+                    <div class="img_box">
+                        <img src="../../../images/site/exhibition/img01.jpg" alt="" id="bg_img">
+                        <div class="steps"><!-- ※ 10개의 스탭으로 나뉘어서 이미지 확대 축소 효과 -->
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text_box">
+                    <div class="wraps">
+                        <div class="layout">
+                            <strong class="titles">Cham, <br>Discover the Legendary Icon</strong>
+                            <p>a dance of Bhutanese Buddhist value</p>
+                            <img src="../../../images/site/exhibition/img05.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div id="scroll"><!-- ※ class="off" 시 header 없어짐-->
+                    <p>Scroll down to see the exhibition.</p>
+                    <i><span>icon</span></i>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div data-view-scroll="box" data-view-scroll-position="y">
+        <div class="in" style="color:#fff;">
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+        </div>
+      </div>
+      <div data-view-scroll="box" data-view-scroll-position="x"></div>
+      <div data-view-scroll="box" data-view-scroll-position="x"></div>
+      <div data-view-scroll="box" data-view-scroll-position="y">
+        <div data-page="4" id="sec04" data-flow="division"><!-- ※ 이미지 비율 attr  data-flow="division" -->
+            <div class="inner">
+                <div class="fix_box">
+                    <div class="img_box">
+                        <div class="steps">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="bgimg"><img src="https://ichlinks.geunnam.com/muploader/imageViewDownloadFile.do?fileUid=16665994874470000006" alt="백그라운드 이미지"></div>
+                    </div>
+                </div>
+                <div class="text_box">
+                    <div class="wraps">
+                        <div class="in">
+                            <div data-align="center" data-vertical-align="middle" style="grid-template-columns: repeat(3, 1fr);">
+                                <!-- ※ n등분으로 나누고 싶을 시 style="grid-template-columns: repeat(n, 1fr);" -->
+                                <!-- ※ data-align 가로정렬 (center 중앙 정렬, left 왼쪽 정렬, right 오른쪽 정렬) -->
+                                <!-- ※ data-vertical-align 세로정렬 (top 상단 정렬, middle 중앙 정렬, bottom 하단 정렬) -->
+                                <a href="#" style="background-image: url(../../../images/site/sample/sample01.jpg); grid-column: span 2;"><!-- ※ 2의 비율을 가지고 싶을 때 grid-column: span 2; -->
+
+                                </a>
+                                <div style="background-image: url(../../../images/site/sample/sample02.jpg); grid-column: span 1;"><!-- ※ 1의 비율을 가지고 싶을 때 grid-column: span 1; -->
+
+                                </div>
+                                <div class="texts">
+                                    <div>
+                                        <strong style="color: #fff; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);">Introduction</strong>
+                                        <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);">A country's identity is defined by its culture and tradition.</p>
+                                        <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);">Especially dance is not merely a physical activity, but the spirit in itself.</p>
+                                        <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);">This is why Cham exists as a unique dance reflecting Buddhist values and ethos in Bhutan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+      </div>
+      <div data-view-scroll="box" data-view-scroll-position="y">
+          <!--<div data-page="9" id="sec09" data-flow="video"> ※ 유튜브 비디오 attr data-flow="video" 
+                        <div class="inner">
+                            <div class="text_box">
+                                <div class="wraps">
+                                    <div class="layout">
+                                        <div class="in">
+                                            <div class="movie" data-align="center" data-vertical-align="middle"  >
+				                                <iframe width="1120" height="630" src="https://www.youtube.com/embed/vo0ukRj70CU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="bgimg" style="background-image: url('https://i.ytimg.com/vi_webp/vo0ukRj70CU/maxresdefault.webp'); ">백그라운드이미지</div>
+                        </div>
+
+                    </div>-->
+      </div>
+      <div data-view-scroll="box" data-view-scroll-position="y">
+          <div data-page="10" id="sec10" data-flow="parnorama"><!-- ※ 파노라마 attr data-flow="parnorama" -->
+                        <div class="inner">
+                            <div class="text_box">
+                                <div class="wraps">
+                                    <div class="layout">
+                                        <div class="in">
+                                            <div class="movie" data-align="center" data-vertical-align="middle"  >
+                                                <div class="pano-image"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="bgimg" style="background-image: url('https://pchen66.github.io/Panolens/examples/asset/textures/equirectangular/field.jpg'); ">백그라운드이미지</div>
+                        </div>
+                        <script>
+                            const panoImage = document.querySelector('.pano-image');
+                            const miamiPano =  'https://pchen66.github.io/Panolens/examples/asset/textures/equirectangular/field.jpg';
+
+                            const panorama = new PANOLENS.ImagePanorama(miamiPano);
+                            const viewer = new PANOLENS.Viewer({
+                                container: panoImage
+                            });
+                            viewer.add( panorama );
+                        </script>
+                    </div>
+                    
+                    
+                   
+                    
+                    
+          
+          
+          
+      </div>
+      <div data-view-scroll="box" data-view-scroll-position="y"></div>
+      <div data-view-scroll="box" data-view-scroll-position="y"> 
+                       <div data-page="11" id="sec11" data-fixed="yes" data-flow="imgs" data-cont-height="2"><!-- ※ img 좌표이동 텍스트 고정 attr data-fixed="yes" data-flow="imgs"  --><!-- ※ data-cont-height="n" 화면높이*n배  -->
+                        <div class="inner">
+                            <div class="fix_box">
+                                <div class="img_box">
+                                    <div class="steps">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span data-transform-scale="2" data-transform-origin-x="87" data-transform-origin-y="160"></span>
+                                        <span data-transform-scale="5" data-transform-origin-x="887" data-transform-origin-y="760"></span>
+                                        <span data-transform-scale="2" data-transform-origin-x="1347" data-transform-origin-y="460"></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <div class="bgimg"><img src="../../../images/site/exhibition/img02.jpg" alt="백그라운드 이미지"></div>
+                                </div>
+                            </div>
+                            <div class="text_box">
+                                <div class="wraps">
+                                    <div class="layout">
+                                        <div class="in">
+                                            <div data-align="center">
+                                                <div>
+                                                    <strong style="color: #fff; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);">Introduction</strong>
+                                                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);">A country's identity is defined by its culture and tradition.</p>
+                                                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);">Especially dance is not merely a physical activity, but the spirit in itself.</p>
+                                                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);">This is why Cham exists as a unique dance reflecting Buddhist values and ethos in Bhutan.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+      <div data-view-scroll="box" data-view-scroll-position="y">
+          
+          <div data-page="12" id="sec12" data-fixed="yes" data-flow="gallery"><!-- ※ 갤러리 attr data-fixed="yes" data-flow="gallery" -->
+                        <div class="inner">
+                            <div class="fix_box">
+                                <div class="img_box">
+                                    <div class="steps">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <div class="bgimg"><img src="https://ichlinks.geunnam.com/muploader/imageViewDownloadFile.do?fileUid=16665994874470000006" alt="백그라운드 이미지"></div>
+                                </div>
+                            </div>
+                            <div class="text_box">
+                                <div class="wraps">
+                                    <div class="layout">
+                                        <div class="in">
+                                            <div data-align="center" data-vertical-align="bottom">
+                                                <div>
+                                                    <div class="gallery">
+                                                        <div class="galleryTpye6" id="gallery2">
+                                                            <!-- ※ 갤러리 6개 타입 galleryTpye6 갤러리 4개 타입 galleryTpye4-->
+                                                            <a rel="rel1" href="https://ichlinks.geunnam.com/muploader/imageViewDownloadFile.png?fileUid=16665994874230000003"><img src="https://ichlinks.geunnam.com/muploader/imageViewThumbnailFile.png?width=377&amp;height=252&amp;fileUid=16665994874230000003"></a>
+                                                            <a rel="rel1" href="https://ichlinks.geunnam.com/imageViewDownloadFile.png?fileUid=16665994874290000004"><img src="https://ichlinks.geunnam.com/muploader/imageViewThumbnailFile.png?width=377&amp;height=252&amp;fileUid=16665994874290000004"></a>
+                                                            <a rel="rel1" href="/imageViewDownloadFile.png?fileUid=16665994874360000005"><img src="https://ichlinks.geunnam.com/muploader/imageViewThumbnailFile.png?width=377&amp;height=252&amp;fileUid=16665994874360000005"></a>
+                                                            <a rel="rel1" href="/imageViewDownloadFile.png?fileUid=16665994874040000000"><img src="https://ichlinks.geunnam.com/muploader/imageViewThumbnailFile.png?width=377&amp;height=252&amp;fileUid=16665994874040000000"></a>
+                                                            <a rel="rel1" href="/imageViewDownloadFile.png?fileUid=16665994874090000001"><img src="https://ichlinks.geunnam.com/muploader/imageViewThumbnailFile.png?width=377&amp;height=252&amp;fileUid=16665994874090000001"></a>
+                                                            <a rel="rel1" href="/imageViewDownloadFile.png?fileUid=16665994874150000002"><img src="https://ichlinks.geunnam.com/muploader/imageViewThumbnailFile.png?width=377&amp;height=252&amp;fileUid=16665994874150000002"></a>
+                                                            <div class="clearing"></div>
+                                                        </div>
+
+                                                        <script src="https://ichlinks.geunnam.com/plugin/simplelightbox-2.2.2/simple-lightbox.js?v2.2.1"></script>
+                                                        <script>
+                                                            new SimpleLightbox('#gallery1 a', {
+                                                                captionType: 'attr',
+                                                                captionsData: 'alt',
+                                                                captionPosition: 'bottom'
+                                                            });
+                                                        </script>
+                                                        <script src="https://ichlinks.geunnam.com/js/plugin/lazysizes-5.3.1/ls.bgset.min.js" async=""></script>
+                                                        <script src="https://ichlinks.geunnam.com/js/plugin/lazysizes-5.3.1/lazysizes.min.js" async=""></script>
+
+                                                        <!--<link rel="stylesheet" type="text/css" href="https://ichlinks.geunnam.com/plugin/simplelightbox-2.2.2/gallery.css?v2.2.1">-->
+                                                        <link rel="stylesheet" type="text/css" href="https://ichlinks.geunnam.com/plugin/simplelightbox-2.2.2/simple-lightbox.css?v2.2.1">
+                                                        <script src="https://ichlinks.geunnam.com/plugin/simplelightbox-2.2.2/simple-lightbox.js?v2.2.1"></script>
+                                                    </div>
+                                                    <div class="texts">
+                                                        <strong style="color: #fff;">Introduction</strong>
+                                                        <p style="color: rgba(255, 255, 255, 0.9);">A country's identity is defined by its culture and tradition.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+      </div>
+    </div>
+  </body>
+</html>

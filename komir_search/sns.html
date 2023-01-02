@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no,email=no,address=no" />
+<meta name="author" content="" />
+<meta name="Keywords" content="" />
+<meta name="description" content="" />
+<meta name="copyright" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
+<title>메이아이 통합검색</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/search.css" />
+<link rel="stylesheet" href="css/search_rwd.css" /> <!-- Responsible Css -->
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/common.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<header id="header" class="custom_cl">
+		<div class="search_box">
+			<div class="global">
+				<h1 class="logo"><img src="images/common/logo.svg" alt="한국광해광업공단" /></h1>		
+				<div class="input_box">
+					<span class="select">
+						<label for="category">통합검색</label>
+						<select name="category" id="category" title="검색 카테고리 선택">
+							<option value="">통합검색</option>
+							<option value="">메뉴</option>
+							<option value="">게시물</option>
+							<option value="">웹페이지</option>
+							<option value="">멀티미디어</option>
+							<option value="">첨부파일</option>
+						</select>
+					</span>
+					<span class="text_input">
+						<label for="input_keyword" class="hidden">검색어입력</label>
+						<input type="text" name="input_keyword" id="input_keyword" title="검색어를 입력하세요." />
+					</span>
+					<input type="submit" class="search_btn" value="검색" />
+				</div>
+				<a href="#detail_search" class="detail_btn">상세검색</a>
+				<span class="result_check">
+					<input type="checkbox" name="result_re" id="result_re" />
+					<label for="result_re">결과내검색</label>
+				</span>
+			</div>	
+			
+			<!-- 상세검색 :S -->
+			<div id="detail_search"> 
+				<span class="bg"></span>
+				<ul>
+					<li>
+						<div>
+							<span class="title">검색어</span>
+							<span class="input">
+								<label for="basic_word" class="hidden">검색어</label><input type="text" name="basic_word" id="basic_word" placeholder="검색어를 입력하세요." />
+							</span>
+						</div>
+					</li>
+					<li>
+						<div>
+							<span class="title">반드시 포함한 단어</span>
+							<span class="input">
+								<label for="include_word" class="hidden">반드시 포함한 단어</label><input type="text" name="include_word" id="include_word" placeholder="검색어를 입력하세요." />
+							</span>
+						</div>	
+					</li>
+					<li>
+						<div>
+							<span class="title">제외하는 단어</span>
+							<span class="input">
+								<label for="except_word" class="hidden">제외하는 단어</label><input type="text" name="except_word" id="except_word" placeholder="검색어를 입력하세요." />
+							</span>
+						</div>	
+					</li>
+					<li class="ft_r type1">
+						<div>
+							<span class="title">검색범위</span>
+							<span class="input">
+								<label for="range">전체</label>
+								<select name="range" id="range" title="검색범위 선택">
+									<option value="">전체</option>
+									<option value="">제목</option>
+									<option value="">내용</option>
+								</select>
+							</span>
+						</div>	
+					</li>
+					<li class="ft_r type2">
+						<div>
+							<span class="title">검색기간</span>
+							<span class="input">
+								<input type="radio" name="date_ck" id="date_ck1" /><label for="date_ck1">전체</label>
+								<input type="radio" name="date_ck" id="date_ck2" /><label for="date_ck2">최근 1주일</label>
+								<input type="radio" name="date_ck" id="date_ck3" /><label for="date_ck3">최근 1개월</label>
+								<span class="cal_sc">
+									<div class="cover"></div>
+									<label for="s_date" class="hidden">시작일자</label><input type="text" name="s_date" id="s_date" title="시작일자" placeholder="시작일자" /> ~ 
+									<label for="e_date" class="hidden">시작일자</label><input type="text" name="e_date" id="e_date" title="종료일자" placeholder="종료일자" />
+									<a href="#cal_layer" class="cal_btn"><img src="images/common/cal_btn.png" alt="calendar" /></a>
+								</span>
+							</span>
+						</div>
+					</li>
+				</ul>
+				<input type="submit" class="btn" value="검색" />
+				<div id="cal_layer">
+					<div class="wrap">
+						<div class="cal_box">
+							<p>검색시작일자</p>
+							<div class="control">
+								<a href="#link" class="prev_m"><span>이전달</span></a>
+								<span class="select year">
+									<label for="year_s">2016년</label>
+									<select name="year_s" id="year_s" title="시작년도 선택">
+										<option>2016년</option>
+										<option>2015년</option>
+										<option>2014년</option>
+										<option>2013년</option>
+										<option>2012년</option>
+									</select>
+								</span>
+								<span class="select month">
+									<label for="month_s">1월</label>
+									<select name="month_s" id="month_s" title="시작월 선택">
+										<option>1월</option>
+										<option>2월</option>
+										<option>3월</option>
+										<option>4월</option>
+										<option>5월</option>
+										<option>6월</option>
+									</select>
+								</span>
+								<a href="#link" class="next_m"><span>다음달</span></a>
+							</div>
+							<table>
+								<caption>검색시작일자 달력</caption>
+								<col />
+								<col />
+								<col />
+								<col />
+								<col />
+								<col />
+								<col />
+								<thead>
+									<tr>
+										<th scope="col" class="sun">일</th>
+										<th scope="col">월</th>
+										<th scope="col">화</th>
+										<th scope="col">수</th>
+										<th scope="col">목</th>
+										<th scope="col">금</th>
+										<th scope="col" class="sat">토</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="sun">&nbsp;</td>
+										<td><a href="#link">1</a></td>
+										<td><a href="#link">2</a></td>
+										<td><a href="#link">3</a></td>
+										<td><a href="#link">4</a></td>
+										<td><a href="#link" class="active custom_cl">5</a></td>
+										<td class="sat"><a href="#link">6</a></td>
+									</tr>
+									<tr>
+										<td class="sun"><a href="#link">7</a></td>
+										<td><a href="#link">8</a></td>
+										<td><a href="#link">9</a></td>
+										<td><a href="#link">10</a></td>
+										<td><a href="#link">11</a></td>
+										<td><a href="#link">12</a></td>
+										<td class="sat"><a href="#link">13</a></td>
+									</tr>
+									<tr>
+										<td class="sun"><a href="#link">14</a></td>
+										<td><a href="#link">15</a></td>
+										<td><a href="#link">16</a></td>
+										<td><a href="#link">17</a></td>
+										<td><a href="#link">18</a></td>
+										<td><a href="#link">19</a></td>
+										<td class="sat"><a href="#link">20</a></td>
+									</tr>
+									<tr>
+										<td class="sun"><a href="#link">21</a></td>
+										<td><a href="#link">22</a></td>
+										<td><a href="#link">23</a></td>
+										<td><a href="#link">24</a></td>
+										<td><a href="#link">25</a></td>
+										<td><a href="#link">26</a></td>
+										<td class="sat"><a href="#link">27</a></td>
+									</tr>
+									<tr>
+										<td class="sun"><a href="#link">28</a></td>
+										<td><a href="#link">29</a></td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td class="sat">&nbsp;</td>
+									</tr>
+									<tr>
+										<td class="sun">&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td class="sat">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="cal_box">
+							<p>검색종료일자</p>
+							<div class="control">
+								<a href="#link" class="prev_m"><span>이전달</span></a>
+								<span class="select year">
+									<label for="year_e">2016년</label>
+									<select name="year_e" id="year_e" title="종료년도 선택">
+										<option>2016년</option>
+										<option>2015년</option>
+										<option>2014년</option>
+										<option>2013년</option>
+										<option>2012년</option>
+									</select>
+								</span>
+								<span class="select month">
+									<label for="month_e">1월</label>
+									<select name="month_e" id="month_e" title="종료월 선택">
+										<option>1월</option>
+										<option>2월</option>
+										<option>3월</option>
+										<option>4월</option>
+										<option>5월</option>
+										<option>6월</option>
+									</select>
+								</span>
+								<a href="#link" class="next_m"><span>다음달</span></a>
+							</div>
+							<table>
+								<caption>검색종료일자 달력</caption>
+								<col />
+								<col />
+								<col />
+								<col />
+								<col />
+								<col />
+								<col />
+								<thead>
+									<tr>
+										<th scope="col" class="sun">일</th>
+										<th scope="col">월</th>
+										<th scope="col">화</th>
+										<th scope="col">수</th>
+										<th scope="col">목</th>
+										<th scope="col">금</th>
+										<th scope="col" class="sat">토</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="sun">&nbsp;</td>
+										<td><a href="#link">1</a></td>
+										<td><a href="#link">2</a></td>
+										<td><a href="#link">3</a></td>
+										<td><a href="#link">4</a></td>
+										<td><a href="#link" class="active custom_cl">5</a></td>
+										<td class="sat"><a href="#link">6</a></td>
+									</tr>
+									<tr>
+										<td class="sun"><a href="#link">7</a></td>
+										<td><a href="#link">8</a></td>
+										<td><a href="#link">9</a></td>
+										<td><a href="#link">10</a></td>
+										<td><a href="#link">11</a></td>
+										<td><a href="#link">12</a></td>
+										<td class="sat"><a href="#link">13</a></td>
+									</tr>
+									<tr>
+										<td class="sun"><a href="#link">14</a></td>
+										<td><a href="#link">15</a></td>
+										<td><a href="#link">16</a></td>
+										<td><a href="#link">17</a></td>
+										<td><a href="#link">18</a></td>
+										<td><a href="#link">19</a></td>
+										<td class="sat"><a href="#link">20</a></td>
+									</tr>
+									<tr>
+										<td class="sun"><a href="#link">21</a></td>
+										<td><a href="#link">22</a></td>
+										<td><a href="#link">23</a></td>
+										<td><a href="#link">24</a></td>
+										<td><a href="#link">25</a></td>
+										<td><a href="#link">26</a></td>
+										<td class="sat"><a href="#link">27</a></td>
+									</tr>
+									<tr>
+										<td class="sun"><a href="#link">28</a></td>
+										<td><a href="#link">29</a></td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td class="sat">&nbsp;</td>
+									</tr>
+									<tr>
+										<td class="sun">&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td class="sat">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="clearfix"></div>
+						<input type="button" class="ok_btn" value="기간선택완료" />
+						<a href="#link" class="close_btn"><span>닫기</span></a>
+					</div>
+					<span class="shadow_bg"></span>
+				</div>
+			</div>
+			<!-- 상세검색 :E -->
+		</div>
+		<div class="nav_box">
+			<div class="al_box">
+				<div class="tab_link">
+					<ul>
+						<li><a href="./index.html">통합검색</a></li> <!-- 해당 컨텐츠 class="active" 추가 -->
+						<li><a href="./menu.html">메뉴</a></li>
+						<li><a href="./board.html">게시물</a></li>
+						<li><a href="./webpage.html">웹페이지</a></li>
+						<li><a href="./media.html">멀티미디어</a></li>
+						<li><a href="./file.html">첨부파일</a></li>
+					</ul>
+					<span class="bt_line"></span>
+				</div>
+				<div class="live_keyword">
+					<div class="roll">
+						<span class="custom_cl">실시간</span>
+					</div>
+					<a href="#link" class="layer_btn">열기</a>
+					<dl>
+						<dt>실시간 인기검색어</dt>
+						<dd>
+							<ul>
+								<li><a href="#link"><span>1</span>실시간검색어1</a></li>
+								<li><a href="#link"><span>2</span>실시간검색어2</a></li>
+								<li><a href="#link"><span>3</span>실시간검색어3</a></li>
+								<li><a href="#link"><span>4</span>실시간검색어4</a></li>
+								<li><a href="#link"><span>5</span>실시간검색어5</a></li>
+								<li><a href="#link"><span>6</span>실시간검색어6</a></li>
+								<li><a href="#link"><span>7</span>실시간검색어7</a></li>
+								<li><a href="#link"><span>8</span>실시간검색어8</a></li>
+								<li><a href="#link"><span>9</span>실시간검색어9</a></li>
+								<li><a href="#link"><span>10</span>실시간검색어10</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</div>	
+		</div>
+	</header>
+	<div id="container">
+		<div id="contents">
+			<dl class="search_range">
+				<dt>범위</dt>
+				<dd><a href="#link" class="active">전체</a><a href="#link">제목</a><a href="#link">내용</a></dd> <!-- 해당 메뉴 class="active" 추가 -->
+				<dt>기간</dt>
+				<dd><a href="#link" class="active">전체</a><a href="#link">1주</a><a href="#link">1개월</a></dd> <!-- 해당 메뉴 class="active" 추가 -->
+			</dl>
+			<p class="result_counter">‘<strong>항공</strong>’에 관한 검색결과 <span>1,250건</span></p>
+			<!-- SNS :S -->
+			<section class="search_sec" id="sns">
+				<h2 class="category">SNS<span>10</span></h2>
+				<ul class="type06 sub">
+					<li>
+						<a href="#link">
+							<span class="sns_type fb"><img src="images/common/sns_ico01.png" alt="facebook" /></span>
+							<p>
+								<span class="text">70주년 대표성과ETRI 대표성과연도별 대표성과38년간 주요실적분야별 연구성과SW·콘텐츠연구소융합<strong>기술</strong>연구소정보통신부품소재연구소방송통신미디어연구소통신인터넷연구소창의미래연구소UGS 융합..</span>
+								<span class="date">2016-01-26</span>
+								<span class="edge"></span>
+							</p>
+						</a>
+					</li>
+					<li>
+						<a href="#link">
+							<span class="sns_type fb"><img src="images/common/sns_ico01.png" alt="facebook" /></span>
+							<p>
+								<span class="text">70주년 대표성과ETRI 대표성과연도별 대표성과38년간 주요실적분야별 연구성과SW·콘텐츠연구소융합<strong>기술</strong>연구소정보통신부품소재연구소방송통신미디어연구소통신인터넷연구소창의미래연구소UGS 융합..</span>
+								<span class="date">2016-01-26</span>
+								<span class="edge"></span>
+							</p>
+						</a>
+					</li>
+					<li>
+						<a href="#link">
+							<span class="sns_type tw"><img src="images/common/sns_ico02.png" alt="twitter" /></span>
+							<p>
+								<span class="text">70주년 대표성과ETRI 대표성과연도별 대표성과38년간 주요실적분야별 연구성과SW·콘텐츠연구소융합<strong>기술</strong>연구소정보통신부품소재연구소방송통신미디어연구소통신인터넷연구소창의미래연구소UGS 융합..</span>
+								<span class="date">2016-01-26</span>
+								<span class="edge"></span>
+							</p>
+						</a>
+					</li>
+					<li>
+						<a href="#link">
+							<span class="sns_type fb"><img src="images/common/sns_ico01.png" alt="facebook" /></span>
+							<p>
+								<span class="text">70주년 대표성과ETRI 대표성과연도별 대표성과38년간 주요실적분야별 연구성과SW·콘텐츠연구소융합<strong>기술</strong>연구소정보통신부품소재연구소방송통신미디어연구소통신인터넷연구소창의미래연구소UGS 융합..</span>
+								<span class="date">2016-01-26</span>
+								<span class="edge"></span>
+							</p>
+						</a>
+					</li>
+					<li>
+						<a href="#link">
+							<span class="sns_type tw"><img src="images/common/sns_ico02.png" alt="twitter" /></span>
+							<p>
+								<span class="text">70주년 대표성과ETRI 대표성과연도별 대표성과38년간 주요실적분야별 연구성과SW·콘텐츠연구소융합<strong>기술</strong>연구소정보통신부품소재연구소방송통신미디어연구소통신인터넷연구소창의미래연구소UGS 융합..</span>
+								<span class="date">2016-01-26</span>
+								<span class="edge"></span>
+							</p>
+						</a>
+					</li>
+					<li>
+						<a href="#link">
+							<span class="sns_type fb"><img src="images/common/sns_ico01.png" alt="facebook" /></span>
+							<p>
+								<span class="text">70주년 대표성과ETRI 대표성과연도별 대표성과38년간 주요실적분야별 연구성과SW·콘텐츠연구소융합<strong>기술</strong>연구소정보통신부품소재연구소방송통신미디어연구소통신인터넷연구소창의미래연구소UGS 융합..</span>
+								<span class="date">2016-01-26</span>
+								<span class="edge"></span>
+							</p>
+						</a>
+					</li>
+				</ul>		
+				<!-- paginate :S -->
+				<div class="paginate">
+					<a class="dir" href="#link"><img src="images/common/paginate_first.gif" alt="처음 페이지로" /></a>
+					<a class="dir first" href="#link"><img src="images/common/paginate_prev.gif" alt="이전 페이지로" /></a> 
+					<strong>1</strong>
+					<a href="#link">2</a>
+					<a href="#link">3</a>
+					<a href="#link">4</a>
+					<a href="#">5</a> 
+					<a class="dir last" href="#link"><img src="images/common/paginate_next.gif" alt="다음 페이지로" /></a> 
+					<a class="dir" href="#link"><img src="images/common/paginate_last.gif" alt="마지막 페이지로" /></a> 
+				</div>
+				<!-- paginate :E -->
+			</section>	
+			<!-- SNS :E -->
+		</div>
+		<aside id="aside">
+			<a href="#keyword_popular" class="mob_tab">인기검색어</a>
+			<div class="tab_box">
+				<h3>인기검색어</h3>
+				<dl id="keyword_popular">
+					<dt class="tab1"><a href="#tab1">주간</a></dt> 
+					<dd id="tab1">
+						<ul>
+							<li><a href="#link"><span>1</span>주간 인기검색어1</a></li>
+							<li><a href="#link"><span>2</span>주간 인기검색어2</a></li>
+							<li><a href="#link"><span>3</span>주간 인기검색어3</a></li>
+							<li><a href="#link"><span>4</span>주간 인기검색어4</a></li>
+							<li><a href="#link"><span>5</span>주간 인기검색어5</a></li>
+							<li><a href="#link"><span>6</span>주간 인기검색어6</a></li>
+							<li><a href="#link"><span>7</span>주간 인기검색어7</a></li>
+							<li><a href="#link"><span>8</span>주간 인기검색어8</a></li>
+							<li><a href="#link"><span>9</span>주간 인기검색어9</a></li>
+							<li><a href="#link"><span>10</span>주간 인기검색어10</a></li>
+						</ul>
+					</dd>
+					<dt class="tab2"><a href="#tab2">월간</a></dt>
+					<dd id="tab2">
+						<ul>
+							<li><a href="#link"><span>1</span>월간 인기검색어1</a></li>
+							<li><a href="#link"><span>2</span>월간 인기검색어2</a></li>
+							<li><a href="#link"><span>3</span>월간 인기검색어3</a></li>
+							<li><a href="#link"><span>4</span>월간 인기검색어4</a></li>
+							<li><a href="#link"><span>5</span>월간 인기검색어5</a></li>
+							<li><a href="#link"><span>6</span>월간 인기검색어6</a></li>
+							<li><a href="#link"><span>7</span>월간 인기검색어7</a></li>
+							<li><a href="#link"><span>8</span>월간 인기검색어8</a></li>
+							<li><a href="#link"><span>9</span>월간 인기검색어9</a></li>
+							<li><a href="#link"><span>10</span>월간 인기검색어10</a></li>
+						</ul>
+					</dd>
+				</dl>
+				<a href="#link" class="del_btn">닫기</a>
+			</div>	
+			<a href="#my_keyword" class="mob_tab">내가 찾은 검색어</a>
+			<div class="tab_box">
+				<h3>내가 찾은 검색어</h3>
+				<div id="my_keyword" class="keyword_result">
+					<span><a href="#link">자율비행기술</a><a href="#link" class="close_btn">닫기</a></span>
+					<span><a href="#link">지상관측</a><a href="#link" class="close_btn">닫기</a></span>
+					<span><a href="#link">무인기</a><a href="#link" class="close_btn">닫기</a></span>
+				</div>
+				<a href="#link" class="del_btn">닫기</a>
+			</div>	
+			<a href="#relate_keyword" class="mob_tab">연관 검색어</a>
+			<div class="tab_box">
+				<h3>연관 검색어</h3>
+				<div id="relate_keyword" class="keyword_result">
+					<span><a href="#link">오로라</a><a href="#link" class="close_btn">닫기</a></span> 
+					<span><a href="#link">마추픽추</a><a href="#link" class="close_btn">닫기</a></span>
+					<span><a href="#link">우유니사막</a><a href="#link" class="close_btn">닫기</a></span>
+					<span><a href="#link">세계7대불가사의</a><a href="#link" class="close_btn">닫기</a></span>
+				</div>
+				<a href="#link" class="del_btn">닫기</a>
+			</div>
+		</aside>
+	</div>
+	<footer id="footer">
+		<p class="copy">Copyright ⓒ 2016 MAYEYE</p>
+	</footer>
+	<div class="floating_top"><a href="#top"><span>맨위로</span></a></div>		
+</div>
+</body>
+</html>

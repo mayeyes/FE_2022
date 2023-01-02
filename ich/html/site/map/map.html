@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPEN MAP</title>
+
+    <link rel="stylesheet" href="../../../font/Noto_Sans/font.css">
+    <link rel="stylesheet" href="../../../css/site/map/map.css">
+
+
+    <script src="../../../js/core/jquery-1.11.2.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB95dIxTEGssMzfKx2Vp9sLJzSt87Fvq44&libraries=&v=weekly&region=KR"></script>  <!-- 구글 맵 불러오기 -->
+    <script src="https://googlemaps.github.io/js-markerclustererplus/dist/index.min.js"></script>   <!-- 클러스터 불러오기 -->
+    <script src="../../../js/site/map/map_index.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div id="header_wrap">
+            <div class="header_box_01">
+                <h1 class="logo">
+                    <a href="/" title="ICH Links"><img src="../../../images/site/map/logo_map.svg"></a>
+                </h1>
+
+                <div class="right_box">
+
+                    <div class=" srh_tag_box" data-js="slide_box">
+                        <a href="#" class="btn_prev"> <span>이전</span> </a>
+                        <a href="#" class="btn_next"> <span>다음</span> </a>
+                        <div class="move">
+                            <ul></ul>
+                        </div>
+                    </div>
+
+                    <div class="saerch_box">
+                        <div data-skin="input">
+                            <input type="text"onKeypress="javascript:if(event.keyCode==13) {inputVal()}"/>
+                            <button class="txt_delt" onclick="input_delt()"> <span class="hidden">삭제</span> </button>
+                        </div>
+                        <div data-skin="submit">
+                            <a href="#" onclick="inputVal()">
+                                <span class="hidden">submit</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="no_data">
+                        <span>No search results.</span>
+                    </div>
+                </div>
+
+                <div class="search_box_m">
+                    <button type="button" onclick=""> 
+                        <span class="hidden">search_box</span>
+                    </button>
+                </div>
+
+            </div>
+            <ul class="header_box_02" data-scroll="y">
+                <li class="select_wrap">
+
+                    <div data-skin="select" class="all_btn">
+                        <div class="head">
+                            <p>filter_all</p>
+                        </div> 
+                        <div class="midd">
+                            <div class="midd_head">
+                                <p>Search Filter</p>
+                                
+                                <button type="button" onclick="alert('새로고침')"> 
+                                    <span class="hidden">새로고침</span>
+                                </button>
+                                
+                            </div>
+                            <ul class="in">
+                                <li>
+                                    <p>Element</p>
+                                    <ul>
+                                        <li>
+                                            <input type="radio" id="element_01_f" name="element" checked>
+                                            <label for="element_01_f"><span>Element</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="element_02_f" name="element">
+                                            <label for="element_02_f"><span>Stakeholder</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="element_03_f" name="element">
+                                            <label for="element_03_f"><span>Photo</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="element_04_f" name="element">
+                                            <label for="element_04_f"><span>Video</span> </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="element_05_f" name="element">
+                                            <label for="element_05_f"><span>Audio</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="element_06_f" name="element">
+                                            <label for="element_06_f"><span>Document</span> </label>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <p>ICH Domain</p>
+                                    <ul>
+                                        <li>
+                                            <input type="checkbox" id="ds_ichdomains_UD_01_f" name="ichDomains" value="Oral traditions and representations" data-input="chk">
+                                            <label for="ds_ichdomains_UD_01_f"><span>Oral traditions and representations</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_ichdomains_UD_02_f" name="ichDomains" value="Performing Arts" data-input="chk">
+                                            <label for="ds_ichdomains_UD_02_f"><span>Performing Arts</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_ichdomains_UD_03_f" name="ichDomains" value="Social practices, rituals, festive events" data-input="chk">
+                                            <label for="ds_ichdomains_UD_03_f"><span>Social practices, rituals, festive events</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_ichdomains_UD_04_f" name="ichDomains" value="Knowledge and practices about nature and the universe" data-input="chk">
+                                            <label for="ds_ichdomains_UD_04_f"><span>Knowledge and practices about nature and the universe</span> </label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_ichdomains_UD_05_f" name="ichDomains" value="Traditional craft skills" data-input="chk">
+                                            <label for="ds_ichdomains_UD_05_f"><span>Traditional craft skills</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_ichdomains_UD_99_f" name="ichDomains" value="Others" onclick="inputValueChange()">
+                                            <label for="ds_ichdomains_UD_99_f"><span>Others</span> </label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>Unesco List</p>
+                                    <ul>
+                                        <li>
+                                            <input type="checkbox" id="ds_unescoListTypes_RL_f" name="unescoListTypes" value="Representative List of the Intangible Cultural Heritage of Humanity" data-input="chk">
+                                            <label for="ds_unescoListTypes_RL_f"><span>Representative List of the Intangible Cultural Heritage of Humanity</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_unescoListTypes_UL_f" name="unescoListTypes" value="List of Intangible Cultural Heritage in Need of Urgent Safeguarding" data-input="chk">
+                                            <label for="ds_unescoListTypes_UL_f"><span>List of Intangible Cultural Heritage in Need of Urgent Safeguarding</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_unescoListTypes_BP_f" name="unescoListTypes" value="Good Safeguarding Practices" data-input="chk">
+                                            <label for="ds_unescoListTypes_BP_f"><span>Good Safeguarding Practices</span></label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>Region</p>
+                                    <ul>
+                                        <li>
+                                            <input type="checkbox" id="ds_regions_APAC_01_f" name="regions" value="Southeast Asia" data-input="chk">
+                                            <label for="ds_regions_APAC_01_f"><span>Southeast Asia</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_regions_APAC_02_f" name="regions" value="Northeast Asia" data-input="chk">
+                                            <label for="ds_regions_APAC_02_f"><span>Northeast Asia</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_regions_APAC_03_f" name="regions" value="South Asia" data-input="chk">
+                                            <label for="ds_regions_APAC_03_f"><span>South Asia</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_regions_APAC_04_f" name="regions" value="Central Asia" data-input="chk">
+                                            <label for="ds_regions_APAC_04_f"><span>Central Asia</span></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="ds_regions_APAC_05_f" name="regions" value="Pacific" data-input="chk">
+                                            <label for="ds_regions_APAC_05_f"><span>Pacific</span></label>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                            <div class="midd_footer" data-mobile="y">
+                                <button type="button" onclick="" class="close_btn"> 
+                                    <span>cancel</span>
+                                </button>
+                                <button type="button" onclick="" class="apply_btn"> 
+                                    <span>apply</span>
+                                </button>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div data-skin="select" class="select_01">
+                        <select name="" id="">
+                            <option value="" disabled="" selected="" style="color: #E0E0E0;">Element</option>
+                            <option value="Element">Element</option>
+                            <option value="Stakeholder">Stakeholder</option>
+                            <option value="Photo">Photo</option>
+                            <option value="Video">Video</option>
+                            <option value="Audio">Audio</option>
+                            <option value="Document">Document</option>
+                        </select>
+
+                        
+                        <!-- <div class="head in">
+                            <p>Element</p>
+                        </div>
+                        <div class="midd">
+                            <p>Element</p>
+                            <ul>
+                                <li>
+                                    <input type="radio" id="element_01" name="element" checked>
+                                    <label for="element_01"><span>Element</span></label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="element_02" name="element">
+                                    <label for="element_02"><span>Stakeholder</span></label>
+                                </li>
+                                 <li>
+                                    <input type="radio" id="element_03" name="element">
+                                    <label for="element_03"><span>Photo</span></label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="element_04" name="element">
+                                    <label for="element_04"><span>Video</span> </label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="element_05" name="element">
+                                    <label for="element_05"><span>Audio</span></label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="element_06" name="element">
+                                    <label for="element_06"><span>Document</span> </label>
+                                </li>
+                            </ul> -->
+
+                            <!-- <div class="midd_bott">
+                                <ul>
+                                    <li class="txt">Multiple selection</li>
+                                    <li class="icon">
+                                        <button type="button" onclick="alert('새로고침')"> 
+                                            <span>새로고침</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div> -->
+
+                            <!-- <button type="button" onclick="" class="close_btn"> 
+                                <span class="hidden">닫기</span>
+                            </button>
+
+                            <div class="midd_footer" data-mobile="y">
+                                <button type="button" onclick="" class="close_btn"> 
+                                    <span>cancel</span>
+                                </button>
+                                <button type="button" onclick="" class="apply_btn"> 
+                                    <span>apply</span>
+                                </button>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div data-skin="select" class="select_02">
+                        <div class="head">
+                            <p>ICH Domain</p>
+                        </div>
+                        <div class="midd">
+                            <p>ICH Domain</p>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="select_all_01" class="select_all" name="select_all" value="all">
+                                    <label for="select_all_01"><span>Select All</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_ichdomains_UD_01" name="ichDomains" value="Oral traditions and representations" data-input="chk">
+                                    <label for="ds_ichdomains_UD_01"><span>Oral traditions and representations</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_ichdomains_UD_02" name="ichDomains" value="Performing Arts" data-input="chk">
+                                    <label for="ds_ichdomains_UD_02"><span>Performing Arts</span></label>
+                                </li>
+                                 <li>
+                                    <input type="checkbox" id="ds_ichdomains_UD_03" name="ichDomains" value="Social practices, rituals, festive events" data-input="chk">
+                                    <label for="ds_ichdomains_UD_03"><span>Social practices, rituals, festive events</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_ichdomains_UD_04" name="ichDomains" value="Knowledge and practices about nature and the universe" data-input="chk">
+                                    <label for="ds_ichdomains_UD_04"><span>Knowledge and practices about nature and the universe</span> </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_ichdomains_UD_05" name="ichDomains" value="Traditional craft skills" data-input="chk">
+                                    <label for="ds_ichdomains_UD_05"><span>Traditional craft skills</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_ichdomains_UD_99" name="ichDomains" value="Others" onclick="inputValueChange()">
+                                    <label for="ds_ichdomains_UD_99"><span>Others</span> </label>
+                                </li>
+                            </ul>
+
+                            <div class="midd_bott">
+                                <ul>
+                                    <li class="txt">Multiple selection</li>
+                                    <li class="icon">
+                                        <button type="button" onclick="alert('새로고침')"> 
+                                            <span>새로고침</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button type="button" onclick="" class="close_btn"> 
+                                <span class="hidden">닫기</span>
+                            </button>
+
+                            <div class="midd_footer" data-mobile="y">
+                                <button type="button" onclick="" class="close_btn"> 
+                                    <span>cancel</span>
+                                </button>
+                                <button type="button" onclick="" class="apply_btn"> 
+                                    <span>apply</span>
+                                </button>
+                            </div>
+
+                        </div>
+                        
+                        
+                    </div>
+                    <div data-skin="select" class="select_03">
+
+                        <div class="head">
+                            <p>Unesco List</p>
+                        </div>
+                        <div class="midd">
+                            <p>Unesco List</p>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="select_all_02" name="select_all" class="select_all" value="all">
+                                    <label for="select_all_02"><span>Select All</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_unescoListTypes_RL" name="unescoListTypes" value="Representative List of the Intangible Cultural Heritage of Humanity" data-input="chk">
+                                    <label for="ds_unescoListTypes_RL"><span>Representative List of the Intangible Cultural Heritage of Humanity</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_unescoListTypes_UL" name="unescoListTypes" value="List of Intangible Cultural Heritage in Need of Urgent Safeguarding" data-input="chk">
+                                    <label for="ds_unescoListTypes_UL"><span>List of Intangible Cultural Heritage in Need of Urgent Safeguarding</span></label>
+                                </li>
+                                 <li>
+                                    <input type="checkbox" id="ds_unescoListTypes_BP" name="unescoListTypes" value="Good Safeguarding Practices" data-input="chk">
+                                    <label for="ds_unescoListTypes_BP"><span>Good Safeguarding Practices</span></label>
+                                </li>
+                            </ul>
+
+                            <div class="midd_bott">
+                                <ul>
+                                    <li class="txt">Multiple selection</li>
+                                    <li class="icon">
+                                        <button type="button" onclick="alert('새로고침')"> 
+                                            <span>새로고침</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button type="button" onclick="" class="close_btn"> 
+                                <span class="hidden">닫기</span>
+                            </button>
+
+                            <div class="midd_footer" data-mobile="y">
+                                <button type="button" onclick="" class="close_btn"> 
+                                    <span>cancel</span>
+                                </button>
+                                <button type="button" onclick="" class="apply_btn"> 
+                                    <span>apply</span>
+                                </button>
+                            </div>
+
+                        </div> 
+                    </div>
+                    <div data-skin="select" class="select_04">
+
+                        <div class="head">
+                            <p>Region</p>
+                        </div>
+                        <div class="midd">
+                            <p>Region</p>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="select_all_03" name="select_all" class="select_all" value="all">
+                                    <label for="select_all_03"><span>Select All</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_regions_APAC_01" name="regions" value="Southeast Asia" data-input="chk">
+                                    <label for="ds_regions_APAC_01"><span>Southeast Asia</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_regions_APAC_02" name="regions" value="Northeast Asia" data-input="chk">
+                                    <label for="ds_regions_APAC_02"><span>Northeast Asia</span></label>
+                                </li>
+                                 <li>
+                                    <input type="checkbox" id="ds_regions_APAC_03" name="regions" value="South Asia" data-input="chk">
+                                    <label for="ds_regions_APAC_03"><span>South Asia</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_regions_APAC_04" name="regions" value="Central Asia" data-input="chk">
+                                    <label for="ds_regions_APAC_04"><span>Central Asia</span></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="ds_regions_APAC_05" name="regions" value="Pacific" data-input="chk">
+                                    <label for="ds_regions_APAC_05"><span>Pacific</span></label>
+                                </li>
+                            </ul>
+
+                            <div class="midd_bott">
+                                <ul>
+                                    <li class="txt">Multiple selection</li>
+                                    <li class="icon">
+                                        <button type="button" onclick="alert('새로고침')"> 
+                                            <span>새로고침</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button type="button" onclick="" class="close_btn"> 
+                                <span class="hidden">닫기</span>
+                            </button>
+
+                            <div class="midd_footer" data-mobile="y">
+                                <button type="button" onclick="" class="close_btn"> 
+                                    <span>cancel</span>
+                                </button>
+                                <button type="button" onclick="" class="apply_btn"> 
+                                    <span>apply</span>
+                                </button>
+                            </div>
+
+                        </div>  
+                       
+                    </div>
+
+
+                    <div class="saerch_btn">
+                        <button data-skin="search">Search</button>
+                    </div>
+
+
+                </li>
+                
+                <li class="tool_box">
+                    <a href="#none" class="help_btn"> <span>HELP</span> </a>
+                    <a href="" class="re_btn"> <span>새로고침</span> </a>
+                </li>
+            </ul>
+
+            
+        </div>
+    </header>
+
+
+    <!--  content: S -->
+    <div id="elements_cont">
+
+        <!--  left menu: S -->
+        <div class="left_box" id="box2">
+            
+            <a href="#none" class="list_toggle_btn"><span>열기</span></a>
+
+            <div id="gps_list" class="left_con_box">
+               <div class="in">
+                    <p class="all_num" id="swipe_btn">All <span>746</span></p>
+                    <!--  list_haeder: S -->
+                    <div class="scroll_box"> 
+                        <ul class="menu_tab">
+                            <li id="menu_tab_01">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="../../../images/site/map/list_img_01.jpg" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">‘Nooruz’ celebration</p>
+                                        <p class="sub">Nooruz is the New Year by solar calendar in Central, South and
+                                            SouthWest Asia countries. March 21 marks the start of the year in Kyrgyzstan.
+                                            Nooruz meaning ‘new day’ when a variety of rituals, ceremonies and other
+                                            cultural events take place. An important tradition practiced during this time is
+                                            the gathering around ‘the Table’, decorated with objects that symbolize purity,
+                                            brightness, livelihood and wealth, to enjoy a special meal with loved ones</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="menu_tab_02">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">Acupuncture and moxibustion of traditional Chinese medicine</p>
+                                        <p class="sub">Acupuncture and moxibustion of TCM(traditional Chinese medicine) is a
+                                            traditional knowledge and practice for regulating the body’s balance and
+                                            maintaining health. It is based on the holistic concept of the ‘unity between
+                                            man and nature’. Under the guidance of the theories of the channels and
+                                            acupuncture points, its practice involves the insertion of needles into points
+                                            or the burning of moxa to warm the superficial part of the body.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="menu_tab_03">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">Aitys – the art of improvisation</p>
+                                        <p class="sub">Aitys is a contest centred on improvised oral poetry spoken or sung
+                                            to the accompaniment of traditional musical instruments – the Kazakh dombra. Two
+                                            performers (akyns) compete with one other to improvise verses on topical themes
+                                            in a battle of wits that alternates between humorous ripostes and penetrating
+                                            philosophical reflections. During the competition, the performers sit opposite
+                                            one another improvising a dialogue on topics chosen by the audience. The winner
+                                            is the performer considered to have demonstrated the best musical skills,
+                                            rhythm, originality, resourcefulness, wisdom and wit. The most meaningful and
+                                            witty expressions often become popular sayings.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="menu_tab_04">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="../../../images/site/map/list_img_03.jpg" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">Aitysh/Aitys, art of improvisation</p>
+                                        <p class="sub">Aitys (in Kazakh language), Aitysh (in Kyrgyz) is an improvised
+                                            competition of two akyns, the form of oral poetry performed in a singing manner,
+                                            poetic contest of improvisations or a poetic duel of wits. The element is
+                                            performed to the accompaniment of traditional musical instruments: Kazakh dombra
+                                            or Kyrgyz komuz. Two akyns compete with each other in improvisation of verses on
+                                            topical themes in a wit-sparkling manner alternating humour and deep philosophic
+                                            reflections.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="menu_tab_05">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="../../../images/site/map/list_img_04.png" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">Ala-kiyiz and Shyrdak, art of Kyrgyz traditional felt carpets</p>
+                                        <p class="sub">Traditional felt carpets represent one of the identity codes of the
+                                            Kyrgyz people, and their recognizable, ethnographic features are an integral
+                                            part of Kyrgyz cultural heritage. Kyrgyz people traditionally produce two types
+                                            of felt carpets: Ala-kiyiz and Shyrdaks. Knowledge, skills, diversity, the
+                                            semantics of ornaments, and the ceremonies of creating carpets, are all
+                                            important cultural components. They provide Kyrgyz people with a sense of
+                                            identity and continuity. Both types of felt carpets are included into the set of
+                                            a traditional bride’s dowry. Shyrdaks sometimes are gifted for house-warming
+                                            parties.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="menu_tab_06">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">Aitys – the art of improvisation</p>
+                                        <p class="sub">Aitys is a contest centred on improvised oral poetry spoken or sung
+                                            to the accompaniment of traditional musical instruments – the Kazakh dombra. Two
+                                            performers (akyns) compete with one other to improvise verses on topical themes
+                                            in a battle of wits that alternates between humorous ripostes and penetrating
+                                            philosophical reflections. During the competition, the performers sit opposite
+                                            one another improvising a dialogue on topics chosen by the audience. The winner
+                                            is the performer considered to have demonstrated the best musical skills,
+                                            rhythm, originality, resourcefulness, wisdom and wit. The most meaningful and
+                                            witty expressions often become popular sayings.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="menu_tab_07">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">Aitys – the art of improvisation</p>
+                                        <p class="sub">Aitys is a contest centred on improvised oral poetry spoken or sung
+                                            to the accompaniment of traditional musical instruments – the Kazakh dombra. Two
+                                            performers (akyns) compete with one other to improvise verses on topical themes
+                                            in a battle of wits that alternates between humorous ripostes and penetrating
+                                            philosophical reflections. During the competition, the performers sit opposite
+                                            one another improvising a dialogue on topics chosen by the audience. The winner
+                                            is the performer considered to have demonstrated the best musical skills,
+                                            rhythm, originality, resourcefulness, wisdom and wit. The most meaningful and
+                                            witty expressions often become popular sayings.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="menu_tab_08">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">Aitys – the art of improvisation</p>
+                                        <p class="sub">Aitys is a contest centred on improvised oral poetry spoken or sung
+                                            to the accompaniment of traditional musical instruments – the Kazakh dombra. Two
+                                            performers (akyns) compete with one other to improvise verses on topical themes
+                                            in a battle of wits that alternates between humorous ripostes and penetrating
+                                            philosophical reflections. During the competition, the performers sit opposite
+                                            one another improvising a dialogue on topics chosen by the audience. The winner
+                                            is the performer considered to have demonstrated the best musical skills,
+                                            rhythm, originality, resourcefulness, wisdom and wit. The most meaningful and
+                                            witty expressions often become popular sayings.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="menu_tab_09">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">Aitys – the art of improvisation</p>
+                                        <p class="sub">Aitys is a contest centred on improvised oral poetry spoken or sung
+                                            to the accompaniment of traditional musical instruments – the Kazakh dombra. Two
+                                            performers (akyns) compete with one other to improvise verses on topical themes
+                                            in a battle of wits that alternates between humorous ripostes and penetrating
+                                            philosophical reflections. During the competition, the performers sit opposite
+                                            one another improvising a dialogue on topics chosen by the audience. The winner
+                                            is the performer considered to have demonstrated the best musical skills,
+                                            rhythm, originality, resourcefulness, wisdom and wit. The most meaningful and
+                                            witty expressions often become popular sayings.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="menu_tab_10">
+                                <div class="thumb_list">
+                                    <div class="img_box">
+                                        <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                                    </div>
+                                    <div class="txt_box">
+                                        <p class="title">Aitys – the art of improvisation</p>
+                                        <p class="sub">Aitys is a contest centred on improvised oral poetry spoken or sung
+                                            to the accompaniment of traditional musical instruments – the Kazakh dombra. Two
+                                            performers (akyns) compete with one other to improvise verses on topical themes
+                                            in a battle of wits that alternates between humorous ripostes and penetrating
+                                            philosophical reflections. During the competition, the performers sit opposite
+                                            one another improvising a dialogue on topics chosen by the audience. The winner
+                                            is the performer considered to have demonstrated the best musical skills,
+                                            rhythm, originality, resourcefulness, wisdom and wit. The most meaningful and
+                                            witty expressions often become popular sayings.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--  list_haeder: E -->
+
+                </div>
+
+
+                <!--  list_body: S -->
+                <ul class="menu_content">
+                    <li id="menu_content_01">
+                        <div class="menu_header">
+                               <strong>Detail</strong>
+                               <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                        </div>
+                        <div class="img_box">
+                            <img src="../../../images/site/map/list_img_01.jpg" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="3">‘Nooruz’ celebration</p>
+ 
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                    <a href="#none" class="more_btn"><span>More View</span></a>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+
+                    <li id="menu_content_02">
+                        <div class="menu_header">
+                            <strong>Detail</strong>
+                            <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                        </div>
+                        <div class="img_box">
+                            <img src="" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="4">Acupuncture and moxibustion of traditional Chinese medicine
+                            </p>
+
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+
+                    <li id="menu_content_03">
+                        <div class="menu_header">
+                            <strong>Detail</strong>
+                            <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                        </div>
+                        <div class="img_box">
+                            <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="4">Aitys – the art of improvisation</p>
+
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+                    <li id="menu_content_04">
+                        <div class="menu_header">
+                            <strong>Detail</strong>
+                            <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                        </div>
+                        <div class="img_box">
+                            <img src="../../../images/site/map//list_img_03.jpg" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="4">Aitysh/Aitys, art of improvisation</p>
+
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li> 
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li> 
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li> 
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li> 
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li> 
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li> 
+
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+                    <li id="menu_content_05">
+                        <div class="menu_header">
+                            <strong>Detail</strong>
+                            <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                        </div>
+                        <div class="img_box">
+                            <img src="../../../images/site/map/list_img_04.png" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="4">Aitys – the art of improvisation</p>
+
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+                    <li id="menu_content_06">
+                        <div class="menu_header">
+                            <strong>Detail</strong>
+                            <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                        </div>
+                        <div class="img_box">
+                            <img src="" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="4">Aitys – the art of improvisation</p>
+
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+                    <li id="menu_content_07">
+                        <div class="menu_header">
+                            <strong>Detail</strong>
+                            <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                        </div>
+                        <div class="img_box">
+                            <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="4">Aitys – the art of improvisation</p>
+
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+                    <li id="menu_content_08">
+                        <div class="menu_header">
+                            <strong>Detail</strong>
+                            <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                         </div>
+                        <div class="img_box">
+                            <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="4">Aitys – the art of improvisation</p>
+
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+                    <li id="menu_content_09">
+                        <div class="menu_header">
+                            <strong>Detail</strong>
+                            <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                        </div>
+                        <div class="img_box">
+                            <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="4">Aitys – the art of improvisation</p>
+
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+                    <li id="menu_content_10">
+                        <div class="menu_header">
+                            <strong>Detail</strong>
+                            <button type="button" onclick="" class="close_btn"> <span class="hidden">닫기</span></button>
+                        </div>
+                        <div class="img_box">
+                            <img src="../../../images/site/map/list_img_02.jpg" alt="">
+                        </div>
+
+                        <div class="detail_txtbox">
+                            <p class="title" data-icon="4">Aitys – the art of improvisation</p>
+
+                            <ul class="list_box">
+                                <li>
+                                    <p class="th">Manage No</p>
+                                    <p class="td">EE00002275</p>
+                                </li>
+                                <li>
+                                    <p class="th">Country</p>
+                                    <p class="td">Republic of Korea</p>
+                                </li>
+                                <li>
+                                    <p class="th">ICH Domain</p>
+                                    <p class="td">Traditional craft skills</p>
+                                </li>
+                                <li>
+                                    <p class="th">Address</p>
+                                    <p class="td">Jeollabuk-do, Jeonju-si Jeollabuk-do, Jeonju-si Jeollabuk-do,
+                                        Jeonju-si </p>
+                                </li>
+                                <li>
+                                    <p class="th">Year of Designation</p>
+                                    <p class="td">2020.07.20</p>
+                                </li>
+                            </ul>
+
+                            <a href="#none" class="more_btn"><span>More View</span></a>
+                        </div>
+                    </li>
+
+                </ul>
+                <!--  list_body: E -->
+
+            </div>
+        </div>
+        <!--  left menu: E -->
+
+
+
+        <!--  map:  -->
+        <div id="map"></div>
+
+
+
+        <!--  help_popup   -->
+
+        <div id="help_popup">
+            <ul>
+                <li data-pop="1" data-on="on">
+                    <div class="tit">
+                        <strong>Information Search</strong>
+                        <p>1 <span>/4</span></p>
+                    </div>
+                    <p>Click on a pin to explore <br />
+                    the information.</p>
+                    <button class="next_btn">
+                        <span> Next</span>
+                    </button>
+                     
+                    <button class="close_btn">
+                        <span class="hidden">닫기</span>
+                    </button>
+                </li>
+
+                <li data-pop="2" data-on="">
+                    <div class="tit">
+                        <strong>search</strong>
+                        <p>2 <span>/4</span></p>
+                    </div>
+                    <p>Search for information after entering<br />
+                         a search term</p>
+                    <button class="next_btn">
+                        <span> Next</span>
+                    </button>
+                     
+                    <button class="close_btn">
+                        <span class="hidden">닫기</span>
+                    </button>
+                </li>
+
+                <li data-pop="3" data-on="">
+                    <div class="tit">
+                        <strong>filter settings</strong>
+                        <p>3 <span>/4</span></p>
+                    </div>
+                    <p>You can set the information <br />
+                        to be displayed.</p>
+                    <button class="next_btn">
+                        <span> Next</span>
+                    </button>
+                     
+                    <button class="close_btn">
+                        <span class="hidden">닫기</span>
+                    </button>
+                </li>
+                <li data-pop="4" data-on="">
+                    <div class="tit">
+                        <strong>View archive list</strong>
+                        <p>4 <span>/4</span></p>
+                    </div>
+                    <p>You can view the list by collapsing <br />
+                        and unfolding it.</p>
+                    <button class="next_btn" id="start_btn">
+                        <span> start</span>
+                    </button>
+                      
+                    <button class="close_btn">
+                        <span class="hidden">닫기</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!--  content: E -->
+
+</body>
+
+</html>

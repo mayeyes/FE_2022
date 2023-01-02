@@ -1,0 +1,247 @@
+<!DOCTYPE html> <html lang="ko"> <head> <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no, target-densitydpi=device-dpi" /> <meta name="format-detection" content="telephone=no,email=no,address=no" /> <title>MEC_CMS</title> <link rel="stylesheet" href="../../../css/mec/core.css" media="all" /> <link rel="stylesheet" href="../../../css/mec/skin.css" media="all" /> <link rel="stylesheet" href="../../../css/mec/layout.css" media="all" /> <link rel="stylesheet" href="../../../css/mec/content.css" media="all" /> <script>var contextPath="../../..";</script> <script src="../../../js/mec/js.js"></script> </head> <body class="cms"> <div id="wrap"> <div id="container"> <div id="remote"> <h1 id="logo"><a href="/"><img src="../../../images/mec/layout/logo.png" alt="logo" /></a></h1> <div class="js_menu"> <ul class="code_"> <li><a href="#">1 Depth Menu</a> <ul> <li><a href="#" class="menu_arrow">2 Depth Menu</a> <ul> <li><a href="#">3 Depth Menu</a></li> <li><a href="#">3 Depth Menu</a></li> </ul> </li> <li><a href="#">2 Depth Menu</a></li> <li><a href="#">2 Depth Menu</a></li> <li><a href="#">2 Depth Menu</a></li> </ul> </li> <li><a href="#">1 Depth Menu</a></li> <li><a href="#">1 Depth Menu</a> <ul> <li><a href="#" class="menu_arrow">2 Depth Menu</a> <ul> <li><a href="#">3 Depth Menu</a></li> <li><a href="#">3 Depth Menu</a></li> </ul> </li> <li><a href="#">2 Depth Menu</a></li> <li><a href="#">2 Depth Menu</a></li> </ul> </li> <li><a href="#">1 Depth Menu</a></li> <li><a href="#">1 Depth Menu</a></li> </ul> </div> </div> <div id="content"> <div id="path"> <div id="global"> <ul> <li><strong>전체관리자</strong></li> <li>222.222.222.222</li> <li class="last"><a href="#"><img src="../../../images/mec/layout/btn_logout.png" alt="로그아웃" /></a></li> </ul> </div> </div> <div id="txt">
+    <h3>공표목록관리</h3>
+    
+    
+    
+    
+    
+    
+    
+                    
+                    <!-- 컨텐츠 :S -->
+                    <div class="inner">
+                        <div class="controls">
+                            <a href="#" class="btn ty_1">확인</a>
+                            <a href="#" class="btn ty_1">등록</a>
+                            <a href="#" class="btn ty_2">답변</a>
+                            <a href="#" class="btn ty_2">수정</a>
+                            <a href="#" class="btn ty_3">삭제</a>
+                            <a href="#" class="btn ty_4">목록</a>
+                            <a href="#" class="btn ty_4">취소</a>
+                        </div>
+                        <div class="view"> 
+                            
+                            <table class="table no_view">
+                                <caption></caption>
+                                <col style="width:180px">
+                                <col style="width:auto">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">공표분류</th>
+                                        <td class="left">
+                                            <select>
+                                                <option value="">감사 및 윤리</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">공표목록<span class="red">*</span></th>
+                                        <td class="left">
+                                            <input type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">공표부서</th>
+                                        <td class="left">
+                                            <input type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">담당자</th>
+                                        <td class="left">
+                                            <a href="#" class="btn ty_1" onclick="__staff().open();">담당자검색</a>
+                                            <div>
+                                                OOO처 OOO팀 홍길동
+                                                <a href="#" class="btn ty_3 small">삭제</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">공표주기</th>
+                                        <td class="left">
+                                            <input type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">공표시기</th>
+                                        <td class="left">
+                                            <input type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">공표형태<span class="red">*</span></th>
+                                        <td class="left">
+                                            <div class="radio_view">
+                                                <input type="radio" name="moniter_view_" id="moniter_view_1" checked>
+                                                <label for="moniter_view_1" class="mr_10">홈페이지</label>
+
+                                                <input type="radio" name="moniter_view_" id="moniter_view_2">
+                                                <label for="moniter_view_2" class="mr_10">파일</label>
+
+                                                <div class="vi" style="padding-top:10px; margin-top:10px; border-top:1px solid #ddd;">
+                                                    <div>
+                                                        홈페이지 링크 URL <input type="text">
+                                                    </div>
+                                                    <div>
+                                                        <input type="file">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                $(function(){
+                                                    __radio_view();
+                                                });
+                                                function __radio_view(){
+                                                    var obj = $(".radio_view");
+                                                        obj.radio = obj.find(" input:radio");
+                                                        obj.box = obj.find(" .vi>div");
+                                                    var ___controll = function(){
+                                                        return{
+                                                            on:function(){
+                                                                var idx = obj.radio.index(obj.find(" input:radio:checked"));
+                                                                obj.box.hide().eq(idx).show();
+                                                            },
+                                                            init:function(){
+                                                                this.on();
+                                                            }
+                                                        }
+                                                    }
+                                                    ___controll().init();
+
+                                                    obj.radio.on("change",function(){___controll().on();});
+                                                }
+                                            </script>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">공개여부</th>
+                                        <td class="left">
+                                            <input type="radio" name="moniter_" id="moniter_1" checked>
+                                            <label for="moniter_1" class="mr_10">공개</label>
+
+                                            <input type="radio" name="moniter_" id="moniter_2">
+                                            <label for="moniter_2" class="mr_10">미공개</label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <!-- 직원검색 :s -->
+                    <div data-pop="user-data" data-name="staff">
+                        <div class="in" style="width:500px;">
+                            <div class="head">직원검색</div>
+                            <div class="midd align_center">
+                                <input type="text">
+                                <a href="#" class="btn ty_1">검색</a>
+                            </div>
+                            <div class="foot">
+                                <div>
+                                    <table class="table">
+                                        <col style="width:auto;">
+                                        <col style="width:6em;">
+                                        <col style="width:6em;">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">부서</th>
+                                                <th scope="col">성명</th>
+                                                <th scope="col">선택</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div style="overflow:auto; max-height:300px;">
+                                    <table class="table">
+                                        <col style="width:auto;">
+                                        <col style="width:6em;">
+                                        <col style="width:6em;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="left">OOO처 OOO팀</td>
+                                                <td>홍길동</td>
+                                                <td><a href="#" class="btn ty_2">선택</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">OOO처 OOO팀</td>
+                                                <td>홍길동</td>
+                                                <td><a href="#" class="btn ty_2">선택</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">OOO처 OOO팀</td>
+                                                <td>홍길동</td>
+                                                <td><a href="#" class="btn ty_2">선택</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">OOO처 OOO팀</td>
+                                                <td>홍길동</td>
+                                                <td><a href="#" class="btn ty_2">선택</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">OOO처 OOO팀</td>
+                                                <td>홍길동</td>
+                                                <td><a href="#" class="btn ty_2">선택</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">OOO처 OOO팀</td>
+                                                <td>홍길동2</td>
+                                                <td><a href="#" class="btn ty_2">선택</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">OOO처 OOO팀</td>
+                                                <td>홍길동</td>
+                                                <td><a href="#" class="btn ty_2">선택</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">OOO처 OOO팀</td>
+                                                <td>홍길동</td>
+                                                <td><a href="#" class="btn ty_2">선택</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">OOO처 OOO팀</td>
+                                                <td>홍길동2</td>
+                                                <td><a href="#" class="btn ty_2">선택</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <a href="#" class="close"><span>닫기</span></a>
+                        </div>
+                    </div>
+                    <!-- 직원검색 :e -->
+                    <script>
+                        $(function(){
+                            __staff().init();
+                        });
+                        function __staff(){
+                            var obj = $('[data-pop="user-data"][data-name="staff"]');
+                                obj.btn_close = obj.find(" .close");
+                            var _this;
+                            return{
+                                open:function(){
+                                    obj.show();
+                                },
+                                close:function(){
+                                    obj.hide();
+                                },
+                                init:function(){
+                                    _this = this;
+                                    _this.close();
+                                    obj.btn_close.on("click",function(){_this.close();return false;});
+                                }
+                            }
+                        }
+                    </script>
+                    <!-- 컨텐츠 :E -->
+                    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div></div></div><div class="top_btn"><a href="#">맨위로</a></div>	</div></body></html>
