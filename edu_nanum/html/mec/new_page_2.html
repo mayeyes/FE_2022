@@ -1,0 +1,415 @@
+<!DOCTYPE html> <html lang="ko"> <head> <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no, target-densitydpi=device-dpi" /> <meta name="format-detection" content="telephone=no,email=no,address=no" /> <title>MEC_CMS</title> <link rel="stylesheet" href="../../css/mec/core.css" media="all" /> <link rel="stylesheet" href="../../css/mec/skin.css" media="all" /> <link rel="stylesheet" href="../../css/mec/layout.css" media="all" /> <link rel="stylesheet" href="../../css/mec/content.css" media="all" /> <script>var contextPath="../..";</script> <script src="../../js/mec/js.js"></script> </head> <body class="cms"> <div id="wrap"> <div id="container"> <div id="remote"> <h1 id="logo"><a href="/"><img src="../../images/mec/layout/logo.png" alt="logo" /></a></h1> <div class="js_menu"> <ul class="code_"> <li><a href="#">1 Depth Menu</a> <ul> <li><a href="#" class="menu_arrow">2 Depth Menu</a> <ul> <li><a href="#">3 Depth Menu</a></li> <li><a href="#">3 Depth Menu</a></li> </ul> </li> <li><a href="#">2 Depth Menu</a></li> <li><a href="#">2 Depth Menu</a></li> <li><a href="#">2 Depth Menu</a></li> </ul> </li> <li><a href="#">1 Depth Menu</a></li> <li><a href="#">1 Depth Menu</a> <ul> <li><a href="#" class="menu_arrow">2 Depth Menu</a> <ul> <li><a href="#">3 Depth Menu</a></li> <li><a href="#">3 Depth Menu</a></li> </ul> </li> <li><a href="#">2 Depth Menu</a></li> <li><a href="#">2 Depth Menu</a></li> </ul> </li> <li><a href="#">1 Depth Menu</a></li> <li><a href="#">1 Depth Menu</a></li> </ul> </div> </div> <div id="content"> <div id="path"> <div id="global"> <ul> <li><strong>전체관리자</strong></li> <li>222.222.222.222</li> <li class="last"><a href="#"><img src="../../images/mec/layout/btn_logout.png" alt="로그아웃" /></a></li> </ul> </div> </div> <div id="txt">
+
+
+
+
+
+
+
+
+
+    <h3>뉴스레터 관리/등록</h3>
+                    
+    <!-- 컨텐츠 :S -->
+    <div class="inner">
+        <div class="controls">
+            <a href="#create" class="btn ty_2">등록</a>
+            <a href="#create" class="btn ty_1">취소</a>
+            <div class="search">
+                <div class="count">
+                    <strong>Total : </strong>
+                    <span class="price">143 </span>
+                    
+                        [1/15 ]
+                    
+                </div>
+                <form action="/cms/mec/channel/list" id="searchForm" name="searchForm">
+                    <input type="hidden" name="mno" value="j1_29">
+                    <input type="hidden" name="pageIndex" value="1">
+                    <label for="cont_input" class="hidden">검색어 입력</label>
+                    <input type="text" name="searchKeyword" id="cont_input" value="" onkeypress="if(event.keyCode == 13){channelJs.list(1); return false;}">
+                    <a href="#search" onclick="channelJs.list(1);">검색</a>
+                </form>
+            </div>
+        </div>
+        <div class="view">
+
+            <table class="table ty2 no_view">
+                <caption>[메뉴명] 화면</caption>
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:auto;">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">제목</th>
+                        <td>
+                            <input type="text" name="" id="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">회차</th>
+                        <td>
+                            <input type="text" name="" id="" style="max-width:100px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="js_tab mt_50 mb_10">
+                <input type="hidden" class="type_idx"><!-- 등록형/이미지형 체크값 -->
+                <ul>
+                    <li class="on"><a href="#" data-view="1">등록형</a></li>
+                    <li><a href="#" data-view="2">이미지형</a></li>
+                </ul>
+            </div> 
+
+            <div data-view="1">
+                <table class="table ty2 no_view">
+                    <caption>[메뉴명] 화면</caption>
+                    <colgroup>
+                        <col style="width:200px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">이미지</th>
+                            <td style="padding:0">
+                                <table class="table ty2 no_view">
+                                    <col style="width:150px">
+                                    <col style="width:auto">
+                                    <tbody>
+                                        <tr style="border-top:none">
+                                            <td colspan="2">
+                                                <input type="checkbox" name="" id="event-image_check">
+                                                <label for="event-image_check">이벤트 이미지 사용</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">이미지</th>
+                                            <td>
+                                                <input type="file" name="" id="">
+                                                <input type="text" name="" id="" class="mt_05" placeholder="접근성 태그 입력">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">제목</th>
+                                            <td>
+                                                <input type="text" name="" id="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">URL</th>
+                                            <td>
+                                                <input type="text" name="" id="">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                지원∙정책<br />
+                                <a href="#" class="btn ty_1" data-add-line="1" style="font-weight:normal;">추가 +</a>
+                            </th>
+                            <td style="padding:0">
+                                <table class="table ty2 no_view" data-bind-table="1">
+                                    <col style="width:150px">
+                                    <col style="width:auto">
+                                    <tbody>
+                                        <tr style="border-top:none">
+                                            <th scope="row">뉴스1</th>
+                                            <td>
+                                                <input type="text" name="" id="" placeholder="제목">
+                                                <input type="text" name="" id="" placeholder="URL">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">뉴스2</th>
+                                            <td>
+                                                <input type="text" name="" id="" placeholder="제목">
+                                                <input type="text" name="" id="" placeholder="URL">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">뉴스3</th>
+                                            <td>
+                                                <input type="text" name="" id="" placeholder="제목">
+                                                <input type="text" name="" id="" placeholder="URL">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                나눔터 알림<br />
+                                <a href="#" class="btn ty_1" data-add-line="2" style="font-weight:normal;">추가 +</a>
+                            </th>
+                            <td style="padding:0">
+                                <table class="table ty2 no_view" data-bind-table="2">
+                                    <col style="width:150px">
+                                    <col style="width:auto">
+                                    <tbody>
+                                        <tr style="border-top:none">
+                                            <th scope="row">뉴스1</th>
+                                            <td>
+                                                <input type="text" name="" id="" placeholder="제목">
+                                                <input type="text" name="" id="" placeholder="URL">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">뉴스2</th>
+                                            <td>
+                                                <input type="text" name="" id="" placeholder="제목">
+                                                <input type="text" name="" id="" placeholder="URL">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">뉴스3</th>
+                                            <td>
+                                                <input type="text" name="" id="" placeholder="제목">
+                                                <input type="text" name="" id="" placeholder="URL">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                관련뉴스<br />
+                                <a href="#" class="btn ty_1" data-add-line="3" style="font-weight:normal;">추가 +</a>
+                            </th>
+                            <td style="padding:0">
+                                <table class="table ty2 no_view" data-bind-table="3">
+                                    <col style="width:150px">
+                                    <col style="width:auto">
+                                    <tbody>
+                                        <tr style="border-top:none">
+                                            <th scope="row">뉴스1</th>
+                                            <td>
+                                                <input type="text" name="" id="" placeholder="제목">
+                                                <input type="text" name="" id="" placeholder="URL">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">뉴스2</th>
+                                            <td>
+                                                <input type="text" name="" id="" placeholder="제목">
+                                                <input type="text" name="" id="" placeholder="URL">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">뉴스3</th>
+                                            <td>
+                                                <input type="text" name="" id="" placeholder="제목">
+                                                <input type="text" name="" id="" placeholder="URL">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                추천영상<br />
+                                <a href="#" class="btn ty_1" data-add-line="4" style="font-weight:normal;">추가 +</a>
+                            </th>
+                            <td style="padding:0">
+                                <table class="table ty2 no_view" data-bind-table="4">
+                                    <tbody>
+                                        <tr style="border-top:none">
+                                            <td style="padding:0">
+                                                <table class="table ty2 no_view">
+                                                    <col style="width:150px">
+                                                    <col style="width:auto">
+                                                    <tbody>
+                                                        <tr style="border-top:none">
+                                                            <th scope="row">이미지</th>
+                                                            <td>
+                                                                <input type="file" name="" id="">
+                                                                <input type="text" name="" id="" class="mt_05" placeholder="접근성 태그 입력">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">제목</th>
+                                                            <td>
+                                                                <input type="text" name="" id="">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">URL</th>
+                                                            <td>
+                                                                <input type="text" name="" id="">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:0">
+                                                <table class="table ty2 no_view">
+                                                    <col style="width:150px">
+                                                    <col style="width:auto">
+                                                    <tbody>
+                                                        <tr style="border-top:none">
+                                                            <th scope="row">이미지</th>
+                                                            <td>
+                                                                <input type="file" name="" id="">
+                                                                <input type="text" name="" id="" class="mt_05" placeholder="접근성 태그 입력">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">제목</th>
+                                                            <td>
+                                                                <input type="text" name="" id="">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">URL</th>
+                                                            <td>
+                                                                <input type="text" name="" id="">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div data-view="2">
+                <table class="table ty2 no_view">
+                    <col style="width:150px">
+                    <col style="width:auto">
+                    <tbody>
+                        <tr style="border-top:none">
+                            <th scope="row">
+                                <a href="#" class="btn ty_1" data-add-line="5" style="font-weight:normal;">추가 +</a>
+                            </th>
+                            <td style="padding:0">
+                                <table class="table ty2 no_view" data-bind-table="5">
+                                    <col style="width:150px">
+                                    <col style="width:auto">
+                                    <tbody>
+                                        <tr style="border-top:none">
+                                            <th scope="row">소식1</th>
+                                            <td style="padding:0">
+                                                <table class="table ty2 no_view">
+                                                    <col style="width:150px">
+                                                    <col style="width:auto">
+                                                    <tbody>
+                                                        <tr style="border-top:none">
+                                                            <th scope="row">이미지</th>
+                                                            <td>
+                                                                <input type="file" name="" id="">
+                                                                <input type="text" name="" id="" class="mt_05" placeholder="접근성 태그 입력">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">URL</th>
+                                                            <td>
+                                                                <input type="text" name="" id="">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">소식2</th>
+                                            <td style="padding:0">
+                                                <table class="table ty2 no_view">
+                                                    <col style="width:150px">
+                                                    <col style="width:auto">
+                                                    <tbody>
+                                                        <tr style="border-top:none">
+                                                            <th scope="row">이미지</th>
+                                                            <td>
+                                                                <input type="file" name="" id="">
+                                                                <input type="text" name="" id="" class="mt_05" placeholder="접근성 태그 입력">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">URL</th>
+                                                            <td>
+                                                                <input type="text" name="" id="">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <script>
+                $(function(){
+                    dataTabView();
+                    dataAddLine();
+                });
+
+                function dataTabView(){
+                    var t = $(".js_tab>ul>li");
+                    var v = $(".js_tab input.type_idx")
+                    var btn = t.find(' a[data-view]');
+
+                    
+                    btn.on("click",function(){
+                        var c = $(this).attr("data-view");
+                        var d = btn.index($(this));
+                        $('div[data-view]').hide();
+                        $('div[data-view="'+c+'"]').show();
+
+                        t.removeClass("on").eq(d).addClass("on");
+                        v.val(d+1);
+                    });
+
+                    btn.eq(0).trigger("click");
+                }
+
+                function dataAddLine(){
+                    var btn = $('[data-add-line]');
+
+                    btn.on("click",function(){
+                        var c = $(this).attr('data-add-line');
+                        var ta = $('[data-bind-table="'+c+'"]');
+                        var l = ta.find(">tbody>tr:last-child").clone();
+                            l.find(" input").val("");
+                        //if(l.find(" table").length === 0){
+                            l.find(" th").eq(0).text(l.find(" th").eq(0).text().replace(/[0-9]/g,ta.find(">tbody>tr").length+1));
+                        //}
+
+                        l.appendTo(ta.find(">tbody"));
+                        return false;
+                    });
+                }
+            </script>
+    
+    
+        </div>
+    </div>
+    <!-- 컨텐츠 :E -->
+    
+    
+    
+    
+    
+    
+    
+    
+    </div> </div> </div> <div class="top_btn"><a href="#">맨위로</a></div> </div> </body> </html>

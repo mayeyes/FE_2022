@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <div data-graph="2"></div>
+    
+    <script>
+        var json1 = {
+            "data":
+                [
+                    {
+                        "name":"지원활동",
+                        "value":"17.1%",
+                        "list":[
+                            {
+                                "name":"연구개발",
+                                "value":"2.0%",
+                                "count":"95.2명",
+                                "child":[
+                                    {"name":"본사","value":"100"},
+                                    {"name":"현장","value":"0"}
+                                ]
+                            },
+                            {
+                                "name":"기술지원",
+                                "value":"5.4%",
+                                "count":"260.1명",
+                                "child":[
+                                    {"name":"본사","value":"76"},
+                                    {"name":"현장","value":"24"}
+                                ]
+                            },
+                            {
+                                "name":"인사,재무 등 경영지원",
+                                "value":"9.7%",
+                                "count":"470.8명",
+                                "child":[
+                                    {"name":"본사","value":"67"},
+                                    {"name":"현장","value":"33"}
+                                ]
+                            }
+                        ],
+                        "color":["#b4daff","#1062b1","#052f57"]
+                    },
+                    {
+                        "name":"사업활동",
+                        "value":"82.9%",
+                        "list":[
+                            {"name":"조사기획","value":"2%","count":""},
+                            {"name":"계획","value":"3%","count":""},
+                            {"name":"건설","value":"20.3%","count":"984명"},
+                            {"name":"관리운영","value":"46.5%","count":"2297명"},
+                            {"name":"서비스","value":"11.1%","count":"537명"}
+                        ],
+                        "color":["#97d986","#6aa55b","#457d37","#29581d","#16410b"]
+                    }
+                ],
+            "width":"1400",
+            "height":"360"
+        }
+        var graph2_AC = {
+            set:function(str){
+                var obj = str;
+                    obj.type = obj.attr('data-graph');
+                var svg = "";
+                var w = Number(json1.width);
+                var h = Number(json1.height);
+                // var a = 10;//비율 가로
+                // var b = 4;//비율 세로
+                // var h = (b*w)/a;
+                var title_w = 250;
+
+                obj.attr("style","position:relative;width:"+w+"px");
+                
+                //화살표형
+                svg += '<svg width="'+w+'" height="'+h+'" viewbox="0 0 '+w+' '+h+'">';
+                
+                svg += '<defs>';
+                svg += '<clipPath id="backClip">';
+                svg += '<path d="M0,0 L'+(w-100)+',0 L'+w+','+(h/2)+' L'+(w-100)+','+h+' L0,'+h+'Z" fill="#000" />';
+                svg += '</clipPath>';
+                svg += '</defs>';
+
+                svg += '<g clip-path="url(#backClip)">';
+
+                svg += '<line x1="0" y1="2.5" x2="'+title_w+'" y2="2.5" stroke-width="5" stroke="#052f57" />';
+                svg += '<text x="30" y="55" font-size="26" font-weight="600" fill="#052f57">'+json1.data[0].name+'</text>';
+                svg += '<text x="'+(title_w - 20)+'" y="'+((h/2) - 40)+'" font-size="56" text-anchor="end" fill="#052f57">'+json1.data[0].value+'</text>';
+
+                svg += '<line x1="0" y1="'+((h/2)+2.5)+'" x2="'+title_w+'" y2="'+((h/2)+2.5)+'" stroke-width="5" stroke="#ff6600" />';
+                svg += '<text x="30" y="'+((h/2)+55)+'" font-size="26" font-weight="600" fill="#ff6600">'+json1.data[1].name+'</text>';
+                svg += '<text x="'+(title_w - 20)+'" y="'+((h) - 40)+'" font-size="56" text-anchor="end" fill="#ff6600">'+json1.data[1].value+'</text>';
+                
+                for(var i=0; i<json1.data[0].list.length; i++){
+                    var line_y = (((h/2)/json1.data[0].list.length)*i);
+                    var line_h = ((h/2)/json1.data[0].list.length);
+                    var text1_x = ((w-title_w-350)/2)+title_w;
+                    var text2_x = w-175;
+                    var text1_v = json1.data[0].list[i].name+"("+json1.data[0].list[i].value+", "+json1.data[0].list[i].count+")";
+                    var text2_v = (json1.data[0].list[i].child[0].value==="100") ? 
+                        json1.data[0].list[i].child[0].name+" "+json1.data[0].list[i].child[0].value+"%"
+                        :
+                        (json1.data[0].list[i].child[1].value==="100") ?
+                            json1.data[0].list[i].child[1].name+" "+json1.data[0].list[i].child[1].value+"%"
+                            :
+                            json1.data[0].list[i].child[0].name+" "+json1.data[0].list[i].child[0].value+", "+json1.data[0].list[i].child[1].name+" "+json1.data[0].list[i].child[1].value;
+                    var color = (i===0)?"#052f57":"#fff";
+                    var rect_w =  (w-title_w) * (Number(json1.data[0].list[i].child[0].value.replace("%","")) * 0.01);
+                    svg += '<rect x="'+title_w+'" y="'+line_y+'" width="'+rect_w+'" height="'+line_h+'" fill="'+json1.data[0].color[i]+'" />';    
+                    svg += '<text x="'+text1_x+'" y="'+(line_y+(line_h/2)+10)+'" font-size="20" font-weight="600" text-anchor="middle" fill="'+color+'">'+text1_v+'</text>';
+                    svg += '<text x="'+text2_x+'" y="'+(line_y+(line_h/2)+10)+'" font-size="20" font-weight="600" text-anchor="middle" fill="#052f57">'+text2_v+'</text>';
+                }
+                var line_l = title_w;
+                for(var i=0; i<json1.data[1].list.length; i++){
+                    var line_w = Number(json1.data[1].list[i].value.replace("%","")) / Number(json1.data[1].value.replace("%","")) * 100;
+                        line_w = (w-title_w) * (line_w*0.01);
+                    
+                    svg += '<rect x="'+line_l+'" y="'+(h/2)+'" width="'+line_w+'" height="'+(h/2)+'" fill="'+json1.data[1].color[i]+'" />';
+                    line_l += line_w;
+                }
+
+                svg += '</g>';  
+                svg += '<filter id="myfilters" color-interpolation-filters="sRGB">';
+                svg += '<feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="1" />';
+                svg += '</filter>';
+                svg += '<g filter="url(#myfilters)">';
+                var line_l = title_w;
+                for(var i=0; i<json1.data[1].list.length; i++){
+                    var line_w = Number(json1.data[1].list[i].value.replace("%","")) / Number(json1.data[1].value.replace("%","")) * 100;
+                        line_w = (w-title_w) * (line_w*0.01);
+                    var text_x = line_l + (line_w/2);
+                    var text_c = (i>2)?"#fff":"#fff";
+                    
+                    
+                    if(i<2){
+                        svg += '<text x="'+text_x+'" y="'+((h/2) + ((h/2)-(25*json1.data[1].list[i].name.length))/2)+'" font-size="20" font-weight="600" text-anchor="middle" fill="'+text_c+'">';
+                        for(var t=0; t<json1.data[1].list[i].name.length; t++){
+                            svg += '<tspan x="'+text_x+'" dy="'+25+'" text-anchor="middle">'+json1.data[1].list[i].name.substr(t,1)+'</tspan>';
+                        }
+                        svg += '</text>';
+                    } else {
+                        svg += '<text x="'+text_x+'" y="'+((h/2)+(h/4)-10)+'" font-size="20" font-weight="600" text-anchor="middle" fill="'+text_c+'">';
+                        svg += '<tspan x="'+text_x+'" text-anchor="middle">'+json1.data[1].list[i].name+'</tspan>';
+                        svg += '<tspan x="'+text_x+'" dy="25" text-anchor="middle">('+json1.data[1].list[i].value+', '+json1.data[1].list[i].count+')</tspan>';
+                        svg += '</text>';
+                    }
+                    
+                    line_l += line_w;
+                }               
+                svg += '</g>';     
+                svg += '</svg>';
+
+                $(svg).appendTo(obj.empty());
+            },
+            init:function(){
+                for(var i=0; i<$('[data-graph="2"]').length; i++){
+                    this.set($('[data-graph="2"]').eq(i));
+                }
+            }
+        }
+        $(function(){
+            graph2_AC.init();
+        });
+    </script>
+</body>
+</html>

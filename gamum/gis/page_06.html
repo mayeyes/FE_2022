@@ -1,0 +1,695 @@
+<div class="locations">
+	<a href="#"><span>대전광역시 유성구 관평동</span></a>
+</div>
+
+<!-- main_right_tools:S -->
+<div id="main_right_tools">
+	<div class="map_ctrl">
+		<div class="map_op">
+			<a class="map_mode_nm">지도</a>
+			<a href="#" class="map_btn" onclick="setMapMode('1')">지도</a>
+			<a href="#" class="sky_btn" onclick="setMapMode('2')">위성</a>
+			<a href="#" class="gray_btn" onclick="setMapMode('3')">회색</a>
+			<a href="#" class="night_btn" onclick="setMapMode('4')">야간</a>
+		</div>
+	</div>
+</div>
+<!-- main_right_tools:E -->
+
+
+<!-- top_tools:S -->
+<div id="top_tools">
+	<a href="#" class="btn_loca"><span>내위치</span></a>
+
+	<div class="searchbx">
+		<div class="selbx">
+			<label for="si_sel" class="hidden">시 선택</label>
+			<select name="si_sel" id="si_sel">
+				<option value="">선택</option>
+				<option value="">서울특별시</option>
+				<option value="">대전광역시</option>
+			</select>
+		</div>
+		<div class="selbx">
+			<label for="gu_sel" class="hidden">구 선택</label>
+			<select name="gu_sel" id="gu_sel">
+				<option value="">선택</option>
+				<option value="">유성구</option>
+				<option value="">대덕구</option>
+			</select>
+		</div>
+		<div class="selbx">
+			<label for="dong_sel" class="hidden">동 선택</label>
+			<select name="dong_sel" id="dong_sel">
+				<option value="">선택</option>
+				<option value="">봉명동</option>
+				<option value="">구암동</option>
+			</select>
+		</div>
+		<a href="#" class="search_ccle">취소</a>
+		<a href="#" class="search_btn">검색</a>
+	</div>
+
+	<a href="#" class="btn_down"><span>지도 이미지 다운로드</span></a>
+</div>
+<!-- top_tools:E -->
+
+
+<!-- 내 위치 기준 반경::S --> 	<!-- 2020.12.15 수정 -->
+<div id="bottom_tools">
+	<div id="radius_bx" class="bxs" style="background-color: rgb(69, 67, 74); border-radius: 0.2em; width: 180px; height: 100px; color: rgb(255, 255, 255); line-height: 2em; text-align: center; margin-top: 20px; display: block;">
+		<p style=" text-align: center;">내위치 기준 반경</p>
+		<p style="color: gray; font-size: 13px;">반경범위를 입력하세요 </p>
+		<p style="text-align: left; margin-left: 14px;">반경 :<input type="text" id="radius_val" style="width: 50px;margin-left:5px;" onkeypress="javascript:if(event.keyCode==13) {radiusChange()}" value="50">km 
+		<a href="#" class="down_btn" style="color: #fff; border: 1px solid; padding: 1px 5px;" onclick="radiusChange()"> 확인</a></p>
+	</div>
+</div>
+<!-- 내 위치 기준 반경::E -->
+
+
+<!-- options:S -->
+<div class="op_btn">
+	<a href="#">조건선택</a>
+</div>
+<div id="options" class="ty_02"> <!-- 2020.12.15 수정 -->
+	<div class="op_wr">
+		<div class="sbjt">
+			<div class="tt">
+				<input type="checkbox" id="checks_01" checked="checked" />
+				<label for="checks_01">수원 및 공급시설</label>
+			</div>
+			<ul>
+				<li>
+					<span data-icon="dam_01"><input type="checkbox" id="dam_01" /><label for="dam_01">다목적댐</label></span>
+				</li>
+				<li>
+					<span data-icon="dam_02"><input type="checkbox" id="dam_02" /><label for="dam_02">용수댐</label></span>
+				</li>
+				<li>
+					<span data-icon="dam_03"><input type="checkbox" id="dam_03" /><label for="dam_03">발전용댐</label></span>
+				</li>
+				<li>
+					<span data-icon="dam_04"><input type="checkbox" id="dam_04" /><label for="dam_04">홍수조절용댐</label></span>
+				</li>
+				<li>
+					<span data-icon="dook"><input type="checkbox" id="dook" /><label for="dook">하구둑</label></span>
+				</li>
+				<li>
+					<span data-icon="dam_05"><input type="checkbox" id="dam_05" /><label for="dam_05">농업용댐</label></span>
+				</li>
+				<li>
+					<span data-icon="resrv"><input type="checkbox" id="resrv" /><label for="resrv">지자체저수지</label>
+				</li>
+				<li>
+					<span data-icon="multi"><input type="checkbox" id="multi" /><label for="multi">다기능보</label>
+				</li>
+				<li>
+					<span data-icon="intak"><input type="checkbox" id="intak" /><label for="intak">취수장</label></span>
+				</li>
+				<li>
+					<span data-icon="prifc"><input type="checkbox" id="prifc" /><label for="prifc">정수장</label></span>
+				</li>
+				<li>
+					<span data-icon="seawt"><input type="checkbox" id="seawt" /><label for="seawt">해수담수화</label></span>
+				</li>
+				<li>
+					<span data-icon="observ"><input type="checkbox" id="observ" /><label for="observ">관정 관측소</label></span>
+				</li>
+				<li>
+					<span data-icon="reuse"><input type="checkbox" id="reuse" /><label for="reuse">재이용수</label></span>
+				</li>
+			</ul>
+		</div>
+		<div class="sbjt">
+			<div class="tt">
+				<input type="checkbox" id="checks_02" />
+				<label for="checks_02">용수 지원시설</label>
+			</div>
+			<ul>
+				<li>
+					<span data-icon="firef"><input type="checkbox" id="firef" /><label for="firef">소방설비</label></span>
+				</li>
+				<li>
+					<span data-icon="botl"><input type="checkbox" id="botl" /><label for="botl">병물</label></span>
+				</li>
+				<li>
+					<span data-icon="wtcar"><input type="checkbox" id="wtcar" /><label for="wtcar">물차</label></span>
+				</li>
+			</ul>
+		</div>
+		<div class="sbjt">
+			<div class="tt">
+				<input type="checkbox" id="checks_03" />
+				<label for="checks_03">관련기관</label>
+			</div>
+			<ul>
+				<li>
+					<span data-icon="gamums"><input type="checkbox" id="gamums" /><label for="gamums">가뭄담당자</label></span>
+				</li>
+				<li>
+					<span data-icon="polic"><input type="checkbox" id="polic" /><label for="polic">경찰서</label></span>
+				</li>
+				<li>
+					<span data-icon="pres"><input type="checkbox" id="pres" /><label for="pres">언론기관</label></span>
+				</li>
+				<li>
+					<span data-icon="volun"><input type="checkbox" id="volun" /><label for="volun">자원봉사센터</label></span>
+				</li>
+				<li>
+					<span data-icon="kepco"><input type="checkbox" id="kepco" /><label for="kepco">힌국전력공사</label></span>
+				</li>
+				<li>
+					<span data-icon="asso"><input type="checkbox" id="asso" /><label for="asso">관련협회</label></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<a href="#" class="reset_btn">초기화</a>
+	<a href="#" class="close_btn">조건선택 닫기</a>
+</div>
+<!-- options:E -->
+
+
+<!-- Databx:S -->
+<div id="data_bx" class="ty_02">
+	<ul class="tabs">
+		<li class="on"><a href="#tab_01">댐</a></li>
+		<li><a href="#tab_02">소방설비</a></li>
+		<li><a href="#tab_03">병물</a></li>
+		<li><a href="#tab_04">물차</a></li>
+	</ul>
+
+	<div class="tab_bx on" id="tab_01">
+		<div data-name="one19">
+			<div class="table_bx" data-scroll="yes">
+				<table data-skin="table" data-style="2">
+					<caption>댐의 시설명, 위치, 거리를 나타낸 표</caption>
+					<col style="width:12%;" />
+					<col style="width:18%;" />
+					<col style="width:18%;" />
+					<col style="width:auto;" />
+					<col style="width:19%;" />
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">구분</th>
+							<th scope="col">시설명</th>
+							<th scope="col">위치(주소)</th>
+							<th scope="col">거리(km)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img src="images/common/icon_dam01_ov.svg" alt=""></td>
+							<td>OO댐</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_dam01_ov.svg" alt=""></td>
+							<td>OO댐</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_dam01_ov.svg" alt=""></td>
+							<td>OO댐</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_dam01_ov.svg" alt=""></td>
+							<td>OO댐</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_dam01_ov.svg" alt=""></td>
+							<td>OO댐</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_dam01_ov.svg" alt=""></td>
+							<td>OO댐</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_dam01_ov.svg" alt=""></td>
+							<td>OO댐</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_dam01_ov.svg" alt=""></td>
+							<td>OO댐</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="table_bx" style="display:none;">
+				<table data-skin="table">
+					<tbody>
+						<tr>
+							<th scope="row">구분</th>
+							<td>OO댐</td>
+							<th scope="row">시설명</th>
+							<td>BBB</td>
+						</tr>
+						<tr>
+							<th scope="row">주소</th>
+							<td colspan="3" class="align_left blue">대전광역시 유성구 A동 00-00</td>
+						</tr>
+						<tr>
+							<th scope="row">관리기관</th>
+							<td colspan="3" class="align_left blue">OO댐</td>
+						</tr>
+						<tr>
+							<th scope="row">연락처</th>
+							<td colspan="3" class="align_left blue">042-123-4567/5678/6789</td>
+						</tr>
+						<tr>
+							<th scope="row">급수장비</th>
+							<td>00대</td>
+							<th scope="row">급수장비</th>
+							<td>00대</td>
+						</tr>
+						<tr>
+							<th scope="row">물차현황</th>
+							<td>00대</td>
+							<th scope="row">소방인력</th>
+							<td>00명</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="no_datas">
+				<p>소방설비 목록을 클릭하시면<br />상세정보를 확인하실 수 있습니다.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="tab_bx" id="tab_02">
+		<div data-name="one19">
+			<div class="table_bx" data-scroll="yes">
+				<table data-skin="table" data-style="2">
+					<caption>소방설비의 시설명, 위치, 거리를 나타낸 표</caption>
+					<col style="width:12%;" />
+					<col style="width:18%;" />
+					<col style="width:18%;" />
+					<col style="width:auto;" />
+					<col style="width:19%;" />
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">구분</th>
+							<th scope="col">시설명</th>
+							<th scope="col">위치(주소)</th>
+							<th scope="col">거리(km)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img src="images/common/icon_firef_ov.svg" alt=""></td>
+							<td>소방설비</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_firef_ov.svg" alt=""></td>
+							<td>소방설비</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_firef_ov.svg" alt=""></td>
+							<td>소방설비</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_firef_ov.svg" alt=""></td>
+							<td>소방설비</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_firef_ov.svg" alt=""></td>
+							<td>소방설비</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_firef_ov.svg" alt=""></td>
+							<td>소방설비</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="table_bx">
+				<table data-skin="table">
+					<tbody>
+						<tr>
+							<th scope="row">구분</th>
+							<td>소방설비</td>
+							<th scope="row">시설명</th>
+							<td>BBB</td>
+						</tr>
+						<tr>
+							<th scope="row">주소</th>
+							<td colspan="3" class="align_left blue">대전광역시 유성구 A동 00-00</td>
+						</tr>
+						<tr>
+							<th scope="row">관리기관</th>
+							<td colspan="3" class="align_left blue">북대전소방서</td>
+						</tr>
+						<tr>
+							<th scope="row">연락처</th>
+							<td colspan="3" class="align_left blue">042-123-4567/5678/6789</td>
+						</tr>
+						<tr>
+							<th scope="row">급수장비</th>
+							<td>00대</td>
+							<th scope="row">급수장비</th>
+							<td>00대</td>
+						</tr>
+						<tr>
+							<th scope="row">물차현황</th>
+							<td>00대</td>
+							<th scope="row">소방인력</th>
+							<td>00명</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="tab_bx" id="tab_03">
+		<div data-name="one19">
+			<div class="table_bx" data-scroll="yes">
+				<table data-skin="table" data-style="2">
+					<caption>병물의 시설명, 위치, 거리를 나타낸 표</caption>
+					<col style="width:12%;" />
+					<col style="width:18%;" />
+					<col style="width:18%;" />
+					<col style="width:auto;" />
+					<col style="width:19%;" />
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">구분</th>
+							<th scope="col">시설명</th>
+							<th scope="col">위치(주소)</th>
+							<th scope="col">거리(km)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_botl_ov.svg" alt=""></td>
+							<td>병물</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="table_bx">
+				<table data-skin="table">
+					<tbody>
+						<tr>
+							<th scope="row">구분</th>
+							<td>병물</td>
+							<th scope="row">시설명</th>
+							<td>BBB</td>
+						</tr>
+						<tr>
+							<th scope="row">주소</th>
+							<td colspan="3" class="align_left blue">대전광역시 유성구 A동 00-00</td>
+						</tr>
+						<tr>
+							<th scope="row">관리기관</th>
+							<td colspan="3" class="align_left blue">병물</td>
+						</tr>
+						<tr>
+							<th scope="row">연락처</th>
+							<td colspan="3" class="align_left blue">042-123-4567/5678/6789</td>
+						</tr>
+						<tr>
+							<th scope="row">급수장비</th>
+							<td>00대</td>
+							<th scope="row">급수장비</th>
+							<td>00대</td>
+						</tr>
+						<tr>
+							<th scope="row">물차현황</th>
+							<td>00대</td>
+							<th scope="row">소방인력</th>
+							<td>00명</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="tab_bx" id="tab_04">
+		<div data-name="one19">
+			<div class="table_bx" data-scroll="yes">
+				<table data-skin="table" data-style="2">
+					<caption>물차의 시설명, 위치, 거리를 나타낸 표</caption>
+					<col style="width:12%;" />
+					<col style="width:18%;" />
+					<col style="width:18%;" />
+					<col style="width:auto;" />
+					<col style="width:19%;" />
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">구분</th>
+							<th scope="col">시설명</th>
+							<th scope="col">위치(주소)</th>
+							<th scope="col">거리(km)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img src="images/common/icon_wtcar_ov.svg" alt=""></td>
+							<td>물차</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_wtcar_ov.svg" alt=""></td>
+							<td>물차</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td><img src="images/common/icon_wtcar_ov.svg" alt=""></td>
+							<td>물차</td>
+							<td><a href="#">BBB</a></td>
+							<td><span class="sht">대전광역시 유성구 대덕대로</span></td>
+							<td>0.5</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="table_bx">
+				<table data-skin="table">
+					<tbody>
+						<tr>
+							<th scope="row">구분</th>
+							<td>물차</td>
+							<th scope="row">시설명</th>
+							<td>BBB</td>
+						</tr>
+						<tr>
+							<th scope="row">주소</th>
+							<td colspan="3" class="align_left blue">대전광역시 유성구 A동 00-00</td>
+						</tr>
+						<tr>
+							<th scope="row">관리기관</th>
+							<td colspan="3" class="align_left blue">물차</td>
+						</tr>
+						<tr>
+							<th scope="row">연락처</th>
+							<td colspan="3" class="align_left blue">042-123-4567/5678/6789</td>
+						</tr>
+						<tr>
+							<th scope="row">급수장비</th>
+							<td>00대</td>
+							<th scope="row">급수장비</th>
+							<td>00대</td>
+						</tr>
+						<tr>
+							<th scope="row">물차현황</th>
+							<td>00대</td>
+							<th scope="row">소방인력</th>
+							<td>00명</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<a href="#" class="info_btn">기본정보</a>
+	<a href="#" class="close">닫기</a>
+</div>
+<!-- Databx:E -->
+
+
+<!-- data_pop:S -->
+<div id="data_pop">
+	<strong class="tt">용수 지원시설</strong>
+	<div class="table_bx">
+		<table data-skin="table" class="js_tb">
+			<caption>용수 지원시설으로 구분, 시설명, 주소, 관리기관, 연락처, 급수장비, 물차현황, 소방인력에 대한 표 입니다.</caption>
+			<col style="width:5%;">
+			<col style="width:10%;">
+			<col style="width:10%;">
+			<col style="width:auto;">
+			<col style="width:auto;">
+			<col style="width:auto;">
+			<col style="width:8%;">
+			<col style="width:8%;">
+			<col style="width:8%;">
+			<col style="width:8%;">
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">구분</th>
+					<th scope="col">시설명</th>
+					<th scope="col">주소</th>
+					<th scope="col">관리기관</th>
+					<th scope="col">연락처</th>
+					<th scope="col">급수장비</th>
+					<th scope="col">물차현황</th>
+					<th scope="col">급수장비</th>
+					<th scope="col">소방인력</th>
+				</tr>
+				<tbody>
+					<tr>
+						<td><img src="images/common/icon_firef_ov.svg" alt=""></td>
+						<td><span>소방설비</span></td>
+						<td><span>BBB</span></td>
+						<td><span class="blue">대전광역시 유성구 OO동 000-000</span></td>
+						<td><span class="blue">북대전소방서</span></td>
+						<td><span class="blue">042-123-4567 / 042-123-4567</span></td>
+						<td><span>00대</span></td>
+						<td><span>00대</span></td>
+						<td><span>00대</span></td>
+						<td><span>00명</span></td>
+					</tr>
+				</tbody>
+			</thead>
+		</table>
+	</div>
+	<a href="#" class="details">운영현황 상세보기</a>
+	<a href="#" class="close">닫기</a>
+</div>
+<!-- data_pop:E -->
+	
+
+<div>
+	<!-- 하단 공업용수 팝업 제어 -->
+	<a href="#" data-popup="pop1" onclick="page6_movePop('movepop1');page6_movePop('movepop2'); return false;">
+		<img src="images/content/gamum119_sample.svg" alt="" style="position:absolute; top:50%; left:50%; z-index:1; transform:translate(-50%,-50%);">
+	</a>
+
+	<!-- onclick="Data_pop_On(); return false;" -->
+
+
+	<img src="images/content/gamum119_sample2.svg" alt="" style="position:absolute; bottom:1em; left:50%; z-index:1; transform:translate(-50%,-50%);">
+	<!-- 디자인 참고
+	파란영역 배경색 : rgb(0,130,255) / opacity:15%
+	파란영역 라인색 : rgb(0,93,183)
+	아이콘별 명칭은 왼쪽 옵션메뉴 참고 → map_icon_000.svg
+	 -->
+</div>

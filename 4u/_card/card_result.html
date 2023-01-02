@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
+<meta name="format-detection" content="telephone=no,email=no,address=no" />
+<meta name="title" content="공주대학교 4U 온라인 입학상담센터" />
+<meta name="author" content="공주대학교 4U 온라인 입학상담센터" />
+<meta name="keywords" content="공주대학교 4U 온라인 입학상담센터" />
+<meta name="description" content="사이트 설명" />
+<meta name="copyright" content="COPYRIGHT@ 2017 KONGJU NATIONAL UNIVERSITY. ALL RIGHT RESERVED" />
+<!-- SNS Open Graph Tags :S -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="공주대학교 4U 온라인 입학상담센터" />
+<meta property="og:description" content="사이트 설명" />
+<meta property="og:image" content="./img/logo.png" />
+<meta name="naver-site-verification" content="공주대학교 4U 온라인 입학상담센터" />
+<meta name="twitter:image" content="./img/logo.png" />
+<!-- SNS Open Graph Tags :E -->
+<title>공주대학교 4U 온라인 입학상담센터</title>
+<link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
+<link rel="apple-touch-icon" href="./img/favicon.png" />
+<link rel="stylesheet" href="./css/common.css" />
+<link rel="stylesheet" href="./css/card.css" />
+
+<link rel="stylesheet" href="./font/font_default.css">
+<script src="./js/jquery-1.12.4.min.js"></script>
+<script src="./js/card.js"></script>
+<script src="./js/card_data.js"></script>
+<script src="./js/card_prog.js"></script>
+<script src="./js/jspdf.min.js"></script>
+<script src="./js/html2canvas.js"></script>
+<script type="text/javascript">
+function pdfDownload(){
+	html2canvas($('#contents').find('div.layout')[0], {
+		onrendered: function(canvas){
+			console.log(canvas.height);
+			console.log(canvas.width);
+			var imgData = canvas.toDataURL('image/png');
+			var doc = new jsPDF('p','mm',[canvas.height+20,canvas.width+20]);
+			doc.addImage(imgData,'PNG',10,10,canvas.width,canvas.height,'','FAST');
+			doc.save('result.pdf');
+		}
+	});
+}
+</script>
+</head>
+<body>
+<p id="skipToContent">
+	<a href="#container">본문 바로가기</a>
+</p>
+<div id="wrap">
+	<div id="header">
+        <h1><span>국립공주대학교-진로전공탐색</span></h1>
+    </div>
+	<!-- container :S -->
+	<div id="container">
+		<!-- contents :S -->
+		<div id="contents">
+			<div class="layout">
+				<div class="pattern_box">
+					<div class="bor">
+						<p class="analysis_title">
+							귀하의 탐색을 진행한 결과,
+							<span class="ty_r">실재형</span> 성격, <span class="ty_i">탐구형</span> 성격, <span class="ty_a">예술형</span> 성격, <span class="ty_s">사회형</span> 성격, <span class="ty_e">기업형</span> 성격, <span class="ty_c">관습형</span> 성격
+<!-- 							<span class="ty_i">탐구형</span> 성격, <span class="ty_c">관습형</span> 성격 -->
+							이 우세한 것으로 나타납니다.
+						</p>
+					</div>
+				</div>	
+                <!-- 챠트 :s -->
+                <div class="chart" data-json='{"item":["실제형","탐구형","예술형","사회형","기업형","관습형"],"value":[1,2,3,4,5,6]}'></div>
+                <!-- 챠트 :e -->
+                <!-- 리스트 :s -->
+                <div id="info">
+                    <script>
+                        printGroupString(
+                            ['G3,G1,G1,G3,G2,G5,G4,G1','r'],
+                            ['G12,G7,G9,G10,G11,G6,G8,G12','i'],
+                            ['G14,G16,G16,G15,G13,G13,G14,G14','a'],
+                            ['G18,G17,G17,G18,G17,G18,G17,G17','s'],
+                            ['G19,G21,G20,G21,G19,G22,G20,G22','e'],
+                            ['G24,G23,G24,G23,G24,G23,G23,G24','c']
+                        );
+                    </script>
+                </div>
+                <!-- 리스트 :e -->
+                <div class="ok">
+                    <a href="#" onclick="pdfDownload(); return false;">결과저장하기</a>
+                </div>			
+			</div>
+		</div>	
+		<!-- contents :E -->
+	</div>
+	<!-- container :E -->
+</div>
+</body>
+</html>

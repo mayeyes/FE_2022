@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <style>
+        body{background-color:#000;}
+        [data-worklist="1"]{width:800px; padding:10px; background-color:rgba(255,255,255, 1);}
+        [data-worklist="1"] ul,
+        [data-worklist="1"] li{margin:0; padding:0; list-style:none;}
+        [data-worklist="1"]>.in{display:flex; position:relative;}
+        [data-worklist="1"]>.in>strong{display:flex; align-items:center; justify-content:flex-start; position:absolute; left:0; top:0; z-index:100; height:30px; background-color:#fff;}
+        [data-worklist="1"]>.in>.caption{display:flex; align-items:center; justify-content:flex-end; position:absolute; right:0; top:0; z-index:100; height:30px; background-color:#fff;}
+        [data-worklist="1"]>.in>.caption>li{position:relative; padding-left:15px; font-size:12px;}
+        [data-worklist="1"]>.in>.caption>li:not(:last-child){margin-right:10px;}
+        [data-worklist="1"]>.in>.caption>li::before{content:""; display:block; position:absolute; left:0; top:0; width:12px; height:12px; margin-right:5px; background-color:#ddd;}
+        [data-worklist="1"]>.in>.caption>li:nth-child(1):before{background-color:rgb(204, 255, 186);}
+        [data-worklist="1"]>.in>.caption>li:nth-child(2)::before{background-color:rgb(207, 221, 255);}
+        [data-worklist="1"]>.in>.caption>li:nth-child(3)::before{background-color:rgb(255, 198, 198);}
+        [data-worklist="1"]>.in .l>li{display:flex; align-items:center; justify-content:flex-start; flex-direction:row; height:40px;}
+        [data-worklist="1"]>.in>.c{overflow:auto; position:relative; width:100%;}
+        [data-worklist="1"]>.in>.c>.j{height:100%;}
+        [data-worklist="1"]>.in>.c>.j>div{display:flex; height:100%;}
+        [data-worklist="1"]>.in>.c>.j>div>div:not(.list){height:100%;}
+        [data-worklist="1"]>.in>.c>.j>div>div:not(.list)>strong{display:flex; align-items:center; justify-content:flex-start; height:30px;}
+        [data-worklist="1"]>.in>.c>.j>div>div:not(.list)>ul{display:flex; height:calc(100% - 30px);}
+        [data-worklist="1"]>.in>.c>.j>div>div:not(.list)>ul>li{flex:0 0 30px; height:100%;}
+        [data-worklist="1"]>.in>.c>.j>div>div:not(.list)>ul>li:nth-child(2n+2){background-color:rgb(244, 244, 244);}
+        [data-worklist="1"]>.in>.c>.j>div>div:not(.list)>ul>li.start{background-color:rgb(204, 255, 186);}
+        [data-worklist="1"]>.in>.c>.j>div>div:not(.list)>ul>li.middle{background-color:rgb(207, 221, 255);}
+        [data-worklist="1"]>.in>.c>.j>div>div:not(.list)>ul>li.end{background-color:rgb(255, 198, 198);}
+        [data-worklist="1"]>.in>.c>.j>div>div:not(.list)>ul>li>span{display:flex; align-items:center; justify-content:center; width:30px; height:30px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list{position:absolute; left:0; top:60px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span{display:flex; align-items:center; position:absolute; height:30px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(1){top:0;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(2){top:30px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(3){top:60px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(4){top:90px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(5){top:120px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(6){top:150px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(7){top:180px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(8){top:210px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(9){top:240px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span:nth-child(10){top:270px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span::before{content:""; display:flex; align-items:center; justify-content:flex-start; width:100%; height:20px; background-color:#000; border-radius:3px;}
+        [data-worklist="1"]>.in>.c>.j>div>div.list>span>span{display:flex; align-items:center; position:absolute; left:10px; top:0; height:100%; font-size:12px; color:#fff;}
+        
+    </style>
+</head>
+<body>
+    <div data-worklist="1">
+        <div class="in">
+            <strong>2022.04.</strong>
+            <ul class="caption">
+                <li>착수보고</li>
+                <li>중간보고</li>
+                <li>완료보고</li>
+            </ul>
+            <div class="c" style="height:210px;">
+                <div class="j">
+                    <div>
+                        <div>
+                            <strong>4월</strong>
+                            <ul>
+                                <li><span>1</span></li>
+                                <li><span>2</span></li>
+                                <li><span>3</span></li>
+                                <li><span>4</span></li>
+                                <li><span>5</span></li>
+                                <li><span>6</span></li>
+                                <li><span>7</span></li>
+                                <li><span>8</span></li>
+                                <li><span>9</span></li>
+                                <li><span>10</span></li>
+                                <li><span>11</span></li>
+                                <li><span>12</span></li>
+                                <li class="start"><span>13</span></li>
+                                <li><span>14</span></li>
+                                <li><span>15</span></li>
+                                <li><span>16</span></li>
+                                <li><span>17</span></li>
+                                <li><span>18</span></li>
+                                <li><span>19</span></li>
+                                <li><span>20</span></li>
+                                <li><span>21</span></li>
+                                <li><span>22</span></li>
+                                <li><span>23</span></li>
+                                <li><span>24</span></li>
+                                <li><span>25</span></li>
+                                <li><span>26</span></li>
+                                <li><span>27</span></li>
+                                <li><span>28</span></li>
+                                <li><span>29</span></li>
+                                <li><span>30</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong>5월</strong>
+                            <ul>
+                                <li class="middle"><span>1</span></li>
+                                <li><span>2</span></li>
+                                <li class="end"><span>3</span></li>
+                                <li><span>4</span></li>
+                                <li><span>5</span></li>
+                                <li><span>6</span></li>
+                                <li><span>7</span></li>
+                                <li><span>8</span></li>
+                                <li><span>9</span></li>
+                                <li><span>10</span></li>
+                                <li><span>11</span></li>
+                                <li><span>12</span></li>
+                                <li><span>13</span></li>
+                                <li><span>14</span></li>
+                                <li><span>15</span></li>
+                                <li><span>16</span></li>
+                                <li><span>17</span></li>
+                                <li><span>18</span></li>
+                                <li><span>19</span></li>
+                                <li><span>20</span></li>
+                                <li><span>21</span></li>
+                                <li><span>22</span></li>
+                                <li><span>23</span></li>
+                                <li><span>24</span></li>
+                                <li><span>25</span></li>
+                                <li><span>26</span></li>
+                                <li><span>27</span></li>
+                                <li><span>28</span></li>
+                                <li><span>29</span></li>
+                                <li><span>30</span></li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <span style="left:10px; width:400px;"><span>기획</span></span>
+                            <span style="left:300px; width:420px;"><span>디자인</span></span>
+                            <span style="left:330px; width:240px;"><span>퍼블리싱</span></span>
+                            <span style="left:420px; width:300px;"><span>개발</span></span>
+                            <span style="left:390px; width:60px;"><span>기타</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var json = {
+            "data":[
+                {"name":"기획"},
+                {"name":"디자인"},
+                {"name":"퍼블리싱"},
+                {"name":"개발"},
+                {"name":"기타"}
+            ],
+            "project":{"start":"2022.04.11","end":"2022.08.10","open":"2022.08.12"},
+            "report":{"start":"2022.04.13","middle":"2022.05.01","end":"2022.05.03"}
+        }
+
+        var worklist = {
+            set:function(str){
+                var obj = str;
+            },
+            init:function(){
+                for(var i=0; i<$('[data-worklist]').length; i++){
+                    this.set($('[data-worklist]').eq(i));
+                }
+            }
+        }
+        $(function(){
+            worklist.init();
+        });
+    </script>
+</body>
+</html>

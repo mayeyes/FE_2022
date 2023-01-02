@@ -1,0 +1,48 @@
+/* 신호등 */
+/* 
+17 50
+*/
+#svg .sinho{display:block; position:absolute; left:35%; top:1.8%; z-index:1400; width:1.4%; height:6.1%;}
+#svg .sinho>span{background-image:url(../../img/ani/sinho.svg);}
+#svg .sinho>span>i:nth-child(1){background-image:url(../../img/ani/sinho-1.svg);}
+#svg .sinho>span>i:nth-child(2){opacity:0; background-image:url(../../img/ani/sinho-2.svg);}
+#svg .sinho{
+    -webkit-animation-timing-function:linear; animation-timing-function:linear;
+    -webkit-animation-duration:40s; animation-duration:40s;
+    -webkit-animation-fill-mode:forwards; animation-fill-mode:forwards;
+    -webkit-animation-iteration-count:infinite; animation-iteration-count:infinite;
+}
+#svg .sinho>span>i{
+    -webkit-animation-timing-function:linear; animation-timing-function:linear;
+    -webkit-animation-duration:40s; animation-duration:40s;
+    -webkit-animation-fill-mode:forwards; animation-fill-mode:forwards;
+    -webkit-animation-iteration-count:infinite; animation-iteration-count:infinite;
+}
+#svg .sinho{-webkit-animation-name:sinho; animation-name:sinho;}
+#svg .sinho>span>i:nth-child(1){-webkit-animation-name:sinho-1; animation-name:sinho-1;}
+#svg .sinho>span>i:nth-child(2){-webkit-animation-name:sinho-2; animation-name:sinho-2;}
+
+@-webkit-keyframes sinho {
+    0%,20%{z-index:1400;}
+    20.1%,100%{z-index:500;}
+}
+@keyframes sinho {
+    0%,20%{z-index:1400;}
+    20.1%,100%{z-index:500;}
+}
+@-webkit-keyframes sinho-1 {
+    0%,39.9%,55.1%,100%{opacity:1;}
+    40%,55%{opacity:0;}
+}
+@keyframes sinho-1 {
+    0%,39.9%,55.1%,100%{opacity:1;}
+    40%,55%{opacity:0;}
+}
+@-webkit-keyframes sinho-2 {
+    0%,39.9%,55.1%,100%{opacity:0;}
+    40%,55%{opacity:1;}
+}
+@keyframes sinho-2 {
+    0%,39.9%,55.1%,100%{opacity:0;}
+    40%,55%{opacity:1;}
+}

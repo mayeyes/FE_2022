@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html>
+<head>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+	<meta charset="UTF-8">
+	<meta name="description" content="설명글">
+	<meta name="keywords" content="국가가뭄정보포털, 원맵">
+
+	<title>국가가뭄정보포털-원맵서비스</title>
+
+	<link rel="stylesheet" href="js/plug/calendar/jquery-ui.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/core.css" />
+	<link rel="stylesheet" type="text/css" href="css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<link rel="stylesheet" type="text/css" href="font/NotoSansKr/font.css">
+	<link rel="stylesheet" type="text/css" href="font/SpoqaHanSans/font.css">
+
+	<script src="js/jquery-1.12.4.min.js"></script>
+
+	<script src="//www.drought.go.kr/js/jquery-cookie.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="//www.drought.go.kr/js/jquery.form.min.js"></script>
+	<script src="//www.drought.go.kr/js/jquery.ui.datepicker-ko.js"></script>
+	<script src="//www.drought.go.kr/js/jquery-paging.js?_=1599814759254"></script>
+	<script src="//www.drought.go.kr/js/jquery-menu.js?_=1599814759254"></script>
+	<script src="//www.drought.go.kr/js/jquery-gnb.js"></script>
+	<script src="//www.drought.go.kr/js/jquery-setSelect.js"></script>
+	<script src="//www.drought.go.kr/js/bjqs-1.3.js?_=1599814759254"></script>
+	<script src="js/one_map.js"></script>
+
+	<script src="javascript/HTMLShot.js"></script>
+	<script src="//js.arcgis.com/3.18/" defer></script>
+	<link href="//js.arcgis.com/3.18/esri/css/esri.css" rel="stylesheet" />
+
+	<script type="text/javascript">
+	jQuery.extend({ scope: function(scope, fn) { return function() { return fn.apply(scope, arguments); } } });
+
+	var ctx = "//www.drought.go.kr/";
+	var sggcd="";
+	try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}
+
+	dojoConfig = {
+	paths : {
+	agsjs : "/gis/agsjs/"
+	}
+	};
+	</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+
+	<script src="js/KwaterWaterFacilityMap.js" defer></script>
+	<script src="javascript/m41.js?ver=1"></script>
+	<!-- load proj4js -->
+	<script src="lib/proj4js/proj4js.js"></script>
+	<script src="lib/proj4js/defs/EPSG3857.js"></script>
+	<script src="lib/proj4js/defs/EPSG5181.js"></script>
+	<script>
+	var projHash = {};
+	var optIndex = 0;
+	for (var def in Proj4js.defs) {
+	projHash[def] = new Proj4js.Proj(def); //create a Proj for each definition
+	++optIndex;
+	} // for
+	//Proj4js.transform(projHash["EPSG:5181"], projHash["EPSG:3857"], p);
+	</script>
+</head>
+
+<body>
+<div id="wrap">
+
+<div class="js_mobile_check"></div>
+<div id="blind"></div>   
+
+<div id="login_19">
+	<div class="bxs">
+		<p><strong>가뭄 119 메뉴는<br />로그인 후</strong> 사용가능합니다.</p>
+		<a href="#" class="log_btn">로그인 하러가기</a>
+		<a href="#" class="close">닫기</a>
+	</div>
+</div>
+
+<!-- Tutorial:S -->
+<div id="tutorial">
+	<!-- 지도로 보는 가뭄:S -->
+	<div class="intros">
+		<div class="txts">
+			<ul>
+				<li class="titles">
+					<div>
+						<strong>지도로 보는 가뭄</strong>
+						<a href="#" onclick="Tutorial_Page.next(); return false;">사용법 보기</a>
+					</div>
+				</li>
+				<li>
+					<div>
+						<strong>우리동네가뭄</strong>
+						<p>사용자 우리동네(읍면동)의 과거부터 미래 전망 가뭄정보와 기온, 수원, 물 공급시설 및 최신 언론보도 정보 등	가뭄 토털정보를 제공합니다.</p>
+						<a href="#">바로가기</a>
+					</div>
+				</li>
+				<li>
+					<div>
+						<strong>용수공급시설</strong>
+						<p>용수 공급시설에 관한 정보는 생활용수 급수지역, 생활용수 미급수지역, 공업용수 급수지역 탭으로 구분되어 있습니다.</p>
+						<a href="#">바로가기</a>
+					</div>
+				</li>
+				<li>
+					<div>
+						<strong>기상/수문자료</strong>
+						<p>전국 지자체별 댐시설 및 강우·수위·수질·지하수 관측소에 대한 제원 및 상세 운영정보 등을 제공합니다.</p>
+						<a href="#">바로가기</a>
+					</div>
+				</li>
+				<li>
+					<div>
+						<strong>가뭄피해정보관리</strong>
+						<p>가뭄에 따른 물부족으로 인한 제한급수 및 운반급수 발생 현황에 관련된 정보를 제공합니다.</p>
+						<a href="#">바로가기</a>
+					</div>
+				</li>
+				<li>
+					<div>
+						<strong>가뭄 119</strong>
+						<p>사용자 주변의 비상용수(수원, 물차, 지하수 등) 정보를 제공하여, 신속한 가뭄대응을 지원합니다.</p>
+						<a href="#">바로가기</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 지도로 보는 가뭄:E -->
+
+
+	<div class="tutos">
+		<div class="txts">
+			<em>1</em>
+			<strong class="st">내가 원하는 <span>메뉴</span> 선택</strong>
+			<a href="#" class="t_btn" onclick="Tutorial_Page.next(); return false;">다음</a>
+		</div>
+	</div>
+	<div class="tutos">
+		<div class="txts">
+			<em>2</em>
+			<strong class="st"><span>탭</span>을 통해 더 많은 정보 확인</strong>
+			<a href="#" class="t_btn" onclick="Tutorial_Page.next(); return false;">다음</a>
+		</div>
+		<img src="images/layout/tutorial_img02.svg" alt="">
+	</div>
+	<div class="tutos">
+		<div class="txts">
+			<em>3</em>
+			<strong class="st">내가 원하는 <span>지역</span> 선택</strong>
+			<a href="#" class="t_btn" onclick="Tutorial_Page.close();">원맵서비스 바로가기</a>
+			<a href="#" class="rebtn" onclick="Tutorial_Page.open(); return false;">다시보기</a>
+		</div>
+	</div>
+</div>
+<!-- Tutorial:E -->
+
+<!-- Header:S -->
+<div id="header">
+	<div class="h_top">
+		<h1><a href="#"><img src="images/layout/logo.svg" alt="국가가뭄정보포털"></a></h1>
+		<a href="#" data-type="m_btn"><span><em>메뉴줄이기</em></span></a>
+		<h2><span>원맵 서비스</span></h2>
+		<p>한눈에 보는 가뭄정보</p> 
+	</div>
+
+	<div class="h_btm">
+		<div id="gnb">
+			<ul>
+				<li class="dongne"><a href="#"><span>우리동네가뭄</span></a></li>
+				<li class="sisul"><a href="#"><span>용수공급시설</span></a></li>
+				<li class="wgate"><a href="#"><span>기상/수문자료</span></a></li>
+				<li class="suone"><a href="#"><span>수원현황</span></a></li>
+				<li class="damages"><a href="#"><span>가뭄피해정보</span></a></li>
+				<li class="one_19"><a href="#"><span>가뭄 119</span></a></li>
+			</ul>
+		</div>
+
+		<div class="ft">
+			<p><img src="images/layout/footer_txt.svg" alt="ONE MAP SERVICE"></p>
+			<a href="#" class="tuto" onclick="Tutorial_Page.open(); return false;">튜토리얼</a>
+		</div>
+	</div>
+</div>
+
+<div id="mob_header">
+	<h3>원맵 서비스</h3>
+	<a href="#" data-type="m_btn"><span><em>메뉴줄이기</em></span></a>
+</div>
+<!-- Header:E -->
+
+
+<!-- Contents bind:S -->
+<div id="bind">
+    
+</div>
+<!-- Contents bind:E -->
+
+
+<!-- Map:S -->
+<div id="mainMapDiv" class="gis-maps">
+</div>
+<!-- Map:E -->
+
+</div>
+</body>
+</html>

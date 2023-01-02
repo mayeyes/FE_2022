@@ -1,0 +1,47 @@
+[data-skin="scroll"]{position:relative !important; width:100% !important; height:100% !important;}
+[data-skin="scroll"]>.scroll{
+    overflow:auto; position:relative; width:100%; height:100%;
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: none;
+}
+[data-skin="scroll"]>.scroll::-webkit-scrollbar{
+    display: none; /* Chrome, Safari, Opera */
+}
+[data-skin="scroll"] [class*="scrollbar-"]{
+    position:absolute; z-index:1000; background-color:rgba(0,0,0,0.2);
+    -webkit-border-radius:10em; border-radius:10em;
+}
+[data-skin="scroll"] [class*="scrollbar-"]>div{
+    position:absolute; left:0; top:0; width:100%; height:100%; background-color:rgba(255,255,255,1);
+    -webkit-border-radius:10em; border-radius:10em;
+    box-shadow: 0.15em 0.26em 1em rgba(119, 119, 119, 0.1);
+}
+[data-skin="scroll"] .scrollbar-y{right:0; top:0; height:100%;}
+[data-skin="scroll"] .scrollbar-x{right:0; bottom:0; width:100%;}
+
+[data-skin="scroll"][data-opacity="y"]>.scroll{
+    background: linear-gradient(180deg,#fff 33%,rgba(255,255,255,0)),
+                linear-gradient(180deg,rgba(255,255,255,0),#fff 66%) 0 100%,
+                radial-gradient(farthest-side at 50% 0,rgb(106 106 106 / 40%),transparent),
+                radial-gradient(farthest-side at 50% 100%,rgb(106 106 106 / 40%),transparent) 0 100%,
+                linear-gradient(90deg,#fff 33%,rgba(255,255,255,0)),
+                linear-gradient(90deg,rgba(255,255,255,0),#fff 66%) 0 100%,
+                radial-gradient(farthest-side at 0 50%,rgb(106 106 106 / 40%),transparent),
+                radial-gradient(farthest-side at 100% 50%,rgba(106 106 106 / 40%),transparent) 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 50px,100% 50px,100% 10px,100% 10px,50px 100%,50px 100%,10px 100%,10px 100%;
+    background-position: 0 0,100% 100%,0 0,100% 100%,0 0,100%,0 0,100%;
+    background-attachment: local,local,scroll,scroll,local,local,scroll,scroll;
+
+    /* background: linear-gradient(90deg,#fff 33%,rgba(255,255,255,0)),
+                linear-gradient(90deg,rgba(255,255,255,0),#fff 66%) 0 100%,
+                radial-gradient(farthest-side at 0 50%,rgb(106 106 106 / 40%),transparent),
+                radial-gradient(farthest-side at 100% 50%,rgba(106 106 106 / 40%),transparent) 0 100%;
+    background-repeat: no-repeat;
+    background-size: 50px 100%,50px 100%,10px 100%,10px 100%;
+    background-position: 0 0,100%,0 0,100%;
+    background-attachment: local,local,scroll,scroll; */
+}
+[data-skin="scroll"][data-opacity="y"]>.scroll *{
+    mix-blend-mode: multiply;
+}

@@ -1,0 +1,120 @@
+# 보령문화관광 메인 리뉴얼
+
+❌ 미진행 🔺 진행중 ⭕ 완료
+
+### 영문 USER
+01. 메인 : [`/html/eng/index.html`](./html/eng/index.html)
+
+02. 서브&가이드 : [`/html/eng/guide.html`](./html/eng/guide.html)
+
+03. Visit Boryeong 2022
+    - 2022 Visit Boryeong Yeare : [`/html/eng/1-1.html`](./html/eng/1-1.html)
+    - Introduction : [`/html/eng/1-2.html`](./html/eng/1-2.html)
+    - Visit Boryeong Year 2022 Relay Promotion Group : [`/html/eng/1-2-1.html`](./html/eng/1-2-1.html)
+    - SNS for Visit Boryeong Year 2022 : [`/html/eng/1-2-2.html`](./html/eng/1-2-2.html)
+    - Incentives for Boryeong Islands Tours : [`/html/eng/1-2-3.html`](./html/eng/1-2-3.html)
+    - Incentives for Attracting a Group of Tourists : [`/html/eng/1-2-4.html`](./html/eng/1-2-4.html)
+    - Living for one month in Boryeong “Boryeong 100 SCENE” : [`/html/eng/1-2-5.html`](./html/eng/1-2-5.html)
+    - Boryeong Tour by Taxi : [`/html/eng/1-2-6.html`](./html/eng/1-2-6.html)
+    - Boryeong History Tour : [`/html/eng/1-2-7.html`](./html/eng/1-2-7.html)
+    - Intercity Tour Bus : [`/html/eng/1-2-8.html`](./html/eng/1-2-8.html)
+    - Boryeong City Tour Bus : [`/html/eng/1-2-9.html`](./html/eng/1-2-8.html)
+    - Boryeong Mobile Stamp Tour : [`/html/eng/1-2-10.html`](./html/eng/1-2-10.html)
+
+
+04. About Boryeong 
+    - Mayors Message : [`/html/eng/2-1.html`](./html/eng/2-1.html)
+    - History: [`/html/eng/2-2.html`](./html/eng/2-2.html)
+    - Symbols: [`/html/eng/2-3-1.html`](./html/eng/2-3-1.html)
+    - Statue: [`/html/eng/2-3-2.html`](./html/eng/2-3-2.html)
+    - Namdong-gu, Incheo: [`/html/eng/2-4-1-1.html`](./html/eng/2-4-1-1.html)
+    - Danyang-gun, Chungbuk: [`/html/eng/2-4-1-2.html`](./html/eng/2-4-1-2.html)
+    - Gwangjin-gu, Seoul: [`/html/eng/2-4-1-3.html`](./html/eng/2-4-1-3.html)
+    - Dong-gu, Daegu: [`/html/eng/2-4-1-4.html`](./html/eng/2-4-1-4.html)
+    - Jeongseon-gun,Gangwon-do: [`/html/eng/2-4-1-5.html`](./html/eng/2-4-1-5.html)
+    - Jonglokwangjang Traditional Marke: [`/html/eng/2-4-1-6.html`](./html/eng/2-4-1-6.html)
+    - Sangju-si,Gyeongbuk: [`/html/eng/2-4-1-7.html`](./html/eng/2-4-1-7.html)
+    - Republic of Korea Navy 3rd Fleet,Daecheun Port: [`/html/eng/2-4-1-8.html`](./html/eng/2-4-1-8.html)
+    - Ulleung-gun, Gyeongsangbuk-do: [`/html/eng/2-4-1-9.html`](./html/eng/2-4-1-9.html)
+    - Qingpu-gu, Shanghai-city, China: [`/html/eng/2-4-2-1.html`](./html/eng/2-4-2-1.html)
+    - Fujisawa, Japan: [`/html/eng/2-4-2-2.html`](./html/eng/2-4-2-2.html)
+    - Shoreline, USA: [`/html/eng/2-4-2-3.html`](./html/eng/2-4-2-3.html)
+    - Takahama-cho, Japan: [`/html/enggit /2-4-2-4.html`](./html/eng/2-4-2-4.html)
+    - Administrative District: [`/html/eng/2-5.html`](./html/eng/2-5.html)
+    - Statistics: [`/html/eng/2-6.html`](./html/eng/2-6.html)
+    - Location Map: [`/html/eng/2-7.html`](./html/eng/2-7.html)
+
+05. Tourist Attractions
+    - Nine+ scenic spots of Boryeong : [`/html/eng/3-1.html`](./html/eng/3-1.html)
+    - Daecheon Beach : [`/html/eng/3-2-1.html`](./html/eng/3-2-1.html)
+    - Muchangpo Beach : [`/html/eng/3-2-2.html`](./html/eng/3-2-2.html)
+    - Wonsando Beach : [`/html/eng/3-2-3.html`](./html/eng/3-2-3.html)
+    - Obongsan Beac : [`/html/eng/3-2-4.html`](./html/eng/3-2-4.html)
+    - Hodo Beach : [`/html/eng/3-2-5.html`](./html/eng/3-2-5.html)
+    - Yongdu Beach : [`/html/eng/3-2-6.html`](./html/eng/3-2-6.html)
+    - Wonsando Island : [`/html/eng/3-3-1.html`](./html/eng/3-3-1.html)
+    - Janggodo Island : [`/html/eng/3-3-2.html`](./html/eng/3-3-2.html)
+    - Godaedo Island : [`/html/eng/3-3-3.html`](./html/eng/3-3-3.html)
+    - Sapsido Island : [`/html/eng/3-3-4.html`](./html/eng/3-3-4.html)
+    - Nokdo Island : [`/html/eng/3-3-5.html`](./html/eng/3-3-5.html)
+    - Hodo Island : [`/html/eng/3-3-6.html`](./html/eng/3-3-6.html)
+    - Oeyeondo Island : [`/html/eng/3-3-7.html`](./html/eng/3-3-7.html)
+    - Jukdo Island (Sanghwawon) : [`/html/eng/3-3-8.html`](./html/eng/3-3-8.html)
+    - Seongjusan Mountain : [`/html/eng/3-4-1.html`](./html/eng/3-4-1.html)
+    - Oseosan Mountain : [`/html/eng/3-4-2.html`](./html/eng/3-4-2.html)
+    - Amisan Mountain : [`/html/eng/3-4-3.html`](./html/eng/3-4-3.html)
+    - Okmasan Mountain : [`/html/eng/3-4-4.html`](./html/eng/3-4-4.html)
+    - Daecheun Port : [`/html/eng/3-5-1.html`](./html/eng/3-5-1.html)
+    - Ocheon Port : [`/html/eng/3-5-2.html`](./html/eng/3-5-2.html)
+    - OBoryeong Dam : [`/html/eng/3-5-3.html`](./html/eng/3-5-3.html)
+    - Seongjusan Mountain Natural Forest : [`/html/eng/3-6-1.html`](./html/eng/3-6-1.html)
+    - Mud Skin Care Center : [`/html/eng/3-6-2.html`](./html/eng/3-6-2.html)
+    - Cold wind resort : [`/html/eng/3-6-3.html`](./html/eng/3-6-3.html)
+    - Coal mining museum : [`/html/eng/3-6-4.html`](./html/eng/3-6-4.html)
+    - Gaehwa Art Park : [`/html/eng/3-6-5.html`](./html/eng/3-6-5.html)
+    - Muchangpo Tower : [`/html/eng/3-6-6.html`](./html/eng/3-6-6.html)
+    - Mugunghwa Arboretum : [`/html/eng/3-6-7.html`](./html/eng/3-6-7.html)
+    - Boryeong Museum : [`/html/eng/3-6-8.html`](./html/eng/3-6-8.html)
+    - Seongjusaji (temple site) : [`/html/eng/3-7-1.html`](./html/eng/3-7-1.html)
+    - Ocheon Chungcheong Suyeongseong (fortress) : [`/html/eng/3-7-2.html`](./html/eng/3-7-2.html)
+    - Nampo Gwanamun (gate) : [`/html/eng/3-7-3.html`](./html/eng/3-7-3.html)
+    - The Tomb of General Jwa-Jin Kim : [`/html/eng/3-7-4.html`](./html/eng/3-7-4.html)
+    - Boryeong Fortress and Gate : [`/html/eng/3-7-5.html`](./html/eng/3-7-5.html)
+    - Oeyeondo Evergreen Forest : [`/html/eng/3-7-6.html`](./html/eng/3-7-6.html)
+    - Cheongso Station : [`/html/eng/3-7-7.html`](./html/eng/3-7-7.html)
+    - Mugunghwa Arboretum : [`/html/eng/3-7-8.html`](./html/eng/3-7-8.html)
+    - Haksongri Dinosaur Track site : [`/html/eng/3-7-9.html`](./html/eng/3-7-9.html)
+    - Chungcheong Suyeongseong Fortress : [`/html/eng/3-7-10.html`](./html/eng/3-7-10.html)
+    
+    
+06. Special Boryeong
+    - Boryeong Mud Festival : [`/html/eng/4-1-1.html`](./html/eng/4-1-1.html)
+    - Cheonbuk Oyster Festival : [`/html/eng/4-1-2.html`](./html/eng/4-1-2.html)
+    - Muchangpo Mystic Sea Road Festival : [`/html/eng/4-1-3.html`](./html/eng/4-1-3.html)
+    - Muchangpo Shrimp & Gizzard Shad Festival : [`/html/eng/4-1-4.html`](./html/eng/4-1-4.html)
+    - Muchangpo Jukkumi and Dodari Festival : [`/html/eng/4-1-5.html`](./html/eng/4-1-5.html)
+    - Seongjusan Autumn Leaves Festival : [`/html/eng/4-1-6.html`](./html/eng/4-1-6.html)
+    - Seongjusan Autumn Leaves Festival : [`/html/eng/4-1-7.html`](./html/eng/4-1-7.html)
+    - Daecheon Winter Sea Love Festival : [`/html/eng/4-1-8.html`](./html/eng/4-1-8.html)
+    - Along with Coastline : [`/html/eng/4-2-1.html`](./html/eng/4-2-1.html)
+    - Exciting Boryeong : [`/html/eng/4-3-1.html`](./html/eng/4-3-1.html)
+    - Sea Fishing : [`/html/eng/4-3-2.html`](./html/eng/4-3-2.html)
+    - Fresh water fishing : [`/html/eng/4-3-3.html`](./html/eng/4-3-3.html)
+    - Nine Delicious Dishes of Boryeong : [`/html/eng/4-4.html`](./html/eng/4-4.html)
+    - Mud from Boryeong : [`/html/eng/4-5-1.html`](./html/eng/4-5-1.html)
+    - Nampo Inkstone : [`/html/eng/4-5-2.html`](./html/eng/4-5-2.html)
+    - Ungcheon Stone : [`/html/eng/4-5-3.html`](./html/eng/4-5-3.html)
+    - Marine products : [`/html/eng/4-5-4.html`](./html/eng/4-5-4.html)
+    - Agricultural Product : [`/html/eng/4-5-5.html`](./html/eng/4-5-5.html)
+    
+    
+
+ 07. Travel Guide
+    - Transportation : [`/html/eng/5-1.html`](./html/eng/5-1.html)
+    - Korea Travel Phone 1330 : [`/html/eng/5-2.html`](./html/eng/5-2.html)
+    - Tourist Information Center : [`/html/eng/5-3.html`](./html/eng/5-3.html)
+    - Foreign Currency : [`/html/eng/5-4.html`](./html/eng/5-4.html)
+
+
+ 08. SITEMAP
+    - SITEMAP : [`/html/eng/7-1.html`](./html/eng/7-1.html) 

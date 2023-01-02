@@ -1,0 +1,579 @@
+@charset "utf-8";
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 발로 뛰는 김동일 > 인사말
+	연관단어 : #sub_01_01
+
+////////////////////////////////////////////////////////////////////////////// */
+
+#sub_01_01{}
+#sub_01_01 >img{display: block; width: 100%;}
+
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 발로 뛰는 김동일 > 걸어온길
+	연관단어 : #sub_01_02
+
+////////////////////////////////////////////////////////////////////////////// */
+
+#sub_01_02{}
+#sub_01_02>.imgbox{position: relative; background-image: url(../../images/mayor/contents/histroy_bg.png);background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 32.5em; border-radius: 20px 20px 0 0;transition:all 0.2s ease; -webkit-transition:all 0.2s ease;}
+#sub_01_02>.imgbox>.txt {position: absolute; top: 22%; left: 8%;}
+#sub_01_02>.imgbox>.txt>p{color: #fff; font-family: 'GongGothic'; font-weight: 300; font-size: 3.8em;}
+#sub_01_02>.imgbox>.txt>p.eng{opacity: 0.6;font-family: inherit; margin-top: 0.8em;}
+
+#sub_01_02>.history_txt{background-color: #F5F5F5;display: flex; background-image: url(../../images/mayor/contents/mountain_bg.svg); background-repeat: no-repeat; background-position:bottom left;}
+#sub_01_02>.history_txt>li{padding: 5em;box-sizing: border-box; width: 50%;}
+#sub_01_02>.history_txt>li:nth-child(2){position: relative;}
+#sub_01_02>.history_txt>li:nth-child(2)::after{content: "";position: absolute;height: 75%; border: 1px dashed rgba(0, 0, 0, 0.2); top: 0; bottom: 0; left: 0; margin: auto 0; }
+#sub_01_02>.history_txt>li>.history_title {font-size: 2.4em;color: #113D98; font-weight: bold;margin-bottom: 1em;}
+/*#sub_01_02>.history_txt>li>ul[data-list="1"]>li{line-height: 2;}
+#sub_01_02>.history_txt>li>ul[data-list="1"]>li:before{top: 0.9em;}*/
+#sub_01_02>.history_txt>li>ul[data-list="1"]>li:not(:first-child){margin-top: 0.8em;}
+
+@media screen and (max-width:640px){
+    #sub_01_02>.imgbox{height: 25em; background-position: 75% center;}
+    #sub_01_02>.imgbox::after{content: "";position: absolute;width: 100%; height: 100%; background: linear-gradient(to right, #222, 40%, transparent);}
+    #sub_01_02>.imgbox>.txt{z-index: 1;}
+    #sub_01_02>.imgbox>.txt>p{font-size: 3em;}
+    #sub_01_02>.imgbox>.txt>p.eng{margin-top: 0.5em;}
+
+    #sub_01_02>.history_txt{flex-wrap: wrap;}
+    #sub_01_02>.history_txt>li{width: 100%;padding: 3em;}
+    #sub_01_02>.history_txt>li:nth-child(2)::after{bottom: auto; right: 0; height: auto; width: 87%;margin: 0 auto;}
+}
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 02_시정활동 >  오늘의 일정 
+	연관단어 : #sub_02_01
+
+////////////////////////////////////////////////////////////////////////////// */
+#calendar_view .program_schedule > .date {text-align:center; margin-bottom:2em;}
+#calendar_view .program_schedule > .date a,
+#calendar_view .program_schedule > .date strong {display:inline-block; vertical-align:top;}
+#calendar_view .program_schedule > .date a {width:3.6em; height:3.6em; background:#919191; overflow:hidden; text-indent:-9999px; border-radius:50%; -webkit-border-radius:50%; position:relative;
+  transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#calendar_view .program_schedule > .date a.prev{margin-left:0.5em;}
+#calendar_view .program_schedule > .date a.next{margin-right:0.5em;}
+#calendar_view .program_schedule > .date a:after {content:""; display:block; width:100%; height:100%; position:absolute; left:0; top:0;transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#calendar_view .program_schedule > .date a.prev:after{background:url(../../images/mayor/contents/arr1.png) no-repeat center center; }
+#calendar_view .program_schedule > .date a.prev_year:after{background:url(../../images/mayor/contents/arr2.png) no-repeat center center; }
+#calendar_view .program_schedule > .date a.next:after {background:url(../../images/mayor/contents/arr3.png) no-repeat center center; }
+#calendar_view .program_schedule > .date a.next_year:after {background:url(../../images/mayor/contents/arr4.png) no-repeat center center; }
+#calendar_view .program_schedule > .date strong{width:3.77em; line-height:1; margin:0 0.42em; font-size:3.5em; color:#2d353b; font-weight:700; letter-spacing:-1px; margin-top:1px;}
+#calendar_view .program_schedule .calendar table {width:100%;}
+#calendar_view .program_schedule .calendar table td:first-child,
+#calendar_view .program_schedule .calendar table th.sun,
+#calendar_view .program_schedule .calendar table td.sun a span,
+#calendar_view .program_schedule .calendar table .holi,
+#calendar_view .program_schedule .calendar table tr td:first-child,
+    #calendar_view .program_schedule .calendar table tr td:first-child a{color:#ea174f;}
+#calendar_view .program_schedule .calendar table th.sat,
+#calendar_view .program_schedule .calendar table td.sat a span{color:#115ba5;}
+#calendar_view .program_schedule .calendar table th {background:#f5f5f5; padding:0.8em 0; color:#2d353b; font-size:1.5em; border-left:1px solid #d8d8d8; border-top:2px solid #545454; box-sizing: border-box;}
+#calendar_view .program_schedule .calendar table td {border-left:1px solid #d8d8d8; height:103px; border-bottom:1px solid #d8d8d8; color:#404853; vertical-align:top; font-size: 1.4em; box-sizing: border-box;}
+#calendar_view .program_schedule .calendar table td > span{display:inline-block; vertical-align:top; padding:0.5em 0px 0.65em;}
+#calendar_view .program_schedule .calendar table th:first-child,
+#calendar_view .program_schedule .calendar table td:first-child{border-left:0;}
+#calendar_view .program_schedule .calendar table td.today{background:#f1f8f4;}
+    #calendar_view .program_schedule .calendar table td.today,
+    #calendar_view .program_schedule .calendar table td.today a ul li{color: #0C5129;}
+#calendar_view .program_schedule .calendar table td:last-child,
+    #calendar_view .program_schedule .calendar table td:last-child a{color: #115ba5;}
+#calendar_view .program_schedule .calendar table td .holi_day{padding: 0.5em 0 0 0px; color:#cdcdcd;}
+#calendar_view .program_schedule .calendar table td a{display:block; height:100%; padding: 0.72em; text-decoration: none; box-sizing: border-box;}
+#calendar_view .program_schedule .calendar table td ul{position:relative; z-index:5; line-height:1; margin-top:0.3em; padding-left:0.2em; box-sizing: border-box;}
+    #calendar_view .program_schedule .calendar table td ul{}
+    #calendar_view .program_schedule .calendar table td ul li{position: relative; line-height:1.28; margin-top:0; padding-left:0.5em; font-size:1em; word-break:break-all; box-sizing: border-box;}
+    #calendar_view .program_schedule .calendar table td ul li:not(:first-child){margin-top: 0.2em;}
+    #calendar_view .program_schedule .calendar table td ul li:before{
+        content: ""; position: absolute; top: 0.5em; left: 0; display: block; width: 3px; height: 3px; background-color: #666; 
+        border-radius: 50%; -webkit-border-radius: 50%; 
+    }
+    #calendar_view .program_schedule .calendar table td:last-child ul li:before{background-color: #115ba5;}
+    #calendar_view .program_schedule .calendar table td.today ul li:before{background-color: #0C5129;}
+#calendar_view .program_schedule .calendar table td .day,
+#calendar_view .program_schedule .calendar table td .day.before{height:100%; padding:0.35em 0.57em 0.57em; color:#757575;}
+#calendar_view .buls_style{
+	overflow:hidden; display:inline-block; position:absolute; left:0; top:7px; font-size:0; width:4px; height:4px; text-indent:-2000px;
+	border-radius:50%; -webkit-border-radius:50%;
+}
+#calendar_view #hDate{margin-top:35px;}
+#calendar_view #hDate h4{margin-top:0 !important;}
+    #calendar_view .tip{margin-top: 1em; margin-bottom: 0; font-size: 1.8em;}
+    
+@media screen and (max-width:840px){
+  #calendar_view .program_schedule > .date strong {font-size:34px;}
+  #calendar_view .program_schedule .calendar table th {padding:8px 0;}
+  #calendar_view .program_schedule .calendar table td {height:90px;}
+  #calendar_view .program_schedule .calendar table td span {font-size:14px; position:relative; z-index:5;}
+  #calendar_view .program_schedule .calendar table td a.day_link {background:#cfd7e2;}
+  #calendar_view .program_schedule .calendar table td ul {display:none;}
+}
+
+@media screen and (max-width:640px){
+  #calendar_view .program_schedule > .date strong{width:112px; font-size:30px; margin-top:-2px;}
+  #calendar_view .program_schedule > .date a {width:28px; height:28px;}
+  #calendar_view .program_schedule > .date a:after {background-size:auto 50%;}
+  #calendar_view .program_schedule .calendar table td {height:70px;}
+  #calendar_view .program_schedule .calendar table td span {padding: 5px 0 0px 5px;}
+  #calendar_view .program_schedule .calendar table td ul {margin-top:0;}
+  #calendar_view .program_schedule .calendar table td .holi_day {font-size: 13px;padding:1px 0 0 5px;display: block;}
+}
+
+@media screen and (max-width:480px){
+  #calendar_view .program_schedule .calendar table td {height:50px;}
+}
+@media screen and (max-width:320px){
+} 
+
+
+#calendar_view .program_schedule {}
+#calendar_view .program_schedule .cal_year{display: block; margin-bottom: 2em; text-align: center;}
+#calendar_view .program_schedule .cal_year a{display: inline-block; }
+#calendar_view .program_schedule .program_schedule > .date {text-align:center; margin-bottom:2em;}
+#calendar_view .program_schedule .cal_year a,
+#calendar_view .program_schedule .cal_year span {display:inline-block; vertical-align:top;}
+#calendar_view .program_schedule .cal_year a {
+    width:3.6em; height:3.6em; background:#919191; overflow:hidden; text-indent:-9999px; border-radius:50%; -webkit-border-radius:50%; position:relative;
+  transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#calendar_view .program_schedule .cal_year a.next,
+#calendar_view .program_schedule .cal_year a.prev_year{margin-right:0.5em;}
+#calendar_view .program_schedule .cal_year a:after {content:""; display:block; width:100%; height:100%; position:absolute; left:0; top:0;transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#calendar_view .program_schedule .cal_year a.prev:after{background:url(../../images/mayor/contents/arr1.png) no-repeat center center; }
+#calendar_view .program_schedule .cal_year a.prev_year:after{background:url(../../images/mayor/contents/arr2.png) no-repeat center center; }
+#calendar_view .program_schedule .cal_year a.next:after {background:url(../../images/mayor/contents/arr3.png) no-repeat center center; }
+#calendar_view .program_schedule .cal_year a.next_year:after {background:url(../../images/mayor/contents/arr4.png) no-repeat center center; }
+#calendar_view .program_schedule .cal_year span{width:3.77em; line-height:1; margin:0 0.42em; font-size:3.5em; color:#2d353b; font-weight:700; letter-spacing:-1px; margin-top:1px;}
+#calendar_view .calendar {width:100%;}
+#calendar_view .calendar td:first-child,
+#calendar_view .calendar th.sun,
+#calendar_view .calendar td.sun a span,
+#calendar_view .calendar .holi,
+#calendar_view .calendar tr td:first-child,
+#calendar_view .calendar tr td:first-child a{color:#ea174f;}
+#calendar_view .calendar th.sat,
+#calendar_view .calendar td.sat a span{color:#115ba5;}
+#calendar_view .calendar th {background:#f5f5f5; padding:0.8em 0; color:#2d353b; font-size:1.5em; border-left:1px solid #d8d8d8; border-top:2px solid #545454; box-sizing: border-box;}
+#calendar_view .calendar td {border-left:1px solid #d8d8d8; height:103px; border-bottom:1px solid #d8d8d8; color:#404853; vertical-align:top; font-size: 1.4em; box-sizing: border-box;}
+#calendar_view .calendar td > span{display:inline-block; vertical-align:top; padding:0.5em 0px 0.65em;}
+#calendar_view .calendar th:first-child,
+#calendar_view .calendar td:first-child{border-left:0;}
+#calendar_view .calendar td.today{background:#f1f8f4;}
+#calendar_view .calendar td.today,
+#calendar_view .calendar td.today a ul li{color: #0C5129;}
+#calendar_view .calendar td:last-child,
+#calendar_view .calendar td:last-child a{color: #115ba5;}
+#calendar_view .calendar td .holi_day{padding: 0.5em 0 0 0px; color:#cdcdcd;}
+#calendar_view .calendar td a{display:block; height:100%; padding: 0.72em; text-decoration: none; box-sizing: border-box;}
+#calendar_view .calendar td ul{position:relative; z-index:5; line-height:1; margin-top:0.3em; padding-left:0.2em; box-sizing: border-box;}
+#calendar_view .calendar td ul{}
+#calendar_view .calendar td ul li{position: relative; line-height:1.28; margin-top:0; padding-left:0.5em; font-size:1em; word-break:break-all; color: #666; box-sizing: border-box;}
+#calendar_view .calendar td ul li:not(:first-child){margin-top: 0.2em;}
+#calendar_view .calendar td ul li:before{
+    content: ""; position: absolute; top: 0.5em; left: 0; display: block; width: 3px; height: 3px; background-color: #666; 
+    border-radius: 50%; -webkit-border-radius: 50%; 
+}
+#calendar_view .calendar td:last-child ul li:before{background-color: #666;}
+#calendar_view .calendar td.today ul li:before{background-color: #0C5129;}
+#calendar_view .calendar td .day,
+#calendar_view .calendar td .day.before{/*height:100%; padding:0.35em 0.57em 0.57em; */color:#5a5a5a;}
+
+@media screen and (max-width:840px){
+  #calendar_view .program_schedule .cal_year span{font-size:34px;}
+  #calendar_view .calendar th {padding:8px 0;}
+  #calendar_view .calendar td {height:90px;}
+  #calendar_view .calendar span {font-size:14px; position:relative; z-index:5;}
+  #calendar_view .calendar td a.day_link {background:#cfd7e2;}
+  #calendar_view .calendar td ul {display:none;}
+}
+
+@media screen and (max-width:640px){
+  #calendar_view .program_schedule .cal_year span{width:112px; font-size:30px; margin-top:-2px;}
+  #calendar_view .program_schedule .cal_year a {width:28px; height:28px;}
+  #calendar_view .program_schedule .cal_year a:after {background-size:auto 50%;}
+  #calendar_view .calendar td {height:70px;}
+  #calendar_view .calendar td span {padding: 5px 0 0px 5px;}
+  #calendar_view .calendar td ul {margin-top:0;}
+  #calendar_view .calendar td .holi_day {font-size: 13px;padding:1px 0 0 5px;display: block;}
+}
+
+@media screen and (max-width:480px){
+  #calendar_view .calendar td {height:50px;}
+}
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 03_시민과 약속 >  매니페스토란? 
+	연관단어 : #sub_03_01
+
+////////////////////////////////////////////////////////////////////////////// */
+
+#sub_03_01{}
+/*#sub_03_01>.imgbox{
+    position: relative; background-color:#E4F2FF; width: 100%; min-height: 22.6em; padding: 5em; box-sizing: border-box;
+    border-radius: 20px 20px 0 0; -webkit-border-radius: 20px 20px 0 0;
+} */
+#sub_03_01>.imgbox::after{content: "";position: absolute;background: url(../../images/mayor/contents/manifesto_bg_02.svg) no-repeat;background-size: contain; bottom: 85%; right: 3%; width: 13em; height: 6em;}
+#sub_03_01>.imgbox>.txt{}
+#sub_03_01>.imgbox>.txt>p{font-size: 2.6em;font-family: 'GongGothic'; color: #222; letter-spacing: -0.05em;}
+#sub_03_01>.imgbox>.txt>p>.mark{color: #3A83E3;text-decoration: underline;}
+
+
+#contents .txt_box[data-type="1"] {padding: 0 ;}
+#contents .txt_box[data-type="1"] h4 {font-size: 2.4em; color: #003B9F; font-weight: bold; margin-top: 3em; margin-bottom: 0.5em;}
+#contents .txt_box[data-type="1"] p {font-size: 1.8em;padding: 0;margin: 0;line-height:1.6;}
+#contents .txt_box[data-type="1"] p .point {color: #003B9F;font-weight: 500;}
+#contents .txt_box[data-type="1"] .p_group {padding-top: 4em;}
+
+#contents .source_btn {display: inline-block; border-radius: 40px; border: 1px solid #ECECEC;border-radius: 500px;background-color: #F9FAFC; padding: 0.8em 1.2em; margin-top: 3em;}
+#contents .source_btn span{display: block; color: #444; font-size: 1.8em; }
+
+ 
+
+@media screen and (max-width:640px){
+    #sub_03_01>.imgbox::after{width: 10em;}
+  }
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 03_시민과 약속 >  공약변경사항 
+	연관단어 : #sub_03_05
+
+////////////////////////////////////////////////////////////////////////////// */
+
+#sub_03_05{}
+#sub_03_05 .table tr td ul li {text-align: left;}
+
+
+@media screen and (max-width: 900px){
+  .table_scroll {
+    overflow: auto;
+}
+.table_scroll .table {
+    width: 900px;
+  }
+}
+
+
+
+  /* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 03_시민과 약속 >  소통실적 
+	연관단어 : #sub_03_06_01
+
+////////////////////////////////////////////////////////////////////////////// */
+
+#sub_03_06_01{}
+#sub_03_06_01>.communi_list_box>li{padding: 2em 0; border-bottom: 1px solid #D9D9D9;}
+#sub_03_06_01>.communi_list_box>li .inner_box {display: flex;align-items: center;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.left {width: 33.9em;transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.right{flex: 1;transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.left>.img_box{border-radius: 8px;overflow: hidden;max-height: 19em;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.left>.img_box>img{display: block;max-width: 100%; }
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box {text-align: left; padding: 0 3em 0 3em; margin-top: 0;overflow: hidden;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>p {display: block; padding: 0; margin: 0; letter-spacing: -0.05em;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.tit{font-size: 2.2em; line-height: 1.2; font-weight: bold; color: #222;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.sub {padding-top: 0.2em; letter-spacing: -0.05em; font-size: 1.8em; color: #444;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.date_box {
+    display: inline-block; margin-top: 1.3em; padding: 0.2em 0.8em; background-color: rgba(58, 131, 227, 0.1); color: #113D98; font-size: 1.6em; font-weight: 500; letter-spacing: -0.05em; box-sizing: border-box;
+    border-radius: 16px 16px 0px 16px; -webkit-border-radius: 16px 16px 0px 16px;
+}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.locat_box{margin-top: 0.8125em;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.locat_box:after{content: ""; display: block; clear: both;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.locat_box>span{float: left; position: relative; display: inline-block; padding: 0 0.5em; font-size: 0.89em; color: #888; letter-spacing: -0.05em;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.locat_box>span::after{content: "";position: absolute;top: 0; bottom: 0; left: 0; width: 1px; height: 60%;background-color: #ddd; margin: auto 0;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.locat_box>span:first-child{padding-left: 0;}
+#sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.locat_box>span:first-child::after{display: none;}
+
+
+
+@media screen and (max-width:640px){
+  #sub_03_06_01>.communi_list_box>li .inner_box{flex-wrap: wrap;}
+  #sub_03_06_01>.communi_list_box>li .inner_box>.left,
+  #sub_03_06_01>.communi_list_box>li .inner_box>.right{width: 100%;height: 100%;}
+
+  #sub_03_06_01>.communi_list_box>li .inner_box>.left>.img_box{position: relative;height: 0;padding-top: 56.2%;max-height: 100%;}
+  #sub_03_06_01>.communi_list_box>li .inner_box>.left>.img_box>img{position: absolute;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: 100%;}
+  #sub_03_06_01>.communi_list_box>li .inner_box>.txt_box{text-align: center; margin-top: 2em;overflow: inherit;padding: 0;}
+  #sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.locat_box{display:block; margin:5px auto 0; text-align: center;}
+    #sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>.locat_box>span{float: none;}
+  #sub_03_06_01>.communi_list_box>li .inner_box>.txt_box>p{white-space: inherit;text-overflow: inherit;overflow: inherit;}
+}
+
+
+
+
+
+  /* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 04_시민과 함께 >  시장에게 바란다 
+	연관단어 : #sub_04_01
+
+////////////////////////////////////////////////////////////////////////////// */
+
+
+.imgbox[data-box="1"]{
+    position: relative; background-color:#E4F2FF; width: 100%; min-height: 22.6em; padding: 5em; box-sizing: border-box;
+    border-radius: 20px 20px 0 0; -webkit-border-radius: 20px 20px 0 0;
+} 
+.imgbox[data-box="1"]::after{content: "";position: absolute;background: url(../../images/mayor/contents/manifesto_bg_02.svg) no-repeat;background-size: contain; top: -2em; right: 3%; width: 12em; height: 6em;}
+.imgbox[data-box="1"]>.txt{position: relative; }
+.imgbox[data-box="1"][data-icon]>.txt:before{content:""; position: absolute; bottom: -5.56em; right: 0; display: block; width: 26.8em; height: 20.8em; background-image: url(../../images/mayor/contents/manifesto_bg_01.svg); background-repeat: no-repeat; background-position: right center; background-size: 100% auto;}
+.imgbox[data-box="1"][data-icon="2"]>.txt:before{bottom: auto; top: 50%; width: 33.5em; height: 25.1em; margin-top: -12.55em; background-image: url(../../images/mayor/contents/hope_bg.svg);}
+.imgbox[data-box="1"][data-icon="no"]>.txt:before{display: none;}
+.imgbox[data-box="1"]>.txt>p,
+.imgbox[data-box="1"]>.txt>.sub>p{margin: 0; font-size: 1.8em;line-height: 1.8;}
+.imgbox[data-box="1"]>.txt>.tit>p{font-size: 2.6em; font-family: 'GongGothic'; line-height: 1.6; color: #222;}
+.imgbox[data-box="1"] .mark{color: #3A83E3;}
+
+
+
+#sub_04_01{}
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sub{margin-top: 1.2em; padding-right: 10em;}
+
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box{display: flex; align-items: center; margin-top: 3.5em; }
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>p{display: inline-block; font-size: 1.8em;color: #113D99;font-weight: bold;margin: 0;}
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>.line{ width: 20%; height: 2px;background-color: rgba(17, 61, 153, 0.2);margin: 0 2em;}
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>.sns_btns{display: flex;}
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>.sns_btns>li{margin: 0 0.5em;}
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>.sns_btns>li>a{display:block; background-image: url(../../images/mayor/contents/facebook_icon.svg);background-position: center;background-repeat: no-repeat;background-color: #fff;width: 32px;height: 32px;border-radius: 100%;font-size: 0; transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>.sns_btns>li.facebook:hover>a{background-color: #4C62AA;background-image: url(../../images/mayor/contents/facebook_icon_on.svg);}
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>.sns_btns>li.twitter:hover>a{background-color: #6AAFD8;background-image: url(../../images/mayor/contents/twitter_icon_on.svg);}
+#sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>.sns_btns>li.twitter>a{background-image: url(../../images/mayor/contents/twitter_icon.svg);}
+
+@media screen and (max-width:1400px){
+    .imgbox[data-box="1"][data-icon]>.txt:before{font-size: 0.8em; bottom: -6.7em; right: -2em;}
+    .imgbox[data-box="1"][data-icon="2"]:before{bottom: auto; }
+}
+@media screen and (max-width:1250px){
+    .imgbox[data-box="1"][data-icon]{padding: 5em 20em 5em 5em;}
+    .imgbox[data-box="1"][data-icon="no"]{padding: 5em;}
+    /*.imgbox[data-box="1"][data-icon="2"]{padding: 5em;}*/
+    .imgbox[data-box="1"][data-icon]>.txt:before{font-size: 0.65em; bottom: -7.7em; right: -28em;}
+    .imgbox[data-box="1"][data-icon="2"]>.txt:before{bottom: auto;}
+}
+@media screen and (max-width:1024px){
+    .imgbox[data-box="1"][data-icon="2"]>.txt:before{font-size: 0.8em; right: -21em;}
+}
+@media screen and (max-width:840px){
+    .imgbox[data-box="1"][data-icon="2"]>.txt:before{font-size: 0.6em; right: -28em;}
+}
+@media screen and (max-width:640px){
+  .imgbox[data-box="1"][data-icon],
+    .imgbox[data-box="1"][data-icon="no"]{min-height: 0; padding: 3em;}
+    .imgbox[data-box="1"][data-icon]>.txt:before{display: none;}
+  .imgbox[data-box="1"]::after{width: 10em;}
+  #sub_04_01>.imgbox[data-box="1"]>.txt>.sub{padding-right: 0;}
+}
+
+@media screen and (max-width:420px){
+  #sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>p{padding-right: 1em;}
+  #sub_04_01>.imgbox[data-box="1"]>.txt>.sns_box>.line{display: none;}
+}
+
+
+
+  /* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 04_시민과 함께 >  공직비리 핫라인
+	연관단어 : #sub_04_02
+
+////////////////////////////////////////////////////////////////////////////// */
+
+.noti_txt{position: relative; display: block; color: #E03131; padding-left: 1.5em;}
+.noti_txt::after {content: '※'; position: absolute; top: 0; left: 0;}
+
+
+#sub_04_02{}
+#sub_04_02>.imgbox[data-box="1"]>.txt>.sub{margin-top:2.2em;}
+#sub_04_02>.imgbox[data-box="1"]>.txt>.sub>p:not(:last-child){margin-bottom: 1.2em;}
+
+#sub_04_02>.declare_box{margin-top: 3em;}
+#sub_04_02>.declare_box>ul{display: flex;justify-content: space-between;}
+#sub_04_02>.declare_box>ul>li{width: calc((100% - 4.8em)/3);min-height: 52.3em;transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#sub_04_02>.declare_box>ul>li>.inner_box{padding: 4em 0; border:1px solid #ECECEC;box-shadow: 0px 4px 8px rgba(24, 39, 75, 0.05);border-radius: 20px;text-align: center;height: 100%;box-sizing: border-box;}
+#sub_04_02>.declare_box>ul>li>.inner_box>.title {padding: 0 1em; font-size: 2.2em;color: #222; text-align: center; font-weight:bold;line-height: 1.2;}
+#sub_04_02>.declare_box>ul>li>.inner_box>.title>span{color: #999; display: inline-block;}
+#sub_04_02>.declare_box>ul>li>.inner_box>.mid>.icon_box {transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#sub_04_02>.declare_box>ul>li>.inner_box>.mid>.icon_box>.icon {display: block; width: 16em;height: 16em;background-color: rgba(224, 49, 49, 0.05);background-image: url(../../images/mayor/contents/declare_icon_01.svg);background-repeat: no-repeat;background-position: center; border-radius: 100%; margin: 2em auto;}
+#sub_04_02>.declare_box>ul>li>.inner_box>.mid>.icon_box[data-icon="2"]>.icon {background-image: url(../../images/mayor/contents/declare_icon_02.svg);}
+#sub_04_02>.declare_box>ul>li>.inner_box>.mid>.icon_box[data-icon="3"]>.icon {background-image: url(../../images/mayor/contents/declare_icon_03.svg);}
+
+#sub_04_02>.declare_box>ul>li>.inner_box>.mid>.list_box{text-align: left;padding: 0 4em;transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#sub_04_02>.declare_box>ul>li>.inner_box>.mid>.list_box>li{font-size: 1.6em;}
+#sub_04_02>.declare_box>ul>li>.inner_box>a[ data-btn="2"]{margin-top: 3em;}
+
+.noti_check {padding-left: 1.5em; background-image: url(../../images/mayor/contents/check_circle_icon.svg); background-position: left top; background-repeat: no-repeat; font-size: 1.7em; margin-top: 40px; background-size: 1.2em;}
+.noti_check>span{color: #003B9F;}
+
+@media screen and (max-width:720px){
+  #sub_04_02>.declare_box>ul{flex-wrap: wrap;}
+  #sub_04_02>.declare_box>ul>li{width: 100%;min-height: auto;}
+  #sub_04_02>.declare_box>ul>li~li{margin-top: 2em;}
+
+  #sub_04_02>.declare_box>ul>li>.inner_box>.mid{display: flex;align-items: center;}
+  #sub_04_02>.declare_box>ul>li>.inner_box>.mid>.icon_box{width: 50%;}
+  #sub_04_02>.declare_box>ul>li>.inner_box>.mid>.list_box{width: 50%;padding: 0 2em 0 0;}
+  #sub_04_02>.declare_box>ul>li>.inner_box>a[ data-btn="2"]{margin-top: 1em;}
+}
+
+@media screen and (max-width:420px){
+  #sub_04_02>.declare_box>ul>li>.inner_box>.mid{flex-wrap: wrap; justify-content: center;}
+  #sub_04_02>.declare_box>ul>li>.inner_box>.mid>.icon_box,
+  #sub_04_02>.declare_box>ul>li>.inner_box>.mid>.list_box{width: 100%;}
+  #sub_04_02>.declare_box>ul>li>.inner_box>.mid>.list_box{padding: 0 2em 1em 4em;}
+  #sub_04_02>.declare_box>ul>li>.inner_box>.mid>.icon_box>.icon{width: 12em; height: 12em; background-size: 10em;}
+
+}
+
+
+ /* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 04_시민과 함께 >  소통과 나눔
+	연관단어 : #sub_04_03
+
+////////////////////////////////////////////////////////////////////////////// */
+
+
+#sub_04_03{}
+#sub_04_03>.share_box>ul{display: flex;justify-content: space-between;}
+#sub_04_03>.share_box>ul>li{width: calc((100% - 2.4em) / 2); }
+#sub_04_03>.share_box>ul>li>.inner_box{padding: 3em 4.5em;border:1px solid #ECECEC;box-shadow: 0px 4px 8px rgba(24, 39, 75, 0.05);border-radius: 20px;height: 100%;box-sizing: border-box;}
+#sub_04_03>.share_box>ul>li>.inner_box>.tit_box{display: flex; justify-content: space-between; align-items: center;}
+#sub_04_03>.share_box>ul>li>.inner_box>.tit_box>p{margin: 0; font-family: 'GongGothic'; font-weight: 500; font-size: 2.4em; color: #222;}
+#sub_04_03>.share_box>ul>li>.inner_box>.tit_box>a{position: relative; display: block; background-color: #4C62AA; width: 4.6em;height: 4.6em;border-radius: 100%; }
+#sub_04_03>.share_box>ul>li>.inner_box>.social_title>a{background-color: #3A83E3;}
+
+
+#sub_04_03>.share_box>ul>li>.inner_box>.tit_box>a::after{content: "";position: absolute;width: 100%;height: 100%;background-image: url(../../images/mayor/contents/facebook_icon_on.svg); background-position: center;background-repeat: no-repeat; transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+#sub_04_03>.share_box>ul>li>.inner_box>.social_title>a::after{background-image: url(../../images/mayor/contents/social_icon.svg);}
+#sub_04_03>.share_box>ul>li>.inner_box>.tit_box>a:hover::after {transform: scale(1.5);}
+#sub_04_03>.share_box>ul>li>.inner_box>.social_title>a:hover::after {transform: scale(1.2);}
+
+
+
+#sub_04_03>.share_box>ul>li>.inner_box>.social_fb_area{border-radius: 8px;overflow: hidden;margin-top: 2em;height: 40.4em;}
+
+
+
+.social_tt_area {
+  height: 404px;
+  overflow-y: hidden;
+  margin-top: 2em;
+}
+
+.social_tt_area .title {
+  font-size: 1.6em;
+  text-align: center;
+  font-weight: 400;
+  color: #444;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0.5em 0 0 0;
+  text-align: left;
+}
+.social_tt_area .date,
+.social_tt_area .text{display: none;}
+.social_tt_area .text {font-size: 19px; text-align: center; display: none;}
+
+.social .social_tt_area h5 {
+  height: 32px;
+  margin: 13px 90px 10px 135px;
+  padding: 7px 0 7px;
+  text-align: center;
+  background: url(../../images/mayor/main/gallery_title_bg.png) no-repeat;
+  font-size: 24px;
+}
+/*.social_tt_area .photo img {width: 455px; height: 303px;display: block; margin: 10px auto 20px;}*/
+.social_tt_area .photo {display: block; position: relative; padding-top: 72.1%; height: 0;}
+.social_tt_area .photo img {position: absolute; top: 0;bottom: 0; left: 0; right: 0; width: 100%; height: 100% !important; transition : all 0.3s ease; -webkit-transition : all 0.3s ease;}
+.social_tt_area ul{ display: block; overflow: auto; height: 100%; background-color: #fff;}
+.social_tt_area ul:after{content: ""; display: block; clear: both;}
+.social_tt_area ul li{float: left; width: calc((100% - 1px - 1.2em) / 2);}
+.social_tt_area ul li:nth-child(2n+1){margin-right: 1.2em;}
+.social_tt_area ul li:nth-child(n+3){margin-top: 1.92em;}
+
+.social_tt_area ul li a .photo{position: relative; display: block; overflow: hidden;}
+.social_tt_area ul li a:hover .photo img {
+  transform: scale(1.2);
+}
+
+
+@media screen and (max-width:720px){
+  #sub_04_03>.share_box>ul{flex-wrap: wrap;}
+  #sub_04_03>.share_box>ul>li{width: 100%;}
+  #sub_04_03>.share_box>ul>li~li {margin-top: 2em;}
+
+  #sub_04_03>.share_box>ul>li>.inner_box>.social_title>a {background-size: 2.8em;}
+}
+
+@media screen and (max-width:420px){
+  #sub_04_03>.share_box>ul>li>.inner_box {padding: 2em;}
+  .social_tt_area ul li{ width: 100%;}
+}
+
+
+
+
+ /* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 사이트맵
+	연관단어 : #sitemap
+
+////////////////////////////////////////////////////////////////////////////// */
+
+#sitemap #tm{display: block;}
+#sitemap #tm:after{display: none;}
+#sitemap #tm>li{display: inline-block; width: calc((100% - 3em - 3px) / 2); height: auto; margin: 0; vertical-align: top;}
+
+#sitemap #tm>li:nth-child(n+3){margin-top: 6em;}
+#sitemap #tm>li:nth-child(2n+2){margin-left: 3em;}
+
+
+#sitemap #tm>li>a {
+    display: block; background-color: #E4F2FF; padding: 0.856em 0.73em; text-align: left; line-height: 1.2; font-weight: 700; color: #113D99; font-size: 2.2em; box-sizing: border-box;
+    border-radius: 4px; -webkit-border-radius: 4px;
+}
+#sitemap #tm>li>a>span{display: block; }
+
+
+#sitemap #tm li ul li a:hover {color: #113D99; text-decoration: underline;}
+#sitemap #tm>li>ul{margin-top: 1.3em; padding-bottom: 0 !important; height: auto !important;}
+#sitemap #tm>li>ul>a{display: none !important;}
+#sitemap #tm>li>ul>li{border-bottom: 1px solid #ECECEC; box-sizing: border-box;}
+#sitemap #tm>li>ul>li>span{display: block; }
+#sitemap #tm>li>ul>li>span>a {position: relative; display: block; padding:0.835em 1em; font-size: 1.8em; color: #444; font-weight: 400; text-decoration: none;}
+#sitemap #tm>li>ul>li>span>a:hover,
+#sitemap #tm>li>ul>li>span>a:active{color: #444;}
+#sitemap #tm>li>ul>li>span>a::after{content: "";position: absolute; width: 4px; height: 4px; background-color:#CCCCCC; border-radius: 100%; top: 1.3em; left: 0.2em;}
+
+#sitemap #tm>li>ul>li>ul{padding-bottom: 2em;}
+#sitemap #tm>li>ul>li>ul>li>a {position: relative; font-size: 14px;line-height: 1.6; padding-left: 1.2em;}
+#sitemap #tm>li>ul>li>ul>li>a::after{content: "";position: absolute;width: 8px; height: 1px; background-color: #ddd;top: 0.8em; left: 0;}
+
+
+
+@media screen and (max-width:420px){
+  #sitemap #tm>li{width: 100%;}
+  #sitemap #tm>li:nth-child(n+3) {margin-top: 4em;}
+    #sitemap #tm>li:nth-child(2n+2){margin-left: 0;}
+  #sitemap #tm>li~li{margin-top: 4em;}
+}
+
+#sub_03_07 img{display: block; width: 100%;}

@@ -1,0 +1,73 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<style>
+	.pas, .uiBoxLightblue, .bottomborder, .uiHeader,.uiHeaderTitle{display:none !important}
+	.twitter-timeline{width:100% !important; height: 480px;}
+	.pluginSkinLight{width:100% !important; height: 480px;}
+	.customisable-border{ border:none !important} 
+    ._2p3a,
+    iframe div{min-width: 100% !imrpotant; width: 100% !important;}
+    .social_fb_area{width: 100%; min-width: 100%; overflow: auto; -webkit-overflow-scrolling: touch;}
+    .social_fb_area iframe{width: 100%; height: 100%;}
+</style>
+<div id="sub_04_03">
+    <div class="share_box">
+        <ul>
+            <li>
+                <div class="inner_box">
+                    <div class="tit_box">
+                        <p>facebook</p>
+                        <a target="_blank" href="https://www.facebook.com/manseboryeongsi/" title="보령 페이스북으로 이동 (새창)"></a>
+                    </div>
+
+                    <div class="social_fb_area">
+                        <iframe id="social_iframe" style="width: 100%; height: 100%;" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmanseboryeongsi%2F&tabs=timeline&width=&height=&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" scrolling="no" frameborder="0" allowTransparency="true" allowfullscreen="true" title="보령 facebook" ></iframe>		
+                    </div>	
+                    <script>
+            $(function(){
+                /*setTimeout(function(){
+                    fbResize(); //처음실행
+                },1000);*/
+                fbResize();
+                $(window).resize(function(){
+                    fbResize();
+                });
+            });
+
+            function fbResize(){
+                
+                var w = $('#sub_04_03>.share_box>ul>li>.inner_box>.social_fb_area').width();
+                var h = $('#sub_04_03>.share_box>ul>li>.inner_box>.social_fb_area').height();
+                // console.log(w);
+
+                $('#sub_04_03>.share_box>ul>li>.inner_box iframe').attr('src','https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmanseboryeongsi%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId&width='+w+'&height='+h);
+            }
+        </script>
+	            </div>
+            </li>
+            <li>
+                <div class="inner_box">
+
+                    <div class="tit_box social_title">
+                        <p>현장속으로</p>
+                        <a href="/cop/bbs/BBSMSTR_000000000401/selectBoardList.do" title="현장속으로페이지 이동 "></a>
+                    </div>
+
+                    <div class="social_tt_area">
+                        <ul>
+                            <jsp:include page="/tmpl/skin/notice/photo_skin_mayor.jsp" >
+                                <jsp:param name="code" value="BBSMSTR_000000000401" />
+                                <jsp:param name="siteCode" value="mayor" />
+                                <jsp:param name="listCnt" value="8" />
+                                <jsp:param name="titleLength" value="20" />
+                                <jsp:param name="contLength" value="50" />
+                            </jsp:include>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    </div>

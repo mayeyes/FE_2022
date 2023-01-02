@@ -1,0 +1,1518 @@
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	Common
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*****table*****/
+.table_bx{overflow-x:auto; border-radius:0.2em;}
+.table_bx.sclno{overflow:visible;}
+[data-skin="table"]{overflow: hidden; width:100%; min-width:28em; border:1px solid #D2D2D2;}
+[data-skin="table"] th,
+[data-skin="table"] td{height:2.5em; padding:0.3em 0.5em; text-align:center; font-family:'Spoqa Han Sans'; font-size:0.9em;}
+[data-skin="table"] th{background-color:#F1F1F1; border-bottom:1px solid #E0E0E0; color:#000;}
+[data-skin="table"] th:not(:last-child){border-right:1px solid #E0E0E0;}
+[data-skin="table"] td{background-color:#fff; border-bottom:1px solid #E0E0E0; color:#666;}
+[data-skin="table"] td:not(:last-child){border-right:1px solid #E0E0E0;}
+[data-skin="table"] tr:last-child td{border-bottom:0;}
+[data-skin="table"] td img{vertical-align:middle;}
+/*줄무늬*/ 
+[data-skin="table"][data-style="2"] tbody tr:nth-child(even) td{background-color:#F1F1F1 !important;}
+/*아이콘*/
+[data-skin="table"] td [class*="ico_"]{overflow:hidden; display:inline-block; width:1.5em; height:100%; vertical-align:middle; text-indent:-2000px;}
+[data-skin="table"] td .ico_top{background:url(../../images/common/suone_icon_top.svg) no-repeat center; background-size:1.1em auto;}
+[data-skin="table"] td .ico_btm{background:url(../../images/common/suone_icon_btm.svg) no-repeat center; background-size:1.1em auto;}
+[data-skin="table"] td .ico_same{background:url(../../images/common/suone_icon_same.svg) no-repeat center; background-size:1.134em auto;}
+
+
+/*****ETC*****/
+.tip{margin-top:0.7em; font-size:0.9em; color:#666666;}
+.blue{color:#005DB7 !important;}
+.green{color:#72B66B !important;}
+/* 우리동네가뭄 경계단계 색상 추가 */
+.orange{color:#FDAB25 !important;}
+/*나이스스크롤*/
+[id*="ascrail"]{background-color:#E7E7E7;}
+[id*="ascrail"] .nicescroll-cursors{background-color:#848484 !important; border:0 !important;}
+/*데이트피커*/
+.js_cal{width:9em;}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year{width:calc(50% - 0.6em);}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	locations
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/
+.locations{
+	display:none; position:absolute; top:6em; left:50%; z-index:1;
+	transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);
+}
+.locations a{display:block;}
+.locations span{
+	display:block; height:3.078em; line-height:3.078em; padding:0 1.5em; background-color:rgba(0,0,0,0.85); border-radius:2em; white-space:nowrap; font-size:12px; color:#fff; box-sizing:border-box;
+	transition:all 0.2s ease; -webkit-transition:all 0.2s ease;
+}
+.locations span:before{content:""; display:inline-block; width:1.1em; height:100%; margin-right:0.5em; background:url(../../images/common/location_icon_pin.svg) no-repeat center 0.75em; vertical-align:middle;
+}
+
+.locations span em{position:relative; padding-left:2em; font-style:normal; box-sizing:border-box;}
+.locations span em:before{content:""; position:absolute; top:calc(50% - 1.5em); left:1em; width:1px; height:3em; background-color:rgba(130, 130, 130, 0.5);}
+
+@media screen and (max-width:740px) {
+	.locations{display:block;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	레이어팝업
+	연관단어 : [data-skin="popup"]
+	구조 : 
+	<data-skin="popup">
+		 <div class="pbx">
+		 	...
+		 </div>
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+[data-skin="popup"]{display:none; position:fixed; top:0; left:0; z-index:500; width:100%; height:100%; font-size:15px;}
+[data-skin="popup"].on{display:block;}
+[data-skin="popup"]:after{content:""; position:absolute; z-index:10; width:100%; height:100%; background-color:rgba(0,0,0,0.85);}
+[data-skin="popup"] .pbx{
+	position:absolute; z-index:100; top:50%; left:50%; width:95%; max-width:50em; background-color:#fff; border-radius:0.8em;
+	transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);
+}
+[data-skin="popup"] .pbx .hads{display:block; width:100%; height:2.845em; line-height:2.845em; background-color:#005DB7; border-radius:0.5em 0.5em 0 0; text-align:center; font-size:1.5em; font-weight:500; color:#fff;}
+[data-skin="popup"] .pbx .midd{padding:0 2em 2.1em; box-sizing:border-box;}
+[data-skin="popup"] .pbx .midd>strong{display:block; margin:1.3em 0 0.5em; font-size:1.2em; color:#000;}
+[data-skin="popup"] .pbx .midd>strong:before{content:"·"; margin-right:0.2em;}
+[data-skin="popup"] .pbx .midd .graphbox{overflow:hidden;}
+[data-skin="popup"] .pbx .midd .table_bx{overflow:auto; max-height:22em; border:1px solid #D2D2D2; border-radius:0.2em; box-sizing:border-box;}
+[data-skin="popup"] .pbx .midd [data-skin="table"]{border:1px solid #eee;}
+[data-skin="popup"] .pbx .midd [data-skin="table"] th,
+[data-skin="popup"] .pbx .midd [data-skin="table"] td{height:2.1em; font-size:0.9em;} 
+
+[data-skin="popup"] .pbx .close{overflow:hidden; position:absolute; top:-3.8em; right:0; width:2.934em; height:2.934em; background:rgba(255,255,255,0.2) url(../../images/common/icon_close_white.svg) no-repeat center; background-size:35% auto; border-radius:50%; text-indent:-2000px;}
+
+/*기상수문자료*/
+[data-skin="popup"][data-type="2"] .pbx .midd .table_bx{height:13.3em;}
+[data-skin="popup"][data-type="2"] .pbx .midd>strong{display:inline-block;}
+[data-skin="popup"][data-type="2"] .pbx .midd{position:relative;}
+[data-skin="popup"][data-type="2"] .pbx .midd .down_btn{position:absolute; top:1.95em; right:2em; display:inline-block; height:1.867em; line-height:1.867em; padding:0 0.8em; border:1px solid #005DB7; border-radius:0.2em; font-size:0.9em; color:#005DB7; vertical-align:middle;}
+[data-skin="popup"][data-type="2"] .pbx .midd .graphbx{margin:2em 0;}
+[data-skin="popup"][data-type="2"] .pbx .midd .graphbx img{display:block; max-width:100%; margin:0 auto;}
+[data-skin="popup"][data-type="2"] .pbx .midd .terms{display:inline-block; width:calc(100% - 8.8em); margin-left:2em;}
+[data-skin="popup"][data-type="2"] .pbx .midd .terms img{display:none;}
+[data-skin="popup"][data-type="2"] .pbx .midd .terms input{height:1.867em; border-radius:0.2em;}
+[data-skin="popup"][data-type="2"] .pbx .midd .terms span{display:inline-block; margin:0 0.5em;}
+[data-skin="popup"][data-type="2"] .pbx .midd .terms .searchs{overflow:hidden; display:inline-block; width:1.867em; height:1.867em; margin-left:0.3em; background:#005DB7 url(../../images/common/wgate_icon_search.svg) no-repeat center; background-size:55% auto; border-radius:0.2em; text-indent:-2000px; vertical-align:middle;}
+
+/*우리동네가뭄*/
+[data-skin="popup"][data-type="4"] .pbx{max-width:82.667em;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step]{display:none; overflow:hidden; position:relative; padding-left:7.2em; box-shadow:0px 0px 4px rgba(0, 0, 0, 0.25); border-radius:0.5em; box-sizing:border-box;}
+[data-skin="popup"][data-type="4"] .pbx .behaves.atten [data-step="atten"]{display: block;}
+[data-skin="popup"][data-type="4"] .pbx .behaves.warn [data-step="warn"]{display: block;}
+[data-skin="popup"][data-type="4"] .pbx .behaves.awfuls [data-step="awfuls"]{display: block;}
+[data-skin="popup"][data-type="4"] .pbx .behaves.terri [data-step="terri"]{display: block;}
+
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step] .titles{position:absolute; top:0; left:0; display:table; table-layout:fixed; width:7.2em; height:100%; font-size:1em; font-weight:400;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step] .titles .cell{display:table-cell; width:100%; height:100%; vertical-align:middle; text-align:center;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step] .titles .cell strong{display:block; font-size:1.2em; font-weight:700;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step="atten"] .titles{background-color:#3B60FB; color:#fff;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step="warn"] .titles{background-color:#FEFF3A;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step="awfuls"] .titles{background-color:#FDAB25;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step="terri"] .titles{background-color:#FD0009; color:#fff;}
+
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step] .txts{max-width:68em; margin:0 auto; padding:1.5em 1.5em 2em; box-sizing:border-box;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step] .txts ul:not(.lst){overflow:hidden;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step] .txts ul:not(.lst) li{float:left; padding:0 0.5em; text-align:center; box-sizing:border-box;}
+[data-skin="popup"][data-type="4"] .pbx .behaves [data-step] .txts ul:not(.lst) li p{margin-top:0.5em; text-align:center; color:#666;}
+
+
+
+/*팝업::농업용수*/
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step] .txts .imgs{display:inline-block; width:calc(63% - 0.3em); vertical-align:middle;}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step] .txts .imgs li{width:calc(100% / 2);}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step] .txts .imgs li p span{font-size:0.85em;}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step="awfuls"] .txts .imgs li,
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step="terri"] .txts .imgs li{width:calc(100% / 3);}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step] .txts .lst{display:inline-block; width:32%; margin-left:5%; vertical-align:middle;}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step] .txts .lst li{position:relative; padding-left:0.8em;}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step] .txts .lst li:not(:first-child){margin-top:0.5em;}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step] .txts .lst li:after{content:""; position:absolute; top:0.6em; left:0; width:5px; height:5px; background-color: #000; border-radius:50%;}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step] .txts ul li img{height:8em;}
+/*팝업::생활 및 공업용수*/
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="2"] [data-step] .txts ul li{width:calc(100% / 4);}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="2"] [data-step] .txts ul li img{height:9em;}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="2"] [data-step] .txts p{margin-top:1.5em; text-align:center; color:#666;}
+[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="2"] [data-step="terri"] .txts ul li{width:calc(100% / 2);}
+
+/*가뭄피해현황*/
+[data-skin="popup"][data-type="5"] .pbx .hads{height:3.2em; line-height:3.2em; font-size:1.2em;}
+[data-skin="popup"][data-type="5"] .pbx .midd{padding:1.5em 1em 1em; text-align:center;}
+[data-skin="popup"][data-type="5"] .pbx .midd p{margin-bottom:1.3em;}
+[data-skin="popup"][data-type="5"] .pbx .midd .g_box{padding:0.8em; background-color:#F2F2F2; border-radius:0.5em; box-sizing:border-box;}
+[data-skin="popup"][data-type="5"] .pbx .midd .g_box ul li em{margin-right:0.4em; padding:0.5em; font-style:normal; color:#005DB7; box-sizing:border-box;}
+
+/*용수공급시설*/
+[data-skin="popup"] .pbx .midd #sisul_operation_info_detail{min-width:82em;}
+[data-skin="popup"] .pbx .midd #sisul_nosup_normal_detail{min-width:43em;}
+
+@media screen and (max-width:1040px) {
+	/*팝업::농업용수*/
+	[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step] .txts ul li img{height:6em;}
+	/*팝업::생활 및 공업용수*/
+	[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="2"] [data-step] .txts ul li img{height:7.5em;}
+	[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="2"] [data-step] .txts ul li p{font-size:0.9em;}
+}
+@media screen and (max-width:920px) {
+	[data-skin="popup"] .pbx{font-size:13px;}
+}
+@media screen and (max-width:850px) {
+	[data-skin="popup"][data-type="4"] .pbx .behaves [data-step] .txts{overflow:auto; padding:0;}
+	[data-skin="popup"][data-type="4"] .pbx .behaves .txts .scrl{width:50em; padding:1.5em 1.5em 2em; box-sizing:border-box;}
+	[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step="awfuls"] .txts .scrl{width:60em;}
+	[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="1"] [data-step="terri"] .txts .scrl{width:55em;}
+	[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="2"] [data-step="awfuls"] .txts .scrl{width:55em;}
+	[data-skin="popup"][data-type="4"] .pbx .behaves[data-type="2"] [data-step="terri"] .txts .scrl{width:40em;}
+}
+@media screen and (max-width:740px) {
+	[data-skin="popup"] .pbx .midd{overflow-y:auto; height:calc(100% - 6.134em);}
+	[data-skin="popup"] .pbx .midd .table_bx{max-height:none;}
+
+	[data-skin="popup"]:not([data-type="5"]):after{display:none;}
+	[data-skin="popup"]:not([data-type="5"]) .pbx{top:0; left:0; width:100%; max-width:none; height:100%; border-radius:0; transform:none; -webkit-transform:none;}
+	[data-skin="popup"]:not([data-type="5"]) .pbx .hads{height:3.334em; line-height:3.334em; border-radius:0; font-size:18px;}
+	[data-skin="popup"]:not([data-type="5"]) .pbx .midd{padding:0 5%;}
+	[data-skin="popup"]:not([data-type="5"]) .pbx .midd [data-skin="table"] th,
+	[data-skin="popup"]:not([data-type="5"]) .pbx .midd [data-skin="table"] td{font-size:13px;}
+	[data-skin="popup"]:not([data-type="5"]) .pbx .close{top:1.45em; right:1.3em; width:1.875em; height:1.875em; background-color:transparent; background-size:100% auto; border-radius:0;}
+
+	/*기상수문자료*/
+	[data-skin="popup"][data-type="2"] .pbx .midd .table_bx{height:17.4em;}
+	[data-skin="popup"][data-type="2"] .pbx .midd .down_btn{position:static; right:0; width:100%; height:3.077em; line-height:3.077em; margin:1em 0; border-radius:0; font-size:1.1em; text-align:center; box-sizing:border-box;}
+	[data-skin="popup"][data-type="2"] .pbx .midd .terms input{height:2.467em;}
+	[data-skin="popup"][data-type="2"] .pbx .midd .terms .searchs{width:2.75em; height:2.75em;}
+
+	/*가뭄피해현황*/
+	[data-skin="popup"][data-type="5"].on{display:block;}
+	[data-skin="popup"][data-type="5"] .pbx{max-width:24em;}
+}
+@media screen and (max-width:480px) {
+	/*기상수문자료*/
+	[data-skin="popup"][data-type="2"] .pbx .midd .terms{display:block; width:100%; margin-left:0;}
+	[data-skin="popup"][data-type="2"] .pbx .midd .terms input{width:6.83em;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	탭박스
+	연관단어 : #data_bx
+	구조 : 
+	<div id="data_bx">
+		<ul class="tabs"></ul>
+		 <div class="tab_bx" id="tab_00">
+		 	...
+		 </div>
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/
+#data_bx{
+	position:absolute; bottom:0.6em; right:0.6em; z-index:10; width:calc(100% - 20.2em); font-size:15px;
+	transition:width 0.4s ease; -webkit-transition:width 0.4s ease;
+}
+#header[data-sw="check"]~#bind>#data_bx{width:calc(100% - 6.2em);}
+#data_bx .tabs{overflow:hidden;}
+#data_bx .tabs li{float:left;}
+#data_bx .tabs li:not(:last-child){margin-right:0.2em;}
+#data_bx .tabs li a{display:block; padding:0.493em 1em; background-color:rgba(255,255,255,0.8); border-radius:0.2em 0.2em 0 0; font-size:1.15em; text-align:center; box-sizing:border-box;}
+#data_bx .tabs li.on a{background-color:rgba(41,39,47,0.85); color:#fff;}
+#data_bx .tab_bx{display:none;width:100%;min-height: 11em;background-color:rgba(41,39,47,0.85);box-sizing:border-box;}
+#data_bx .tab_bx.on{display:block;}
+#data_bx>.close{overflow:hidden; position:absolute; top:0.1em; right:0.8em; width:2em; height:2em; background:url(../../images/common/icon_close_black.svg) no-repeat 0 0; background-size:100% auto; text-indent:-2000px;}
+
+/*용수공급시설*/
+#data_bx.ty_01{
+	top:5.2em; bottom:auto; right:5em; width:40em !important;
+	transition:right 0.4s ease; -webkit-transition:right 0.4s ease;
+}
+#data_bx.ty_01.on{right:-40em;}
+#data_bx.ty_01 .tabs li{width:calc((100% - 0.4em) / 3);}
+#data_bx.ty_01>.info_btn{overflow:hidden;position:absolute;top: 18em;left:-1.734em;width:1.734em;height:5em;background-color:#fff;background-image:url(../../images/common/one19_icon_arrow.svg);background-repeat:no-repeat;background-position:center;border-radius:0.2em 0 0 0.2em;text-indent:-2000px;box-shadow:1px 3px 5px rgba(35, 35, 35, 0.5);}
+#data_bx.ty_01.on>.info_btn{
+	border-radius:0 0.2em 0.2em 0; box-shadow:1px -3px 5px rgba(35, 35, 35, 0.5);
+	transform:rotate(180deg); -webkit-transform:rotate(180deg);
+}
+/*가뭄119*/
+#data_bx.ty_02{
+	bottom:auto; top:9.7em; width:29.2em !important;
+	transition:right 0.4s ease; -webkit-transition:right 0.4s ease;
+}
+#data_bx.ty_02.on{right:-29.4em;}
+#data_bx.ty_02 .tabs li{width:calc((100% - 0.6em) / 4);}
+#data_bx.ty_02 .tab_bx{border-radius:0 0 0.8em 0.8em;}
+#data_bx.ty_02>.info_btn{overflow:hidden; position:absolute; top:10em; left:-1.734em; width:1.734em; height:5em; background-color:#fff; background-image:url(../../images/common/one19_icon_arrow.svg); background-repeat:no-repeat; background-position:center; border-radius:0.2em 0 0 0.2em; text-indent:-2000px; box-shadow:1px 3px 5px rgba(35, 35, 35, 0.5);}
+#data_bx.ty_02.on>.info_btn{
+	border-radius:0 0.2em 0.2em 0; box-shadow:1px -3px 5px rgba(35, 35, 35, 0.5);
+	transform:rotate(180deg); -webkit-transform:rotate(180deg);
+}
+#data_bx .tab_bx .notibx .message_box >strong{display: none;background-color: #BE6033;color: #fff;}
+#data_bx .tab_bx .notibx .message_box>ul>li{border-color: #BE6033;}
+
+@media screen and (min-width:741px){
+	/*용수공급시설*/
+	#data_bx.ty_01>.close{display:none !important;}
+	/*가뭄119*/
+	#data_bx.ty_02.ups{bottom:17.4em;}
+	#data_bx.ty_02>.close{display:none !important;}
+}
+@media screen and (max-width:1024px){
+	#data_bx{font-size:14px;}
+
+	/*용수공급시설*/
+	#data_bx.ty_01{right:4.5em;}
+}
+@media screen and (max-width:920px){
+	#data_bx{width:calc(100% - 20.5em); font-size:12px;}
+}
+@media screen and (max-width:740px){
+	#data_bx{right:0; top:auto; bottom:0; font-size:13px;}
+	#data_bx .tabs li:not(:last-child){margin-right:0.3em;}
+	#data_bx .tabs li a{width: 100%;height: 100%;padding:1.037em 0.5em;border-radius:0.6em 0.6em 0 0;text-align:center;line-height:1.3em;}
+
+	/*용수공급시설*/
+	#data_bx.ty_01{top:auto; bottom:0; right:0; width:100% !important;}
+	#data_bx.ty_01 .tabs li{width:calc((100% - 0.6em) / 3);}
+	#data_bx.ty_01>.info_btn{display:none;}
+
+	/*가뭄119*/
+	#data_bx.ty_02{top:auto; bottom:0; width:100% !important;}
+	#data_bx.ty_02.on{right:0;}
+	#data_bx.ty_02 .tabs li{width:calc((100% - 0.9em) / 4);}
+	#data_bx.ty_02 .tab_bx{border-radius:0;}
+	#data_bx.ty_02>.info_btn{display:none;}
+
+	/*가뭄피해현황*/
+	#data_bx.ty_04,
+	#header[data-sw="check"]~#bind>#data_bx.ty_04{width:100%;}
+    #data_bx .tabs{display: grid;grid-template-columns: repeat(4,1fr);grid-gap: 0.3em;}
+	#data_bx.ty_04 .tabs li{width:100%;}
+    #data_bx .tab_bx .notibx .message_box>ul>li{border-width: 1px; border-top-width: 4px; border-style: solid;}
+
+
+	/*오픈했을 때*/
+	#data_bx.full{height:100%; background-color:#005db7;}
+	#data_bx.full:before{content:""; display:block; height:3.334em; line-height:3.334em; font-size:18px; font-weight:500; text-align:center; color:#fff;}
+	#data_bx.ty_01.full:before{content:"용수공급시설";}
+	#data_bx.ty_02.full:before{content:"가뭄119";}
+	#data_bx.ty_03.full:before{content:"수원현황";}
+	#data_bx.ty_04.full:before{content:"가뭄피해현황";}
+	#data_bx.full .tabs li a{background-color:rgba(255,255,255,0.2); color:#fff;}
+	#data_bx.full .tabs li.on a{background-color:#fff; color:#404040;}
+	#data_bx .tab_bx{height:calc(100% - 8.43em); background-color:#fff; border-radius:0;}
+	#data_bx>.close{top:1.45em; right:1.3em; width:1.7em; height:1.7em; background-image:url(../../images/common/icon_close_white.svg);}
+}
+@media screen and (max-width:640px){
+	/*가뭄피해현황*/
+	#data_bx.ty_04 .tabs li a{padding:0.49em 0.5em; font-size:1.1em;}
+	#data_bx.ty_04 .tabs li a span{display:block;}
+}
+@media screen and (max-width:480px){
+	/*용수공급시설*/
+	#data_bx .tabs li a{padding:0.402em 0.5em;}
+	#data_bx .tabs li a span{display:block;}
+
+	/*가뭄 119*/
+	#data_bx.ty_02 .tabs li a{min-height:3.345em; line-height:3.345em; padding:0;}
+}
+@media screen and (max-width:400px){
+	/*가뭄피해현황*/
+	#data_bx.ty_04 .tabs li a{padding:0.693em 0.5em; font-size:1em;}
+}
+
+
+
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 용수공급시설 - 슬라이드
+	연관단어 : [data-skin="slide"]
+	구조 : 
+	<div data-skin="slide">
+		<ul>
+			<li>
+				<div class="li_Wr" />
+			</li>
+		</ul>
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+[data-skin="slide"]{overflow:hidden; position:relative; padding:1.5em 3em 3em; box-sizing:border-box;}
+[data-skin="slide"]>ul{
+	overflow:hidden; position:relative; width:100%; height:180px;
+	transition:height 0.2s ease; -webkit-transition:height 0.2s ease;
+}
+[data-skin="slide"]>ul:after{content:""; position:absolute; top:0; left:50%; width:1px; height:100%; background-color:rgba(255,255,255,0.2);}
+[data-skin="slide"]>ul>li{position:absolute; top:0; float:left; width:50%; height:100%; box-sizing:border-box;}
+[data-skin="slide"]>ul>li:nth-child(odd){padding:0 1.3em 0 0.6em;}
+[data-skin="slide"]>ul>li:nth-child(even){padding:0 0.6em 0 1.3em;}
+[data-skin="slide"]>ul>li>.li_wr{position:relative;}
+
+[data-skin="slide"]>ul>li .tt{display:block; margin-bottom:1em; font-size:1.35em; font-weight:300; color:#fff;}
+[data-skin="slide"] .controls [class*="btn_"]{
+	overflow:hidden; position:absolute; top:calc(50% - 1.3em); z-index:1; display:inline-block; width:2em; height:2.6em; background-image:url(../../images/common/slide_icon_arrow.svg); background-repeat:no-repeat; background-position:0 0; background-size:auto 100%; text-indent:-2000px;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+[data-skin="slide"] .controls [class*="btn_"]:hover{background-image:url(../../images/common/slide_icon_arrow_ov.svg)}
+[data-skin="slide"] .controls .btn_l{left:1em;}
+[data-skin="slide"] .controls .btn_r{right:1em; transform:rotate(180deg); -webkit-transform:rotate(180deg)}
+[data-skin="slide"] .controls .simbol{position:absolute; bottom:1em; left:0; width:100%; text-align:center;}
+[data-skin="slide"] .controls .simbol a{overflow:hidden; display:inline-block; width:8px; height:8px; margin:0 0.35em; background-color:#fff; border-radius:50%; text-indent:-2000px;}
+[data-skin="slide"] .controls .simbol a.on{background-color:#0082FF;}
+/*슬라이더 아닐때*/
+[data-skin="slide"].off{padding:1.5em 1em;}
+[data-skin="slide"].off>ul{height:auto !important;}
+[data-skin="slide"].off>ul>li{position:static !important;}
+
+/*주석*/
+[data-skin="slide"] .tip{font-weight:300; color:#fff; box-sizing:border-box;}
+[data-skin="slide"]>.tip{padding-left:0.6em;}
+/*ETC:버튼, 라디오버튼*/
+[data-skin="slide"]>ul>li .etcbx{position:absolute; top:0.2em; right:0;}
+[data-skin="slide"]>ul>li .etcbx .details{
+	display:inline-block; height:1.9em; line-height:1.9em; padding:0 0.8em; border:1px solid #fff; border-radius:1em; font-size:0.9em; color:#fff;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+[data-skin="slide"]>ul>li .etcbx .details:hover{background-color:#fff; color:#000;}
+/*그래프*/
+[data-skin="slide"]>ul>li .graph_bx{width:100%;}
+
+@media screen and (max-width:1180px){
+	[data-skin="slide"]>ul>li .etcbx{text-align:right;}
+}
+@media screen and (max-width:1024px) {
+	[data-skin="slide"]>ul>li .etcbx .details:hover{background-color:transparent; color:#fff;}
+}
+@media screen and (max-width:920px){
+	[data-skin="slide"]>ul>li .tip,
+	[data-skin="slide"]>ul>li .etcbx .details{font-size:1em;}
+}
+@media screen and (max-width:840px) {
+	[data-skin="slide"]>ul>li{width:100%;}
+	[data-skin="slide"]>ul:after{display:none;}
+}
+@media screen and (max-width:740px){
+	[data-skin="slide"]{padding:2em 5% 3em;}
+	[data-skin="slide"] .controls [class*="btn_"],
+	[data-skin="slide"] .controls [class*="btn_"]:hover{top:2em; width:1.8em; height:1.8em; background-image:url(../../images/common/slide_icon_arrow_mob.svg); background-size:auto 1.8em;}
+	[data-skin="slide"] .controls .btn_l{left:5%;}
+	[data-skin="slide"] .controls .btn_r{right:5%;}
+	[data-skin="slide"] .controls .simbol a{background-color:#BDBDBD;}
+
+	[data-skin="slide"]>ul>li{padding:0 !important;}
+	[data-skin="slide"]>ul>li .tt{font-weight:700; text-align:center; color:#404040;}
+	[data-skin="slide"]>ul>li .tip{color:#404040;}
+	[data-skin="slide"]>ul>li .etcbx{position:static;}
+	[data-skin="slide"]>ul>li .etcbx .details{display:block; height:3em; line-height:3em; margin-top:1.5em; border-color:#005DB7; border-radius:0.2em; text-align:center; font-size:1.1em; color:#005DB7;}
+	[data-skin="slide"]>ul>li .etcbx .details:hover{color:#005DB7;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 용수공급시설 - 디폴트 데이터 탭
+	연관단어 : [data-name="yongsu"]
+	구조 : 
+	<div data-name="yongsu">
+		
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+[data-name="yongsu"]{padding:1em 1.2em; box-sizing:border-box;}
+[data-name="yongsu"]>ul{overflow-y:auto; max-height:52.85em;}
+[data-name="yongsu"]>ul>li:not(:first-child){margin-top:1em;}
+[data-name="yongsu"]>ul>li .li_wr{position:relative;}
+[data-name="yongsu"]>ul>li .tt{display:block; margin-bottom:0.6em; font-size:1.2em; font-weight:400; color:#fff;}
+
+/*용수공급체계*/
+.system-1 a{text-decoration:none}
+[data-name="yongsu"]>ul>li .water_sup{height:6.134em; padding:1.4em 0; background-color:#fff; border-radius:0.2em; box-sizing:border-box;}
+[data-name="yongsu"]>ul>li .water_sup ul{overflow:hidden; position:relative; display:inline-block;}
+[data-name="yongsu"]>ul>li .water_sup ul:after{
+	content:""; position:absolute; top:calc(50% - 0.8em); left:50%; width:calc(100% - 7em); height:1px; background-color:#005db7;
+	transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%);
+}
+[data-name="yongsu"]>ul>li .water_sup ul li{position:relative; z-index:1; float:left;}
+[data-name="yongsu"]>ul>li .water_sup ul li a{display:block; width:8em; text-align:center; font-size:13px;}
+[data-name="yongsu"]>ul>li .water_sup ul li a:hover{text-decoration:underline;}
+[data-name="yongsu"]>ul>li .water_sup ul li a:before{content:""; display:block; width:30px; height:30px; margin:0 auto 0.4em; background-repeat:no-repeat; background-position:center;}
+[data-name="yongsu"]>ul>li .water_sup .system1:before{background-image:url(../../gis/images/icon/icon_fountainhead_05.png);}
+[data-name="yongsu"]>ul>li .water_sup .system2:before{background-image:url(../../images/common/watersup_icon_01.svg);}
+[data-name="yongsu"]>ul>li .water_sup .system3:before{background-image:url(../../images/common/watersup_icon_02.svg);}
+[data-name="yongsu"]>ul>li .water_sup .system4:before{background-image:url(../../images/common/watersup_icon_03.svg);}
+[data-name="yongsu"]>ul>li .water_sup .system5:before{background-image:url(../../gis/images/icon/icon_fountainhead_04.png);}
+/*[data-name="yongsu"]>ul>li .water_sup ul li:first-child a:before{background-image:url(../../gis/images/icon/icon_fountainhead_05.png);}
+[data-name="yongsu"]>ul>li .water_sup ul li:nth-child(2) a:before{background-image:url(../../images/common/watersup_icon_01.svg);}
+[data-name="yongsu"]>ul>li .water_sup ul li:nth-child(3) a:before{background-image:url(../../images/common/watersup_icon_02.svg);}
+[data-name="yongsu"]>ul>li .water_sup ul li:nth-child(4) a:before{background-image:url(../../images/common/watersup_icon_03.svg);}
+[data-name="yongsu"]>ul>li .water_sup ul li:nth-child(5) a:before{background-image:url(../../gis/images/icon/icon_fountainhead_04.png);}*/
+/*주석*/
+[data-name="yongsu"] .tip{opacity:0.9; margin-top:0.5em; font-weight:300; color:#fff;}
+[data-name="yongsu"] .etcbx+.tip{display:none;}
+/*급수현황*/
+[data-name="yongsu"]>ul>li .legnd{position:absolute; top:1px; left:5em;}
+[data-name="yongsu"]>ul>li .legnd span{display:block; height:1.8em; line-height:1.8em; padding:0 0.6em; border-radius:0.2em; text-align:center; color:#fff; box-sizing:border-box;}
+[data-name="yongsu"]>ul>li .legnd .norms{background-color:#72B66B;}
+[data-name="yongsu"]>ul>li .legnd .atten{background-color:#1A4CFB;}
+[data-name="yongsu"]>ul>li .legnd .warn{background-color:#FEFF3A; color:#333;}
+[data-name="yongsu"]>ul>li .legnd .awfuls{background-color:#FDAB25;}
+[data-name="yongsu"]>ul>li .legnd .terri{background-color:#FD0009;}
+
+/*ETC:버튼, 라디오버튼*/
+[data-name="yongsu"]>ul>li .etcbx{position:absolute; top:0em; right:0;}
+[data-name="yongsu"]>ul>li .etcbx .details{
+	display:inline-block; height:1.9em; line-height:1.9em; padding:0 0.8em; border:1px solid #fff; border-radius:1em; font-size:0.9em; color:#fff;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+[data-name="yongsu"]>ul>li .etcbx .details:hover{background-color:#fff; color:#000;}
+[data-name="yongsu"]>ul>li .etcbx .suwons{display:inline-block; height:1.5em; vertical-align:top; font-size:0.9em;}
+[data-name="yongsu"]>ul>li .etcbx .suwons input[type="radio"]{overflow:hidden; position:absolute; top:0; left:-2000px; width:0; height:0;}
+[data-name="yongsu"]>ul>li .etcbx .suwons label{position:relative; margin-left:0.5em; color:#fff;}
+[data-name="yongsu"]>ul>li .etcbx .suwons label:before{content:""; display:inline-block; width:8px; height:8px; margin-right:0.25em; border:1px solid #fff; border-radius:50%;}
+[data-name="yongsu"]>ul>li .etcbx .suwons input[type="radio"]:checked+label:before{background-color:#0082FF; border-color: #0082FF;}
+
+@media screen and (max-width:1024px) and (min-width:741px) {
+	[data-name="yongsu"]>ul>li .water_sup ul:after{top:calc(50% - 0.9em);}
+}
+@media screen and (max-width:1024px) {
+	[data-name="yongsu"]>ul>li .etcbx .details:hover{background-color:transparent; color:#fff;}
+}
+@media screen and (max-width:920px){
+	[data-name="yongsu"]>ul>li .water_sup{padding:0.75em 0;}
+	[data-name="yongsu"]>ul>li .tip,
+	[data-name="yongsu"]>ul>li .etcbx .details,
+	[data-name="yongsu"]>ul>li .etcbx .suwons{font-size:1em;}
+}
+@media screen and (max-width:740px){
+	[data-name="yongsu"]{height:100%; padding:2em 5% 3em;}
+	[data-name="yongsu"]>ul{height:100%; max-height:none;}
+	[data-name="yongsu"] .controls [class*="btn_"],
+	[data-name="yongsu"] .controls [class*="btn_"]:hover{top:2em; width:1.8em; height:1.8em; background-image:url(../../images/common/slide_icon_arrow_mob.svg); background-size:auto 1.8em;}
+	[data-name="yongsu"] .controls .btn_l{left:5%;}
+	[data-name="yongsu"] .controls .btn_r{right:5%;}
+	[data-name="yongsu"] .controls .simbol a{background-color:#BDBDBD;}
+
+	[data-name="yongsu"]>ul>li:not(:first-child){margin-top:1.5em;}
+	[data-name="yongsu"]>ul>li .tt{font-weight:700; font-size:1.35em; text-align:center; color:#404040;}
+	[data-name="yongsu"]>ul>li .water_sup{overflow:auto; width:100%; border:1px solid #D2D2D2;}
+	[data-name="yongsu"]>ul>li .water_sup ul{min-width:32em;}
+	[data-name="yongsu"]>ul>li .water_sup ul:after{top:calc(50% - 0.9em); width:calc(100% - 9em);}
+	[data-name="yongsu"]>ul>li .tip{color:#404040;}
+	[data-name="yongsu"] .etcbx+.tip{display:block; margin-top:1em;}
+	[data-name="yongsu"]>ul>li .legnd{left:auto; right:0;}
+	[data-name="yongsu"]>ul>li .etcbx{position:static; text-align:center;}
+	[data-name="yongsu"]>ul>li .etcbx .details{height:2.8em; line-height:2.8em; padding:0 2em; margin-top:1em; border-color:#005DB7; border-radius:0.2em; text-align:center; font-size:1.1em; color:#005DB7;}
+	[data-name="yongsu"]>ul>li .etcbx .details:hover{color:#005DB7;}
+	[data-name="yongsu"]>ul>li .etcbx .suwons{position:absolute; top:0; right:0;}
+	[data-name="yongsu"]>ul>li .etcbx .suwons label{color:#404040;}
+	[data-name="yongsu"]>ul>li .etcbx .suwons label:before{border-color:#bfbfbf;}
+}
+@media screen and (max-width:480px){
+	[data-name="yongsu"]>ul#tab_01_ul>li:nth-child(5) .tt,
+	[data-name="yongsu"]>ul#tab_03_ul>li:nth-child(4) .tt{text-align:left;}
+}
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 가뭄119 - 디폴트 데이터 탭
+	연관단어 : [data-name="one19"]
+	구조 : 
+	<div data-name="one19">
+		<div class="table_bx">...</div>
+		<div class="table_bx">...</div>
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+[data-name="one19"]{padding:1.5em; box-sizing:border-box;}
+[data-name="one19"] .table_bx:first-of-type{max-height:14.8em;}
+[data-name="one19"] .table_bx:nth-of-type(2){margin-top:1em;}
+[data-name="one19"] .table_bx [data-skin="table"]{min-width:auto;}
+[data-name="one19"] .table_bx [data-skin="table"] th,
+[data-name="one19"] .table_bx [data-skin="table"] td{font-size:0.85em;}
+[data-name="one19"] .table_bx [data-skin="table"] td .sht{overflow:hidden; display:block; max-width:100%; text-overflow:ellipsis; white-space:nowrap;}
+[data-name="one19"] .table_bx [data-skin="table"] td a{text-decoration:underline; color:#005DB7;}
+[data-name="one19"] .table_bx [data-skin="table"] td img{width:1.895em;}
+
+[data-name="one19"] .no_datas{display:table; width:100%; height:17.7em; margin-top:1em; background-color:#fff; border-radius:0.2em; box-sizing:border-box;}
+[data-name="one19"] .no_datas p{display:table-cell; width:100%; height:100%; vertical-align:middle; text-align:center; font-size:1.05em; color:#005DB7;}
+[data-name="one19"] .no_datas p:before{content:""; display:block; width:1.2em; height:1.2em; margin:0 auto 0.6em; background:url(../../images/common/one19_icon_nodata.svg) no-repeat; background-size:100% auto;}
+
+@media screen and (max-width:740px) {
+	[data-name="one19"]{padding:1.5em 5%;}
+	[data-name="one19"] .no_datas{background-color:#F2F2F2;}
+	[data-name="one19"] .table_bx:first-of-type{max-height:17.7em;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 가뭄119, 기상/수문자료 - 검색조건
+	연관단어 : #options, .op_btn
+	구조 : 
+	<div id="options">
+		 <div class="op_wr">
+		 	<div class="sbjt">
+			 	<div class="tt">
+				 	...
+				 </div>
+				 <div class="tt">
+				 	<ul>
+						<li>...</li>
+				 	</ul>
+				 </div>
+			 </div>
+		 </div>
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+/*****검색조건 열기버튼*****/
+.op_btn{
+	display:none; position:absolute; top:37.6em; left:17.7em; z-index:3; font-size:16px;
+	transition:all 0.4s ease; -webkit-transition:all 0.4s ease;
+}
+#header[data-sw="check"]~#bind>.op_btn{left:4.7em;}
+.op_btn>a{
+	overflow:hidden; display:inline-block; width:3.438em; height:3.438em; background:rgba(0,0,0,0.85) url(../../images/common/icon_option_open.svg) no-repeat center; border-radius:0 0.5em 0.5em 0; text-indent:-2000px;
+	transition:box-shadow 0.2s ease; -webkit-transition:box-shadow 0.2s ease;
+}
+.op_btn>a:hover{box-shadow:2px 2px 4px #29405673}
+/*기상수문자료*/
+.op_btn.ty_2{top:25.1em;}
+
+/*****검색조건*****/
+#options{
+	position:absolute; bottom:0.6em; left:18.4em; z-index:20; font-size:16px;
+	transition:left 0.4s ease; -webkit-transition:left 0.4s ease;
+}
+#header[data-sw="check"]~#bind>#options{left:5.3em;}
+#options.ups{bottom:13.5em;}
+#options .op_wr{overflow:hidden; border-radius:0.8em;}
+#options .sbjt{width:15.125em; background-color:#45434A;}
+#options .sbjt .tt{padding:0.636em 1.2em; background-color:#52535C; color:#fff; box-sizing: border-box;}
+#options .sbjt .tt input[type="checkbox"]{overflow:hidden; position:absolute; top:0; left:-2000px; width:0; height:0; font-size:0;}
+#options .sbjt .tt label{position:relative; padding-left:1.5em; font-size:1em; box-sizing:border-box;}
+#options .sbjt .tt label:after{content:""; position:absolute; top:0.2em; left:0; width:0.9em; height:0.9em; background-color:#52535C; border:1px solid #fff; border-radius:0.2em;}
+#options .sbjt .tt input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_option_check.svg); background-repeat:no-repeat; background-position:center;}
+
+#options .sbjt ul{overflow:hidden; padding:1em 0.5em; box-sizing:border-box;}
+#options .sbjt ul li{float:left; width:calc(100% / 3 - 0.05em); margin-top:0.8em; text-align:center;}
+#options .sbjt ul li:first-child,
+#options .sbjt ul li:nth-child(2),
+#options .sbjt ul li:nth-child(3){margin-top:0;}
+#options .sbjt ul li [data-icon]{position:relative; display:inline-block; min-width:2.5em;}
+#options .sbjt ul li [data-icon] input[type="checkbox"]{overflow:hidden; position:absolute; top:0; left:-2000px; width:0; height:0; font-size:0;}
+#options .sbjt ul li [data-icon] label{position:relative; display:block; padding-top:3.2em; font-size:0.8em; font-weight:300; color:#fff; box-sizing:border-box;}
+#options .sbjt ul li [data-icon] label:after{content:""; position:absolute; top:0; left:calc(50% - 1.5em); width:3em; height:3em; background-repeat:no-repeat; background-position:center top; background-size:100%;}
+
+#options .sbjt ul li.fulls{width:100%; padding-left:1em; text-align:left; box-sizing:border-box;}
+#options .sbjt ul li.fulls label{line-height:3em; padding-top:0; padding-left:4em; text-align:left;}
+#options .sbjt ul li.fulls label:after{left:0; width:3em;}
+/*수원및공급시설*/
+#options .sbjt .icolst{padding:0;}
+#options .sbjt .icolst>li{width:100%; margin-top:0;}
+#options .sbjt .icolst>li:not(:first-child){border-top:1px solid rgba(255,255,255,0.1);}
+#options .sbjt .icolst>li>a{
+	position:relative; display:block; padding:0.856em 1.5em; text-align:left; font-size:0.95em; color:#fff; box-sizing:border-box;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+#options .sbjt .icolst>li>a.on{background-color:#29272F;}
+#options .sbjt .icolst>li>a:after{content:""; opacity:0.8; position:absolute; top:0; right:1.5em; width:0.6em; height:100%; background:url(../../images/common/icon_option_icolst.svg) no-repeat center;}
+#options .sbjt .icolst>li>a.on:after{transform:rotate(180deg); -webkit-transform:rotate(180deg);}
+#options .sbjt .icolst li ul{display:none; position:absolute; right:-10.5em; width:10em; background-color:#45434a; border-radius:0.2em;}
+#options .sbjt .icolst li:first-child ul{top:3em;}
+#options .sbjt .icolst li:nth-child(2) ul{top:6em;}
+#options .sbjt .icolst li:nth-child(3) ul{top:9em;}
+#options .sbjt .icolst li:nth-child(4) ul{top:12em;}
+#options .sbjt .icolst li ul li{width:calc(100% / 2);}
+#options .sbjt .icolst li ul li:nth-child(3){margin-top:0.8em;}
+
+#options .reset_btn{position:absolute; top:-3em; left:0; display:block; height:2.292em; line-height:2.292em; padding:0 1em; background-color:#2E2E2E;  border-radius:1.5em; font-size:0.9em; font-weight:300; color:#fff; vertical-align:middle; box-sizing:border-box;}
+#options .reset_btn:before{
+	content:""; display:inline-block; width:1em; height:100%; margin-right:0.2em; background-image:url(../../images/common/icon_option_reset.svg); background-repeat:no-repeat; background-position:0 0.55em; vertical-align:middle;
+	transform:rotate(0deg); -webkit-transform:rotate(0deg);
+}
+#options .reset_btn:hover:before{transform:rotate(-360deg); -webkit-transform:rotate(-360deg); transition:transform 0.5s ease; -webkit-transition:transform 0.5s ease;}
+#options .close_btn{overflow:hidden; position:absolute; top:-2.5em; right:0; width:1.8em; height:1.8em; background:url(../../images/common/icon_close_black.svg) no-repeat; text-indent:-2000px; background-size:100%;}
+
+/*****아이콘들*****/
+/*댐 : dam*/
+#options ul li [data-icon*="dam_"] label:after{background-image:url(../../images/common/icon_dam.svg);}
+#options ul li [data-icon="dam_01"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_dam01_ov.svg);}
+#options ul li [data-icon="dam_02"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_dam02_ov.svg);}
+#options ul li [data-icon="dam_03"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_dam03_ov.svg);}
+#options ul li [data-icon="dam_04"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_dam04_ov.svg);}
+#options ul li [data-icon="dam_05"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_dam05_ov.svg);}
+#options ul li [data-icon="dam_06"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_dam06_ov.svg);}
+/*하구둑 : dook*/
+#options ul li [data-icon="dook"] label:after{background-image:url(../../images/common/icon_dook.svg);}
+#options ul li [data-icon="dook"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_dook_ov.svg);}
+/*강우관측*/
+#options ul li [data-icon*="rain"] label:after{background-image:url(../../images/common/icon_rain.svg);}
+#options ul li [data-icon="rain_01"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_rain01_ov.svg);}
+#options ul li [data-icon="rain_02"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_rain02_ov.svg);}
+#options ul li [data-icon="rain_03"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_rain03_ov.svg);}
+/*수위관측*/
+#options ul li [data-icon*="wlevel_"] label:after{background-image:url(../../images/common/icon_wlevel.svg);}
+#options ul li [data-icon="wlevel_01"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_wlevel01_ov.svg);}
+#options ul li [data-icon="wlevel_02"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_wlevel02_ov.svg);}
+/*수질*/
+#options ul li [data-icon="wqual"] label:after{background-image:url(../../images/common/icon_wqual.svg);}
+#options ul li [data-icon="wqual"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_wqual_ov.svg);}
+/*지하수*/
+#options ul li [data-icon="gwater"] label:after{background-image:url(../../images/common/icon_gwater.svg);}
+#options ul li [data-icon="gwater"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_gwater_ov.svg);}
+/*지자체저수지*/
+#options ul li [data-icon="resrv"] label:after{background-image:url(../../images/common/icon_resrv.svg);}
+#options ul li [data-icon="resrv"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_resrv_ov.svg);}
+/*다기능보*/
+#options ul li [data-icon="multi"] label:after{background-image:url(../../images/common/icon_multi.svg);}
+#options ul li [data-icon="multi"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_multi_ov.svg);}
+/*소방설비*/
+#options ul li [data-icon="firef"] label:after{background-image:url(../../images/common/icon_firef.svg);}
+#options ul li [data-icon="firef"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_firef_ov.svg);}
+/*병물*/
+#options ul li [data-icon="botl"] label:after{background-image:url(../../images/common/icon_botl.svg);}
+#options ul li [data-icon="botl"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_botl_ov.svg);}
+/*물차*/
+#options ul li [data-icon="wtcar"] label:after{background-image:url(../../images/common/icon_wtcar.svg);}
+#options ul li [data-icon="wtcar"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_wtcar_ov.svg);}
+/*가뭄담당자*/
+#options ul li [data-icon="gamums"] label:after{background-image:url(../../images/common/icon_gamums.svg);}
+#options ul li [data-icon="gamums"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_gamums_ov.svg);}
+/*경찰서*/
+#options ul li [data-icon="polic"] label:after{background-image:url(../../images/common/icon_polic.svg);}
+#options ul li [data-icon="polic"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_polic_ov.svg);}
+/*언론기관*/
+#options ul li [data-icon="pres"] label:after{background-image:url(../../images/common/icon_pres.svg);}
+#options ul li [data-icon="pres"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_pres_ov.svg);}
+/*자원봉사센터*/
+#options ul li [data-icon="volun"] label:after{background-image:url(../../images/common/icon_volun.svg);}
+#options ul li [data-icon="volun"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_volun_ov.svg);}
+/*힌국전력공사*/
+#options ul li [data-icon="kepco"] label:after{background-image:url(../../images/common/icon_kepco.svg);}
+#options ul li [data-icon="kepco"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_kepco_ov.svg);}
+/*관련협회*/
+#options ul li [data-icon="asso"] label:after{background-image:url(../../images/common/icon_asso.svg);}
+#options ul li [data-icon="asso"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_asso_ov.svg);}
+/*취수장*/
+#options ul li [data-icon="intak"] label:after{background-image:url(../../images/common/icon_intak.svg);}
+#options ul li [data-icon="intak"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_intak_ov.svg);}
+/*정수장*/
+#options ul li [data-icon="prifc"] label:after{background-image:url(../../images/common/icon_prifc.svg);}
+#options ul li [data-icon="prifc"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_prifc_ov.svg);}
+/*해수담수화*/
+#options ul li [data-icon="seawt"] label:after{background-image:url(../../images/common/icon_seawt.svg);}
+#options ul li [data-icon="seawt"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_seawt_ov.svg);}
+/*관정 관측소*/
+#options ul li [data-icon="observ"] label:after{background-image:url(../../images/common/icon_observ.svg);}
+#options ul li [data-icon="observ"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_observ_ov.svg);}
+/*재이용수*/
+#options ul li [data-icon="reuse"] label:after{background-image:url(../../images/common/icon_reuse.svg);}
+#options ul li [data-icon="reuse"] input[type="checkbox"]:checked+label:after{background-image:url(../../images/common/icon_reuse_ov.svg);}
+
+
+@media screen and (max-width:1024px) {
+	.op_btn{font-size:15px;}
+	#options{font-size:15px;}
+	#options .sbjt ul li [data-icon] label{font-size:12px;}
+}
+@media screen and (max-width:920px) {
+	.op_btn{font-size:13px;}
+	#options{font-size:13px;}
+	#options .sbjt{width:17em;}
+
+	/*수원및공급시설*/
+	#options .sbjt .icolst li ul{right:-11.5em; width:11em;}
+}
+@media screen and (max-width:740px) {
+	.op_btn{display:block; top:auto; bottom:4.6em; left:0.6em !important;}
+	.op_btn a{width:auto; height:3.078em; line-height:3.078em; padding:0 1.2em 0 3em; background-color:rgba(0,0,0,0.7); background-position:left 1em center; background-size:1.8em; border-radius:0.2em; font-size:1.1em; 
+		text-indent:0; color:#fff;}
+	/*기상수문자료*/
+	.op_btn.ty_2{top:auto; bottom:0.6em; width:100%;}
+
+	#options{display:none; overflow-y:auto; top:0; bottom:auto; left:0; width:100%; height:100%; background-color:#fff;}
+	#options:before{content:"조건 선택"; display:block; width:100%; height:3.334em; line-height:3.334em; font-weight:500; font-size:1.3em; text-align:center; font-size:18px; font-weight:700;}
+	#options .op_wr{border-radius:0;}
+	#options .sbjt{width:100%; background-color:#29272f;}
+	#options .sbjt .tt{padding:0.8em 1.2em; background-color:#393A43; font-size:15px;}
+	#options .sbjt .tt label:after{background-color:#393A43;}
+	#options .sbjt ul li{width:calc(100% / 4);}
+	#options .sbjt ul li:nth-child(4){margin-top:0;}
+	#options .sbjt ul li [data-icon] label{font-size:1em;}
+
+	/*수원및공급시설*/
+	#options .sbjt .icolst>li>a{background-color:#2E2D36; font-size:15px;}
+	#options .sbjt .icolst>li>a:after{display:none;}
+	#options .sbjt .icolst>li:not(:first-child){border-top:0;}
+	#options .sbjt .icolst li ul li:nth-child(3){margin-top:0;}
+	#options .sbjt .icolst li ul{position:static; display:block !important; width:100%; background-color:#29272F;}
+	#options .sbjt .icolst li ul li{width:calc(100% / 4);}
+
+	#options .reset_btn{position:static; width:calc(100% - 10%); height:3.077em; line-height:3.077em; margin:1.5em auto; background-color:#F2F2F2; border-radius:0.2em; text-align:center; font-size:1.1em; color:#404040;}
+	#options .close_btn{right:1.3em; top:1.45em; width:1.7em; height:1.7em;}
+	#options .reset_btn:before,
+	#options .reset_btn:hover:before{
+		background-image:url(../../images/common/icon_option_reset_mob.svg); background-position:0 0.85em;
+		transform:rotate(0deg); -webkit-transform:rotate(0deg);
+	}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 가뭄119 / 기상수문자료 / 우리동네가뭄 - 마커 눌렀을 때 데이터 박스
+	연관단어 : #data_pop
+	구조 : 
+	- 가뭄119
+	<div id="data_pop">...</div>
+	- 기상수문자료
+	<div id="data_pop" class="ty_2">...</div>
+	- 우리동네가뭄
+	<div id="data_pop" class="ty_3">...</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/
+/***** 가뭄119 *****/
+#data_pop{
+	position:absolute; bottom:0.6em; left:18.4em; z-index:10; width:calc(100% - 19em); padding:1.5em; background-color:rgba(41,39,47,0.85); border-radius:0.8em; font-size:16px; box-sizing:border-box;
+	transition:width 0.4s ease, left 0.4s ease; -webkit-transition:width 0.4s ease, left 0.4s ease;
+}
+#header[data-sw="check"]~#bind>#data_pop{left:5.4em; width:calc(100% - 6em);}
+#data_pop .tt{display:block; margin-bottom:0.8em; font-size:1.25em; font-weight:300; color:#fff;}
+#data_pop .close{overflow:hidden; position:absolute; top:-2.8em; right:0.8em;  width:1.875em; height:1.875em; background:url(../../images/common/icon_close_black.svg) no-repeat 0 0; background-size:100% auto; text-indent:-2000px;}
+#data_pop [data-skin="table"]{min-width:60em;}
+#data_pop [data-skin="table"] th,
+#data_pop [data-skin="table"] td{font-size:0.95em;}
+#data_pop [data-skin="table"] td img{width:1.895em;}
+#data_pop [data-skin="table"] tbody td>strong{display:none;}
+#data_pop .details{
+	position:absolute; top:1.5em; right:1.5em; display:inline-block; height:1.9em; line-height:1.9em; padding:0 0.8em; border:1px solid #fff; border-radius:1em; font-size:0.9em; color:#fff;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+#data_pop .details:hover{background-color:#fff; color:#000;}
+
+/***** 기상수문자료 *****/
+#data_pop.ty_2{border-radius:0 0.8em 0.8em 0.8em;}
+#data_pop.ty_2 .top_tt{position:absolute; top:-2.283em; left:0; width:12em; height:2.283em; line-height:2.283em; background-color:rgba(41,39,47,0.85); border-radius:0.2em 0.2em 0 0; font-size:1.1em; font-weight:500; text-align:center; color:#fff;}
+#data_pop.ty_2.mov{left:34.1em; width:calc(100% - 34.7em);}
+#header[data-sw="check"]~#bind>#data_pop.ty_2.mov{left:21.1em; width:calc(100% - 21.8em);}
+
+/***** 우리동네가뭄 *****/
+.notibx{display:inline-block; position:relative; padding-left:4em; font-size:1.4em; font-weight:300; color:#fff; text-align: center; box-sizing:border-box;}
+.notibx:before{content:""; position:absolute; top:0; left:0; width:2.9em; height:100%; background:url(../../images/common/dongne_icon_notice.svg) no-repeat left center; background-size:2.9em auto;}
+.notibx>p{display:table; table-layout:fixed; height:3.3em;}
+.notibx>p>span{display:table-cell; width:100%; height:100%; vertical-align:middle; text-align:left;}
+.notibx>p>span em{font-style:normal;}
+.notibx>p>span .yelow{color:#FEFF3A;}
+.notibx>p>span .red{color:#FD0009;}
+
+
+/*20220928 우리동네가뭄 가뭄 체감형메세지 수정*/
+#feeling_msg{
+	position:absolute;
+	bottom:0.6em;
+	left:18.4em;
+	z-index:10;
+	width:calc(100% - 19em);
+	padding:1.5em;
+	background-color:rgba(41,39,47,0.85);
+	/* border-radius:0.8em; */
+	font-size:16px;
+	box-sizing:border-box;
+	transition:width 0.4s ease, left 0.4s ease;
+	-webkit-transition:width 0.4s ease, left 0.4s ease;
+}
+#feeling_msg.hide{padding: 0;}
+#header[data-sw="check"]~#bind>#feeling_msg{left:5.4em; width:calc(100% - 6em);}
+#feeling_msg .tt{display:block; margin-bottom:0.8em; font-size:1.25em; font-weight:300; color:#fff;}
+#feeling_msg .close:before{/* content: ""; */position: absolute;top: 0;left: 0;display: block;width: 100%;height: 10px;background-color: transparent;}
+#feeling_msg.hide .close:before{height: 100%;}
+#feeling_msg .close span{overflow:hidden; position:absolute; top:-2.8em; right:0.8em;  width:1.875em; height:1.875em; background-image:url(../images/common/icon_close_black.svg); background-repeat: no-repeat; background-position: 0 0; background-size:100% auto; text-indent:-2000px;}
+#feeling_msg.hide .close span{background-image:url(../images/common/icon_close_hide.svg);top: -2.8em;}
+.notibx{display:block;position: static;padding-left:0em;font-size:1em;font-weight:300;color:#fff;box-sizing:border-box;}
+#data_bx .tab_bx .notibx{/*padding: 0.5em 1.5em;*/}
+#data_bx .tab_bx .notibx .message_box>ul{/* margin-top: 1em; */}
+.notibx:before{display: none;}
+.notibx .message_box{
+    position: static;
+}
+.notibx .message_box >strong{
+    position: relative; display: inline-block; font-size: 1.375em; padding: 0.1em 1em 0.22em 1em; color: #222; background-color: #72B66B; box-sizing: border-box;
+    border-radius: 50px; -webkit-border-radius: 50px;
+}
+#feeling_msg .notibx .message_box >strong{position: absolute; display: inline-block; padding: 0.493em calc(1em + 20px) 0.493em 1em;/* display: none; */top: -2.5em;left: 0;z-index: 11;background-color: rgba(41,39,47,0.85);color: #fff;border-radius: 0.2em 0.2em 0 0;font-weight: 400;font-size: 1.0781em; cursor: pointer;}
+/*#feeling_msg.hide .notibx .message_box >strong{background-color: rgba(255,255,255,0.8); color: #404040;}*/
+#feeling_msg .notibx .message_box >strong:after{
+    content: ""; position: absolute; top: 50%; right: 1em; display: inline-block; width: 10px; height: 6px; margin-top: -3px; margin-left: 0.5em; background: url(../images/common/icon_close_hide_s_black.svg) no-repeat center center; background-size: 100% auto;
+    /*transition: all 0.2s linear; -webkit-transition: all 0.2s linear;*/
+}
+#feeling_msg:not(.hide) .notibx .message_box >strong:after{
+    transform: rotate(180deg); -webkit-transform: rotate(180deg);
+}
+/*정상*/
+.notibx .message_box[data-step="norms"] >strong{}
+/*관심*/
+.notibx .message_box[data-step="atten"] >strong{/* background-color: #1A4CFB; *//* color: #fff; */}
+#feeling_msg .notibx .message_box[data-step="atten"] >strong:after{background-image: url(../images/common/icon_close_hide_s_white.svg);}
+/*#feeling_msg.hide .notibx .message_box[data-step="atten"] >strong:after{background-image: url(../images/common/icon_close_hide_s_black.svg);}*/
+/*주의*/
+.notibx .message_box[data-step="warn"] >strong{background-color: #FEFF3A;}
+/*경계*/
+.notibx .message_box[data-step="awfuls"] >strong{background-color: #FDAB25;}
+/*심각*/
+.notibx .message_box[data-step="terri"] >strong{background-color: #E03131; color: #fff;}
+#feeling_msg .notibx .message_box[data-step="terri"] >strong:after{background-image: url(../images/common/icon_close_hide_s_white.svg);}
+
+.notibx .message_box>ul{margin-top: 0em;display: grid;grid-column-gap: 1.25em;grid-template-columns: repeat(4,1fr);}
+.hide .notibx .message_box>ul{display: none;}
+.notibx .message_box>ul:after{content: ""; display: block; clear: both;}
+.notibx .message_box>ul>li{
+    /* float: left; */
+    position: relative; height: auto !important;
+    /* width: calc((100% - 1px - 7.2em) / 4); */
+    padding: 1.5em 1em 1.5em 8em;
+    background-color: #fff;
+    text-align: left;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #72B66B;
+    box-sizing: border-box;
+    border-radius: 30px 30px 0 30px;
+    -webkit-border-radius: 14px 14px 0 14px;
+}
+.notibx .message_box>ul>li:not(:first-child){/* margin-left: 2.4em; */}
+/*정상*/
+.notibx .message_box[data-step="norms"]>ul>li{border-color: #72B66B;}
+/*관심*/
+.notibx .message_box[data-step="atten"]>ul>li{border-color: #1A4CFB;}
+/*주의*/
+.notibx .message_box[data-step="warn"]>ul>li{border-color: #FEFF3A;}
+/*경계*/
+.notibx .message_box[data-step="awfuls"]>ul>li{border-color: #FDAB25;}
+/*심각*/
+.notibx .message_box[data-step="terri"]>ul>li{border-color: #E6171F;}
+.notibx .message_box>ul>li em{display: none; font-size: 1.25em; font-style: normal; color:#003079; letter-spacing: -0.02em; line-height: 1; font-weight: 700;}
+.notibx .message_box>ul>li img{width: 9.9375em;height: 6.0625em;margin: 0 auto;font-size: 0.7em;position: absolute;top: 2em;left: 0.75em;}
+.notibx .message_box>ul>li p{position: relative;height: 4.5em;overflow-y: auto;margin-top: 0;font-size: 1em;color: #444;font-weight: 400;letter-spacing: -0.07em;line-height: 1.5;box-sizing: border-box;}
+.notibx .message_box>ul>li p:before{content: ""; position: absolute; top: -0.85em; left: 0; display: block; width: 100%; height: 1px; border-top: 1px dashed #DDDDDD; box-sizing: border-box; }
+/* 221027 추가 */
+.notibx .message_box>ul>li p::-webkit-scrollbar{width:4px;}
+.notibx .message_box>ul>li p::-webkit-scrollbar-thumb{background-color:#999;}
+.notibx .message_box>ul>li p::-webkit-scrollbar-track{background-color:#ddd;}
+
+.notibx .message_box>ul>li p strong{color: #0B8A00;}
+/*정상*/
+.notibx .message_box[data-step="norms"]>ul>li p strong{color: #0B8A00;}
+/*관심*/
+.notibx .message_box[data-step="atten"]>ul>li p strong{color: #4263EB;}
+/*주의*/
+.notibx .message_box[data-step="warn"]>ul>li p strong{color: #995B39;}
+/*경계*/
+.notibx .message_box[data-step="awfuls"]>ul>li p strong{color: #995B39;}
+/*심각*/
+.notibx .message_box[data-step="terri"]>ul>li p strong{color: #E03131;}
+
+/* 221018 가뭄피해 강조표시 추가 */
+#data_bx .tab_bx .notibx .message_box>ul>li p strong{color: #995B39;}
+
+
+
+
+
+
+
+@media screen and (max-width:1500px) {
+    .notibx .message_box>ul{grid-template-columns: repeat(2,1fr) !important; grid-template-rows: auto auto;}
+    .notibx .message_box>ul>li{/* width: calc((100% - 1px - 1.5em) / 2); */}
+    .notibx .message_box>ul>li:not(:first-child){/* margin-left: 1.5em; */}
+    .notibx .message_box>ul>li:nth-child(2n-1){/* margin-left: 0; */}
+    .notibx .message_box>ul>li:nth-child(n+3){ margin-top: 1.25em; }
+}
+@media screen and (max-width:1024px) {
+	#data_pop,
+    #feeling_msg{font-size:15px;}
+}
+@media screen and (max-width:920px) {
+	#data_pop,
+    #feeling_msg{font-size:13px;}
+}
+@media screen and (max-width:740px) {
+	/***** 가뭄119 *****/
+	#data_pop{left:0; bottom:0; width:100%; height:100%; padding:0; background-color:#fff; border-radius:0;}
+	#data_pop:before{content:"제원정보"; display:block; width:100%; height:3.334em; line-height:3.334em; background-color:#005DB7; font-size:1.1em; text-align:center; font-size:18px; color:#fff;}
+	#data_pop .tt{margin-top:1.2em; font-weight:500; text-align:center; color:#000;}
+    
+    #feeling_msg{left: 0;bottom: 0;width: 100%;height: 100%; padding: 0; padding-top: 60px;/* overflow-y: auto; */background-color: #fff;border-radius:0}
+    #feeling_msg:not(.hide){overflow-y: auto;}
+    #feeling_msg:before{content:"우리동네가뭄"; position: absolute; top: 0; left: 0; display: block; width: 100%; height: 3.334em; line-height: 3.334em; text-align: center; font-size: 18px; font-weight: 500; color: #fff; background-color: #005DB7;}
+	#feeling_msg.hide:before{display:none;}
+	#feeling_msg.hide{height: auto;/* overflow: auto; */}
+    /*#feeling_msg .notibx .message_box >strong{position: relative; top: auto; left: auto; padding: 0; font-size: 1.25em;}*/
+    #feeling_msg .notibx .message_box >strong{background-color: rgba(41,39,47,0.85) !important; color: #fff !important; text-align: center; font-size: 1em;}
+    #feeling_msg .notibx .message_box >strong span{/* display: block; */}
+    #feeling_msg:not(.hide) .notibx .message_box{text-align: left; background-color: #005DB7;}
+    #feeling_msg:not(.hide) .notibx .message_box >strong{position: relative;top: auto;left: auto;width: auto;min-width: 50vw;border-radius: 0.6em 0.6em 0 0;}
+    #feeling_msg .notibx .message_box >strong{background-color: #fff !important;color: #404040 !important;font-size: 1.15em;padding: 0.96em 2em 0.96em 0.5em;}
+    #feeling_msg.hide .notibx .message_box >strong{top: auto; bottom: 0; min-width: 25vw; padding: 0.49em 1.75em 0.49em 0.5em; background-color: rgba(255,255,255,0.8) !important; color: #404040 !important; border-radius: 0.6em 0.6em 0 0; font-size: 1.1em;}
+    #feeling_msg.hide .notibx .message_box >strong span{display: block;}
+    #feeling_msg .notibx .message_box[data-step="atten"] >strong:after{background-image: url(../images/common/icon_close_hide_s_black.svg);}
+	.notibx .message_box>ul{display: block;}
+    #feeling_msg:not(.hide) .notibx .message_box>ul{display: block; background-color: #fff; padding: 1.5em 1em;}
+	.notibx .message_box>ul>li{
+	    display: table;
+	    table-layout: fixed;
+	    width: 100%;
+	    height: auto !important;
+	    min-height: 6.5em;
+	    border: 1px solid #D9D9D9 !important;
+	    border-radius: 4px;
+	    -webkit-border-radius: 4px;
+	    padding: 1em 1em;
+	}
+    .notibx .message_box >strong{
+        background-color: transparent !important; color: #222 !important;
+        border-radius: 0; -webkit-border-radius: 0;
+    }
+    .notibx .message_box>ul>li em{position: absolute;top: 0.8em;left: 0.8em;}
+	.notibx .message_box>ul>li{width: 100%;}
+    .notibx .message_box>ul>li:not(:first-child){margin-left: 0; margin-top: 0.5em;}
+    .notibx .message_box>ul>li img{position: absolute;top: 50%;left: 2em;margin-top: calc(-6.0625em / 2);font-size: 0.8em;display: table-cell;vertical-align: middle;/* margin: 0 auto; */}
+    .notibx .message_box>ul>li p{position: relative; display: table-cell; width: 100%; height: auto;/* width: calc(100% - 7.5em); *//* margin-top: 0; */border-top: 0;/* margin-left: 7.5em; */vertical-align: middle;padding-top: 0;padding-left: 9em; font-size: 1.15em;}
+	.notibx .message_box>ul>li p:before{content: "";position: absolute;top: 0;left: 8em;display: block;width: 1px;height: 100%;border-left: 1px dashed #DDDDDD;}
+    
+    #data_bx .tab_bx .notibx{/*padding: 1.7em 1.5em;*/}
+    #data_bx .tab_bx .notibx .message_box >strong{background-color: transparent !important; color: #222 !important;}
+    
+	#data_pop .table_bx{padding:0 1em;}
+	#data_pop .table_bx [data-skin="table"],
+	#data_pop .table_bx [data-skin="table"] tr,
+	#data_pop .table_bx [data-skin="table"] th,
+	#data_pop .table_bx [data-skin="table"] td{display:block;}
+	
+	#data_pop .table_bx [data-skin="table"]{min-width:auto;}
+	#data_pop .table_bx [data-skin="table"] thead{display:none;}
+	#data_pop .table_bx [data-skin="table"] tr{overflow:hidden;}
+	#data_pop .table_bx [data-skin="table"] td{display:table; table-layout:fixed; width:100%; height:3.078em; box-sizing:border-box;}
+	#data_pop .table_bx [data-skin="table"] td:first-of-type{display:none;}
+	#data_pop .table_bx [data-skin="table"] td:not(:last-child){border-right:0; border-bottom:1px solid #E0E0E0;}
+
+	#data_pop .table_bx [data-skin="table"] tbody th>span,
+	#data_pop .table_bx [data-skin="table"] tbody td>strong,
+	#data_pop .table_bx [data-skin="table"] tbody td>span{display:table-cell; width:50%; height:100%; vertical-align:middle;}
+	#data_pop .table_bx [data-skin="table"] tbody td>strong{background:#eee; font-weight:400;}
+
+	#data_pop .details{position:static; width:calc(100% - 2em); height:3.077em; line-height:3.077em; margin:1em; border-color:#005DB7; border-radius:0; text-align:center; font-size:1.1em; color:#005DB7; box-sizing:border-box;}
+	#data_pop .details:hover{color:#005DB7;}
+	#data_pop .close{top:1.45em; right:1.3em; background-image:url(../../images/common/icon_close_white.svg);}
+
+	/***** 기상수문자료 *****/
+	#data_pop.ty_2{border-radius:0;}
+	#data_pop.ty_2 .table_bx [data-skin="table"] td:first-of-type{display:table;}
+	#data_pop.ty_2 .table_bx [data-skin="table"] tbody th{display:table; table-layout:fixed; width:100%; height:3.078em; box-sizing:border-box;}
+
+	/***** 우리동네가뭄 *****/
+	#data_pop.ty_3{display:block !important; left:0; height:auto; padding:0.5em 1.5em; background-color:rgba(41,39,47,0.85); border-radius:0;}
+	#header[data-sw="check"]~#bind>#data_pop.ty_3{left:0; width:100%;}
+	#data_pop.ty_3:before,
+	#data_pop.ty_3 .notibx:before,
+	#data_pop.ty_3 .close{display:none;}
+	#data_pop.ty_3 .notibx{padding-left:0; font-size:1.1em;}
+	#data_pop.ty_3 .notibx>p>span{line-height:1.3em; text-align:center;}
+}
+@media screen and (max-width:640px) {
+    .notibx .message_box>ul>li img{font-size: 0.7em;}
+    .notibx .message_box>ul>li p{padding-left: 8em;}
+    .notibx .message_box>ul>li p:before{left: 7em;}
+}
+@media screen and (max-width:480px) {
+    .notibx .message_box>ul>li{padding: 1em 1em 1em 0;}
+    .notibx .message_box>ul>li img{font-size: 0.5em;left: 1em;}
+    .notibx .message_box>ul>li p{padding-left: 6em;}
+    .notibx .message_box>ul>li p:before{left: 5em;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 가뭄119
+	연관단어 : #login_19
+	구조 : 
+	<div id="login_19">
+		
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+#login_19{
+	display: none; position:fixed; top:0; left:0; z-index:999; width:100%; height:100%; background-color:rgba(0,0,0,0.6); font-size:16px;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+#login_19 .bxs{
+	position:absolute; top:50%; left:50%; width:100%; max-width:37em; padding:3em 1em; background-color:#fff; border-radius:0.8em; text-align:center; box-sizing:border-box;
+	transform:translate(-50%, -50%);
+}
+#login_19 .bxs p{margin-bottom:1.5em; font-size:1.3em; font-weight:700;}
+#login_19 .bxs p strong{color:#005DB7;}
+#login_19 .bxs .log_btn{
+	display:inline-block; height:3em; line-height:3em; padding:0 3em 0 1.5em; background:#005DB7 url(../../images/common/login_19_arrow.svg) no-repeat right 1.2em center; border-radius:0.3em; box-shadow:0 0 8px rgba(0, 93, 183, 0); color:#fff;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+#login_19 .bxs .log_btn:hover{box-shadow:0 0 8px rgba(0, 93, 183, 0.55);}
+#login_19 .bxs .close{overflow:hidden; position:absolute; top:-3.8em; right:0; width:2.934em; height:2.934em; background:rgba(255,255,255,0.2) url(../../images/common/icon_close_white.svg) no-repeat center; background-size:35% auto; border-radius:50%; text-indent:-2000px;}
+
+@media screen and (max-width:1024px) {
+	#login_19{font-size:15px;}
+}
+@media screen and (max-width:740px) {
+	#login_19{font-size:13px;}
+	#login_19 .bxs{max-width:23em;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 기상수문자료 - 지도옵션
+	연관단어 : .map_ctrl
+	구조 : 
+	<div class="map_ctrl">
+		
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+#right_tools .map_ctrl{text-align:right;}
+#right_tools .map_ctrl .map_op{
+	overflow:hidden; position:relative; display:block; width:2.875em; height:2.875em; line-height:2.875em; background-color:#fff; border-radius:0.2em; text-align:center; box-shadow:2px 2px 5px rgba(0,0,0,0.2);
+	transition:width 0.3s ease; -webkit-transition:width 0.3s ease;
+}
+#right_tools .map_ctrl .map_op:hover{width:5.75em;}
+#right_tools .map_ctrl .map_op a{position:absolute; top:0; display:block; width:2.875em;}
+#right_tools .map_ctrl .map_op .map_btn{left:0;}
+#right_tools .map_ctrl .map_op .map_btn:after{content:""; position:absolute; top:calc(50% - 1.3em); right:-1px; width:1px; height:2.6em; background-color:#E7E7E7;}
+#right_tools .map_ctrl .map_op .sky_btn{left:2.875em;}
+#right_tools .map_ctrl .map_op[data-option="map"]:hover .map_btn,
+#right_tools .map_ctrl .map_op[data-option="sky"]:hover .sky_btn{font-weight:500; color:#005DB7;}
+
+#right_tools .map_ctrl .dist{overflow:hidden; display:inline-block; width:2.875em; height:2.875em; line-height:2.875em; background:#fff url(../../images/common/wgate_icon_dist.svg) no-repeat center; background-size:0.6em; border-radius:0.2em; text-indent:2000px; box-shadow:2px 2px 5px rgba(0,0,0,0.2);}
+
+@media screen and (max-width:740px) {
+	#right_tools .map_ctrl .map_op{display:none;}
+	#right_tools .map_ctrl .dist{display:none;}
+}
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 기상수문자료, 가뭄119 - 팝업 여러개
+	연관단어 : data-skin="manypop"
+	구조 : 
+	<div data-skin="manypop">
+		
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+[data-skin="manypop"]{position:fixed; top:10%; left:20%; z-index:1000; width:95%; max-width:42em; background-color:#fff; border-radius:0.8em; box-shadow:0px 0px 8px rgba(0, 0, 0, 0.55); font-size:15px;}
+[data-skin="manypop"].on{display:block;}
+[data-skin="manypop"] .pbx .hads{display:block; width:100%; height:2.845em; line-height:2.845em; background-color:#005DB7; border-radius:0.5em 0.5em 0 0; text-align:center; font-size:1.5em; font-weight:500; color:#fff;}
+[data-skin="manypop"] .pbx .midd{padding:0 2em 2.1em; box-sizing:border-box;}
+[data-skin="manypop"] .pbx .midd>strong{display:block; margin:1.3em 0 0.5em; font-size:1.2em; color:#000;}
+[data-skin="manypop"] .pbx .midd>strong:before{content:"·"; margin-right:0.2em;}
+[data-skin="manypop"] .pbx .midd .table_bx{overflow:auto; max-height:13.3em; border:1px solid #D2D2D2; border-radius:0.2em; box-sizing:border-box;}
+[data-skin="manypop"] .pbx .midd .graphbox{overflow:hidden;}
+[data-skin="manypop"] .pbx .midd [data-skin="table"]{border:1px solid #eee;}
+[data-skin="manypop"] .pbx .midd [data-skin="table"] th,
+[data-skin="manypop"] .pbx .midd [data-skin="table"] td{height:2.1em; font-size:0.9em;} 
+[data-skin="manypop"] .pbx .close{overflow:hidden; position:absolute; top:1.05em; right:1.05em; width:2em; height:2em; background:url(../../images/common/icon_close_white.svg) no-repeat center; border-radius:50%; text-indent:-2000px;}
+
+[data-skin="manypop"] .pbx .midd>strong{display:inline-block;}
+[data-skin="manypop"] .pbx .midd{position:relative;}
+[data-skin="manypop"] .pbx .midd .down_btn{position:absolute; top:1.95em; right:2em; display:inline-block; height:1.867em; line-height:1.867em; padding:0 0.8em; border:1px solid #005DB7; border-radius:0.2em; font-size:0.9em; color:#005DB7; vertical-align:middle;}
+[data-skin="manypop"] .pbx .midd .graphbx{margin:2em 0;}
+[data-skin="manypop"] .pbx .midd .graphbx img{display:block; max-width:100%; margin:0 auto;}
+[data-skin="manypop"] .pbx .midd .terms{display:inline-block; width:calc(100% - 8.8em); margin-left:2em;}
+[data-skin="manypop"] .pbx .midd .terms img{display:none;}
+[data-skin="manypop"] .pbx .midd .terms input{height:1.867em; border-radius:0.2em;}
+[data-skin="manypop"] .pbx .midd .terms span{display:inline-block; margin:0 0.5em;}
+[data-skin="manypop"] .pbx .midd .terms .searchs{overflow:hidden; display:inline-block; width:1.867em; height:1.867em; margin-left:0.3em; background:#005DB7 url(../../images/common/wgate_icon_search.svg) no-repeat center; background-size:55% auto; border-radius:0.2em; text-indent:-2000px; vertical-align:middle;}
+
+/*가뭄119*/
+[data-skin="manypop"][data-type="2"]{max-width:51em;}
+[data-skin="manypop"][data-type="2"] .pbx .midd .table_bx{max-height:none;}
+/*[data-skin="manypop"][data-type="2"] .pbx .midd [data-skin="table"]{width:62em;}*/
+[data-skin="manypop"][data-type="2"] .pbx .midd [data-skin="table"] td img{width:2.3em;}
+
+@media screen and (max-width:920px) {
+	[data-skin="manypop"]{font-size:13px;}
+}
+@media screen and (max-width:740px) {
+	[data-skin="manypop"]{top:0 !important; left:0 !important; width:100%; max-width:none !important; height:100%; border-radius:0; transform:none; -webkit-transform:none;}
+	[data-skin="manypop"]:after{display:none;}
+	[data-skin="manypop"] .pbx .hads{height:3.334em; line-height:3.334em; border-radius:0; font-size:18px;}
+	[data-skin="manypop"] .pbx .midd{padding:0 5%;}
+	[data-skin="manypop"] .pbx .midd [data-skin="table"] th,
+	[data-skin="manypop"] .pbx .midd [data-skin="table"] td{font-size:13px;}
+	[data-skin="manypop"] .pbx .close{top:1.45em; right:1.3em; width:1.875em; height:1.875em; background-color:transparent; background-size:100% auto; border-radius:0;}
+
+	[data-skin="manypop"] .pbx .midd .table_bx{height:16.4em;}
+	[data-skin="manypop"] .pbx .midd .down_btn{position:static; right:0; width:100%; height:3.077em; line-height:3.077em; margin:1em 0; border-radius:0; font-size:1.1em; text-align:center; box-sizing:border-box;}
+	[data-skin="manypop"] .pbx .midd .terms{display:block; width:100%; margin-left:0;}
+	[data-skin="manypop"] .pbx .midd .terms input{height:2.467em;}
+	[data-skin="manypop"] .pbx .midd .terms .searchs{width:2.75em; height:2.75em;}
+
+	/*가뭄119*/
+	[data-skin="manypop"][data-type="2"] .pbx .midd .table_bx{height:auto;}
+}
+@media screen and (max-width:480px) {
+	/*기상수문자료*/
+	[data-skin="manypop"] .pbx .midd .terms input{width:6.83em;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 우리동네가뭄, 가뭄피해정보 - 날짜검색
+	연관단어 : .cal_bx
+	구조 : 
+	<div id="top_tools" class="cals2">우리동네가뭄</div>
+	<div id="top_tools" class="years">가뭄피해정보</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+#top_tools .cal_bx{display:inline-block; height:2.875em; padding:0 0.9em 0 0; background-color:#fff; border-radius:0.2em; box-shadow:2px 2px 5px rgba(0,0,0,0.2); vertical-align:top;}
+#top_tools .cal_bx .js_cal{height:100%; padding:0; border:0; border-radius:0.2em;}
+#top_tools .cal_bx+.btn_down{margin-left:1em;}
+
+/*가뭄피해정보*/
+#top_tools.years .searchbx .tt{display:none; margin:1.6em 0 1em; font-size:1.35em; font-weight:800; text-align:center;}
+
+
+@media screen and (max-width:740px) {
+	/*우리동네가뭄*/
+	#top_tools.cals2{padding:11em 5% 1.5em;}
+	#top_tools.cals2:after{content:"날짜선택"; position:absolute; top:1.6em; left:0; display:block; width:100%; font-size:1.35em; font-weight:800; text-align:center;}
+	#top_tools.cals2 .cal_bx{position:absolute; top:5.5em; left:5%; width:90%; height:3.385em; border:1px solid #BDBDBD; box-shadow:none; box-sizing:border-box;}
+	#top_tools.cals2 .cal_bx .js_cal{width:calc(100% - 2em);}
+	/*가뭄피해정보*/
+	#top_tools.years .searchbx .tt{display:block;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 우리동네가뭄 - 가뭄단계 정보
+	연관단어 : #step_bx
+	구조 : 
+	<div id="step_bx">
+		
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+#step_bx{
+	position:absolute; top:50%; left:50%; z-index:2; width:50em; font-size:16px;
+	transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);
+}
+#step_bx [data-name]{position:relative; display:inline-block; width:21.875em; vertical-align:top;}
+#step_bx [data-name] .tbtn{
+	overflow:hidden; position:absolute; z-index:1; display:inline-block; width:5em; height:5em; border-radius:50%; background-color:#fff; box-shadow:2px 2px 4px rgba(0,0,0,0.4);
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+#step_bx [data-name] .tbtn:hover{box-shadow:2px 2px 7px rgba(0, 0, 0, 0.6);}
+#step_bx [data-name] .tbtn:after{content:""; position:absolute; bottom:1.1em; left:calc(50% - 0.33em); width:0.66em; height:0.66em; background:url(../../images/common/dongne_stepbx_icon_plus.svg) no-repeat center;}
+#step_bx [data-name].on .tbtn:after{bottom:1.35em; height:2px; background-image:none; background-color:#fff;}
+#step_bx [data-name] .tbtn span{
+	display:block; padding:0.9em 0; text-align:center; font-size:1.2em;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+}
+#step_bx [data-name].on .tbtn span{color:#fff;}
+
+#step_bx [data-name] .bxs{
+	opacity:0; overflow:hidden; position:absolute; z-index:0; width:100%; min-height:15.188em; background-color:rgba(0,0,0,0.5); color:#fff; box-sizing:border-box;
+	transform:scale(0); -webkit-transform:scale(0);
+	transition:all 0.3s ease-in; -webkit-transition:all 0.3s ease-in;
+}
+#step_bx [data-name].on .bxs{opacity:1; transform:scale(1); -webkit-transform:scale(1);}
+#step_bx [data-name] .bxs ul{padding:1.2em 1.8em; box-sizing:border-box;}
+#step_bx [data-name] .bxs ul li{position:relative; padding-left:0.8em; font-size:0.95em; font-weight:300; box-sizing:border-box;}
+#step_bx [data-name] .bxs ul li:not(:first-child){margin-top:0.5em;}
+#step_bx [data-name] .bxs ul li:after{content:""; position:absolute; top:0.55em; left:0; width:5px; height:5px; background-color:#fff; border-radius:50%;}
+
+#step_bx [data-name] .bxs .infos{position:absolute; width:100%; min-height:6.9em; box-sizing:border-box;}
+#step_bx [data-name] .bxs .infos:after{content:""; position:absolute; left:3%; width:94%; height:1px; background-color:rgba(255,255,255,0.2);}
+#step_bx [data-name] .bxs .infos>span{display:inline-block; margin-bottom:0.6em; font-size:0.8em; font-weight:300; vertical-align:middle;}
+#step_bx [data-name] .bxs .infos>span:first-child{margin-right:0.5em;}
+#step_bx [data-name] .bxs .infos .steps [data-step]{display:block; font-size:1.8em;}
+#step_bx [data-name] .bxs .infos .steps strong[data-step="norms"]{color:#72B66B;}
+#step_bx [data-name] .bxs .infos .steps strong[data-step="atten"]{color:#0082FF;}
+#step_bx [data-name] .bxs .infos .steps strong[data-step="warn"]{color:#FEFF3A;}
+#step_bx [data-name] .bxs .infos .steps strong[data-step="awfuls"]{color:#FDAB25;}
+#step_bx [data-name] .bxs .infos .steps span{opacity:0.8;}
+#step_bx [data-name] .bxs .infos .steps strong[data-step="terri"]{color:#FD0009;}
+#step_bx [data-name] .bxs .infos .prcnt{width:40%;}
+#step_bx [data-name] .bxs .infos .prcnt strong{display:block; white-space:nowrap; font-size:1.5em;}
+#step_bx [data-name] .bxs .infos .prcnt .details{display:block; width:3.8em; height:2.032em; line-height:2.032em; margin-top:0.3em; padding:0 1.5em 0 0.8em; background:#000 url(../../images/common/dongne_stepbx_icon_arrow.svg) no-repeat right 0.6em center; border-radius:1em; font-size:1em; color:#fff;}
+#step_bx [data-name] .bxs ul li .linkbtn{
+	background :#FDAB25; top:1.5em; right:1.5em; display:inline-block; height:1.9em; line-height:1.9em; padding:0 0.7em; border-radius:1em; font-size:0.8em; color:#fff;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease ;cursor:pointer;
+	}
+
+/*기상,농업*/
+#step_bx [data-name="weather"] .bxs,
+#step_bx [data-name="farm"] .bxs{padding-bottom:6.8em;}
+#step_bx [data-name="weather"] .bxs .infos,
+#step_bx [data-name="farm"] .bxs .infos{bottom:0; left:0;}
+#step_bx [data-name="weather"] .bxs .infos:after,
+#step_bx [data-name="farm"] .bxs .infos:after{top:0;}
+/*기상*/
+#step_bx [data-name="weather"]{margin-right:3em;}
+#step_bx [data-name="weather"] .tbtn{bottom:0.6em; right:0.6em;}
+#step_bx [data-name="weather"].on .tbtn{background-color:#00A1D6;}
+#step_bx [data-name="weather"] .bxs{bottom:0; right:0; border-radius:0.6em 0.6em 3em 0.6em; transform-origin:right bottom;}
+#step_bx [data-name="weather"] .bxs .infos{padding:0.8em 6.5em 0.8em 1.8em;}
+#step_bx [data-name="weather"] .bxs .infos .steps{width:calc(60% - 0.4em - 0.5em);}
+/*농업*/
+#step_bx [data-name="farm"]{margin-left:3em;}
+#step_bx [data-name="farm"] .tbtn{bottom:0.6em; left:0.6em;}
+#step_bx [data-name="farm"].on .tbtn{background-color:#00B049;}
+#step_bx [data-name="farm"] .bxs{bottom:0; left:0; border-radius:0.6em 0.6em 0.6em 3em; transform-origin:left bottom;}
+#step_bx [data-name="farm"] .bxs .infos{padding:0.8em 1.8em 0.8em 6.5em;}
+#step_bx [data-name="farm"] .bxs .infos .steps{width:calc(60% - 0.4em - 0.5em);}
+
+/*산불,먹는물*/
+#step_bx [data-name="fire"],
+#step_bx [data-name="water"]{margin-top:0.8em;}
+#step_bx [data-name="fire"] .bxs,
+#step_bx [data-name="water"] .bxs{padding-top:6.8em;}
+#step_bx [data-name="fire"] .bxs .infos,
+#step_bx [data-name="water"] .bxs .infos{top:0; left:0;}
+#step_bx [data-name="fire"] .bxs .infos:after,
+#step_bx [data-name="water"] .bxs .infos:after{bottom:0;}
+
+/*산불*/
+#step_bx [data-name="fire"]{margin-right:3em;}
+#step_bx [data-name="fire"] .tbtn{top:0.6em; right:0.6em;}
+#step_bx [data-name="fire"].on .tbtn{background-color:#D16200;}
+#step_bx [data-name="fire"] .bxs{top:0; right:0; border-radius:0.6em 3em 0.6em 0.6em; transform-origin:right top;}
+#step_bx [data-name="fire"] .bxs .infos{padding:0.8em 6.5em 0.8em 1.8em;}
+#step_bx [data-name="fire"] .bxs .infos .prcnt{display:none;}
+#step_bx [data-name="fire"] .bxs .infos .steps{width:100%; margin-bottom:0;}
+
+/*먹는물*/
+#step_bx [data-name="water"]{margin-left:3em;}
+#step_bx [data-name="water"] .tbtn{top:0.6em; left:0.6em;}
+#step_bx [data-name="water"].on .tbtn{background-color:#0082FF;}
+#step_bx [data-name="water"] .bxs{top:0; left:0; border-radius:3em 0.6em 0.6em 0.6em; transform-origin:left top;}
+#step_bx [data-name="water"] .bxs .infos{padding:0.8em 1.8em 0.8em 6.5em;}
+#step_bx [data-name="water"] .bxs .infos .steps{width:calc(60% - 0.4em - 0.5em);}
+
+/*20220928 우리동네가뭄 가뭄 체감형메세지 수정*/
+/*#step_bx{
+	transform:translate(-50%,-360%); -webkit-transform:translate(-50%,-360%);
+	transition:all 0.3s linear; -webkit-transition:all 0.3s linear;
+}*/
+#feeling_msg.hide ~ #step_bx{
+	transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);
+}
+
+@media screen and (max-width:1300px) {
+    #step_bx{
+	    transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%);
+    }
+}
+@media screen and (max-width:1024px) {
+	#step_bx{font-size:15px;}
+}
+@media screen and (max-width:920px) {
+	#step_bx{font-size:13px;}
+}
+@media screen and (max-width:740px) {
+	#step_bx{width:94%; font-size:16px;}
+	#step_bx [data-name]{position:absolute; width:100%; height:0; margin:0 !important;}
+	#step_bx [data-name].on{height:auto;}
+	#step_bx [data-name].on .tbtn{z-index:3;}
+	#step_bx [data-name] .bxs{
+		left:50% !important; top:50% !important; bottom:auto !important; right:auto !important; transform-origin:left top !important; background-color:rgba(0,0,0,0.7);
+		transform:scale(0) translate(-50%,-50%);
+		-webkit-transform:scale(0) translate(-50%,-50%);
+	}
+	#step_bx [data-name].on .bxs{
+		z-index:2;
+		transform:scale(1) translate(-50%,-50%); -webkit-transform:scale(1) translate(-50%,-50%);
+	}
+	#step_bx [data-name] .bxs .infos{min-height:6.3em;}
+	#step_bx [data-name] .bxs .infos:after{background-color:rgba(255,255,255,0.4);}
+
+	/*기상,농업*/
+	#step_bx [data-name="weather"] .bxs,
+	#step_bx [data-name="farm"] .bxs{padding-bottom:0; padding-top:6.8em;}
+	#step_bx [data-name="weather"] .bxs .infos,
+	#step_bx [data-name="farm"] .bxs .infos{bottom:auto; top:0;}
+	#step_bx [data-name="weather"] .bxs .infos:after,
+	#step_bx [data-name="farm"] .bxs .infos:after{top:auto; bottom:0;}
+	/*기상*/
+	#step_bx [data-name="weather"] .tbtn{bottom:2em; left:0.6em; right:auto;}
+	#step_bx [data-name="weather"] .bxs{border-radius:3em 0.6em 0.6em 0.6em;}
+	#step_bx [data-name="weather"] .bxs .infos{padding:0.8em 1.8em 0.8em 6.5em;}
+	/*농업*/
+	#step_bx [data-name="farm"] .tbtn{bottom:2em; right:0.6em; left:auto;}
+	#step_bx [data-name="farm"] .bxs{border-radius:0.6em 3em 0.6em 0.6em;}
+	#step_bx [data-name="farm"] .bxs .infos{padding:0.8em 6.5em 0.8em 1.8em;}
+	/*산불,먹는물*/
+	#step_bx [data-name="fire"] .bxs,
+	#step_bx [data-name="water"] .bxs{padding-top:0; padding-bottom:6.8em;}
+	#step_bx [data-name="fire"] .bxs .infos,
+	#step_bx [data-name="water"] .bxs .infos{bottom:0; top:auto;}
+	#step_bx [data-name="fire"] .bxs .infos:after,
+	#step_bx [data-name="water"] .bxs .infos:after{bottom:auto; top:0;}
+	/*산불*/
+	#step_bx [data-name="fire"] .tbtn{top:2em; left:0.6em; right:auto;}
+	#step_bx [data-name="fire"] .bxs{border-radius:0.6em 0.6em 0.6em 3em;}
+	#step_bx [data-name="fire"] .bxs .infos{padding:0.8em 1.8em 0.8em 6.5em;}
+	/*먹는물*/
+	#step_bx [data-name="water"] .tbtn{top:2em; right:0.6em; left:auto;}
+	#step_bx [data-name="water"] .bxs{border-radius:0.6em 0.6em 3em 0.6em;}
+	#step_bx [data-name="water"] .bxs .infos{padding:0.8em 6.5em 0.8em 1.8em;}
+    
+    #feeling_msg .close:before{height: 60px;}
+    #feeling_msg .close span{right: 1.5em;/* left: 0.8em; */top: 1.3em;background-image: url(../../images/common/icon_close_white.svg);}
+	/*#feeling_msg.hide .close span{right: auto; left: 1.5em;}*/
+}
+@media screen and (max-width:420px) {
+	#step_bx{font-size:14px;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 우리동네가뭄 - 가뭄단계 그래프
+	연관단어 : .step_g
+	구조 : 
+	<div class="step_g">
+		
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+#right_tools .step_g{
+	position:relative; width:2.875em; height:2.875em; background-color:rgba(41,39,47,0.85); border-radius:0.2em; text-align:right;
+	transition:all 0.4s ease; -webkit-transition:all 0.4s ease;
+}
+#right_tools .step_g.on{width:17.813em; height:auto;}
+#right_tools .step_g .btns{overflow:hidden; position:absolute; top:0; right:0; z-index:1; display:inline-block; width:2.875em; height:2.875em; background:url(../../images/common/dongne_icon_stepg_open.svg) no-repeat center; border-radius:0.2em; text-indent:-2000px; text-align:left;
+}
+#right_tools .step_g.on .btns{background-image:url(../../images/common/dongne_icon_stepg_close.svg);}
+#right_tools .step_g .bxs{
+	opacity:0; width:100%; padding:0.7em 0.7em 1em; box-sizing:border-box;
+	transform:scale(0); -webkit-transform:scale(0);
+	transform-origin:right top; -webkit-transform-origin:right top;
+	transition:all 0.2s ease; -webkit-transition:all 0.2s ease;
+}
+#right_tools .step_g.on .bxs{opacity:1; transform:scale(1); -webkit-transform:scale(1);}
+#right_tools .step_g .bxs strong{display:block; font-size:0.85em; font-weight:500; text-align:left; color:#fff;}
+#right_tools .step_g .bxs strong span{opacity:0.9; font-size:0.85em; color:#fff;}
+#right_tools .step_g .bxs>img{display:block; width:100%; margin-top:0.8em;}
+#right_tools .step_g .bxs .graphs{overflow:hidden; position:relative; height:11em; margin-top:0.8em; background-color:#fff; text-align:left; border-radius:0.3em;}
+#right_tools .step_g .bxs .graphs img{position:relative; z-index:1; height:100%;}
+#right_tools .step_g .bxs .graphs .waters{overflow:hidden; position:absolute; bottom:0; right:0; z-index:0; display:table; table-layout:fixed; width:100%; background-color:#0082FF; text-align:right; font-size:12px; color:#fff;}
+#right_tools .step_g .bxs .graphs .waters span{display:table-cell; width:100%; height:100%; padding-right:3em; vertical-align:middle; box-sizing:border-box;}
+
+@media screen and (max-width:740px) {
+	#right_tools .step_g{transition:none; -webkit-transition:none;}
+	#right_tools .step_g .bxs{transform-origin:center; transition:none; -webkit-transition:none;}
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	메뉴 : 가뭄피해현황 - 디폴트 데이터 탭
+	연관단어 : [data-name="damages"]
+	구조 : 
+	<div data-name="damages">
+		
+	</div>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/ 
+[data-name="damages"]{position:relative; padding:1.6em 1.8em; box-sizing:border-box;}
+[data-name="damages"] .tt{display:block; margin-bottom:1em; font-size:1.35em; font-weight:300; color:#fff;}
+[data-name="damages"] .table_bx{position:relative;}
+[data-name="damages"] .table_bx div{min-width:86em;}
+	
+[data-name="damages"] .details{
+	position:absolute; top:1.5em; right:1.5em; display:inline-block; height:1.9em; line-height:1.9em; padding:0 0.8em; border:1px solid #fff; border-radius:1em; font-size:0.9em; color:#fff;
+	transition:all 0.3s ease; -webkit-transition:all 0.3s ease;
+	}
+[data-name="damages"] .details:hover{background-color:#fff; color:#000;}
+
+/*테이블 스크롤*/
+#tab_02>[data-name="damages"] ul li .table_bx>div:first-child{position:absolute; top:0;}
+#tab_02>[data-name="damages"] ul li .table_bx>div:nth-child(2){overflow:auto; max-height: 18em;/*height:13.6em;*/ margin-top:6em;}
+
+#tab_03>[data-name="damages"] ul li .table_bx>div:first-child{position:absolute; top:0;}
+#tab_03>[data-name="damages"] ul li .table_bx>div:nth-child(2){overflow:auto; max-height: 18em; /*height:16.8em;*/ margin-top:2.8em;}
+
+/*다른 곳에 에러나서 잠시 주석처리*/
+#tab_03>[data-name="damages"] ul li .li_wr ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+#tab_03>[data-name="damages"] ul li .li_wr  {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@media screen and (max-width:1024px) {
+	#tab_02>[data-name="damages"] ul li .table_bx>div:nth-child(2){margin-top:5.8em;}
+}
+@media screen and (max-width:740px) {
+	[data-name="damages"] .tt{font-weight:700; text-align:center; color:#404040;}
+	[data-name="damages"] .details{top:2em; border-color:#005DB7; color:#005DB7;}
+
+	[data-name="damages"],
+	[data-name="damages"] ul,
+	[data-name="damages"] ul li,
+	[data-name="damages"] ul li .li_wr,
+	[data-name="damages"] ul li .table_bx{height:100%; max-height: none;}
+
+	#tab_02>[data-name="damages"] ul li .table_bx>div:nth-child(2){height:calc(100% - 9.8em);}
+	#tab_03>[data-name="damages"] ul li .table_bx>div:nth-child(2){height:calc(100% - 6.2em); max-height: none;}
+}
+
+/* 221006 링크 버튼 css 추가 */
+[data-skin="btn"]{display:inline-block; height:3em; line-height:3em; padding:0 0.8em; background-color:#3C6A3C; border-radius:0.3em; text-decoration:none; color:#fff; border: none;}
+[data-skin="btn"][data-size]{font-size:0.9em;}
+[data-skin="btn"][data-size="s"]{height:2.223em; line-height:2.223em;}
+
+/* 221104 추가 */
+#feeling_msg .message_box .saving_message{position: relative;}
+#feeling_msg .message_box .saving_message .message_box_tooltip{
+	position: absolute; right: 0; bottom: 2.8em; display: none; width: 16em; max-width: 100%; padding: 0.7em 0.5em 0.7em 1em; font-size: 0.875em; font-style: normal; font-weight: 400; text-align: left; color: #fff; background-color: #222; box-sizing: border-box;
+	border-radius: 0.4em; -webkit-border-radius: 0.4em;
+}
+#feeling_msg .message_box .saving_message .message_box_tooltip p{color: #fff;}
+.notibx .message_box>ul>li i{
+	position: absolute; bottom: 0; right: 0.5em; z-index: 1; display: inline-block; width: 1em; height: 1em; background: url(../../../images/site/skin/tip_icon.svg) no-repeat center; background-size: 0.125em auto; border: 1px solid #828282; text-indent: -9999px; box-sizing: border-box;
+	transform: translateY(-50%); -webkit-transform: translateY(-50%);
+	border-radius: 50%; -webkit-border-radius: 50%;
+}
+#feeling_msg .message_box .saving_message .message_box_tooltip:before{
+	content: ""; position: absolute; bottom: -1.2em; right: 0.7em; display: block;
+    width: 1em; height: 1em; border-left: 0.5em solid transparent; border-right: 0.5em solid transparent; border-bottom: 0.5em solid #222; border-top: 0.8em solid transparent; box-sizing: border-box;
+    transform: rotate(180deg); -webkit-transform: rotate(180deg);
+}
+
+@media screen and (max-width:740px) {
+    #feeling_msg .message_box .saving_message .message_box_tooltip p{display: block; height: 4.5em; padding-left: 0;}
+    #feeling_msg .message_box .saving_message .message_box_tooltip p:before{display: none;}
+}

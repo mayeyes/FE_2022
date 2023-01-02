@@ -1,0 +1,245 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="/WEB-INF/tlds/gonet-util.tld" prefix="util"%>
+<%@page import="net.acego.common.util.DateTime"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=yes, target-densitydpi=device-dpi">
+	<title>만세보령 열린시장실</title>
+	<link rel="stylesheet" href="${ctx}/css/mayor/total_style.css" />
+	<link rel="stylesheet" href="/font/esamanru/font.css" />
+    <link rel="stylesheet" href="/font/Noto_Sans_CJK_KR/font.css" />
+	<script src="${ctx}/js/jquery-1.9.0.min.js"></script>
+	<script src="${ctx}/js/jquery.easing.1.3.js"></script>
+	<script src="${ctx}/js/jquery-ui.custom.js"></script>
+	<script src="${ctx}/js/script.js"></script>
+	<script src="${ctx}/js/mayor/topmenu.js"></script>
+	<script src="${ctx}/js/mayor/jquery.cycle.all.js"></script>
+	<script src="${ctx}/js/mayor/common.js"></script>
+	<script src="${ctx}/js/mayor/com.js"></script>
+	<!--[if lt IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script>
+	if (document.location.protocol == 'http:') {
+		/*document.location.href = document.location.href.replace('http:', 'https:');*/
+	}
+	</script>		
+</head>
+<script type="text/javascript">
+<%
+long todayTime = Long.parseLong(DateTime.getDate("yyyyMMddHHmmss"));
+long startTime = 20170126000000l;
+long endTime =   20170130000000l;
+
+
+if(startTime <= todayTime && todayTime <= endTime) {
+%>
+	 	window.open("/html/kor/popup/popup_170126.jsp", "mpop", "width=470, height=720, menubar=no, status=no, toolbar=no, scrollbars=yes");
+<%
+}
+
+%>
+</script>
+<body>
+	<dl class="skip">
+		<dt><strong>바로가기 메뉴</strong></dt>
+		<dd><a href="#gnb">주요메뉴 바로가기</a></dd>
+		<dd><a href="#contents">본문 바로가기</a></dd>
+		<dd><a href="#footer">하단메뉴 바로가기</a></dd>
+	</dl>
+	<div id="wrap">
+	    <div class="js_tablet_check"></div>
+        <div class="js_mobile_check"></div>
+		<jsp:include page="/tmpl/skin/header/header_skin_mayor.jsp" >
+			<jsp:param name="siteCode" value="mayor" />
+			<jsp:param name="mno" value="sub01_main" />
+		</jsp:include>	
+		
+		<div id="main_container_wrap">
+			
+	
+				<div id="sec01">
+				    <div class="layout">
+                        <div class="titles">
+                            <div>
+                                <span>시민여러분과 좀 더 가까이 있겠습니다.</span>
+                                <strong><span>현장속</span>동일</strong>
+                            </div>
+                        </div>
+                    <!--<%--
+                        <c:import url="/prog/mayor/bbs_schedule/main_schedule.do" >
+                            <c:param name="siteCode" value="${siteCode}" />
+                        </c:import>
+                    --%>-->
+                        <div class="cont">
+                            <ul>
+                                <jsp:include page="/tmpl/skin/notice/photo_skin_mayor.jsp" >
+                                    <jsp:param name="code" value="BBSMSTR_000000000401" /> 
+                                    <jsp:param name="siteCode" value="mayor" />
+                                    <jsp:param name="listCnt" value="3" />
+                                    <jsp:param name="titleLength" value="20" />
+                                    <jsp:param name="contLength" value="50" />
+                                </jsp:include>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="sec02">
+                    <div class="layout">
+                        <div class="titles">
+                            <div>
+                                <span>시민의 목소리에 귀를 기울이겠습니다.</span>
+                                <strong><span>시민과의</span>약속</strong>
+                            </div>
+                        </div>
+                        <div class="cont">
+                            <div data-box="1">
+                                <a href="/mayor/sub03_04_05.do" class="tit"><span><i>민선8기</i> 공약사항 및 매니페스토</span></a>
+                                <p>건강한 도시, 행복한 보령을 위해 앞장서겠습니다.</p>
+                                <div class="btn_box">
+                                    <a href="/mayor/sub03_08.do"><span>민선8기 공약사항</span></a>
+                                    <a href="/mayor/sub03_01.do"><span>매니페스토</span></a>
+                                </div>
+                            </div>
+                            <div data-box="2">
+                                <a href="/prog/bbs_schedule/mayor/sub02_01/schedule_list.do" class="tit"><span>${fn:substring(today, 0, 4) }.${fn:substring(today, 5, 7) } <i>공개일정</i></span></a>
+                                <div class="cal_box">
+                                    <div class="calendars">
+                       				<input type="hidden" id="scheduleDate" name="scheduleDate" value="${fn:substring(today, 8, 10) }"/>
+                                        <ol class="t_head">
+                                            <li><span>SUN</span></li>
+                                            <li><span>MON</span></li>
+                                            <li><span>TUE</span></li>
+                                            <li><span>WED</span></li>
+                                            <li><span>THU</span></li>
+                                            <li><span>FRI</span></li>
+                                            <li><span>SAT</span></li>
+                                             <li><span>SUN</span></li>
+                                            <li><span>MON</span></li>
+                                            <li><span>TUE</span></li>
+                                            <li><span>WED</span></li>
+                                            <li><span>THU</span></li>
+                                            <li><span>FRI</span></li>
+                                            <li><span>SAT</span></li> 
+                                        </ol>
+                                        <ol class="t_head">
+                                        <c:set value="30" var="date"/>
+                                        <c:set value="01" var="datee"/>
+                                        <c:set value="02" var="dateee"/>
+                                        <c:set value="${fn:substring(today, 8, 10) }" var="today"/>
+                                            <li class=""><span>26</span></li>
+                                            <li class=""><span>27</span></li>
+                                            <li class=""><span>28</span></li>
+                                            <li class=""><span>29</span></li>
+                                            <li class="<c:if test="${date eq today }"> today </c:if>"><span>30</span></li>
+                                            <li class="<c:if test="${datee eq today }"> today </c:if>"><span>01</span></li>
+                                            <li class="<c:if test="${dateee eq today }"> today </c:if>"><span>02</span></li>
+                                            <li class=""><span>03</span></li>
+                                            <li class=""><span>04</span></li>
+                                            <li class=""><span>05</span></li>
+                                            <li class=""><span>06</span></li>
+                                            <li class=""><span>07</span></li>
+                                            <li class=""><span>08</span></li>
+                                            <li class=""><span>09</span></li>
+                                            
+<%--                     <c:forEach begin="1" end="${Week - 1}">
+                        <td></td>
+                        <c:set value="${newLine + 1 }" var="newLine"/>
+                    </c:forEach>
+
+                    <c:forEach begin="${StartDay }" end="${EndDay}" var="date">
+                        <c:set var="dates"><fmt:formatNumber value="${ date }" pattern="##" minIntegerDigits="2" /></c:set>
+                            <a href="#link">
+	                        	<li><span class="">${date }</span></li>
+                            </a>
+                    </c:forEach> --%>
+                                        </ol>
+                                    </div>
+                                    <div class="cal_list">
+                                        <!--일정이 있으면-->
+                                        <ul>
+                                            <li><span>오늘의 일정 나타나는곳</span></li>
+                                            <li><span>오늘의 일정 나타나는곳</span></li>
+                                            <li><span>오늘의 일정 나타나는곳</span></li>
+                                        </ul>
+                                        <!--일정이 없으면-->
+                                        <!--<p><span>오늘 등록된 일정이 없습니다.</span></p>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-box="3">
+                                <strong class="tit">
+                                    <b>늘 발로 뛰는 김동일이 되겠습니다.</b>
+                                    <em>
+                                        <span><span>소통하는</span> 시장실</span>
+                                        <b>늘 발로 뛰는 김동일이 되겠습니다.</b>
+                                    </em>
+                                </strong>
+                                <ul>
+                                    <li>
+                                        <a href="/mayor/sub04_01.do">
+                                            <span>시장에게 바란다</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/mayor/sub04_02.do">
+                                            <span>공직비리 핫라인</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/mayor/sub03_06_01.do">
+                                            <span>시민소통</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/mayor/sub03_01.do">
+                                            <span>매니페스토란?</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+                <div id="sec03">
+                    <img src="${ctx}/images/mayor/common/main_visual_bg.png" alt="비주얼 배경 이미지">
+                    <div class="js_slide type_03">
+                        <div class="control">
+                            <span class="count"><span>1</span>/1</span>
+                            <a href="#link" class="btn_left"><span>이전</span></a>
+                            <a href="#link" class="btn_play"><span>재생</span></a>
+                            <a href="#link" class="btn_stop"><span>정지</span></a>
+                            <a href="#link" class="btn_right"><span>다음</span></a>
+                        </div>
+                        <div class="move">
+                            <ul>
+                                <li style="background-image: url(${ctx}/images/mayor/common/main_visual.jpg)"><span>비주얼 슬라이드 01</span></li>
+                                <li style="background-image: url(${ctx}/images/mayor/common/main_visual3.jpg)"><span>비주얼 슬라이드 02</span></li>
+                                <!--<jsp:include page="/tmpl/skin/banner/banner_skin_mayor.jsp">
+                                	<jsp:param name="siteCode" value="mayor" />
+                                </jsp:include>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                    <script src="../../js/mayor/tab_list.js"></script> 		
+            </div>
+		
+		
+		<jsp:include page="/tmpl/skin/footer/footer_skin_mayor.jsp" >
+			<jsp:param name="siteCode" value="mayor" />
+			<jsp:param name="mno" value="sub01_main" />
+		</jsp:include>	
+	</div>
+</body>
+</html>

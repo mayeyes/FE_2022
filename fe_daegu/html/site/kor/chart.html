@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <div data-graph="1"></div>
+
+    <script>
+        var json1 = {
+            "data":
+                [
+                    [
+                        {
+                            "name":"가000001부",
+                            "list":[
+                                {"name":"평균시간","value":"50"},
+                                {"name":"초과근무","value":"30"},
+                                {"name":"준당직","value":"20"}
+                            ]
+                        },
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"490"},{"name":"초과근무","value":"0"},{"name":"준당직","value":"10"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"40"},{"name":"준당직","value":"50"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"40"},{"name":"준당직","value":"50"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"40"},{"name":"준당직","value":"50"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"40"},{"name":"준당직","value":"50"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"40"},{"name":"준당직","value":"50"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"40"},{"name":"준당직","value":"50"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"40"},{"name":"준당직","value":"50"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"150"},{"name":"초과근무","value":"40"},{"name":"준당직","value":"50"}]}
+                    ],
+                    [
+                        {
+                            "name":"가000001부",
+                            "list":[
+                                {"name":"평균시간","value":"20"},
+                                {"name":"초과근무","value":"80"},
+                                {"name":"준당직","value":"400"}
+                            ]
+                        },
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"80"},{"name":"준당직","value":"310"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"80"},{"name":"준당직","value":"360"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"80"},{"name":"준당직","value":"370"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"80"},{"name":"준당직","value":"340"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"80"},{"name":"준당직","value":"310"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"80"},{"name":"준당직","value":"260"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"80"},{"name":"준당직","value":"240"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"40"},{"name":"초과근무","value":"80"},{"name":"준당직","value":"220"}]},
+                        {"name":"가000002부","list":[{"name":"평균시간","value":"150"},{"name":"초과근무","value":"40"},{"name":"준당직","value":"210"}]}
+                    ]
+                ],
+            "background":["#b4daff","#1062b1","#052f57"],
+            "age":[
+                {"name":"전사평균","value":"150","color":"#0000ff"},
+                {"name":"경영기술지원평균","value":"160","color":"#ff6600"}
+            ],
+            "start":"1650",
+            "end":"2150",
+            "width":"1200",
+            "height":"400"
+        }
+        var graph_AC = {
+            set:function(str){
+                var obj = str;
+                    obj.type = obj.attr('data-graph');
+                var svg = "";
+                var w = Number(json1.width);
+                var h = Number(json1.height);
+                // var a = 10;//비율 가로
+                // var b = 4;//비율 세로
+                // var h = (b*w)/a;
+                var title_w = 130;
+                var line_max = 6;
+                var gap = 60;
+                var topBottom_gap = 40;
+
+                obj.attr("style","position:relative;width:"+w+"px");
+                //세로 비교 막대형
+                for(i=0; i<json1.age.length; i++){
+                    var tot = w - (title_w*2);
+                    var line_l = Number(json1.age[i].value) / Number(json1.end - json1.start) * 100;
+                        line_l = (tot * (line_l * 0.01)) + title_w;
+                    svg += '<div style="position:absolute; left:'+line_l+'px; top:0; width:1px; height:100%; border-left:2px dashed '+json1.age[i].color+';">';
+                    svg += '<span style="white-space:nowrap; display:block; position:absolute; left:10px; top:'+(topBottom_gap+(40*i))+'px; z-index:200; line-height:1; padding:10px 15px 8px 15px; color:#fff; background-color:'+json1.age[i].color+'; border-radius:20px;">';
+                    svg += json1.age[i].name;
+                    svg += '<span style="display:block; position:absolute; left:-4px; top:calc(50% - 8px); z-index:200; width:16px; height:16px; background-color:'+json1.age[i].color+';transform:rotate(45deg);"></span>';
+                    svg += '</span>';
+                    svg += '</div>';
+                }
+                for(var r=0; r<json1.data.length; r++){
+                    var back_h = (r===0)?(h+gap):h;
+                    svg += '<svg width="'+w+'" height="'+back_h+'" viewbox="0 0 '+w+' '+back_h+'">';
+                        svg += '<rect x="0" y="0" width="'+w+'" height="'+h+'" fill="#f8f8f8" />';
+                        
+                        for(var i=0; i<line_max; i++){
+                            var line_x = (((w-(title_w*2)) / (line_max-1)) * (i)) + title_w;
+                                line_x = (i===0)?line_x-1:line_x+1;
+                            var line_v = (i!==line_max-1)?Number(((json1.end - json1.start) / (line_max-1)) * i) + Number(json1.start):Number(json1.end);
+
+                            svg += '<text text-anchor="middle" font-size="16" x="'+line_x+'" y="'+(h+(gap/2)+8)+'" fill="#222">'+line_v+'</text>';
+                            svg += '<line opacity="0.5" x1="'+line_x+'" y1="0" x2="'+line_x+'" y2="'+(h)+'" stroke-width="0.2" stroke="#222" />';
+                        }
+
+                        for(var i=0; i<json1.data[r][0].list.length; i++){
+                            svg += '<rect x="'+(w-title_w + 10)+'" y="'+(h-(30*(json1.data[r][0].list.length-i))-14)+'" width="14" height="14" fill="'+json1.background[i]+'" />';
+                            svg += '<text text-anchor="start" font-size="16" x="'+(w-title_w + 28)+'" y="'+(h-(30*(json1.data[r][0].list.length-i)))+'" fill="#222">'+json1.data[r][0].list[i].name+'</text>';
+                        }
+
+                        for(var i=0; i<json1.data[r].length; i++){
+                            var tot = w - (title_w*2);
+                            var line_v_1 = Number(json1.data[r][i].list[0].value) / Number(json1.end - json1.start) * 100;
+                                line_v_1 = tot * (line_v_1 * 0.01);
+                            var line_v_2 = Number(json1.data[r][i].list[1].value) / Number(json1.end - json1.start) * 100;
+                                line_v_2 = tot * (line_v_2 * 0.01);
+                            var line_v_3 = Number(json1.data[r][i].list[2].value) / Number(json1.end - json1.start) * 100;
+                                line_v_3 = tot * (line_v_3 * 0.01);
+                            var line_x = title_w;
+                            var line_y = (((h-topBottom_gap)/json1.data[r].length) * i + ((h/json1.data[r].length)/2)) + (topBottom_gap/2);
+                            var line_h = (h/json1.data[r].length) / 2;
+                            var line_w = line_v_1;
+                            
+                            svg += '<text text-anchor="end" font-size="16" x="'+(title_w-10)+'" y="'+(line_y + 5)+'" fill="#222">'+json1.data[r][i].name+'</text>';
+                            svg += '<rect x="'+line_x+'" y="'+(line_y - (line_h/2))+'" width="'+line_w+'" height="'+line_h+'" fill="'+json1.background[0]+'" />';
+                            line_x += line_w; 
+                            line_w = line_v_2;
+                            svg += '<rect x="'+line_x+'" y="'+(line_y - (line_h/2))+'" width="'+line_w+'" height="'+line_h+'" fill="'+json1.background[1]+'" />';
+                            line_x += line_w;
+                            line_w = line_v_3;
+                            svg += '<rect x="'+line_x+'" y="'+(line_y - (line_h/2))+'" width="'+line_w+'" height="'+line_h+'" fill="'+json1.background[2]+'" />';
+                        }
+                        
+                    svg += '</svg>';
+                }
+                $(svg).appendTo(obj.empty());
+            },
+            init:function(){
+                for(var i=0; i<$('[data-graph="1"]').length; i++){
+                    this.set($('[data-graph="1"]').eq(i));
+                }
+            }
+        }
+        $(function(){
+            graph_AC.init();
+        });
+    </script>
+</body>
+</html>

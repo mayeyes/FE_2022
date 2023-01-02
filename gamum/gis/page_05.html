@@ -1,0 +1,516 @@
+<div class="locations">
+	<a href="#"><span>충청남도 보령시<em>0000년~0000년</em></span></a>
+</div>
+
+<!-- main_right_tools:S -->
+<div id="main_right_tools">
+	<div class="map_ctrl">
+		<div class="map_op">
+			<a class="map_mode_nm">지도</a>
+			<a href="#" class="map_btn" onclick="setMapMode('1')">지도</a>
+			<a href="#" class="sky_btn" onclick="setMapMode('2')">위성</a>
+			<a href="#" class="gray_btn" onclick="setMapMode('3')">회색</a>
+			<a href="#" class="night_btn" onclick="setMapMode('4')">야간</a>
+		</div>
+	</div>
+</div>
+<!-- main_right_tools:E -->
+
+
+<!-- top_tools:S -->
+<div id="top_tools" class="years">
+	<div class="searchbx">
+		<div class="selbx">
+			<label for="si_sel" class="hidden">시 선택</label>
+			<select name="si_sel" id="si_sel">
+				<option value="">선택</option>
+				<option value="">서울특별시</option>
+				<option value="">대전광역시</option>
+			</select>
+		</div>
+		<div class="selbx">
+			<label for="gu_sel" class="hidden">구 선택</label>
+			<select name="gu_sel" id="gu_sel" disabled="disabled">
+				<option value="">선택</option>
+				<option value="">유성구</option>
+				<option value="">대덕구</option>
+			</select>
+		</div>
+		<strong class="tt">연도선택</strong>
+		<div class="selbx">
+			<label for="year_f" class="hidden">시작연도</label>
+			<select name="year_f" id="year_f">
+				<option value="">시작연도</option>
+				<option value="">2020</option>
+				<option value="">2019</option>
+				<option value="">2018</option>
+				<option value="">2017</option>
+			</select>
+		</div>
+		<div class="selbx">
+			<label for="year_l" class="hidden">종료연도</label>
+			<select name="year_l" id="year_l">
+				<option value="">종료연도</option>
+				<option value="">2020</option>
+				<option value="">2019</option>
+				<option value="">2018</option>
+				<option value="">2017</option>
+			</select>
+		</div>
+		<a href="#" class="search_ccle">취소</a>
+		<a href="#" class="search_btn">검색</a>
+	</div>
+
+	<a href="#" class="btn_down"><span>지도 이미지 다운로드</span></a>
+</div>
+<!-- top_tools:E -->
+
+
+<!-- right_tools:S -->
+<div id="right_tools">
+	<ul class="legnd">
+		<li class="num_4"><span>76건 이상</span></li>
+		<li class="num_3"><span>51건 이상</span></li>
+		<li class="num_2"><span>26건 이상</span></li>
+		<li class="num_1"><span>1건 이상</span></li>
+		<li class="num_0"><span>0건</span></li>
+	</ul>
+</div>
+<!-- right_tools:E -->
+
+
+<!-- Databx:S -->
+<div id="data_bx" class="ty_04">
+	<ul class="tabs">
+		<li class="on"><a href="#tab_01">전국가뭄 <span>피해통계</span></a></li>
+		<li><a href="#tab_02" data-popup="pop1">제한&middot;운반급수 <span>현황 총괄집계표</span></a></li>
+		<li><a href="#tab_03" data-popup="pop2">제한&middot;운반급수 <span>발생 상세현황</span></a></li>
+        <li><a href="#tab_04" data-popup="pop3"><span>체감형 메시지</span></a></li>
+	</ul>
+
+	<div class="tab_bx on" id="tab_01">
+		<div data-skin="slide">
+			<ul>
+				<li>
+					<div class="li_wr">
+						<strong class="tt">가뭄피해건수</strong>
+						<div class="graph_bx">
+							<img src="images/content/damages_graph_img01.svg" style="width:100%; height:100%;" alt="">
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="li_wr">
+						<strong class="tt">수원현황(개소)</strong>
+						<div class="graph_bx">
+							<img src="images/content/damages_graph_img02.svg" style="width:100%; height:100%;" alt="">
+						</div>
+					</div>
+				</li>
+			</ul>
+			<p class="tip">※ 본 자료는 국가가뭄정보포털 비상급수현황 조회시스템을 통해 조사된 자료이며, 지도 및 통계 그래프는 구축된 자료의 건수 등으로 표현한 것이므로, 전체 가뭄 피해에 대한 판단 근거로 사용하기에는 주의가 필요합니다.</p>
+		</div>
+	</div>
+
+	<div class="tab_bx" id="tab_02">
+		<div data-name="damages">
+			<ul>
+				<li>
+					<div class="li_wr">
+						<strong class="tt">비상급수 현황</strong>
+						<div class="table_bx">
+							<table data-skin="table">
+								<thead>
+									<tr>
+										<th scope="col" colspan="2">구분</th>
+										<th scope="col" colspan="5">합계</th>
+										<th scope="col" colspan="5">제한급수</th>
+										<th scope="col" colspan="5">운반급수</th>
+										<th scope="col" colspan="5">운반+제한급수</th>
+									</tr>
+									<tr>
+										<th scope="col">시도</th>
+										<th scope="col">시군</th>
+										<th scope="col">시&middot;군(수)</th>
+										<th scope="col">지역(개소)</th>
+										<th scope="col">건수</th>
+										<th scope="col">세대수</th>
+										<th scope="col">대상인원(명)</th>
+										<th scope="col">시&middot;군(수)</th>
+										<th scope="col">지역(개소)</th>
+										<th scope="col">건수</th>
+										<th scope="col">세대수</th>
+										<th scope="col">대상인원(명)</th>
+										<th scope="col">시&middot;군(수)</th>
+										<th scope="col">지역(개소)</th>
+										<th scope="col">건수</th>
+										<th scope="col">세대수</th>
+										<th scope="col">대상인원(명)</th>
+										<th scope="col">시&middot;군(수)</th>
+										<th scope="col">지역(개소)</th>
+										<th scope="col">건수</th>
+										<th scope="col">세대수</th>
+										<th scope="col">대상인원(명)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="2">합계</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>000</td>
+										<td>0,000</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+									</tr>
+									<tr>
+										<td rowspan="3">강원도</td>
+										<td>원주시</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>000</td>
+										<td>0,000</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+									</tr>
+									<tr>
+										<td>춘천시</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>000</td>
+										<td>0,000</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+									</tr>
+									<tr>
+										<td>횡성군</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>000</td>
+										<td>0,000</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+									</tr>
+									<tr>
+										<td colspan="2">합계</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>000</td>
+										<td>0,000</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+									</tr>
+									<tr>
+										<td rowspan="2">경기도</td>
+										<td>가평군</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>000</td>
+										<td>0,000</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+									</tr>
+									<tr>
+										<td>광주시</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0</td>
+										<td>00</td>
+										<td>00</td>
+										<td>000</td>
+										<td>0,000</td>
+										<td>00</td>
+										<td>00</td>
+										<td>00</td>
+										<td>0,000</td>
+										<td>0,000</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="tab_bx" id="tab_03">
+		<div data-name="damages">
+			<ul>
+				<li>
+					<div class="li_wr">
+						<strong class="tt">총 2214건</strong>
+						<div class="table_bx">
+							<table data-skin="table">
+								<thead>
+									<tr>
+										<th scope="col">시&middot;도</th>
+										<th scope="col">시&middot;군</th>
+										<th scope="col">읍면동</th>
+										<th scope="col">상수도구분</th>
+										<th scope="col">마을명</th>
+										<th scope="col">수원</th>
+										<th scope="col">세대수</th>
+										<th scope="col">인구수</th>
+										<th scope="col">비상급수구분</th>
+										<th scope="col">시작일</th>
+										<th scope="col">종료일</th>
+										<th scope="col">상세내용</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>인천광역시</td>
+										<td>웅진군</td>
+										<td>덕적면</td>
+										<td>소규모급수시설</td>
+										<td>지도</td>
+										<td>지하수</td>
+										<td>18</td>
+										<td>20</td>
+										<td>운반급수</td>
+										<td>0000-00-00</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>인천광역시</td>
+										<td>웅진군</td>
+										<td>덕적면</td>
+										<td>소규모급수시설</td>
+										<td>지도</td>
+										<td>지하수</td>
+										<td>18</td>
+										<td>20</td>
+										<td>운반급수</td>
+										<td>0000-00-00</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>인천광역시</td>
+										<td>웅진군</td>
+										<td>덕적면</td>
+										<td>소규모급수시설</td>
+										<td>지도</td>
+										<td>지하수</td>
+										<td>18</td>
+										<td>20</td>
+										<td>운반급수</td>
+										<td>0000-00-00</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>인천광역시</td>
+										<td>웅진군</td>
+										<td>덕적면</td>
+										<td>소규모급수시설</td>
+										<td>지도</td>
+										<td>지하수</td>
+										<td>18</td>
+										<td>20</td>
+										<td>운반급수</td>
+										<td>0000-00-00</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>인천광역시</td>
+										<td>웅진군</td>
+										<td>덕적면</td>
+										<td>소규모급수시설</td>
+										<td>지도</td>
+										<td>지하수</td>
+										<td>18</td>
+										<td>20</td>
+										<td>운반급수</td>
+										<td>0000-00-00</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>인천광역시</td>
+										<td>웅진군</td>
+										<td>덕적면</td>
+										<td>소규모급수시설</td>
+										<td>지도</td>
+										<td>지하수</td>
+										<td>18</td>
+										<td>20</td>
+										<td>운반급수</td>
+										<td>0000-00-00</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>인천광역시</td>
+										<td>웅진군</td>
+										<td>덕적면</td>
+										<td>소규모급수시설</td>
+										<td>지도</td>
+										<td>지하수</td>
+										<td>18</td>
+										<td>20</td>
+										<td>운반급수</td>
+										<td>0000-00-00</td>
+										<td>-</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="tab_bx" id="tab_04">
+	    <!-- data_pop:S -->
+
+	<div class="notibx">
+	<!-- data-step="norms" → 정상단계
+			data-step="atten" → 관심단계
+			data-step="warn" → 주의단계
+			data-step="awfuls" → 경계단계
+			data-step="terri" → 심각단계 -->
+		<div class="message_box" data-step="norms">
+		    <strong><span>체감형 메시지</span>(관심)</strong>
+		    <ul>
+		        <li>
+		            <em>1단계</em>
+		            <img src="images/icon/damages_case02_1.svg" alt="우리동네가뭄 case01 아이콘">
+		            <p>현재 가뭄피해 정보</p>
+		        </li>
+		        <li>
+		            <em>2단계</em>
+		            <img src="images/icon/damages_case02_2.svg" alt="우리동네가뭄 case01 아이콘">
+		            <p>무강우 일수</p>
+		        </li>
+		        <li>
+		            <em>2단계</em>
+		            <img src="images/icon/damages_case02_3.svg" alt="우리동네가뭄 case01 아이콘">
+		            <p>강우 부족량(현황 및 전망)</p>
+		        </li>
+		    </ul>
+		</div>
+	</div>
+
+<!-- data_pop:E -->
+	</div>
+
+	<a href="#" class="close">닫기</a>
+</div>
+<!-- Databx:E -->
+
+
+
+<!-- popup:S -->
+<div data-skin="popup" data-type="5" data-name="pop1">
+	<div class="pbx">
+		<strong class="hads">PC버전에서 확인하세요.</strong>
+		<div class="midd">
+			<p>제한&middot;운반급수 현황 총괄집계표는<br />PC버전에서만 확인이 가능합니다.</p>
+			<div class="g_box">
+				<ul>
+					<li><em>전화</em>042-629-3186</li>
+					<li><em>e-mail</em>hilhs2016@kwater.or.kr</li>
+				</ul>
+			</div>
+		</div>
+		<a href="#" class="close">닫기</a>
+	</div>
+</div>
+<!-- popup:E -->

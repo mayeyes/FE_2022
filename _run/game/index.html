@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./markdown.css">
+    <script src="./jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            __run();
+        });
+
+        function __run(){
+            var obj = $('[data-run="wrap"]');
+                obj.mapBox = $('[data-run="map"]');
+                obj.my = obj.find('>[data-run="people"]>[data-run*="code_"]');
+                obj.log = $('[data-run="log"]');
+                obj.my.x = obj.my.offset().left - obj.offset().left;
+                obj.my.y = obj.my.offset().top - obj.offset().top;
+                obj.mapBox.x = obj.mapBox.position().left;
+                obj.mapBox.y = obj.mapBox.position().top;
+                obj.speed = 4;
+            var chatObj = $('[data-run="chat"]');
+                chatObj.listBox = chatObj.find('>div');
+                chatObj.list = chatObj.listBox.find('>div');
+                chatObj.input = chatObj.find('>input:text');
+            var $key = [];
+
+            var __controll = {
+                default:function(){
+                    obj.my.removeClass("left right up down stop");
+                },
+                action:function(ac){
+                    if(ac==='[heart]'){
+                        if(obj.my.find(" .heart").length === 0){
+                            $('<i class="heart act" />').appendTo(obj.my);
+                        }
+                    }
+                },
+                check:function(str,my_x,my_x2,my_y,my_y2){
+                    var c = true;
+                    for(var i=0; i<obj.mapBox.find(' .'+str).length; i++){
+                        var tt = obj.mapBox.find(' .'+str).eq(i);
+                            tt.x = tt.offset().left;
+                            tt.x2 = tt.x+tt.width();
+                            tt.y = tt.offset().top;
+                            tt.y2 = tt.y+tt.height();
+
+                        if((my_x > tt.x && my_x < tt.x2) || (my_x2 > tt.x && my_x2 < tt.x2)){
+                            if((my_y > tt.y && my_y < tt.y2) || (my_y2 > tt.y && my_y2 < tt.y2)){
+                                tt.addClass("on");
+                                c = false;
+                                i = 999999;
+
+                                //action
+                                if(tt.attr('data-action')){
+                                    __controll.action(tt.attr('data-action'));
+                                } else {
+                                    obj.my.find(" .act").remove();
+                                }
+                            } else {
+                                tt.removeClass("on");
+                                c = true;
+                                obj.my.find(" .act").remove();
+                            }
+                        } else {
+                            tt.removeClass("on");
+                            c = true;
+                            obj.my.find(" .act").remove();
+                        }
+                    }
+                    
+                    return c;
+                },
+                move:function(str){
+                    __controll.default();
+                    var gap = obj.speed;
+                    obj.my.addClass(str);
+                    
+                    
+                    var my_x = (str==="left") ? obj.my.offset().left-gap:(str==="right") ? obj.my.offset().left+gap:obj.my.offset().left;
+                    var my_x2 = my_x+obj.my.width();
+                    var my_y = (str==="up") ? obj.my.offset().top-gap:(str==="down") ? obj.my.offset().top+gap:obj.my.offset().top;
+                    var my_y2 = my_y+obj.my.height();
+
+                    var mapBox_x = (str==="left") ? obj.mapBox.x+gap:(str==="right") ? obj.mapBox.x-gap:obj.mapBox.x;
+                    var mapBox_y = (str==="up") ? obj.mapBox.y+gap:(str==="down") ? obj.mapBox.y-gap:obj.mapBox.y;
+
+                    var c = this.check('block',my_x,my_x2,my_y,my_y2);
+
+                    if(c){
+                        obj.mapBox.css({
+                            "left":mapBox_x,
+                            "top":mapBox_y
+                        });
+                        obj.my.x = my_x;
+                        obj.my.x2 = my_x2;
+                        obj.my.y = my_y;
+                        obj.my.y2 = my_y2;
+                        obj.mapBox.x = mapBox_x;
+                        obj.mapBox.y = mapBox_y;
+
+                        obj.my.css("z-index",~~(obj.my.y2-obj.mapBox.y));// 케릭터 위치 표시
+                        __controll.log();
+                    }
+                },
+                log:function(){
+                    $('<span>my x:'+obj.my.x+' ~ '+obj.my.x2+'</span>\
+                       <span>my y:'+obj.my.y+' ~ '+obj.my.y2+'</span>').appendTo(obj.log.empty());
+                },
+                zIndex:function(){
+                    for(var i=0; i<obj.mapBox.find(' .block').length; i++){
+                        var tt = obj.mapBox.find(' .block').eq(i);
+                            tt.y = tt.offset().top;
+                            tt.y2 = tt.y+tt.height();
+                        tt.css("z-index",tt.y2);
+                    }
+                },
+                chat:function(){
+                    chatObj.input.on("keydown",function(event){
+                        if(event.keyCode === 27){
+                            chatObj.input.blur();
+                        } else if(event.keyCode === 13){
+                            var v = $(this).val();
+                            $(this).val('');
+                            $('<span>'+v+'</span>').appendTo(chatObj.list);
+                            chatObj.listBox.scrollTop(999999999999);
+
+                            if($.trim(v) !== ""){
+                                var myText = obj.find('>[data-run="people"]>[data-run="text"][data-run-name="'+obj.my.attr('data-run')+'"]');
+                                if(myText.find(">.text").length !== 0) myText.find(">.text").remove();
+                                var mal = $('<span class="text">'+v+'</span>').appendTo(myText);
+                                setTimeout(function(){
+                                    mal.remove();
+                                },5000);
+                            } else {
+                                chatObj.input.blur();
+                                return false;
+                            }
+                        }
+                    });
+                },
+                init:function(){
+                    play_act = setInterval(function(){
+                        if(!chatObj.input.is(":focus")){
+                            if($key[37]) __controll.move("left");
+                            else if($key[38]) __controll.move("up");
+                            else if($key[39]) __controll.move("right");
+                            else if($key[40]) __controll.move("down");
+                            else if($key[13]) chatObj.input.focus();
+                        }
+                    },10);
+                    $(window).on("keydown",function(event){
+                        $key[event.keyCode] = true;
+                        obj.my.removeClass("stop");
+                        if(!chatObj.input.is(":focus")){
+                            if(event.keyCode===32 && !obj.my.hasClass("jump")){
+                                obj.my.addClass("jump");
+                                obj.my.one('webkitTransitionEnd webkitAnimationEnd onaimationend msAnimationEnd animationend', function(e) {
+                                    $(this).removeClass("jump");
+                                });
+                            }
+                        }
+                    });
+                    $(window).on("keyup",function(event){
+                        $key[event.keyCode] = false;
+                        obj.my.addClass("stop");
+                    });
+
+                    __controll.zIndex();
+                    __controll.chat();
+                    __controll.log();
+
+                    // 로컬
+                    if(location.hostname === "localhost"){
+                        obj.addClass("test");
+                    }    
+                }
+            }
+            __controll.init();
+        }
+    </script>
+    <style>
+        *,*:before,*:after{box-sizing:border-box;}
+        html,body{height:100%;}
+        body{padding:0; margin:0; background-color:#333;}
+        
+        [data-run="wrap"]{overflow:hidden; position:relative; left:0; width:100%; height:100%; background-color:#000;}
+        [data-run="map"]{position:absolute; left:0; top:0; width:100%; height:100%;}
+        [data-run="people"]{width:100%; height:100%;}
+        [data-run="people"]>[data-run*="code_"]{position:absolute; left:calc(50% - 24px); top:calc(50% - 2px); width:4px; height:4px; background-color:#1aff00;}
+        [data-run="people"]>[data-run*="code_"]:after{
+            content:""; display:block; position:absolute; left:calc(50% - 24px); bottom:0; width:48px; height:78px;
+            background-image:url(./img/run/c.svg); background-repeat:no-repeat; background-position:0 calc(-78px * 2); background-size:512px auto;
+        }
+        [data-run="people"]>[data-run*="code_"]>i{
+            position:absolute; left:50%; bottom:78px; background-repeat:no-repeat; background-position:center bottom; background-size:contain;
+            transform:translateX(-50%);
+        }
+        [data-run="people"]>[data-run*="code_"].down:after{background-position:0 calc(-78px * 2);}
+        [data-run="people"]>[data-run*="code_"].up:after{background-position:0 calc(-78px * 3);}
+        [data-run="people"]>[data-run*="code_"].left:after{background-position:0 calc(-78px * 1);transform:rotateY(180deg);}
+        [data-run="people"]>[data-run*="code_"].right:after{background-position:0 calc(-78px * 1);}
+        [data-run="people"]>[data-run*="code_"].down:not(.stop):after{animation:c-down 1s steps(8) infinite;}
+        [data-run="people"]>[data-run*="code_"].up:not(.stop):after{animation:c-up 1s steps(8) infinite;}
+        [data-run="people"]>[data-run*="code_"].left:not(.stop):after{animation:c-left 1s steps(8) infinite;}
+        [data-run="people"]>[data-run*="code_"].right:not(.stop):after{animation:c-left 1s steps(8) infinite;}
+        [data-run="people"]>[data-run*="code_"].jump:after{animation:c-jump 0.5s !important;}
+
+        @keyframes c-jump {
+            0%,100%{bottom:0;}
+            50%{bottom:50px;}
+        }
+        @keyframes c-down {
+            100%{background-position:calc(-48px * 8) calc(-78px * 2);}
+        }
+        @keyframes c-up {
+            100%{background-position:calc(-48px * 8) calc(-78px * 3);}
+        }
+        @keyframes c-left {
+            100%{background-position:calc(-48px * 8) calc(-78px * 1);}
+        }
+
+        [data-run="log"]{position:fixed; left:10px; bottom:10px; color:#fff;}
+        [data-run="log"]>span{display:block;}
+
+        [data-run-map]{position:absolute; background-color:#ddd;}
+        [data-run-map]::before{
+            content:""; display:block; position:absolute; left:50%; bottom:0; width:100%; background-repeat:no-repeat; background-position:center bottom; background-size:contain;
+            transform:translateX(-50%);
+        }
+        [data-run-map="1"]{left:600px; top:300px; width:50px; height:300px;}
+        [data-run-map="2"]{left:600px; top:300px; width:900px; height:50px;}
+        [data-run-map="3"]{left:1500px; top:300px; width:50px; height:800px;}
+        [data-run-map="4"]{left:600px; top:1050px; width:900px; height:50px;}
+        [data-run-map="5"]{left:600px; top:800px; width:50px; height:300px;}
+        [data-run-map="6"]{left:1200px; top:700px; width:100px; height:20px;}
+        [data-run-map="7"]{left:1250px; top:750px; width:100px; height:20px;}
+        [data-run-map="8"]{left:1050px; top:750px; width:35px; height:10px;}
+        [data-run-map="9"]{left:920px; top:750px; width:34px; height:20px;}
+
+
+        [data-run="people"]>[data-run*="code_"]>i.heart{
+            width:24px; height:24px; background-image:url(../game/img/run/map/heart.png);
+            animation-name:heart;
+            animation-duration:1s;
+            animation-fill-mode:forwards;
+            animation-iteration-count:infinite;
+        }
+        @keyframes heart {
+            0%,100%{opacity:0;}
+            33%,66%{opacity:1;}
+            0%{transform:translateX(-50%) scale(0) translateY(10px);}
+            100%{transform:translateX(-50%) scale(1.1) translateY(-10px);}
+        }
+
+        [data-run="people"]>[data-run="text"]>.text{
+            word-wrap:break-word; display:block; position:fixed; left:calc(50% - 23px + 2px); bottom:calc(50% + 77px + 10px); z-index:2000; padding:8px 10px; color:#000; background-color:#fff; border-radius:5px;
+            max-width: 300px;
+            transform:translateX(-50%);
+        }
+        [data-run="people"]>[data-run="text"]>.text::after{
+            content:""; display:block; position:absolute; left:calc(50% - 5px); top:calc(100% - 5px); width:10px; height:10px; background-color:#fff;
+            transform:rotate(45deg);
+        }
+
+        [data-run-map].stone::before{padding-top:65.46%; background-image:url(../game/img/run/map/stone.png);}
+        [data-run-map].cat::before{padding-top:100%; background-image:url(../game/img/run/map/cat.png);}
+        [data-run-map].tree::before{width:400%; padding-top:530%; background-image:url(../game/img/run/map/tree.png);}
+
+        [data-run-map].on{background-color:#ff0000;}
+
+
+        /* chat */
+        [data-run="chat"]{display:flex; flex-direction:column; position:fixed; right:20px; bottom:20px; z-index:1000; width:300px; height:100%; max-height:400px;}
+        [data-run="chat"]>div{overflow:auto; display:flex; flex-wrap:wrap; align-items:flex-end; width:100%; height:100%; border:1px solid transparent; color:#fff; background-color:transparent;}
+        [data-run="chat"]>div>div{display:flex; flex-wrap:nowrap; flex-direction:column; justify-content:flex-end; min-height:min-content;}
+        [data-run="chat"]>div>div>span{word-wrap:break-word; word-break:break-word; display:block;}
+        [data-run="chat"]>input[type="text"]{flex-shrink:0; height:40px; margin-top:10px; color:#fff; border:1px solid rgba(255,255,255,0.7); background-color:transparent; border-radius:5px;}
+        
+
+        /* test */
+        #g-run.test #g-player,
+        #g-run.test .g-box{border-color:#fff;}
+        #g-run.test #g-player.die{border-color:#ff0000;}
+        #g-run.test .g-box.hit{border-color:#ff0000;}
+
+    </style>
+</head>
+<body>
+    
+    <div data-run="wrap">
+        <div data-run="log"></div>
+        <div data-run="chat">
+            <div><div></div></div>
+            <input type="text">
+        </div>
+        <div data-run="map">            
+            <div data-run-map="6" class="block stone"></div>
+            <div data-run-map="7" class="block stone"></div>
+            <div data-run-map="8" class="block cat" data-action="[heart]"></div>
+            <div data-run-map="9" class="block tree"></div>
+        </div>
+        <div data-run="people">
+            <div data-run="code_12342141"></div>
+            <div data-run="text" data-run-name="code_12342141"></div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
+<meta name="format-detection" content="telephone=no,email=no,address=no" />
+<meta name="title" content="공주대학교 4U 온라인 입학상담센터" />
+<meta name="author" content="공주대학교 4U 온라인 입학상담센터" />
+<meta name="keywords" content="공주대학교 4U 온라인 입학상담센터" />
+<meta name="description" content="사이트 설명" />
+<meta name="copyright" content="COPYRIGHT@ 2017 KONGJU NATIONAL UNIVERSITY. ALL RIGHT RESERVED" />
+<!-- SNS Open Graph Tags :S -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="공주대학교 4U 온라인 입학상담센터" />
+<meta property="og:description" content="사이트 설명" />
+<meta property="og:image" content="./img/logo.png" />
+<meta name="naver-site-verification" content="공주대학교 4U 온라인 입학상담센터" />
+<meta name="twitter:image" content="./img/logo.png" />
+<!-- SNS Open Graph Tags :E -->
+<title>공주대학교 4U 온라인 입학상담센터</title>
+<link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
+<link rel="apple-touch-icon" href="./img/favicon.png" />
+<link rel="stylesheet" href="./css/common.css" />
+<link rel="stylesheet" href="./css/card.css" />
+
+<link rel="stylesheet" href="./font/font_default.css">
+<script src="./js/jquery-1.12.4.min.js"></script>
+<script src="./js/card.js"></script>
+<script src="./js/card_data.js"></script>
+<script src="./js/card_prog.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	shuffle(questArray);
+	nextProgressBar();
+	changeImgAndText();
+	stepCnt++;
+	
+    if(location.hostname==="localhost" || location.hostname==="fe.mayeye.net"){
+        //로컬 확인용으로 임시 처방
+        $('#contents').append('<form action="./card_result.html" method="get" id="cardForm"></form>');
+    } else {
+        $('#contents').append('<form action="./card_result.do" method="post" id="cardForm"></form>');
+    }
+});
+</script>
+</head>
+<body>
+<p id="skipToContent">
+	<a href="#contents">본문 바로가기</a>
+</p>
+<div id="wrap">
+	<div id="header">
+        <h1><span>국립공주대학교-진로전공탐색</span></h1>
+    </div>
+	<!-- container :S -->
+	<div id="container">
+		<!-- contents :S -->
+		<div id="contents">
+			<p class="quest_question"><span>좋아하거나 자신있는 일은 <span class="good">좋아요</span>,</span><span>그렇지 않은 일은 <span class="bad">싫어요</span>를 선택하세요!</span></p>
+			<div class="mob_quest_question">
+				<div class="box">
+                    <div class="head">
+                        <span class="icon"></span>
+                        <span>
+                            <span>좋아하거나 자신있는 일은 <strong class="good">좋아요</strong></span>
+                            <span>그렇지 않은 일은 <strong class="bad">싫어요</strong>를 선택하세요!</span>
+                        </span>
+                    </div>
+                    <div class="midd">
+                        <a href="#link">START</a>
+                    </div>
+                    <div class="foot">
+                        총 <strong>48개</strong>의 선택지가 제공됩니다.
+                    </div>
+				</div>
+				<span class="blind"></span>
+			</div>
+			<div class="layout ty2">
+				<div class="card ty_r" id="bgDiv"> 
+                    <!-- 유형별 카드 타입 
+                        class="ty_r" : R유형(실재형) 
+                        class="ty_i" : I유형(탐구형) 
+                        class="ty_a" : A유형(예술형) 
+                        class="ty_s" : S유형(사회형) 
+                        class="ty_e" : E유형(기업형) 
+                        class="ty_c" : C유형(관습형) 
+                    -->
+					<div class="img">
+						<img id="cardIconImg" />
+						<p id="questionText"></p>
+						<span class="pattern lbg"></span><span class="pattern rbg"></span>
+						<span class="edge lbg"></span><span class="edge rbg"></span>
+					</div>
+					<div class="btn">
+						<a href="#" onclick="fn_good(); return false;" class="good">좋아요</a><a href="#" onclick="fn_bad(); return false;" class="bad">싫어요</a>
+					</div>
+				</div>
+				<div id="card_counter">
+					<div class="graph_bar" id="step1"> <!-- 1부터 48까지 카운터값 id="step8" -->
+						<p><span class="num" id="indexNum">1/48</span><span class="triangle"></span></p>	
+					</div> 
+					<div class="graph_bg"></div>
+				</div>
+			</div>
+		</div>	
+		<!-- contents :E -->
+	</div>
+	<!-- container :E -->
+</div>
+</body>
+</html>

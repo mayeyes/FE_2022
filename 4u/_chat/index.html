@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Chatting</title>
+    <link rel="stylesheet" href="./font/font_default.css">
+    <style>
+        html,body{height:100%;}
+        body{line-height:1.4; padding:0; margin:0; font-family: 'Pretendard';}
+        *,*::before,*::after{box-sizing:border-box; font-family: 'Pretendard';}
+        ul,ol,li{list-style:none; padding:0; margin:0;}
+        p{margin:0.5em 0;}
+
+        #chat{display:flex; align-items:center; justify-content:center; height:100%; font-size:16px; background-color:#000;}
+        #chat>.in{display:flex; flex-direction:column; width:100%; height:100%; max-width:500px; max-height:800px; background-color:#F2F7FF;}
+        #chat>.in{max-width:100%; max-height:100%;}
+        #chat>.in>.head{flex-shrink:0; display:flex; align-items:center; height:50px; padding:0 30px; background-color:#073E95;}
+        #chat>.in>.head>h1{width:164px; height:25px; background-image:url(./img/logo.svg); background-repeat:no-repeat; background-position:center center; background-size:contain;}
+        #chat>.in>.head>h1>span{opacity:0; font-size:0;}
+        #chat>.in>.head>button{width:22px; height:22px; margin-left:auto; cursor:pointer; border:none; background-color:transparent; background-image:url(./img/tip.svg); background-repeat:no-repeat; background-position:center center; background-size:contain;}
+        #chat>.in>.head>button>span{opacity:0; font-size:0;}
+        #chat>.in>.midd{overflow:auto; height:100%; padding:22px 30px; font-size:14px;}
+        #chat>.in>.midd>[class*="line-"]{display:flex; align-items:flex-start; flex-direction:column; width:100%;}
+        #chat>.in>.midd>[class*="line-"]+[class*="line-"]{margin-top:20px;}
+        #chat>.in>.midd>[class*="line-"]>.head{display:flex; align-items:center; font-size:14px; color:#444;}
+        #chat>.in>.midd>[class*="line-"]>.head::before{content:""; width:38px; height:38px; margin-right:10px; background-image:url(./img/photo.svg); background-repeat:no-repeat; background-position:center center; background-size:contain;}
+        #chat>.in>.midd>[class*="line-"]>.midd{
+            max-width:100%; padding:22px; margin:6px 0 0 0; border:1px solid #ABC9F8; color:#111; background-color:#fff; border-radius: 0px 20px 20px 20px;
+            -webkit-box-shadow: 0px 2px 2px rgba(7, 62, 149, 0.1);
+            box-shadow: 0px 2px 2px rgba(7, 62, 149, 0.1);
+        }
+        #chat>.in>.midd>[class*="line-"]>.midd>p:first-child{margin-top:0;}
+        #chat>.in>.midd>[class*="line-"]>.midd>p:last-child{margin-bottom:0;}
+  
+        #chat>.in>.midd>[class*="line-"]>.foot{width:100%; margin:8px 0 0 0; font-size:12px; color:rgba(17, 17, 17, 0.6);}
+        #chat>.in>.foot{flex-shrink:0; display:flex; align-items:center; width:100%; height:60px; padding:0 30px 0 0; border-top:1px solid #ABC9F8; background-color:#fff;}
+        #chat>.in>.foot>input[type="text"]{width:100%; height:100%; padding:0 30px; margin:0; font-size:15px; border:none;}
+        #chat>.in>.foot>button{flex-shrink:0; width:37px; height:37px; padding:0; cursor:pointer; border:none; background-color:#073E95; border-radius:50%;}
+        #chat>.in>.foot>button::before{content:""; display:block; width:100%; height:100%; background-image:url(./img/send.svg); background-repeat:no-repeat; background-position:center center; background-size:contain;}
+        #chat>.in>.foot>button>span{opacity:0; position:absolute; font-size:0;}
+
+        #chat>.in>.midd>.line-r{align-items:flex-end;}
+        #chat>.in>.midd>.line-r>.midd{max-width:100%; padding:13px 20px; margin:0; border-color:#073E95; color:#fff; background-color:#073E95; border-radius:20px 0px 20px 20px;}
+        #chat>.in>.midd>.line-r>.foot{text-align:right;}
+
+        
+        #chat>.in>.midd a.btn{
+            display:flex; align-items:center; justify-content:center; height:40px; line-height:1; padding:0 26px; margin:10px 0; text-decoration:none; font-weight:500; font-size:14px; color:#073E95; background-color:#DCE9FF; border-radius:100px;
+            -webkit-box-shadow: 0px 2px 4px rgba(7, 62, 149, 0.1);
+            box-shadow: 0px 2px 4px rgba(7, 62, 149, 0.1);
+        }
+        #chat>.in>.midd a.btn>span{margin-right:5px;}
+        #chat>.in>.midd a[class*="icon-"]::after{content:""; opacity:0.4; width:24px; height:24px; margin-left:auto; background-repeat:no-repeat; background-position:center center; background-size:contain;}
+        #chat>.in>.midd a.btn.icon-1::after{background-image:url(./img/link_icon_1.svg);}
+        #chat>.in>.midd a.btn.icon-2::after{background-image:url(./img/link_icon_2.svg);}
+        #chat>.in>.midd a.btn.icon-3::after{background-image:url(./img/link_icon_3.svg);}
+        #chat>.in>.midd a.btn.icon-4::after{background-image:url(./img/link_icon_4.svg);}
+        #chat>.in>.midd a.btn+p{margin-top:1.5em;}
+
+        #chat>.in>.midd select{
+            display:flex; align-items:center; width:100%; height:40px; padding:0 55px 0 26px; margin:10px 0; text-decoration:none; font-weight:500; font-size:14px; border:1px solid #ABC9F8; color:#073E95; background-color:#fff; border-radius:100px;
+            background-image:url(./img/link_icon_4.svg); background-repeat:no-repeat; background-position:right 26px center;
+            -webkit-box-shadow: 0px 2px 4px rgba(7, 62, 149, 0.1);
+            box-shadow: 0px 2px 4px rgba(7, 62, 149, 0.1);
+            appearance:none;
+            -webkit-appearance:none;
+            -moz-appearance:none;
+        }
+        #chat>.in>.midd select::-ms-expand {display:none;}
+        #chat>.in>.midd select+p{margin-top:1.5em;}
+        @media screen and (max-width:550px) {
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="chat">
+        <div class="in">
+            <div class="head">
+                <h1><span>국립공주대학교 챗봇</span></h1>
+                <button><span>Tip</span></button>
+            </div>
+            <div class="midd">
+                <!-- 1:s -->
+                <div class="line-l">
+                    <div class="head">국립공주대학교 챗봇</div>
+                    <div class="midd">
+                        <div style="text-align:center;">
+                            <img src="./img/c.svg" alt="">
+                        </div>
+                        <p>
+                            안녕하세요.<br />
+                            저는 공주대학교 입학도우미 챗봇 <strong>곰곰</strong>이에요! 😃
+                        </p>
+                        <p>
+                            공주대학교 입학 관련 궁금한 전형을 선택하거나 직접 입력해 주세요. 바로 안내해 드릴게요!
+                        </p>
+                        <p>
+                            변경된 입학일정 및 상세내역은 입학안내 홈페이지를 통해 학인할 수 있어요!
+                        </p>
+                        <a href="#" class="btn"><span>아이콘이 없을시</span></a>
+                        <a href="#" class="btn icon-1"><span>내부</span></a>
+                        <a href="#" class="btn icon-2"><span>링크</span></a>
+                        <a href="#" class="btn icon-3"><span>다운로드</span></a>
+                        
+                        <p>다른 궁금한 정보는 아래에서 선택해주세요.</p>
+                        <select>
+                            <option value="">원하시는 정보를 선택해주세요.</option>
+                        </select>
+                    </div>
+                    <div class="foot">오후 03:56</div>
+                </div>
+                <!-- 1:e -->
+
+                <!-- 2:s -->
+                <div class="line-r">
+                    <div class="midd">
+                        <p>안녕하세요! 저는 국립공주대학교 새내기가 될 친구들을 위한 입학도우미 ‘곰곰’ 이에요😃</p>
+                    </div>
+                    <div class="foot">오후 03:56</div>
+                </div>
+                <!-- 2:e -->
+
+                <!-- 3:s -->
+                <div class="line-r">
+                    <div class="midd">
+                        <p>안녕하세요!</p>
+                    </div>
+                    <div class="foot">오후 03:56</div>
+                </div>
+                <!-- 3:e -->
+
+                <!-- 4:s -->
+                <div class="line-l">
+                    <div class="head">국립공주대학교 챗봇</div>
+                    <div class="midd">
+                        <div style="text-align:center;">
+                            <img src="./img/c.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="foot">오후 03:56</div>
+                </div>
+                <!-- 4:e -->
+
+                <!-- 5:s -->
+                <div class="line-l">
+                    <div class="head">국립공주대학교 챗봇</div>
+                    <div class="midd">
+                        <div style="text-align:center;">
+                            <img src="./img/c.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="foot">오후 03:56</div>
+                </div>
+                <!-- 5:e -->
+
+            </div>
+            <div class="foot">
+                <input type="text" name="" id="" placeholder="질문을 입력하세요." title="질문입력란">
+                <button><span>전송</span></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

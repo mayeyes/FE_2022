@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=yes">
+	<meta name="format-detection" content="telephone=no,email=no,address=no" />
+
+	<meta name="description" content="체계적인 광해관리와 광물자원산업의 육성 지원으로 지역 및 국민경제 활성화와 자원안보에 기여하겠습니다." />
+	<meta name="keywords" content="한국광해광업공단, 광해, 광업공단" />
+
+	<title>한국광해광업공단</title>
+
+	<!-- <link rel="shortcut icon" type="image/x-icon" href="images/common/favicon.ico" />
+	<link rel="apple-touch-icon" href="images/common/favicon.png" /> -->
+	<link rel="stylesheet" type="text/css" href="../../../css/site/core/core.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../../../css/site/kor/cover.css" media="all" />
+	<script>
+		/* js의 contextpath 적용 */
+		var contextPath ="../../..";
+		var mainCheck = false;
+	</script>
+	<script src="../../../js/site/kor/js.js"></script>	
+    <style>
+        html,body,#wrap,#wrap>div,.pdf_box{height:100% !important;}
+        body{padding:0;}
+        *,
+        *:before,*:after{box-sizing:border-box;}
+        /* pdf */
+        .pdf_box{position:relative; padding-left:270px;}
+        .pdf_box .pdf_menu{
+            position:absolute; left:0; top:0; width:270px; 
+        }
+        .pdf_box .pdf_menu ul{}
+        .pdf_box .pdf_menu ul li:nth-child(n+2){border-top:1px solid #ddd;}
+        .pdf_box .pdf_menu ul li a{
+            display:block; position:relative; line-height:24px; padding:16px 30px 16px 20px; font-size:16px;
+        }
+        .pdf_box .pdf_menu ul li a.on::after{
+        content:""; display:block; position:absolute; right:1.3em; top:50%; width:8px; height:8px; border:1px solid #fff; border-left:none; border-bottom:none;
+        transform:translateY(-50%) rotate(45deg);
+        }
+        .pdf_box .pdf_menu ul li a:link,
+        .pdf_box .pdf_menu ul li a:visited,
+        .pdf_box .pdf_menu ul li a:active{font-weight:normal; color:#505050;}
+        .pdf_box .pdf_menu ul li a:hover,
+        .pdf_box .pdf_menu ul li a.on:link,
+        .pdf_box .pdf_menu ul li a.on:visited,
+        .pdf_box .pdf_menu ul li a.on:active,
+        .pdf_box .pdf_menu ul li a.on:hover{font-weight:500; color:#fff; background-color:#20335B;}
+        .pdf_box .pdf_view{width:100%; height:100%;}
+        .pdf_box .pdf_view iframe{width:100%; height:100% !important; min-height:300px; border:none;}
+
+        body[data-menu="off"] .pdf_box{padding-left:0 !important;}
+        body[data-menu="off"] .pdf_box .pdf_menu{display:none !important;}
+    </style>
+</head>
+
+
+<body id="sub" class="user">
+<div id="wrap">
+    
+    <div data-content="25">
+        <div class="pdf_box" style="height: 905px;">
+            <div class="pdf_menu">
+                <ul>
+                    <li><a href="#" onclick="viewPdfjs(2);return false;" class="on">전형일정</a></li>
+                    <li><a href="#" onclick="viewPdfjs(3);return false;">전형요약</a></li>
+                    <li><a href="#" onclick="viewPdfjs(4);return false;">모집인원[ 수시모집]</a></li>
+                    <li><a href="#" onclick="viewPdfjs(5);return false;">모집인원[정시모집]</a></li>
+                    <li><a href="#" onclick="viewPdfjs(6);return false;">전형별 지원자격</a></li>
+                    <li><a href="#" onclick="viewPdfjs(7);return false;">학생부 반영 방법</a></li>
+                    <li><a href="#" onclick="viewPdfjs(8);return false;">수능 반영 방법</a></li>
+                </ul>
+            </div>
+            <div class="pdf_view">
+                <iframe title="PDF 파일보기" class="pdf_iframe" src="../../../js/core/plug/pdf.js/web/viewer.html?file=/komir/images/site/kor/pdf/sample.pdf" style="height: 905px; width: 100%;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            pdf_check();
+        });
+        function pdf_check(){
+            if($(".pdf_menu").length === 0 || $(".pdf_menu>ul>li").length === 0) $("body").attr("data-menu","off");
+        }
+    </script>
+
+
+</body>
+</html>

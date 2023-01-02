@@ -1,0 +1,66 @@
+<krpano version="1.19" title="대제목">
+	<include url="%SWFPATH%/%SWFPATH%/skin/A/skin.xml" /><!-- skin (A,B) -->
+    <skin_settings thumbs_opened="false" /><!-- skin : 섬네일 이미지 초기 화면 true/false -->
+	
+    <!-- 미니맵 :s 
+        * 설명 : 미니맵에 들어가는 hotspot을 정의 합니다.
+                미니맵의 배경이미지는 img를 교체 하시면 됩니다.
+            - x : 가로축
+            - y : 세로축
+            - onclick="mapspot_loadscene(이동하려는 scene name);"
+    -->
+	<layer name="spot1" style="mapspot" x="474" y="314" onclick="mapspot_loadscene(scene_01);" />
+	<layer name="spot2" style="mapspot" x="172" y="488" onclick="mapspot_loadscene(scene_02);" />
+	<!-- 미니맵 :e -->
+    
+
+    <!-- 
+        <scene> 
+            - name: 고유한 이름이여야 합니다.
+            - title : 화면 상단 "현재 위치는 OOO"의 OOO과 연동됩니다.
+                      또한, hotspot의 마우스 over시 나타나는 텍스트와도 연동됩니다.
+            - thumburl : 섬네일 사진 이미지 위치(파일 생성시 자동으로 생성 됩니다.)입니다.
+            - onstart="updateradar();" : 미니맵의 action을 실행하기 위함입니다.
+            - 하위 속성
+                - <view>,<preview>,<image> : 파일 생성시 자동으로 생성되는 파일입니다.
+                - <action name="updateradar"> : 미니맵의 hotspot 설정입니다.
+                                                현재위치 오버 효과 설정 및 북방위값을 넣을수 있습니다.
+                - <hotspot> : 각개의 vr(scene)를 이동하는 포인트 지점
+                    - style : 스타일 및 기본스크립트 기능이 연결되어 있습니다. 삭제시 아무런 동작이 되지 않습니다.
+                    - ath, atv : vr의 x,y 좌표입니다. "+","-" 값을 함께 입력하여야 합니다.(0은 제외)
+                    - linkedscene="이동할 scene name" : 클릭시 이동한 scene의 name값을 넣어 주시면 됩니다. 
+    -->
+
+    <!-- vr scene_01 :s -->
+	<scene name="scene_01" title="소제목 1" thumburl="%SWFPATH%/panos/SU_E_010/thumb.jpg" onstart="updateradar();">
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<preview url="%SWFPATH%/panos/SU_E_010/preview.jpg" />
+		<image><cube url="%SWFPATH%/panos/SU_E_010/pano_%s.jpg" /></image>
+
+		<action name="updateradar">
+			set(layer[activespot].parent, spot1);
+			set(layer[radar].parent, spot1);
+			set(layer[radar].heading, -1.92);
+		</action>
+		<hotspot style="skin_hotspotstyle|skin_tooltips|hotspot_ani" ath="+25" atv="+5" linkedscene="scene_02" />
+
+	</scene>
+    <!-- vr scene_01 :e -->
+
+    <!-- vr scene_02 :s -->
+	<scene name="scene_02" title="소제목 2" thumburl="%SWFPATH%/panos/SU_E_020/thumb.jpg" onstart="updateradar();">
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<preview url="%SWFPATH%/panos/SU_E_020/preview.jpg" />
+		<image><cube url="%SWFPATH%/panos/SU_E_020/pano_%s.jpg" /></image>
+
+		
+		<hotspot style="skin_hotspotstyle|skin_tooltips|hotspot_ani" ath="+65" atv="+15" linkedscene="scene_01" />
+        <action name="updateradar">
+			set(layer[activespot].parent, spot2);
+			set(layer[radar].parent, spot2);
+			set(layer[radar].heading, 87.10);
+		</action>
+		
+	</scene>
+    <!-- vr scene_02 :e -->
+</krpano>

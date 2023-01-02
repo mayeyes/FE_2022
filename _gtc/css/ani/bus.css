@@ -1,0 +1,64 @@
+/* 버스 */
+#svg .bus{position:absolute; left:0; top:0; width:100%; height:100%; z-index:1300;}
+#svg .bus>span{width:5.2%; height:6.8%;}
+#svg .bus>span>i:nth-child(2){
+    opacity:0; 
+    transform:translateY(-10%);
+    -webkit-transition:opacity 0.3s ease, transform 0.3s ease; transition:opacity 0.3s ease, transform 0.3s ease;
+}
+#svg .bus>span>i:nth-child(1)>span{opacity:0;}
+#svg .bus>span>i:nth-child(1)>span:nth-child(1){background-image:url(../../img/ani/bus-1_1.svg);}
+#svg .bus>span>i:nth-child(1)>span:nth-child(2){background-image:url(../../img/ani/bus-1_2.svg);}
+#svg .bus>span>i:nth-child(1)>span:nth-child(3){background-image:url(../../img/ani/bus-1_3.svg);}
+#svg .bus>span>i:nth-child(1)>span:nth-child(4){background-image:url(../../img/ani/bus-1_4.svg);}
+
+#svg .bus>span>i:nth-child(2)>span{opacity:0;}
+#svg .bus>span>i:nth-child(2)>span:nth-child(1){background-image:url(../../img/ani/bus-top_1.svg);}
+#svg .bus>span>i:nth-child(2)>span:nth-child(2){background-image:url(../../img/ani/bus-top_2.svg);}
+#svg .bus>span>i:nth-child(2)>span:nth-child(3){background-image:url(../../img/ani/bus-top_3.svg);}
+#svg .bus>span>i:nth-child(2)>span:nth-child(4){background-image:url(../../img/ani/bus-top_4.svg);}
+
+#svg .bus>span:nth-child(1),
+#svg .bus>span:nth-child(1)>i,
+#svg .bus>span:nth-child(1)>i>span{
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-duration:20s;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-iteration-count:infinite;
+
+    animation-timing-function:linear;
+    animation-duration:20s;
+    animation-fill-mode:forwards;
+    animation-iteration-count:infinite;
+}
+#svg .bus>span:nth-child(1){
+    left:-5%; top:17.5%;
+    -webkit-animation-name:bus-1;
+    animation-name:bus-1;
+}
+#svg .bus>span:nth-child(1)>i>span:nth-child(1){-webkit-animation-name:bus-1_1; animation-name:bus-1_1;}
+#svg .bus>span:nth-child(1)>i>span:nth-child(2){-webkit-animation-name:bus-1_2; animation-name:bus-1_2;}
+
+@keyframes bus-1_1 {
+    0%{opacity:0;}
+    20%{opacity:0;}
+    22%{opacity:1;}
+    32%,65%{opacity:1;}
+    100%{opacity:1;}
+}
+@keyframes bus-1_2 {
+    0%{opacity:1;}
+    20%{opacity:1;}
+    22%{opacity:0;}
+    32%,65%{opacity:0;}
+    100%{opacity:0;}
+}
+@keyframes bus-1 {
+    0%{-webkit-transform:translate(0,0); transform:translate(0,0);}
+    20%{-webkit-transform:translate(800%,520%); transform:translate(800%,520%);}
+    22%{-webkit-transform:translate(800%,530%); transform:translate(800%,530%);}
+    32%,65%{-webkit-transform:translate(1080%,330%); transform:translate(1080%,330%);}
+    100%{-webkit-transform:translate(2040%,-290%); transform:translate(2040%,-290%);}
+}
+
+#svg[data-sun="on"] .bus>span>i:nth-child(2){opacity:1; -webkit-transform:translateY(0); transform:translateY(0);}

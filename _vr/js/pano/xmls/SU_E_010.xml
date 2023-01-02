@@ -1,0 +1,56 @@
+﻿<krpano version="1.19" title="대제목">
+	<include url="%SWFPATH%/%SWFPATH%/skin/vtourskin.xml" />
+	<include url="%SWFPATH%/%SWFPATH%/skin/youtube.xml" />
+	
+	<layer name="spot1" style="mapspot" x="474" y="314" onclick="mapspot_loadscene(scene_01);" />
+	<layer name="spot2" style="mapspot" x="172" y="488" onclick="mapspot_loadscene(scene_02);" />
+	
+
+	<scene name="scene_01" title="소제목 1" thumburl="%SWFPATH%/panos/SU_E_010/thumb.jpg" onstart="updateradar();">
+		<action name="updateradar">
+			set(layer[activespot].parent, spot1);
+			set(layer[radar].parent, spot1);
+			set(layer[radar].heading, -1.92);
+		</action>
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<preview url="%SWFPATH%/panos/SU_E_010/preview.jpg" />
+		<image><cube url="%SWFPATH%/panos/SU_E_010/pano_%s.jpg" /></image>
+
+		<hotspot style="skin_hotspotstyle|skin_tooltips" ath="+25" atv="+5" linkedscene="scene_02" />
+
+		<hotspot name="youtubespot"
+	         url="%SWFPATH%/skin/youtube_icon.png"
+	         scale="0.5"
+	         zoom="false"
+	         ath="-3.5" atv="0"
+	         onclick="looktohotspot(get(name),90); youtubeplayer_open('QfCKecmPzKU');"
+	         />
+	</scene>
+
+	<scene name="scene_02" title="소제목 2" thumburl="%SWFPATH%/panos/SU_E_020/thumb.jpg" onstart="updateradar();">
+		<action name="updateradar">
+			set(layer[activespot].parent, spot2);
+			set(layer[radar].parent, spot2);
+			set(layer[radar].heading, 87.10);
+		</action>
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<preview url="%SWFPATH%/panos/SU_E_020/preview.jpg" />
+		<image><cube url="%SWFPATH%/panos/SU_E_020/pano_%s.jpg" /></image>
+
+		
+		<hotspot style="skin_hotspotstyle|skin_tooltips" ath="+65" atv="+15" linkedscene="scene_01" />
+
+		<hotspot name="video"
+			style="skin_video"
+			videourl="%SWFPATH%/img/cats.mp4"
+			posterurl="%SWFPATH%/img/cats-poster.jpg"
+			ath="0.7"
+			atv="-0.5"
+			width="1020"
+			height="360"
+		/>
+		
+	</scene>
+</krpano>

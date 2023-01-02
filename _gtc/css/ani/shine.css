@@ -1,0 +1,110 @@
+/* 태양열 */
+/* 
+303 193 */
+#svg .shine{display:block; position:absolute; left:55.7%; top:-6%; width:24.9%; height:23.6%;}
+/* #svg .shine::before{content:""; display:block; position:absolute; left:50%; top:50%; z-index:2000; width:2px; height:2px; background-color: coral;} */
+#svg .shine>span:nth-child(1){background-image:url(../../img/ani/shine-1.svg);}
+#svg .shine>span:nth-child(2)>i{opacity:0;}
+#svg .shine>span:nth-child(2)>i:nth-child(1){z-index:10;}
+#svg .shine>span:nth-child(2)>i:nth-child(1)>span:nth-child(1){background-image:url(../../img/ani/shine-2_1.svg);}
+#svg .shine>span:nth-child(2)>i:nth-child(1)>span:nth-child(2){background-image:url(../../img/ani/shine-2_1_1.svg);}
+#svg .shine>span:nth-child(2)>i:nth-child(2)>span:nth-child(1){background-image:url(../../img/ani/shine-2_2.svg);}
+#svg .shine>span:nth-child(2)>i:nth-child(2)>span:nth-child(2){
+    background-image:url(../../img/ani/shine-2_2_1.svg);
+    -webkit-transform-origin:95% 88%; transform-origin:95% 88%;
+}
+#svg .shine>span:nth-child(2)>i:nth-child(3){background-image:url(../../img/ani/shine-2_3.svg);}
+#svg .shine>span:nth-child(2)>i:nth-child(n+4){opacity:0; left:93%; top:80.5%; width:2.4%; height:3.8%; background-image:url(../../img/ani/shine-2_4.svg);}
+
+@-webkit-keyframes shine-1 {
+    0%{opacity:0; -webkit-transform:translateY(-10%); transform:translateY(-10%);}
+    10%,100%{opacity:1; -webkit-transform:translateY(0); transform:translateY(0);}
+}
+@keyframes shine-1 {
+    0%{opacity:0; -webkit-transform:translateY(-10%); transform:translateY(-10%);}
+    10%,100%{opacity:1; -webkit-transform:translateY(0); transform:translateY(0);}
+}
+@-webkit-keyframes shine-1_reverse {
+    0%{opacity:1; -webkit-transform:translateY(0); transform:translateY(0);}
+    10%,100%{opacity:0; -webkit-transform:translateY(-10%); transform:translateY(-10%);}
+}
+@keyframes shine-1_reverse {
+    0%{opacity:1; -webkit-transform:translateY(0); transform:translateY(0);}
+    10%,100%{opacity:0; -webkit-transform:translateY(-10%); transform:translateY(-10%);}
+}
+@-webkit-keyframes shine-1_line {
+    0%,12%,100%{opacity:0;}
+    15%,98%{opacity:1;}
+    0%,12%{-webkit-transform:translate(0,0); transform:translate(0,0);}
+    22%{-webkit-transform:translate(-160%,85%); transform:translate(-160%,85%);}
+    32%{-webkit-transform:translate(-280%,20%); transform:translate(-280%,20%);}
+    72%{-webkit-transform:translate(-1050%,445%); transform:translate(-1050%,445%);}
+    93%{-webkit-transform:translate(-1400%,260%); transform:translate(-1400%,260%);}
+    100%{-webkit-transform:translate(-1200%,150%); transform:translate(-1200%,150%);}
+}
+@keyframes shine-1_line {
+    0%,12%,100%{opacity:0;}
+    15%,98%{opacity:1;}
+    0%,12%{-webkit-transform:translate(0,0); transform:translate(0,0);}
+    22%{-webkit-transform:translate(-160%,85%); transform:translate(-160%,85%);}
+    32%{-webkit-transform:translate(-280%,20%); transform:translate(-280%,20%);}
+    72%{-webkit-transform:translate(-1050%,445%); transform:translate(-1050%,445%);}
+    93%{-webkit-transform:translate(-1400%,260%); transform:translate(-1400%,260%);}
+    100%{-webkit-transform:translate(-1200%,150%); transform:translate(-1200%,150%);}
+}
+@-webkit-keyframes shine-1_bound {
+    0%,50%,100%{-webkit-transform:scale(1,1); transform:scale(1,1);}
+    25%,75%{-webkit-transform:scale(1.1,1.05); transform:scale(1.1,1.05);}
+}
+@keyframes shine-1_bound {
+    0%,50%,100%{-webkit-transform:scale(1,1); transform:scale(1,1);}
+    25%,75%{-webkit-transform:scale(1.1,1.05); transform:scale(1.1,1.05);}
+}
+@-webkit-keyframes shine-1_color {
+    0%,100%{opacity:0;}
+    55%{opacity:1;}
+}
+@keyframes shine-1_color {
+    0%,100%{opacity:0;}
+    55%{opacity:1;}
+}
+
+#svg .shine>span:nth-child(2)>i{
+    -webkit-animation-timing-function:ease; animation-timing-function:ease;
+    -webkit-animation-duration:10s; animation-duration:10s;
+    -webkit-animation-fill-mode:forwards; animation-fill-mode:forwards;
+    -webkit-animation-iteration-count:1; animation-iteration-count:1;
+}
+#svg .shine>span:nth-child(2)>i:nth-child(n+4){
+    -webkit-animation-timing-function:linear; animation-timing-function:linear;
+    -webkit-animation-duration:10s; animation-duration:10s;
+    -webkit-animation-fill-mode:forwards; animation-fill-mode:forwards;
+    -webkit-animation-iteration-count:infinite; animation-iteration-count:infinite;
+}
+#svg .shine>span:nth-child(2)>i:nth-child(1)>span:nth-child(2),
+#svg .shine>span:nth-child(2)>i:nth-child(2)>span:nth-child(2){
+    -webkit-animation-timing-function:linear; animation-timing-function:linear;
+    -webkit-animation-duration:1s; animation-duration:1s;
+    -webkit-animation-fill-mode:forwards; animation-fill-mode:forwards;
+    -webkit-animation-iteration-count:infinite; animation-iteration-count:infinite;
+}
+
+#svg .shine[data-shine="on"]>span:nth-child(2)>i:nth-child(1)>span:nth-child(2){-webkit-animation-name:shine-1_color; animation-name:shine-1_color;}
+#svg .shine[data-shine="on"]>span:nth-child(2)>i:nth-child(2)>span:nth-child(2){-webkit-animation-name:shine-1_bound; animation-name:shine-1_bound;}
+#svg .shine[data-shine="on"]>span:nth-child(2)>i:not(:nth-child(n+4)){-webkit-animation-name:shine-1; animation-name:shine-1;}
+#svg .shine[data-shine="on"]>span:nth-child(2)>i:nth-child(n+4){-webkit-animation-name:shine-1_line; animation-name:shine-1_line;}
+#svg .shine[data-shine="on"]>span:nth-child(2)>i:nth-child(5){-webkit-animation-delay:3s; animation-delay:3s;}
+#svg .shine[data-shine="on"]>span:nth-child(2)>i:nth-child(6){-webkit-animation-delay:6s; animation-delay:6s;}
+
+#svg .shine[data-shine="on"]>span:nth-child(2)>i:nth-child(1){-webkit-animation-delay:1.2s; animation-delay:1.2s;}
+#svg .shine[data-shine="on"]>span:nth-child(2)>i:nth-child(2){-webkit-animation-delay:0.4s; animation-delay:0.4s;}
+#svg .shine[data-shine="on"]>span:nth-child(2)>i:nth-child(3){-webkit-animation-delay:0.8s; animation-delay:0.8s;}
+
+
+#svg .shine[data-shine="off"]>span:nth-child(2)>i{opacity:1; -webkit-animation-name:shine-1_reverse; animation-name:shine-1_reverse;}
+
+#svg .shine[data-shine="off"]>span:nth-child(2)>i:nth-child(1){-webkit-animation-delay:0.4s; animation-delay:0.4s;}
+#svg .shine[data-shine="off"]>span:nth-child(2)>i:nth-child(2){-webkit-animation-delay:1.2s; animation-delay:1.2s;}
+#svg .shine[data-shine="off"]>span:nth-child(2)>i:nth-child(3){-webkit-animation-delay:0.8s; animation-delay:0.8s;}
+
+#svg .shine:not([data-shine="on"])>span:nth-child(2)>i:nth-child(n+4){display:none; -webkit-animation-name:shine-1_line333; animation-name:shine-1_line333;}

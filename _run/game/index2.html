@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./markdown.css">
+    <script src="./jquery-1.12.4.min.js"></script>
+    <script src="./mark.js"></script>
+    <script>
+        $(function(){
+            __run();
+        });
+
+        function __run(){
+            var obj = $("#g-run");
+            var play_act = "";
+            const ___set = function(){
+                return{
+                    bg:function(){
+                        $('<div class="g-bg-up">\
+                                <div class="g-block"></div>\
+                                <div class="g-ground"></div>\
+                           </div>\
+                           <div class="g-bg-down" />').appendTo(obj);
+                        obj.bg_up = obj.find(" .g-bg-up");
+                        obj.bg_down = obj.find(" .g-bg-down");
+                        obj.play_block = obj.find(" .g-block");
+                        obj.play_ground = obj.find(" .g-ground");
+                    },
+                    player:function(){
+                        $('<div id="g-player" />').appendTo(obj.play_ground);
+                        obj.player = obj.find(" #g-player");
+                    },
+                    log:function(){
+                        $('<div id="g-console" />').appendTo(obj.bg_up);
+                        obj.console = obj.find(" #g-console");
+                    },
+                    score:function(){
+                        $('<div id="g-score" />').appendTo(obj.bg_up);
+                        obj.score = obj.find(" #g-score");
+                    },
+                    all:function(){
+                        this.bg();
+                        this.player();
+                        this.score();
+                        this.log();
+                    }
+                }
+                
+            }
+
+            const ___run = function(){
+                return{
+                    move:function(arrow){
+                        var s = obj.player.width() * 0.06;
+                        var l = (arrow === "right") ? "+="+s+"px":"-="+s+"px";
+                        var revert = (arrow === "right") ? "left":"right";
+                        obj.player.removeClass(revert);
+                        obj.player.addClass(arrow);
+                        obj.player.css({"left":l});
+                    },
+                    up:function(){
+                        obj.play_block.css({"bottom":"-=5px"});
+                    },
+                    down:function(){
+                        obj.play_block.css({"bottom":"+=5px"});
+                    },
+                    stop:function(arrow){
+                        obj.player.removeClass(arrow);
+                    }
+                }
+            }
+
+            function ___blockSet(){
+                function getRandom(min, max) {
+                    min = Math.ceil(min);
+                    max = Math.floor(max);
+                    return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최소값은 포함
+                }
+                var b = "";
+                var block_size = 100;//블럭갯수
+                for(var i=0; i<block_size; i++){
+                    b += '<div class="g-box" />';
+                }
+                $(b).appendTo(obj.play_block);
+                obj.box = obj.find(" .g-box");
+
+                for(var i=0; i<block_size; i++){
+                    var min,max,left,bottom,def;
+                    def = (obj.play_block.height()/2);
+                    min = def + (obj.player.innerHeight() * i) + (((obj.box.innerHeight() + 10) * 2) * i);
+                    max = min + 20;
+                    left = getRandom(0,obj.play_ground.width());
+                    bottom = getRandom(min,max);
+                    
+                    obj.box.eq(i).css({
+                        "left":left,
+                        "bottom":bottom
+                    });
+                }
+            }
+
+            function ___blockSet_food(){
+                function getRandom(min, max) {
+                    min = Math.ceil(min);
+                    max = Math.floor(max);
+                    return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최소값은 포함
+                }
+                var b = "";
+                var block_size = 100;//블럭갯수
+                for(var i=0; i<block_size; i++){
+                    b += '<div class="g-food" />';
+                }
+                $(b).appendTo(obj.play_block);
+                obj.food = obj.find(" .g-food");
+
+                for(var i=0; i<block_size; i++){
+                    var min,max,left,bottom,def;
+                    def = (obj.play_block.height()/2);
+                    min = def + (obj.player.innerHeight() * i) + (((obj.food.innerHeight() + 10) * 2) * i);
+                    max = min + 20;
+                    left = getRandom(0,obj.play_ground.width());
+                    bottom = getRandom(min,max);
+                    
+                    obj.food.eq(i).css({
+                        "left":left,
+                        "bottom":bottom
+                    });
+                }
+            }
+
+            function ___log(){
+                var push = "player<br />";
+                    push += "x : "+obj.player.x+"<br />";
+                    push += "y : "+obj.player.y+"<br />";
+                    push += "w : "+obj.player.w+"<br />";
+                    push += "h : "+obj.player.h+"<br /><br />";
+                    push += "box<br />";
+                    push += "x : "+obj.box.x+"<br />";
+                    push += "y : "+obj.box.y+"<br />";
+                    push += "w : "+obj.box.w+"<br />";
+                    push += "h : "+obj.box.h+"<br />";
+                $('<div>'+push+'</div>').appendTo(obj.console.empty());
+            }
+
+            var block_count = 0;
+            var block_count_revers = 0;
+            function ___block(){
+                if(block_count > obj.box.length-1) return false;
+
+                obj.player.w = obj.player.innerWidth();
+                obj.player.h = obj.player.innerHeight();
+                obj.player.x = obj.player.offset().left - obj.play_block.offset().left;
+                obj.player.y = obj.play_ground.height() - obj.player.offset().top;
+
+                if(0 > (obj.box.y)){
+                    block_count++;
+                    //점수 추가 이벤트 효과
+                    // console.log("!!!",block_count);
+                    // obj.player.addClass("hit");
+                    // setTimeout(function(){
+                    //     obj.player.removeClass("hit");
+                    // },1000);
+                }
+                if(block_count < obj.box.length){
+                    var bx = obj.box.eq(block_count);
+                    if(!bx.hasClass("hit")){
+                        obj.box.removeClass("hit").eq(block_count).addClass("hit");
+                    }
+
+                    obj.box.w = bx.innerWidth();
+                    obj.box.h = bx.innerHeight();
+                    obj.box.x = bx.position().left;
+                    obj.box.y = obj.play_ground.height() - bx.offset().top - bx.innerHeight();
+                } else {
+                    // game end
+                    // console.log("End");
+                    obj.player.addClass("end");
+                    ___over();
+                }
+            }
+            var block_count_food = 0;
+            var block_count_food_revers = 0;
+            function ___food(){
+                if(block_count_food > obj.food.length-1) return false;
+
+                obj.player.w = obj.player.innerWidth();
+                obj.player.h = obj.player.innerHeight();
+                obj.player.x = obj.player.offset().left - obj.play_block.offset().left;
+                obj.player.y = obj.play_ground.height() - obj.player.offset().top;
+
+                if(0 > (obj.food.y)){
+                    block_count_food++;
+                    //점수 추가 이벤트 효과
+                    // console.log("!!!",block_count);
+                    // obj.player.addClass("hit");
+                    // setTimeout(function(){
+                    //     obj.player.removeClass("hit");
+                    // },1000);
+                }
+                if(block_count_food < obj.food.length){
+                    var bx = obj.food.eq(block_count_food);
+                    if(!bx.hasClass("hit")){
+                        obj.food.removeClass("hit").eq(block_count_food).addClass("hit");
+                    }
+
+                    obj.food.w = bx.innerWidth();
+                    obj.food.h = bx.innerHeight();
+                    obj.food.x = bx.position().left;
+                    obj.food.y = obj.play_ground.height() - bx.offset().top - bx.innerHeight();
+                } else {
+                    // game end
+                    // console.log("End");
+                    obj.player.addClass("end");
+                    ___over();
+                }
+            }
+            function ___score(){
+                var tot = Math.ceil(obj.play_block.offset().top);
+                    ///tot += (block_count * 1000);
+                    tot += (block_count_revers * 1000);
+                    tot += (block_count_food_revers * 1000);
+                obj.score.text("Score : "+tot);
+            }
+
+            var clash_ani = "";
+            var food_ani = "";
+            function ___clash(){
+                if(
+                    (obj.box.y < obj.player.y && obj.player.h > obj.box.y) && 
+                    ((obj.player.x + obj.player.w) > obj.box.x && obj.player.x < (obj.box.x + obj.box.w))
+                ){
+                    block_count_revers--;
+                    
+                    obj.player.addClass("act");
+                    block_count++;
+                    clearTimeout(clash_ani);
+                    clash_ani = setTimeout(function(){
+                        obj.player.removeClass("act");
+                    },500);
+                }
+
+                // food
+                if(
+                    (obj.food.y < obj.player.y && obj.player.h > obj.food.y) && 
+                    ((obj.player.x + obj.player.w) > obj.food.x && obj.player.x < (obj.food.x + obj.food.w))
+                ){
+                    block_count_food_revers++;
+                    
+                    obj.player.addClass("happy");
+                    block_count_food++;
+                    clearTimeout(food_ani);
+                    food_ani = setTimeout(function(){
+                        obj.player.removeClass("happy");
+                    },500);
+                }
+            }
+
+            function ___over(){
+                clearInterval(play_act);
+            }
+
+
+            function ___moving(){
+                //obj.play_block.css({"bottom":"-=5px"});
+            }
+
+
+            function ___init(){
+                ___set().all();
+                ___blockSet();//블럭 출현
+                ___blockSet_food();//블럭
+
+                let $key = [];
+                play_act = setInterval(function(){
+                    //이동
+                    if($key[39]){___run().move("right");}
+                    else{___run().stop("right");}
+                    if($key[37]){___run().move("left");}
+                    else{___run().stop("left");}
+
+                    if($key[40]){___run().down();}//테스트
+                    if($key[38]){___run().up();}//테스트
+
+                    
+                    ___moving();//배경움직임
+                    ___block();//블럭 인덱스 조절
+                    ___food();//블럭 인덱스 조절
+                    ___clash();//충돌
+                    ___score();//점수
+                    ___log();//로그
+                },10);
+                $(window).on("keydown",function(event){$key[event.keyCode] = true;});
+                $(window).on("keyup",function(event){$key[event.keyCode] = false;});
+
+                // 로컬
+                if(location.hostname === "localhost"){
+                    obj.addClass("test");
+                }
+            }
+            
+
+            return ___init();
+        }
+    </script>
+    <style>
+        *,*:before,*:after{box-sizing:border-box;}
+        html,body{height:100%;}
+        body{padding:0; margin:0;}
+        
+        #g-run{overflow:hidden; width:100%; height:100%; background-color:#000;}
+        #g-run #g-console{position:fixed; left:0; top:0; color:#fff;}
+        #g-run #g-score{
+            position:fixed; left:50%; top:2%; font-weight:600; font-size:2vh; color:#fff;
+            -webkit-transform:translateX(-50%);
+            transform:translateX(-50%);
+        }
+        #g-run>[class*="bg-"]{position:relative;}
+        #g-run>.g-bg-up{height:80%;}
+        #g-run .g-block,
+        #g-run .g-ground{position:absolute; left:0; bottom:0; z-index:0; width:100%; height:100%;}
+        #g-run .g-block{}
+        #g-run .g-ground{z-index:100;}
+        #g-run>.g-bg-down{height:20%; background-color:rgb(79, 79, 79);}
+        #g-run #g-player{position:absolute; left:50%; bottom:0; width:4.4%; padding-top:7%; border:1px solid transparent;}
+        #g-run #g-player:before{
+            opacity:0; content:"+1000"; display:block; position:absolute; left:50%; bottom:100%; font-weight:600; font-size:2vh; color:rgb(95, 255, 108);
+            -webkit-transform:translateX(-50%);
+            transform:translateX(-50%);
+        }
+        #g-run #g-player.act:before{
+            content:"-1000"; color:rgb(255, 95, 95);
+        }
+        #g-run #g-player.act:before,
+        #g-run #g-player.hit:before,
+        #g-run #g-player.happy:before{
+            -webkit-animation-name:hit;
+            -webkit-animation-duration:0.5s;
+            -webkit-animation-timing-function:linear;
+            -webkit-animation-fill-mode:forwards;
+
+            animation-name:hit;
+            animation-duration:0.5s;
+            animation-timing-function:linear;
+            animation-fill-mode:forwards;
+        }
+        @-webkit-keyframes hit {
+            0%{opacity:0; bottom:100%;}
+            60%{opacity:1; bottom:calc(100% + 1.5vh);}
+            100%{opacity:0; bottom:calc(100% + 1.5vh);}
+        }
+        @keyframes hit {
+            0%{opacity:0; bottom:100%;}
+            60%{opacity:1; bottom:calc(100% + 1.5vh);}
+            100%{opacity:0; bottom:calc(100% + 1.5vh);}
+        }
+        
+        #g-run #g-player:after{
+            content:""; display:block; position:absolute; left:-5%; bottom:0; width:110%; height:110%;
+            background-image:url(./img/back.svg); background-repeat:no-repeat; background-position:center bottom; background-size:contain;
+            -webkit-transform-origin:64% 78%;
+            transform-origin:64% 78%;
+
+            -webkit-transition:all 0.2s ease-in-out;
+            transition:all 0.2s ease-in-out;
+        }
+        #g-run #g-player.left:after{background-image:url(./img/left.svg);}
+        #g-run #g-player.right:after{background-image:url(./img/right.svg);}
+        #g-run #g-player.end:after{
+            -webkit-animation-name:end;
+            -webkit-animation-duration:1s;
+            -webkit-animation-timing-function:linear;
+            -webkit-animation-fill-mode:forwards;
+
+            animation-name:end;
+            animation-duration:1s;
+            animation-timing-function:linear;
+            animation-fill-mode:forwards;
+        }
+        #g-run #g-player.act:after{
+            left:-30%; width:160%; height:160%;
+            background-image:url(./img/act.svg);
+        }
+        #g-run #g-player.happy:after{
+            left:-20%; width:140%; height:140%;
+            background-image:url(./img/happy.svg);
+        }
+
+        #g-run .g-box{position:absolute; left:50%; bottom:0; width:3%; padding-top:3%; border:1px solid transparent;}
+        #g-run .g-box:after{
+            content:""; display:block; position:absolute; left:50%; bottom:0; width:150%; height:150%;
+            background-image:url(./img/block.svg); background-repeat:no-repeat; background-position:center bottom; background-size:contain;
+            -webkit-transform:translateX(-50%);
+            transform:translateX(-50%);
+        }
+        #g-run .g-food{position:absolute; left:50%; bottom:0; width:3%; padding-top:3%; border:1px solid transparent;}
+        #g-run .g-food:after{
+            content:""; display:block; position:absolute; left:50%; bottom:0; width:150%; height:150%;
+            background-image:url(./img/block_food.svg); background-repeat:no-repeat; background-position:center bottom; background-size:contain;
+            -webkit-transform:translateX(-50%);
+            transform:translateX(-50%);
+        }
+
+        @-webkit-keyframes end {
+            100%{
+                left:200%;
+                background-image:url(./img/end.svg);
+            }
+        }
+        @keyframes end {
+            100%{
+                left:200%;
+                background-image:url(./img/end.svg);
+            }
+        }
+        
+
+        /* test */
+        #g-run.test #g-player,
+        #g-run.test .g-box,
+        #g-run.test .g-food{border-color:#fff;}
+        #g-run.test #g-player.act{border-color:#ff0000;}
+        #g-run.test .g-box.hit,
+        #g-run.test .g-food.hit{border-color:#ff0000;}
+
+    </style>
+</head>
+<body>
+    
+    <div id="g-run"></div>
+
+
+</body>
+</html>

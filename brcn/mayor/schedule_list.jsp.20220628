@@ -1,0 +1,188 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="/WEB-INF/tlds/gonet-util.tld" prefix="util"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		// 이전을 클릭한 경우
+		$("#pre_month").click(function(){
+			var year = Number($(".year").html().substring(0,4));
+			var month = Number($(".year").html().substring(5,7)) - 1;
+			
+			if(month == 0){
+				month = 12;
+				year = year - 1;
+			}
+			
+			if(month < 10){
+				month = "0" + month;
+			}
+			
+			var scheduleDate = year + "." + month + ".01";
+			$("#scheduleDate").val(scheduleDate);
+			
+			$("#scheduleForm").submit();
+			
+ 		});
+		
+		//  다음을 클릭한 경우
+		$("#next_month").click(function(){
+			var year = Number($(".year").html().substring(0,4));
+			var month = Number($(".year").html().substring(5,7)) + 1;
+			
+			if(month == 13){
+				month = 1;
+				year = year + 1;
+			}
+			
+			if(month < 10){
+				month = "0" + month;
+			}
+			
+			var scheduleDate = year + "." + month + ".01";
+			$("#scheduleDate").val(scheduleDate);
+			
+			$("#scheduleForm").submit();
+		});	
+		
+		// 캘린더에서 일자를 클릭하면
+		$("tr.trClass td").click(function(){
+			var date = Number($(this).text());
+			
+			if(date < 10){
+				date = "0" + date;
+			}
+			
+			$("#scheduleDate").val($(".year").text() + "." + date);
+			
+			$("#scheduleForm").submit();
+			
+		});
+		
+	});
+
+	
+</script>
+
+	<form name="scheduleForm" id="scheduleForm" method="post" action="${ctx }/prog/bbs_schedule/${siteCode }/${mno }/schedule_list.do">
+		<input type="hidden" id="scheduleDate" name="scheduleDate"/>
+	</form>	
+	
+	<div class="cal">
+		<p class="cal_year">
+			<a href="#pre_month"><img id="pre_month" src="${ctx}/images/specific/library/sub3/dre_pre.gif" alt="이전" /></a>
+			<span class="year">${fn:substring(Holder.scheduleDate, 0, 7) }</span> 
+			<a href="#next_month"><img id="next_month" src="${ctx}/images/specific/library/sub3/dre_next.gif" alt="다음" /></a>
+		</p>
+	</div>
+	
+	<table class="calendar" summary="달력 일,월,화,수,목,금,토 순입니다.">
+		<caption>달력</caption>
+		<colgroup>
+			<col style="width: 14%">
+			<col style="width: 14%">
+			<col style="width: 14%">
+			<col style="width: 14%">
+			<col style="width: 14%">
+			<col style="width: 15%">
+			<col style="width: 15%">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">일</th>
+				<th scope="col">월</th>
+				<th scope="col">화</th>
+				<th scope="col">수</th>
+				<th scope="col">목</th>
+				<th scope="col">금</th>
+				<th scope="col">토</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="trClass">
+				<c:set value="0" var="newLine"/>
+				<c:forEach begin="1" end="${Week - 1}">
+					<td></td>
+					<c:set value="${newLine + 1 }" var="newLine"/>
+				</c:forEach>
+				
+				<c:forEach begin="${StartDay }" end="${EndDay}" var="date">
+					<c:set var="dates"><fmt:formatNumber value="${ date }" pattern="##" minIntegerDigits="2" /></c:set>
+					<c:set var="TdClass" value=""/>
+					<c:set var="saturClass" value=""/>
+								
+					<c:forEach var="list" items="${BbsScheduleListByYearMonth }">
+						<c:if test="${dates eq fn:substring(list.scheduleDate, 8, 10) }">
+							<c:set var="TdClass" value="select_day"/>
+						</c:if>	
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${newLine eq '0' }">
+							<c:set var="spanClass" value="sun"/>
+						</c:when>
+						<c:when test="${newLine eq '6' }">
+							<c:set var="spanClass" value="satur"/>
+							<c:set var="saturClass" value="t_end"/>
+						</c:when>
+						<c:otherwise>
+							<c:set var="spanClass" value="day"/>
+						</c:otherwise>
+					</c:choose>
+					
+					<c:if test="${date eq Day }">
+						<c:set var="TdClass" value="today"/>
+					</c:if>	
+					
+					<td class="${TdClass } ${saturClass }"><a href="#link"><span class="${spanClass }">${date }</span></a></td>
+					
+					<c:set value="${newLine + 1 }" var="newLine"/>
+					
+					<c:if test="${newLine == 7 && date != EndDay  }">
+						</tr>
+						<tr class="trClass">	
+						<c:set value="0" var="newLine"/>						
+					</c:if>						
+				</c:forEach>
+				
+				<c:forEach begin="${newLine + 1 }" end="7">
+					<td></td>
+				</c:forEach>					
+			</tr>
+		</tbody>
+	</table>
+	
+	<c:if test="${fn:length(BbsScheduleListByToday) > 0 }">
+		<ul class="cal_ul">
+			<li>
+				<strong class="yearb">${fn:substring(Holder.scheduleDate, 5, 10) }</strong> 
+				<span class="textb">
+					<ul>
+						<c:forEach var="listByToday" items="${BbsScheduleListByToday }">
+							<li><strong>${listByToday.scheduleTime }</strong> : ${listByToday.title }</li>
+						</c:forEach>
+					</ul>
+				</span> 
+				<span class="clearfix"></span>
+			</li>
+		</ul>
+	</c:if>
+	
+	<c:if test="${empty BbsScheduleListByToday }">
+		<ul class="cal_ul">
+			<li>
+				<strong class="yearb">${fn:substring(Holder.scheduleDate, 5, 10) }</strong>
+				<span class="textb">
+					<ul>
+						<li>등록된 일정이 없습니다.</li>
+					</ul>
+				</span>
+			</li>
+		</ul>
+	</c:if>
+	

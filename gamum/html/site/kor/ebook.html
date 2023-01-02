@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0">
+<title>월간 문화재 사랑 | 문화재청</title>
+<script src="http://www.cha.go.kr/love/ebook/217/js/turn.min.js"></script>
+<link href="http://www.cha.go.kr/love/ebook/217/css/jquery.ui.css" rel="stylesheet" type="text/css">
+<script src="http://www.cha.go.kr/love/ebook/217/js/zoom.min.js"></script>
+<link href="http://www.cha.go.kr/love/ebook/217/css/style.css" rel="stylesheet" type="text/css">
+<script src="http://www.cha.go.kr/love/ebook/217/js/ebook.min.js"></script>
+<script type="text/javascript" src="http://www.cha.go.kr/love/ebook/217/js/config.js"></script>	
+<script type="text/javascript" src="http://www.cha.go.kr/love/ebook/217/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://www.cha.go.kr/love/ebook/217/js/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="http://www.cha.go.kr/love/ebook/217/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="http://www.cha.go.kr/love/ebook/217/js/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="http://www.cha.go.kr/love/ebook/217/js/hash.min.js"></script>
+<script type="text/javascript" src="http://www.cha.go.kr/love/ebook/217/js/search_json.js"></script>
+</head>
+<body>
+<div id="top-area" style="visibility:hidden;">
+	<h1 class="top-logo"><img src="imgs/logo.png" alt="문화재 사랑" title="문화재 사랑"></h1>
+	
+	<div class="goview-area">
+		바로가기 <input type="number" name="pageNum" min="1" max="100" maxlength="2" class="page-num"> /<span class="total-page"></span> 
+		<span class="go-btn"><a href="#goview" title="GO">GO</a></span>
+	</div>
+
+	<ul id="nav-lists">
+		<li id="first-btn"><a href="#first" title="맨앞">맨앞</a></li>
+		<li id="prev-btn"><a href="#prev" title="이전">이전</a></li>
+		<li id="next-btn"><a href="#next" title="다음">다음</a></li>
+		<li id="end-btn"><a href="#end" title="맨뒤">맨뒤</a></li>
+		<li id="list-btn"><a href="#list" title="목차">목차</a></li>
+		<li id="print-btn"><a href="#print" title="인쇄">인쇄</a></li>
+		<li id="email-btn"><a href="#email" title="추천메일">추천메일</a></li>
+		<li id="help-btn"><a href="#help" title="도움말">도움말</a></li>
+		<li id="pdf-btn"><a href="#pdf" title="PDF 다운로드(새창)">PDF 다운로드</a></li>
+	</ul>
+
+	<div class="search-area">
+		<span class="search-box">
+		<input type="text" class="search-text" name="keyword" title="검색어입력" value="검색어를 입력하세요" onfocus="this.value=''" />
+		<input type="image" src="imgs/btn_search_off.png" class="btn-search" alt="검색">	
+		</span>
+	</div>	
+	<div id="close-btn">
+		<a href="#close" title="닫기">닫기</a>
+	</div>
+</div>
+<div class="ebook-change" style="visibility:hidden">
+	<select class="ebook-list">
+		<option value="#"> 다른호 보기 </option>
+	</select>
+	<a href="#" title="다른호 보기" id="change-btn"><span>GO</span></a>
+</div>
+
+<div id="canvas">
+	<div class="zoom-icon zoom-icon-in"></div>
+	<div class="book-zoom">
+		<div class="container">
+			<div class="ebook-views">
+				<div ignore="1" class="previous-button" title="이전"><span>이전</span></div>
+				<div ignore="1" class="next-button" title="다음"><span>다음</span></div>
+				<div class="hard p1"></div>
+				<div class="hard p54"></div>				
+			</div>
+		</div>
+	</div>
+</div>
+<img src="" class="img1" width="0" height="0" alt="">
+<img src="" class="img2" width="0" height="0" alt="">
+	
+<div id="search-result" style="display: none">
+	<div class="search-head">
+		<img src="imgs/txt_search.gif" alt="검색">	
+		<a href="#search-close" class="search-close"><img src="http://www.cha.go.kr/love/ebook/217/imgs/btn_close.gif" alt="닫기"></a>
+	</div>
+	<div class="search-total">* 총 검색 <span class="total-num">0</span>개의 검색결과가 있습니다.</div>
+	<div class="result-list"></div>
+</div>
+
+<div id="ebook-help" style="display: none">
+	<div class="search-head">
+		<img src="imgs/txt_help.gif" alt="도움말">	
+		<a href="#help-close" class="help-close"><img src="http://www.cha.go.kr/love/ebook/217/imgs/btn_close.gif" alt="닫기"></a>
+	</div>
+	<div><img src="imgs/img_help.png" alt=""></div>
+</div>
+<div id="shadow-div" style="display: none"></div>	
+
+<script type="text/javascript" src="http://www.cha.go.kr/love/ebook/217/js/init.min.js"></script>
+
+<!-- AceCounter Log Gathering Script V.71.2010011401 -->
+<script type="text/javascript">
+<!--
+if(typeof _GUL == 'undefined'){
+var _GUL = '116.67.83.195';var _GPT='80'; var _AIMG = new Image(); var _bn=navigator.appName; var _PR = location.protocol=="https:"?"https://"+_GUL:"http://"+_GUL+":"+_GPT;if( _bn.indexOf("Netscape") > -1 || _bn=="Mozilla"){ setTimeout("_AIMG.src = _PR+'/?cookie';",1); } else{ _AIMG.src = _PR+'/?cookie'; };
+document.writeln("<scr"+"ipt language='javascript' src='http://www.cha.go.kr/love/ebook/217/acecounter/acecounter_V70.js'></scr"+"ipt>");
+}
+//-->
+</script>
+<noscript><img src='http://116.67.83.195/?uid=1&amp;je=n&amp;' width='0' height='0' alt=''/></noscript>
+<!-- AceCounter Log Gathering Script End -->	
+</body>
+</html>

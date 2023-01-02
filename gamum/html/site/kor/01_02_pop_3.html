@@ -1,0 +1,322 @@
+<div class="move">
+   <div class="popupwrap pop_quiz">
+    <div class="popcontents">
+        <ul id="addQuiz">
+            <!-- class="on" 으로 display block none -->
+
+            <!--퀴즈 : S-->
+            <li class="on">
+                <div class="quizBox" style="background:url('../../../images/site/kor/content/quiz_q01_bg.png') no-repeat 51%; height:230px; background-size:99% 102%;"> <span class="question"> 조선시대 세종 이후부터 말기에 이르기까지 강우량을 측정하기 위하여 쓰인 기구는 자격루입니다. </span> </div>
+                <div class="selectImg"> <img class="oximg" onclick="nextContents(1)" src="../../../images/site/kor/content/oImg.jpg"> <img class="oximg" onclick="nextContents(0)" src="../../../images/site/kor/content/xImg.jpg"> </div>
+            </li>
+            <!--퀴즈 : E-->
+            <!--정답 : S-->
+            <li> 
+               <button type="button" class="btn_nextcontents" onclick="nextContents()" title="NEXT">NEXT</button>
+                <div class="quizAnswer">
+                    <div class="answerS"><span>정답 : </span></div>
+                    <div class="answerImg"><img src="../../../images/site/kor/content/x_head_no_erase.png"> </div>
+                </div>
+                <div class="quizAccount"> <span>해설 : 정답은 측우기입니다. 자격루는 자동으로 시보를 알려주는 장치가 되어 있는 물시계입니다. </span> </div>
+            </li>
+            <!--정답 : E-->
+
+            <!--점수 : S-->
+            <li>
+                <div class="grade_card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>1번 문제</th>
+                                <th>2번 문제</th>
+                                <th>3번 문제</th>
+                                <th>4번 문제</th>
+                                <th>5번 문제</th>
+                                <th>총&nbsp;&nbsp;점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="endQpage"> <img class="endImg" onclick="recycle('kids')" src="../../../images/site/kor/content/recycle.jpg"> <img class="endImg" onclick="modalHide('pop_education')" src="../../../images/site/kor/content/finish.jpg"> </div>
+            </li>
+            <!--점수 : E-->
+        </ul>
+    </div>
+</div>
+</div>
+       
+<script type="text/javascript">
+    var activeContentsIdx = 0;
+    var quizTotalCount = 0;
+    var quizScore = 0;
+
+    function nextContents(answer){
+        if(answer==null){
+            if (activeContentsIdx < quizTotalCount) {
+                activeContentsIdx++;
+            }else{
+                activeContentsIdx = 0;
+            }
+            $(".pop_education .popcontents > ul > li").removeClass("on");
+            $(".pop_education .popcontents > ul > li:eq("+activeContentsIdx+")").addClass("on");
+        }else if(answer==0){
+            //정답시
+            $('.grade_card table tbody tr td:eq('+(activeContentsIdx/2)+')').text('정답');
+            //점수처리
+            quizScore = quizScore + 20;
+            $('.grade_card table tbody tr td:eq(5)').text(quizScore + '점');
+            if (activeContentsIdx < quizTotalCount) {
+                activeContentsIdx++;
+            }else{
+                activeContentsIdx = 0;
+            }
+            $(".pop_education .popcontents > ul > li").removeClass("on");
+            $(".pop_education .popcontents > ul > li:eq("+activeContentsIdx+")").addClass("on");
+        }else if(answer==1){
+            //오답시
+            $('.grade_card table tbody tr td:eq('+(activeContentsIdx/2)+')').text('오답');
+            //점수처리
+            $('.grade_card table tbody tr td:eq(5)').text(quizScore + '점');
+            if (activeContentsIdx < quizTotalCount) {
+                activeContentsIdx++;
+            }else{
+                activeContentsIdx = 0;
+            }
+            $("[data-name='pop3'] .pop_education .popcontents > ul > li").removeClass("on");
+            $("[data-name='pop3'] .pop_education .popcontents > ul > li:eq("+activeContentsIdx+")").addClass("on");
+        }
+    }
+
+</script>
+<script type="text/javascript">
+
+    function modalQuizView(popType){
+        if (popType == "normal"){	
+            $(".transparent-layer").remove();
+            $(".popupwrap pop_education").remove();
+            $("#wrap").append("<div class='modalpop'></div>");
+            $(".modalpop").load("/quiz/pop_quiz.jsp",function(){
+                $(".modalpop .popupwrap.pop_education").css("margin-left", -($(".modalpop .popupwrap.pop_education").width()/2)+"px");
+                $("#wrap").append("<div class='transparent-layer' onclick=modalHide('pop_education')></div>");
+                $.ajax({
+                    url : "/menu/m30/m39_quiz.do",
+                    cache : false,
+                    type : 'POST',
+                    data : {"dv": '1'},
+                    dataType : 'json',
+                    success : function (data) {
+                        if(data.quiz.length==5){
+                            quizTotalCount = 10;
+                            var list = data.quiz;
+                            var itemHTMLAddr = '';
+                            $.each(list, function(idx,item){
+                                itemHTMLAddr = '';
+
+                                itemHTMLAddr += '<li';
+                                if(idx==0){
+                                    itemHTMLAddr += ' class="on">';
+                                }else{
+                                    itemHTMLAddr += '>';
+                                } 
+                                itemHTMLAddr += '	<div class="quizBox" style="background:url(\'/images/quiz/quiz_q0'+(idx+1)+'_bg.png\') no-repeat 51%; height:230px; background-size:99% 102%;">';
+                                itemHTMLAddr += '		<span class="question">';
+    // 							if(item.quiz.length <= 100){
+    // 								itemHTMLAddr += ' style="padding-top:7%;"';
+    // 							}else if(item.quiz.length <= 200){
+    // 								itemHTMLAddr += ' style="padding-top:3%;"';
+    // 							}
+    // 							itemHTMLAddr += '>';
+                                itemHTMLAddr += '			' + item.quiz;
+                                itemHTMLAddr += '		</span>';
+                                itemHTMLAddr += '	</div>';
+                                itemHTMLAddr += '	<div class="selectImg">';
+                                itemHTMLAddr += '		<img class="oximg" onclick="nextContents(';
+                                if(item.answer==0){
+                                    itemHTMLAddr += 0 + ')" src="../../../images/site/kor/content/oImg.jpg">';
+                                }else{
+                                    itemHTMLAddr += 1 + ')" src="../../../images/site/kor/content/oImg.jpg">';
+                                }
+                                itemHTMLAddr += '		<img class="oximg" onclick="nextContents(';
+                                if(item.answer==0){
+                                    itemHTMLAddr += 1 + ')" src="../../../images/site/kor/content/xImg.jpg">';
+                                }else{
+                                    itemHTMLAddr += 0 + ')" src="../../../images/site/kor/content/xImg.jpg">';
+                                }
+                                itemHTMLAddr += '	</div>';
+                                itemHTMLAddr += '</li>';
+                                itemHTMLAddr += '<li>';
+                                itemHTMLAddr += '	<button type="button" class="btn_nextcontents" onclick="nextContents()" title="NEXT">NEXT</button>';
+                                itemHTMLAddr += '	<div class="quizAnswer">';
+                                itemHTMLAddr += '		<div class="answerS"><span>정답 : </span></div>';
+                                itemHTMLAddr += '		<div class="answerImg">';
+                                if(item.answer==0){
+                                    itemHTMLAddr += '<img src="../../../images/site/kor/content/o_head_no_erase.png">'; 
+                                }else{
+                                    itemHTMLAddr += '<img src="../../../images/site/kor/content/x_head_no_erase.png">';
+                                }
+                                itemHTMLAddr += '		</div>';
+                                itemHTMLAddr += '	</div>';
+                                itemHTMLAddr += '	<div class="quizAccount">';
+                                itemHTMLAddr += '		<span>';
+                                itemHTMLAddr += '해설 : ' + item.account;
+                                itemHTMLAddr += '		</span>';
+                                itemHTMLAddr += '	</div>';
+                                itemHTMLAddr += '</li>';
+                                $('#addQuiz').append(itemHTMLAddr);
+                            });
+
+                            itemHTMLAddr = '';
+
+                            itemHTMLAddr += '<li>';
+                            itemHTMLAddr += '	<div class="grade_card">';
+                            itemHTMLAddr += '		<table>';
+                            itemHTMLAddr += '			<thead>';
+                            itemHTMLAddr += '				<tr>';
+                            itemHTMLAddr += '					<th>1번 문제</th><th>2번 문제</th><th>3번 문제</th><th>4번 문제</th><th>5번 문제</th><th>총&nbsp&nbsp점</th>';
+                            itemHTMLAddr += '				</tr>';
+                            itemHTMLAddr += '			</thead>';
+                            itemHTMLAddr += '			<tbody>';
+                            itemHTMLAddr += '				<tr>';
+                            itemHTMLAddr += '					<td></td><td></td><td></td><td></td><td></td><td></td>';
+                            itemHTMLAddr += '				</tr>';
+                            itemHTMLAddr += '			</tbody>';
+                            itemHTMLAddr += '		</table>';
+                            itemHTMLAddr += '	</div>';
+                            itemHTMLAddr += '	<div class="endQpage">';
+                            itemHTMLAddr += '		<img class="endImg" onclick="recycle(\'normal\')" src="../../../images/site/kor/content/recycle.jpg">';
+                            itemHTMLAddr += '		<img class="endImg" onclick="modalHide(\'pop_education\')" src="../../../images/site/kor/content/finish.jpg">';
+                            itemHTMLAddr += '	</div>';
+                            itemHTMLAddr += '</li>';
+
+                            $('#addQuiz').append(itemHTMLAddr);
+                        }else{
+                            modalHide('pop_education');
+                            alert('퀴즈를 불러오던 중 오류가 났습니다.');
+                        }
+                    },
+                    error : function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            });
+        }else if (popType == "kids"){
+            $(".transparent-layer").remove();
+            $(".popupwrap pop_education").remove();
+            $("#wrap").append("<div class='modalpop'></div>");
+            $(".modalpop").load("/quiz/pop_quiz.jsp",function(){
+                $(".modalpop .popupwrap.pop_education").css("margin-left", -($(".modalpop .popupwrap.pop_education").width()/2)+"px");
+                $("#wrap").append("<div class='transparent-layer' onclick=modalHide('pop_education')></div>");
+                $.ajax({
+                    url : "/menu/m30/m39_quiz.do",
+                    cache : false,
+                    type : 'POST',
+                    data : {"dv": '0'},
+                    dataType : 'json',
+                    success : function (data) {
+                        if(data.quiz.length==5){
+                            quizTotalCount = 10;
+                            var list = data.quiz;
+                            var itemHTMLAddr = '';
+                            $.each(list, function(idx,item){
+
+                                itemHTMLAddr = '';
+
+                                itemHTMLAddr += '<li';
+                                if(idx==0){
+                                    itemHTMLAddr += ' class="on">';
+                                }else{
+                                    itemHTMLAddr += '>';
+                                }
+                                itemHTMLAddr += '	<div class="quizBox" style="background:url(\'/images/quiz/quiz_q0'+(idx+1)+'_bg.png\') no-repeat 51%; height:230px; background-size:99% 102%;">';
+                                itemHTMLAddr += '		<span class="question">';
+    // 							if(item.quiz.length <= 100){
+    // 								itemHTMLAddr += ' style="padding-top:7%;"';
+    // 							}else if(item.quiz.length <= 200){
+    // 								itemHTMLAddr += ' style="padding-top:3%;"';
+    // 							}
+    // 							itemHTMLAddr += '>';
+                                itemHTMLAddr += '			' + item.quiz;
+                                itemHTMLAddr += '		</span>';
+                                itemHTMLAddr += '	</div>';
+                                itemHTMLAddr += '	<div class="selectImg">';
+                                itemHTMLAddr += '		<img class="oximg" onclick="nextContents(';
+                                if(item.answer==0){
+                                    itemHTMLAddr += 0 + ')" src="../../../images/site/kor/content/oImg.jpg">';
+                                }else{
+                                    itemHTMLAddr += 1 + ')" src="../../../images/site/kor/content/oImg.jpg">';
+                                }
+                                if(item.answer==0){
+                                    itemHTMLAddr += '		<img class="oximg" onclick="nextContents(' + 1 + ')" src="../../../images/site/kor/content/xImg.jpg">';
+                                }else{
+                                    itemHTMLAddr += '		<img class="oximg" onclick="nextContents(' + 0 + ')" src="../../../images/site/kor/content/xImg.jpg">';
+                                }
+                                itemHTMLAddr += '	</div>';
+                                itemHTMLAddr += '</li>';
+                                itemHTMLAddr += '<li>';
+                                itemHTMLAddr += '	<button type="button" class="btn_nextcontents" onclick="nextContents()" title="NEXT">NEXT</button>';
+                                itemHTMLAddr += '	<div class="quizAnswer">';
+                                itemHTMLAddr += '		<div class="answerS"><span>정답 : </span></div>';
+                                itemHTMLAddr += '		<div class="answerImg">';
+                                if(item.answer==0){
+                                    itemHTMLAddr += '<img src="../../../images/site/kor/content/o_head_no_erase.png">'; 
+                                }else{
+                                    itemHTMLAddr += '<img src="../../../images/site/kor/content/x_head_no_erase.png">';
+                                }
+                                itemHTMLAddr += '		</div>';
+                                itemHTMLAddr += '	</div>';
+                                itemHTMLAddr += '	<div class="quizAccount">';
+                                itemHTMLAddr += '		<span>';
+                                itemHTMLAddr += '해설 : ' + item.account;
+                                itemHTMLAddr += '		</span>';
+                                itemHTMLAddr += '	</div>';
+                                itemHTMLAddr += '</li>';
+                                $('#addQuiz').append(itemHTMLAddr);
+                            });
+
+                            itemHTMLAddr = '';
+
+                            itemHTMLAddr += '<li>';
+                            itemHTMLAddr += '	<div class="grade_card">';
+                            itemHTMLAddr += '		<table>';
+                            itemHTMLAddr += '			<thead>';
+                            itemHTMLAddr += '				<tr>';
+                            itemHTMLAddr += '					<th>1번 문제</th><th>2번 문제</th><th>3번 문제</th><th>4번 문제</th><th>5번 문제</th><th>총&nbsp&nbsp점</th>';
+                            itemHTMLAddr += '				</tr>';
+                            itemHTMLAddr += '			</thead>';
+                            itemHTMLAddr += '			<tbody>';
+                            itemHTMLAddr += '				<tr>';
+                            itemHTMLAddr += '					<td></td><td></td><td></td><td></td><td></td><td></td>';
+                            itemHTMLAddr += '				</tr>';
+                            itemHTMLAddr += '			</tbody>';
+                            itemHTMLAddr += '		</table>';
+                            itemHTMLAddr += '	</div>';
+                            itemHTMLAddr += '	<div class="endQpage">';
+                            itemHTMLAddr += '		<img class="endImg" onclick="recycle(\'kids\')" src="../../../images/site/kor/content/recycle.jpg">';
+                            itemHTMLAddr += '		<img class="endImg" onclick="modalHide(\'pop_education\')" src="../../../images/site/kor/content/finish.jpg">';
+                            itemHTMLAddr += '	</div>';
+                            itemHTMLAddr += '</li>';
+
+                            $('#addQuiz').append(itemHTMLAddr);
+                        }else{
+                            modalHide('pop_education');
+                            alert('퀴즈를 불러오던 중 오류가 났습니다.');
+                        }
+                    },
+                    error : function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            });
+        }else{
+            location.href='/education/education/education.jsp';
+        }
+    }
+</script>

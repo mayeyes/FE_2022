@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-1.12.4.min.js"></script>
+    <style>
+        body{padding:0; margin:0; background-color:#000;}
+        html,body{height:100%;}
+
+        #wrap{display:flex; align-items:center; justify-content:center; width:100%; height:100%;}
+        #moon{overflow:hidden; display:flex; position:relative; width:100%}
+        #moon::before,
+        #moon::after{content:""; width:50%; padding-top:50%; background-image:url(./moon.jpg); background-repeat:no-repeat; background-position:center center; background-size:contain;}
+        #moon [data-moon="wrap"]{position:absolute; left:0; top:0; width:100%;}
+        #moon [data-moon="wrap"] svg{position:relative; z-index:0; display:block;}
+        #moon [data-moon="wrap"] #nuriho{
+            position:absolute; z-index:1000; width:10%; background:url(./nuriho.svg) no-repeat center center; background-size:contain;
+            transform:translate(-50%,-50%);
+        }
+        #moon [data-moon="wrap"] #nuriho::before{content:""; display:block; width:100%; padding-top:70%;}
+    </style>
+    <script>
+        var moon = {
+            var:function(str,data){
+                var obj = str;
+                    obj.titleGap = 0;
+                    obj.lineGap = 30;
+                    // obj.boxWidth = obj.innerWidth();
+                    // obj.boxHeight = obj.innerWidth()/2;
+                    obj.boxWidth = 1700;
+                    obj.boxHeight = obj.boxWidth/2;
+                    obj.w = obj.boxWidth - (obj.titleGap*2);
+                    obj.h = obj.boxHeight - (obj.titleGap*2);
+                    obj.hitPoint = data.hit;//현제위치
+                    obj.x = 0;
+                    obj.y = 0;
+                    obj.ty = obj.attr('data-moon-type') || "line";
+                return obj;
+            },
+            set:function(str,data){
+                var obj = this.var(str,data);
+                var svg = '';
+                svg += '<svg viewbox="0 0 '+obj.boxWidth+' '+obj.boxHeight+'" width="'+obj.boxWidth+'" height="'+obj.boxHeight+'" fill="#ff6600">';
+                svg += this.grid(obj);
+                svg += this.pos(obj,data);
+                svg += '</svg>';
+
+                // 현제위치
+                svg += '<div id="nuriho" style="left:'+obj.x+'%; top:'+obj.y+'%;"></div>'
+
+                $(svg).appendTo(obj.empty());
+            },
+            resize:function(obj){
+                var w = obj.innerWidth();
+                var h = obj.innerWidth()/2;
+
+                obj.find(" svg").attr({"width":w,"height":h});
+            },
+            pos:function(obj,data){
+                var x = 0;
+                var y = 0;
+                var svg = '<g data-name="포인트">';
+                var points = "";
+                var lines = "";
+                var pointW = 4;//포인트크기
+                var lineW = 4;//라인굵기
+                var ty = obj.ty;
+                var saveX = 0;
+                var saveY = 0;
+
+                var arr = [];
+                var hitPointCheck = true;
+
+                for(var i=0; i<data.data.length; i++){
+                    var arrX = (obj.w * ((data.data[i].x / (12*obj.lineGap)) * 100) / 100) + (obj.w/2) + obj.titleGap - (pointW/2);
+                    var arrY = (obj.h/2) - (obj.h * ((data.data[i].y / (6*obj.lineGap)) * 100) / 100) + obj.titleGap - (pointW/2);
+                    arr[i] = [arrX+(pointW/2),arrY+(pointW/2)];
+                }
+                
+                for(var i=0; i<data.data.length; i++){
+                    if($('[data-moon="wrap"]>svg').size() === 0){
+                        svg += '<rect class="moon-point_'+(i+1)+'" x="'+arr[i][0]+'" y="'+arr[i][1]+'" rx="'+pointW+'" ry="'+pointW+'" width="'+pointW+'" height="'+pointW+'" fill="#ff0000"></rect>';
+                    } else {
+                        $('[data-moon="wrap"]>svg .moon-point_'+(i+1)).attr({"x":arr[i][0],"y":arr[i][1]});
+                    }
+
+                    var char = "C";
+                    px = arr[i][0];
+                    py = arr[i][1];
+                    if(ty==="round"){
+                        // if(i!==0){
+                        //     var px_prev = saveX;
+                        //     var py_prev = saveY;
+                        // } else {
+                        //     var px_prev = px;
+                        //     var py_prev = py;
+                            
+                        // }
+                        // points += " M"+px_prev+","+py_prev;
+                        // points += " "+char;
+                        // points += (px_prev+((px-px_prev)/2))+","+py_prev+" ";
+                        // points += (px_prev+((px-px_prev)/2))+","+py+" ";
+                        // points += px+","+py;
+                        
+                        var nextX = (arr[i+1]) ? arr[i+1][0]:arr[i][0];
+                        var nextY = (arr[i+1]) ? arr[i+1][1]:arr[i][1];
+                        
+                        points += " M"+arr[i][0]+","+arr[i][1];
+                        points += " C";
+                        points += (((nextX-arr[i][0])/2)+arr[i][0])+","+arr[i][1]+" ";
+                        points += (((nextX-arr[i][0])/2)+arr[i][0])+","+nextY+" ";
+                        points += nextX+","+nextY;
+
+                        /*
+                        M 100,100 
+                        C 150,100
+                        150,600
+                        300,600 
+
+                        M 300,600
+                        C 350,600
+                        350,350
+                        400,350
+                        */
+                        
+                    } else if(ty==="line"){
+                        if(i===0) points += "M";
+                        points += arr[i][0]+","+arr[i][1]+" ";
+                    }
+
+                    if(hitPointCheck){
+                        obj.x = arr[i][0] / obj.w * 100;
+                        obj.y = arr[i][1] / (obj.w/2) * 100;
+                    }
+                    hitPointCheck = (hitPointCheck) ? (~~(data.data[i].no)===~~(obj.hitPoint))?false:true : false;
+                    if(hitPointCheck){
+                        //현제위치 라인
+                        lines += points;
+                    }
+                }
+                points += " L"+(obj.w+obj.titleGap)+","+py;
+                svg += '</g>';
+
+                
+
+                // line
+                svg += '<g data-name="움직임">';
+                svg += '<path class="path-line1" d="'+points+'" stroke-width="'+lineW+'" fill="none" stroke="#fff" stroke-linejoin="round" />';
+                svg += '<path class="path-line2" d="'+lines+'" stroke-width="'+lineW+'" fill="none" stroke="#ff6600" stroke-linejoin="round" />';
+                svg += '</g>';
+                
+                if($('[data-moon="wrap"]>svg').size() === 0){
+                    return svg;
+                } else {
+                    $('[data-moon="wrap"]>svg .path-line1').attr({"d":points});
+                    $('[data-moon="wrap"]>svg .path-line2').attr({"d":lines});
+                    $('#nuriho').css({"left":obj.x+"%","top":obj.y+"%"});
+                }
+            },
+            grid:function(obj){
+                var fontSize = obj.w/70;
+                var svg = '<g data-name="그리드">';
+                for(var i=0; i<7; i++){
+                    svg += '<line x1="'+obj.titleGap+'" y1="'+(((obj.h/6)*i)+obj.titleGap)+'" x2="'+(obj.w+obj.titleGap)+'" y2="'+(((obj.h/6)*i)+obj.titleGap)+'" strokeWidth="1" stroke="#fff" />';
+                    svg += '<text x="'+(obj.titleGap-10)+'" y="'+(((obj.h/6)*i)+obj.titleGap+5)+'" text-anchor="end" font-size="'+fontSize+'" fill="#fff">'+((obj.lineGap*3)-(obj.lineGap*i))+'&#176;</text>';
+                }
+                for(var i=0; i<13; i++){
+                    svg += '<line x1="'+(((obj.w/12)*i)+obj.titleGap)+'" y1="'+obj.titleGap+'" x2="'+(((obj.w/12)*i)+obj.titleGap)+'" y2="'+(obj.h+obj.titleGap)+'" strokeWidth="1" stroke="#fff" />';
+                    if(i%2===0) svg += '<text x="'+(((obj.w/12)*i)+obj.titleGap)+'" y="'+(obj.h+obj.titleGap+30)+'" text-anchor="middle" font-size="'+fontSize+'" fill="#fff">'+(-(obj.lineGap*6)+(obj.lineGap*i))+'</text>';
+                }
+                svg += '</g>';
+                return svg;
+            },
+            init:function(){
+                var _this = this;
+                $.ajax({"url":"./json.json"}).done(function(data){
+                    _this.set($('[data-moon="wrap"]'),data);
+
+                    setInterval(function(){
+                        $.ajax({"url":"./json.json"}).done(function(data){
+                            _this.pos(_this.var($('[data-moon="wrap"]'),data),data);
+                        });
+                    },5000);
+
+                    _this.resize($('[data-moon="wrap"]'));
+                    $(window).on("resize",function(){_this.resize($('[data-moon="wrap"]'));});
+                });
+            }
+        }
+        $(function(){
+            moon.init();
+        });
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="moon">
+            <div data-moon="wrap" data-moon-type="round"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font_default.css">
+</head>
+<body>
+    <div id="login-wrap">
+        <div class="layout">
+            <div class="login-title">
+                <strong><img src="./img/title.png" alt="Value No.1"></strong>
+                <p>Energy &amp; Chemical Partner</p>
+                <span>지속적으로 성장해 나가는 <i>동반자</i>가 되겠습니다.</span>
+            </div>
+            <div class="login-box">
+                <div class="in">
+                    <div class="head">
+                        <strong>
+                            <span>Welcome to</span>
+                            <span>부지활용 시스템</span>
+                        </strong>
+                    </div>
+                    <div class="midd">
+                        <div class="group" data-sw="1">
+                            <input type="radio" name="group" id="group-1" onchange="document.querySelector('.group').setAttribute('data-sw','1')" />
+                            <label for="group-1">협력업체</label>
+                            <input type="radio" name="group" id="group-2" onchange="document.querySelector('.group').setAttribute('data-sw','2')" />
+                            <label for="group-2">GS칼텍스 임직원</label>
+                        </div>
+                        <ul>
+                            <li>
+                                <label for="" for="id">ID</label>
+                                <input type="text" id="id" placeholder="ID" title="ID 입력란">
+                            </li>
+                            <li>
+                                <label for="" for="password">Password</label>
+                                <input type="password" id="password" placeholder="Password" title="Password 입력란">
+                                <a href="#" class="btn-on"><span>비밀번호 보기</span></a>
+                                <a href="#" class="btn-off"><span>비밀번호 감추기</span></a>
+                            </li>
+                        </ul>
+                        <script>
+                            var password_value = document.querySelector('#password');
+                            var password_btn_on = document.querySelector('.btn-on');
+                            var password_btn_off = document.querySelector('.btn-off');
+                            var password = {
+                                on:function(){
+                                    password_btn_on.style.display = "none";
+                                    password_btn_off.style.display = "block";
+                                    password_value.setAttribute('type','text');
+                                    return false;
+                                },
+                                off:function(){
+                                    password_btn_on.style.display = "block";
+                                    password_btn_off.style.display = "none";
+                                    password_value.setAttribute('type','password');
+                                    return false;
+                                }
+                            }
+
+                            password_btn_on.addEventListener("click",function(){password.on()});
+                            password_btn_off.addEventListener("click",function(){password.off()});
+                        </script>
+                    </div>
+                    <div class="foot">
+                        <a href="#"><span>로그인</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
