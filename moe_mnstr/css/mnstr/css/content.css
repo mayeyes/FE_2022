@@ -1,0 +1,205 @@
+@charset "utf-8";
+
+/**** 202207 리뉴얼 작업 *****/
+
+/* font-family: 'Wooridaum'; */
+
+
+h4 {font-size: 3.4em;font-family:'Wooridaum';font-weight: 600;line-height:1.4;}
+h4 span {font-size:inherit;font-family:'Wooridaum';font-weight: 500;}
+
+h4[data-icon]{margin-top: 2.5em;}
+h4[data-icon="1"] {position: relative;}
+h4[data-icon="1"]::after {content: ""; display: block; position: absolute; width: 2em; height: 1.2em; margin: 0 auto; bottom: 100%; left: 0;right: 0; background-image: url(../images/icon_u.svg);background-repeat: no-repeat; background-position: center; animation-name: blind; animation-duration: 3s;}
+
+@keyframes blind {
+    0%   { opacity: 0;}
+    100%  { opacity: 1;}  
+ }
+
+h5{font-size: 3.4em; font-weight: 700;}
+
+.sub_wrap p{font-size: 2em;font-weight: 400;color: #4C4C4C;}
+
+.blue{color:#4165CD;}
+
+.col_bar_write {width: 100%;height: 1px;background: #C4C4C4;}
+
+.iframe {margin-top: 2em;}
+
+.contentWrap{min-height: 65em;}
+.contentWrap .contents section>.title{position: relative; padding-bottom: 2em; font-size: inherit;}
+.contentWrap .contents section .title::after{content: "";position: absolute;width: 100%;height: 1px; top: 100%; left: 0; background-color:#C4C4C4;}
+
+.contentWrap .contents.board_view section .title::after {display: none;}
+
+.contentWrap .contents section .sub_wrap{margin-top:4.5em;}
+.contentWrap .contents section #sub_cont {font-size: 16px;}
+.contentWrap .contents section .sub_wrap h4{text-align: center;}
+
+@media screen and (max-width: 640px){
+    h4[data-icon="1"]{font-size: 2.5em;}
+    h4[data-icon="1"]::after {background-size: 1em; }
+    
+
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+    data-btn
+
+////////////////////////////////////////////////////////////////////////////// */
+
+
+[data-btn]{
+	display: inline-flex; justify-content: center; align-items: center; overflow:hidden; position:relative; font-weight: 400; line-height:1.8em; height: auto; min-width: 5em; padding:1.5em; box-sizing: border-box; text-align:center; vertical-align:top; border:1px solid #1074E4; color:#fff; background-color:#1074E4;border-radius: 8px;
+	
+	-webkit-transition:background-color 0.2s linear, border-color 0.2s linear;
+	transition:background-color 0.2s linear, border-color 0.2s linear;
+}
+[data-btn='1']>span{display:inline-block; font-weight:400;font-size:1.8em;}
+a[data-btn='1']:hover{border-color:#1864AB;background-color: #1864AB;color: #fff;}
+
+[data-btn][data-icon] {padding: 1.5em 5.2em 1.5em 1.8em;}
+[data-btn="1"][data-icon="1"] {background-image: url(../images/arr_right_02.svg);background-repeat: no-repeat;background-position: 92% center;}
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 장관소개  > 인사말 
+	연관단어 : #sub_01
+
+////////////////////////////////////////////////////////////////////////////// */
+
+#sub_01{}
+#sub_01 .greeting_box{display: flex;justify-content: space-between; margin-top: 8.5em;}
+
+#sub_01 .greeting_box .img_box{position: relative; flex-shrink: 0; height: 100%; -webkit-transition:all 0.2s linear;transition:all 0.2s linear;}
+#sub_01 .greeting_box .img_box .in{border-radius: 40px 0px;overflow: hidden;}
+#sub_01 .greeting_box .img_box img {display: block;max-width: 100%;}
+#sub_01 .greeting_box .img_box a[data-btn="1"][data-icon="1"]{position: absolute; top: 94.5%;right: 10%;}
+
+#sub_01 .greeting_box .txt_box{ position: relative; margin-left: 6.5em;}
+#sub_01 .greeting_box .txt_box p {line-height: 1.8;}
+#sub_01 .greeting_box .txt_box p~p {margin-top: 1.8em;}
+
+/* 수정 작업 2022.11.17::S*/
+
+#sub_01 .greeting_box .txt_box strong {display: inline-block; padding-right: 4.2em; margin-top: 2.1em; font-size: 2.8em; font-weight: 500; background-image: url(../images/img_sign_02.svg); background-repeat: no-repeat;background-position: 95% bottom;background-size: 2.5em;}
+
+/* 수정 작업 2022.11.17::E*/
+
+#sub_01 .greeting_box .txt_box .btn_box{position: absolute;}
+
+@media screen and (max-width: 1024px){
+    #sub_01 .greeting_box .img_box {width: 40%;}
+}
+
+@media screen and (max-width: 640px){
+    
+    #sub_01 .greeting_box {flex-wrap: wrap;margin-top: 6%;}
+    #sub_01 .greeting_box .img_box{width: 34em; margin: 0 auto;}
+    #sub_01 .greeting_box .txt_box{margin-left: 0; margin-top: 5em;}
+    #sub_01 .greeting_box .txt_box strong{font-size: 2.4em;}
+}
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////
+
+	메뉴구조 : 장관소개  > 약력 
+	연관단어 : #sub_02
+
+////////////////////////////////////////////////////////////////////////////// */
+
+
+[data-list="1"] {display: flex; padding: 1.8em 0; align-items: baseline;}
+[data-list="1"]>strong{position: relative; min-width: 6em; flex-shrink: 0; font-size: 2em;font-weight: 500;color: #222;}
+[data-list="1"]>p{padding-left: 1.2em;}
+
+[data-list="1"][data-icon="1"]>strong::after{content: "";position: absolute;width: 15px; height: 1px; bottom: calc(100% + 5px); left: 0;background-color: #4165CD;}
+
+
+#sub_02{}
+#sub_02 .history_box{display: flex; flex-wrap: wrap;}
+#sub_02 .history_box> .top_his{width: 100%;margin-top: 6.8em;}
+#sub_02 .history_box> .left_his,
+#sub_02 .history_box> .right_his{width: 50%;margin-top: 6em;}
+#sub_02 .history_box> .left_his{padding-right: 2em;box-sizing: border-box;}
+
+#sub_02 .history_box> .top_his>ul{display: flex; justify-content: center;align-items: center;}
+#sub_02 .history_box> .top_his>ul>li~li{margin-left: 6em;}
+
+#sub_02 .history_box> .top_his>ul>li{-webkit-transition:all 0.2s linear;transition:all 0.2s linear;}
+#sub_02 .history_box> .top_his>ul>li.img_box>.in{display: inline-block; position: relative;}
+#sub_02 .history_box> .top_his>ul>li.img_box>.in>.flash{position: absolute;width: 3.5em; height: 3.5em;background-repeat: no-repeat;background-position: center; background-size: contain;animation-name: flash; animation-duration: 5s; animation-iteration-count: infinite;}
+#sub_02 .history_box> .top_his>ul>li.img_box>.in>.flash_01{right: calc(100% + 1em) ; bottom: 20%; background-image: url(../images/img_flash_left_01.svg);}
+#sub_02 .history_box> .top_his>ul>li.img_box>.in>.flash_02{right: 90%; bottom: 4%; background-image: url(../images/img_flash_left_02.svg);background-size: 2em;}
+#sub_02 .history_box> .top_his>ul>li.img_box>.in>.flash_03{left: calc(100% + 2em); top: 0; background-image: url(../images/img_flash_right_01.svg);}
+#sub_02 .history_box> .top_his>ul>li.img_box>.in>.flash_04{left: 95%; top: 10%; background-image: url(../images/img_flash_right_02.svg);background-size: 1.5em;}
+
+@keyframes flash {
+    0%   { opacity: 0;  }
+    50%  { opacity: 1;}
+    100% { opacity: 0;}
+ }
+
+#sub_02 .history_box> .top_his>ul>li>div[data-list="1"]>.text_letter{letter-spacing: 0.75em;}
+
+#sub_02 .history_box> .left_his>.his_list,
+#sub_02 .history_box> .right_his>.his_list {margin-top: 2em;}
+
+
+@media screen and (max-width: 1024px){
+    #sub_02 .history_box> .top_his{margin-top: 3em;}
+    #sub_02 .history_box> .top_his>ul{flex-wrap: wrap;}
+    #sub_02 .history_box> .top_his>ul>li.img_box {width: 100%;margin-bottom: 2em; text-align: center;}
+    #sub_02 .history_box> .top_his>ul>li~li{margin-left: 0}
+    #sub_02 .history_box> .top_his>ul>li:nth-child(2){width: 50%;}
+    #sub_02 .history_box> .top_his>ul>li:nth-child(3){width: 50%; padding-left: 3em;box-sizing: border-box;}
+
+    #sub_02 .history_box> .top_his>ul>li>div[data-list="1"]{justify-content: center;}
+    #sub_02 .history_box> .top_his>ul>li>div[data-list="1"]:nth-child(2){text-indent: -49px;}
+}
+
+@media screen and (max-width: 640px){
+    #sub_02 .history_box> .top_his>ul>li:nth-child(2),
+    #sub_02 .history_box> .top_his>ul>li:nth-child(3){width: 100%;}
+    #sub_02 .history_box> .top_his>ul>li:nth-child(3){padding-left: 0;}
+
+    #sub_02 .history_box> .left_his, 
+    #sub_02 .history_box> .right_his{width: 100%;margin-top: 4em;}
+    
+}
+
+
+
+/*  장관소개  > 인사말  수정작업 2022.12.08 */
+
+#sub_01 .greeting_box .img_box{padding-top: 33em; text-align: center;}
+#sub_01 .greeting_box .img_box strong {display: inline-block; padding-right: 4.2em; margin-top: 1em; font-size: 2.8em; font-weight: 500; background-image: url(../images/img_sign_02.svg); background-repeat: no-repeat;background-position: 95% bottom;background-size: 2.5em;}
+#sub_01 .greeting_box .img_box .in{border-radius: 0;}
+
+#sub_01 .greeting_box .txt_box{margin-left: 0;padding-right: 9em;}
+#sub_01 .greeting_box .txt_box p span.block{display: block;}
+
+@media screen and (max-width: 1024px){
+    #sub_01 .greeting_box{flex-wrap: wrap;justify-content: center;}
+    #sub_01 .greeting_box>li{width: 100%;}
+    #sub_01 .greeting_box .img_box{order: 1;width: 100%; max-width: 40em; padding-top: 2em;}
+    #sub_01 .greeting_box .img_box img{margin: 0 auto;}
+    #sub_01 .greeting_box .img_box strong{margin-top: 0.3em;}
+    #sub_01 .greeting_box .txt_box{order: 2;padding-top: 4em;padding-right: 0;}
+    #sub_01 .greeting_box .txt_box p{text-align: center;}
+    #sub_01 .greeting_box .txt_box p span.block{display: inline;}
+   
+}
+
+@media screen and (max-width: 640px){
+    #sub_01 h4[data-icon="1"] {
+        font-size: 3.4em;
+    }
+    #sub_01 .greeting_box .txt_box{padding-top:0;}
+}

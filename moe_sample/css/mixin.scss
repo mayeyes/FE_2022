@@ -1,0 +1,153 @@
+$img-url:'../img/';
+$point:#2E63C5;
+$text-color:#000;
+
+@mixin layout {
+    position:relative; max-width:1440px; margin:0 auto;
+}
+@mixin tab-text($color, $size: 13px){
+    color: $color;
+    font-size: $size;
+}
+@mixin clear{
+    content:""; display:block; clear:both;
+}
+@mixin box-shadow{
+    box-shadow: 0.4em 0.4em 0.3em rgba(0, 0, 0, 0.02);
+}
+@mixin text-hidden{
+    overflow:hidden; display:block; text-align:left; text-indent:-1000px;
+}
+@mixin background($img,$size:contain){
+    background-image:url($img-url+$img);
+    background-repeat:no-repeat; background-position:center center; background-size:$size;
+}
+//@include tab-text(green, 20px); 
+
+@mixin li($cnt, $em:1em) {
+    float:left; width:calc((100% - 1px - (#{$em} * (#{$cnt} - 1))) / #{$cnt}); margin-left:$em;
+    &:nth-child(#{$cnt}n+1){
+        clear:both; margin-left:0;
+    }
+    &:nth-child(n+#{$cnt+1}){
+        margin-top:$em;
+    }
+}
+@mixin li_clear() {
+    clear:both; float:none; width:100%; margin-left:0;
+}
+@mixin hidden {
+    opacity:0; display:block; position:absolute; left:0; top:0; width:0; height:0;
+}
+
+
+//레프트 & 모바일메뉴
+@mixin vmenu {
+    >ul{
+        >li{
+            border-bottom:1px solid rgba(0, 0, 0, 0.13);
+            >a{
+                position:relative; line-height:1.4; padding:1.3rem 3rem 1.3rem 0.8rem; font-weight:500; font-size:1.5rem; color:#131313;
+                &.child{
+                    &:after{
+                        content:""; display:block; position:absolute; right:1rem; top:1.2rem; width:2.1rem; height:2.1rem;
+                        @include background("common/gnb_bul.svg");
+                    }
+                    &[data-open="on"]{
+                        border-bottom:1px solid #2E62C5;
+                        &:after{
+                            @include background("common/gnb_bul_on.svg");
+                            transform:rotate(180deg);
+                        }
+                    }
+                }
+                >span{font-weight:inherit;}
+                &[data-open="on"],
+                &:hover{color:#2E62C5;}
+            }
+            >div{
+                padding:1.5rem 0;
+                >ul{
+                    >li{
+                        position:relative; padding-left:1.8rem;
+                        &:before{
+                            content:""; display:block; position:absolute; left:0.8rem; top:0.8rem; width:0.4rem; height:0.4rem; background-color:#ccc;
+                            border-radius:50%;
+                        }
+                        &:nth-child(n+2){margin-top:0.7rem;}
+                        >a{
+                            display:inline-block; position:relative; padding-right:2.2rem; font-weight:400; font-size:1.4rem; color:$text-color;
+                            &.child{
+                                &:after{
+                                    content:""; display:block; position:absolute; right:0; top:0.2rem; width:1.7rem; height:1.7rem;
+                                    @include background("common/4detph_off.svg");
+                                }
+                                &[data-open="on"]{
+                                    &:after{
+                                        @include background("common/4depth_on.svg");
+                                    }
+                                }
+                            }
+                            >span{font-weight:inherit;}
+                            &[data-open="on"],
+                            &:hover{color:#2E62C5;}
+                        }
+                        div{
+                            padding:1rem 1.8rem; margin:1rem 0 1.2rem 0; background-color:#F5F5F5;
+                            >ul{
+                                >li{
+                                    &:nth-child(n+2){margin-top:0.2rem;}
+                                    >a{
+                                        font-weight:400; font-size:1.4rem; color:#767676;
+                                        >span{font-weight:inherit;}
+                                        &[data-open="on"],
+                                        &:hover{color:#000;}
+                                    }
+                                }
+                            }
+                        }
+                        &[data-open="on"],
+                        &:hover{
+                            >a{color:#2E62C5;}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@mixin value($x) {
+    $sel: &;
+    $collector: ();
+
+    @for $i from 1 through length($sel) {
+        $s: nth($sel, $i);
+        $last: nth($s, -1);
+        @if str-slice($last, -1) == "]" {
+            // if is just the bare attribute with no value, $offset will be -1, otherwise it will be -2
+            $offset: -1;
+            $current-x: $x;
+
+            @if str-slice($last, -2) == '"]' {
+                // this attribute already has a value, so we need to adjust the offset
+                $offset: -2;
+            } @else {
+                // no attribute value, so add the equals and quotes
+                $current-x: '="' + $x + '"';
+            }
+            $last: str-slice($last, 1, $offset - 1) + $current-x + str-slice($last, $offset);
+            $collector: append($collector, set-nth($s, -1, $last), comma);
+        } @else {
+            // following line will append $x to your non-attribute selector
+            $collector: append($collector, selector-append($s, $x), comma);
+            // the following line will not change your non-attribute selector at all
+            //$collector: append($collector, $s, comma);
+        }
+    }
+
+    @at-root #{$collector} {
+        @content;
+    }
+}
