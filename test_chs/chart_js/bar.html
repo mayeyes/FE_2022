@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        canvas{padding: 0; margin: 0;}
+        .span_box{width: 250px; height: 16px; background-color: #eee;}
+        .span_box:after{content: ""; display: block; clear: both;}
+        .span_box span{
+            display: inline-block; width:0; height: 100%; float: left; text-indent: -9999px;
+            transition:width 1.2s ease-in-out; -webkit-transition:width 1.2s ease-in-out;
+        }
+        .span_box span.gray{background-color: #7f7f7f;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+    
+</head>
+<body>
+    <h1>퍼센트</h1><br>
+    <div class="span_box">
+        <span class="gray" data-value="72">퍼센트</span>
+    </div>
+    <script>
+        $(function(){
+            percent_g();
+        });
+
+        function percent_g(){
+            var obj = $(".span_box");
+                obj.gph = obj.find(" [data-value]");
+
+            for(var i=0; i<obj.gph.size(); i++){
+                obj.gph.eq(i).css("width",obj.gph.eq(i).attr("data-value")+"%");
+                console.log(obj.gph.eq(i).attr("data-value"));
+            }
+        }
+    </script>
+    <br><br>
+    <hr><br>
+    
+    <h1>bar</h1> <br>
+    <canvas id="myChart3" style="width:100%;max-width:600px"></canvas>
+
+    <script>
+        var xValues = ["A", "B", "C", "D", "E"];
+        var yValues = [55, 49, 44, 24, 35];
+        var barColors = ["#ffd9d9", "#cfffcf", "#bebeff", "#ffe9c0", "#a78e8e"];
+
+        new Chart("myChart3", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: '오잉',
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                    text: "World Wine Production 2018"
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: '이거 말씀하시는건가'
+                        }
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: '아닌뎁'
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    
+    <hr><br>
+    
+    <h1>horizontalBar</h1> <br>
+    <canvas id="myChart4" style="width:100%;max-width:600px"></canvas>
+
+    <script>
+        var xValues = ["A", "B", "C", "D", "E"];
+        var yValues = [55, 49, 44, 24, 35];
+        var barColors = ["#ffd9d9", "#cfffcf","#bebeff","#ffe9c0","#a78e8e"];
+
+        new Chart("myChart4", {
+          type: "horizontalBar",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: "그래프다!"
+            }
+          }
+        });
+    </script>
+</body>
+</html>

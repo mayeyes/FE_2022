@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=yes">
+	<meta name="format-detection" content="telephone=no,email=no,address=no" />
+	<title>Chart System</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="grap.js"></script>
+    <link rel="stylesheet" href="grap.css">
+
+    <style>
+        .controll{position:absolute; left:50%; bottom:2em; transform:translateX(-50%);}
+        div[id*="grap_"]{
+            position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+            width:100%; max-width:800px;
+        }
+        .btn{display:block; position:fixed; left:2em; bottom:2em; z-index:1000; padding:1em 2em; text-decoration:none; color:#fff; background-color:#7357ff; border-radius:0.3em;}
+    </style>
+</head>
+
+
+<body>
+    
+
+    
+        
+        <div id="grap_1"></div>
+
+        <div class="controll">
+            <div data-skin="graph">
+                <!-- 
+                    정보:s 
+                    정보의 경우 실제 적용시 select,input -> input:hidden으로 변경하여 사용
+                    <input type="hidden" name="data" value="data2.json" />
+                    <input type="hidden" name="type" value="1" />
+                    <input type="hidden" name="target" value="grap_1" />
+                    <input type="hidden" name="fig" value="%" />
+                    <input type="hidden" name="ratio" value="10:4" />
+                -->
+                <select name="data">
+                    <option value="data.json">단일데이터</option>
+                    <option value="data2.json" selected>멀티데이터</option>
+                </select>
+                <select name="type">
+                    <option value="1">막대형</option></li>
+                    <option value="2">막대형-계층</option></li>
+                    <option value="3">직선형</option></li>
+                    <option value="4">직선형-색채움</option></li>
+                    <option value="5">곡선형</option></li>
+                    <option value="6" selected>곡선형-색채움</option></li>
+                    <option value="7">점형</option></li>
+                    <option value="8">원형</option></li>
+                    <option value="9">원형-스크류</option></li>
+                    <option value="10">방사형</option></li>
+                    <option value="11">공간형</option></li>
+                    <option value="12">막대형+라인형</option></li>
+                </select>
+                <input type="hidden" name="target" value="grap_1" disabled>
+                <select name="fig">
+                    <option value="">수치표시</option>
+                    <option value="%">%</option>
+                </select>
+                <input type="text" name="ratio" value="10:4">
+                <input type="text" name="maxpoint" value="4000" />
+                <!-- 정보:s -->
+            </div>
+        </div>
+        <a href="sub.html" class="btn">전체보기</a>
+    
+
+
+    
+
+    
+    
+    
+
+</body>
+</html>

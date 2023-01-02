@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        .wrap{display: grid; grid-template-columns: 250px repeat(3, 1fr); grid-template-rows: repeat(5, auto); gap: 10px; width: 100%; max-width: 1920px; margin: 0 auto;}
+        .wrap>div{}
+        .wrap .header{grid-row: 1 / 6; background-color: #3f51b5;}
+        .wrap .header .inner{padding: 0 20px; box-sizing: border-box;}
+        .wrap .header .inner .logo{margin: 30px 0; text-align: center;}
+        .wrap .header .inner .menu{}
+        .wrap .header .inner .menu ul{padding: 0;}
+        .wrap .header .inner .menu ul li{list-style: none;}
+        .wrap .header .inner .menu ul li:not(:first-child){margin-top: 10px;}
+        .wrap .header .inner .menu ul li a{color: #333; text-decoration: none;}
+        .wrap .header .inner .menu ul li a span{font-size: 16px; line-height: 24px; font-weight: bold;}
+        .wrap .search{grid-column: 2 / span 3; background-color: #eaffec;}
+        .wrap .visual{grid-column: 2 / span 3; background-color: #eaeaff;}
+        .wrap .contents1{background-color: #DAD8A7;}
+        .wrap .contents2{background-color: #FF9E9D;}
+        .wrap .contents3{background-color: #FF3D7F;}
+        .wrap .contents4{background-color: #DAD8A7;}
+        .wrap .contents5{background-color: #FF9E9D;}
+        .wrap .contents6{background-color: #FF3D7F;}
+        
+        .wrap .footer{grid-column: 2 / span 3; background-color: #9fc3ea;}
+        
+        @media screen and (max-width: 1024px) {
+            .wrap{grid-template-columns: 250px repeat(3, 1fr);}
+            .wrap .header{grid-row: 1; grid-column: 1 / span 4;}
+            .wrap .search,
+            .wrap .visual{grid-column: 1 / span 4;}
+            .wrap [class*="contents"]{grid-column: 1fr 1fr 1fr;}
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="inner">
+                <div class="logo"><img src="img/mayeye.svg" alt=""></div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#"><span>ABOUT</span></a></li>
+                        <li><a href="#"><span>PERFOMANCE</span></a></li>
+                        <li><a href="#"><span>SOLUTION</span></a></li>
+                        <li><a href="#"><span>CONTACT</span></a></li>
+                        <li><a href="#"><span>HELP DESK</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="inner">
+                <div class="input">
+                    <input type="text" name="textfield" placeholder="TextField">
+                </div>
+                <div class="button">
+                    <a href="#"><span>버튼</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="visual">
+            <div class="inner">
+                <div class="logo4">
+                    <!--<svg width="1162" height="195" viewBox="0 0 1162 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_4_37)">
+                            <path d="M134.18 0.420898H194.391V195H155.566V63.3618C155.566 59.5367 155.566 54.3156 155.566 47.507C155.566 40.6985 155.756 35.4199 155.756 31.7479L117.614 195H76.5306L38.5785 31.7479C38.5785 35.4199 38.5785 40.6793 38.6733 47.507C38.7682 54.3347 38.8441 59.575 38.8441 63.3618V195H-0.0378418V0.420898H60.8184L97.651 153.422L134.18 0.420898Z" fill="#46A92A" />
+                            <path d="M289.195 0.420898H333.03L398.649 195H356.712L344.606 155.392H276.064L263.73 195H223.007L289.195 0.420898ZM286.767 121.54H334.207L310.885 45.0399L286.767 121.54Z" fill="#46A92A" />
+                            <path d="M510.589 0H554.063L492.619 121.98V195H454.287V121.273L390.584 0H435.804L474.098 84.8774L510.589 0Z" fill="#46A92A" />
+                            <path d="M834.473 34.9227H755.495V76.3095H827.983V109.836H755.495V160.537H838.097V194.962H724.526V0.420898H834.473V34.9227Z" fill="#46A92A" />
+                            <path d="M979.431 0H1022.77L961.366 121.98V195H923.034V121.273L859.407 0H904.779L942.959 84.8774L979.431 0Z" fill="#46A92A" />
+                            <path d="M1158.3 34.9227H1079.32V76.3095H1151.81V109.836H1079.32V160.537H1162V194.962H1048.41V0.420898H1158.3V34.9227Z" fill="#46A92A" />
+                            <path d="M571.73 98.9152C571.734 109.186 574.759 119.226 580.423 127.764C586.086 136.303 594.135 142.958 603.55 146.888C612.966 150.817 623.326 151.846 633.322 149.842C643.317 147.839 652.499 142.894 659.706 135.633C666.914 128.371 671.823 119.119 673.815 109.046C675.806 98.9731 674.79 88.5311 670.894 79.0401C666.999 69.549 660.399 61.435 651.928 55.7235C643.458 50.0121 633.498 46.9597 623.307 46.9521C609.633 46.9572 596.52 52.4329 586.849 62.1762C577.178 71.9195 571.74 85.1335 571.73 98.9152ZM602.415 98.9152C602.415 94.7543 603.639 90.6869 605.932 87.2273C608.226 83.7677 611.486 81.0712 615.3 79.4789C619.114 77.8866 623.311 77.47 627.36 78.2817C631.41 79.0935 635.129 81.0971 638.048 84.0393C640.967 86.9815 642.955 90.73 643.761 94.8109C644.566 98.8918 644.153 103.122 642.573 106.966C640.993 110.81 638.318 114.096 634.885 116.407C631.452 118.719 627.417 119.953 623.288 119.953C617.752 119.953 612.443 117.736 608.528 113.791C604.614 109.846 602.415 104.495 602.415 98.9152V98.9152Z" fill="#46A92A" />
+                            <path d="M571.73 98.9152C571.734 109.186 574.759 119.226 580.423 127.764C586.086 136.303 594.135 142.958 603.55 146.888C612.966 150.817 623.326 151.846 633.322 149.842C643.317 147.839 652.499 142.894 659.706 135.633C666.914 128.371 671.823 119.119 673.815 109.046C675.806 98.9731 674.79 88.5311 670.894 79.0401C666.998 69.549 660.399 61.435 651.928 55.7235C643.458 50.0121 633.498 46.9597 623.307 46.9521C609.633 46.9572 596.52 52.4329 586.849 62.1762C577.178 71.9195 571.74 85.1335 571.73 98.9152ZM602.414 98.9152C602.414 94.7543 603.639 90.6869 605.932 87.2273C608.226 83.7677 611.486 81.0712 615.3 79.4789C619.114 77.8866 623.311 77.47 627.36 78.2817C631.409 79.0935 635.129 81.0971 638.048 84.0393C640.967 86.9815 642.955 90.73 643.761 94.8109C644.566 98.8918 644.153 103.122 642.573 106.966C640.993 110.81 638.318 114.096 634.885 116.407C631.452 118.719 627.417 119.953 623.288 119.953C617.752 119.953 612.443 117.736 608.528 113.791C604.614 109.846 602.414 104.495 602.414 98.9152V98.9152Z" fill="#46A92A" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_4_37">
+                                <rect width="1162" height="195" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>-->
+                    <div class="cir">
+                        <span><i>5월</i></span>
+                        <span><i>봄</i></span>
+                        <span><i>인생의 봄</i></span>
+                        <span><i>한창(때)</i></span>
+                        <span><i>청춘</i></span>
+                        <span><i>눈</i></span>
+                        <span><i>견해</i></span>
+                        <span><i>관찰력</i></span>
+                        <span><i>직관력</i></span>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="contents1">
+            <div class="inner">
+                <div class="boxs">
+                    <span>온라인 마케팅 서비스</span>
+                </div>
+            </div>
+        </div>
+        <div class="contents2">
+            <div class="inner">
+                <div class="boxs">
+                    <span>온라인 마케팅 서비스</span>
+                </div>
+            </div>
+        </div>
+        <div class="contents3">
+            <div class="inner">
+                <div class="boxs">
+                    <span>온라인 마케팅 서비스</span>
+                </div>
+            </div>
+        </div>
+        <div class="contents4">
+            <div class="inner">
+                <div class="boxs">
+                    <span>온라인 마케팅 서비스</span>
+                </div>
+            </div>
+        </div>
+        <div class="contents5">
+            <div class="inner">
+                <div class="boxs">
+                    <span>온라인 마케팅 서비스</span>
+                </div>
+            </div>
+        </div>
+        <div class="contents6">
+            <div class="inner">
+                <div class="boxs">
+                    <span>온라인 마케팅 서비스</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="inner">
+                <div class="t">
+                    <address><span>ADDRESS.</span> 대전광역시 유성구 반석동로40번길 12 (반석동 646-5) (주)메이아이</address>
+                    <p><span>TEL.</span> 042-000-0000</p>
+                    <p><span>FAX..</span> 042-000-0000</p>
+                    <p class="copy">COPYRIGHT© 2022 MAYEYE. ALL RIGHTS RESERVED</p>
+                </div>
+                <div class="b">
+                    <a href="#" class="btn"><span>회사소개 다운로드</span></a>
+                    <a href="#" class="btn"><span>HELP DESK</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

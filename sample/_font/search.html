@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=yes">
+	<meta name="format-detection" content="telephone=no,email=no,address=no" />
+	<title>Font Code</title>
+	<script src="../js/jquery-1.12.4.min.js"></script>
+</head>
+
+
+<body>
+
+    <script>
+        function _param(sname) {var params = location.search.substr(location.search.indexOf("?") + 1);var sval = "";params = params.split("&");for (var i = 0; i < params.length; i++) {temp = params[i].split("=");if ([temp[0]] == sname) { sval = temp[1]; }}return sval;}
+
+        var obj = $("body");
+            obj.arr = [
+                ['Local',''],
+                ['Nanum Square','./NanumSquare/font.css'],
+                ['s-core-dream','./ScoreDream/font.css'],
+                ['Noto Sans KR','./Noto_Sans_KR/font.css'],
+                ['Noto Serif KR','./Noto_Serif_KR/font.css'],
+                ['SUIT','./Sult/font.css']
+            ];
+
+        var v = "";
+        var p = _param('s');
+            p = p.split(',');
+
+        for(var i=0; i<p.length; i++){
+            v = obj.arr[p[i]][1];
+            if(v !== ""){
+                $.ajax({url: v})
+                    .done(function(data){
+                        document.write(data);
+                    });
+            }
+        }
+	</script>
+
+</body>
+</html>

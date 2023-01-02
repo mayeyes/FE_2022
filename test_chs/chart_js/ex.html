@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        canvas{padding: 0; margin: 0;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+    
+</head>
+<body>
+    <h1>2022.01.27</h1> <br>
+    <canvas id="myChart3" style="width:100%;max-width:1000px"></canvas>
+
+    <script>
+        var xValues = ["AFG", "AGO", "ALB", "AND", "ARE", "ARG"];
+        var title_Values = ["Afghanistan", "Angola", "Albania", "Andorra", "United Arab Emirates", "Argentina"];
+        var aValues = [0, 94, 40, 0, 0, 40];
+        var bValues = [0, 94, 28, 0, 22, 69];
+        var cValues = [97, 81, 25, 0, 11, 46];
+        var dValues = [19, 9, 79, 0, 77, 68];
+        var eValues = [86, 91, 35, 6, 30, 34];
+        var fValues = [3, 15, 61, 0, 30, 85];
+        var gValues = [86, 5, 35, 59, 23, 88];
+
+        new Chart("myChart3", {
+
+            type: 'bar',
+            data: {
+                labels: xValues,
+                datasets: [{
+                        label: "절대빈곤률",
+                        backgroundColor: "#ebebeb",
+                        data: aValues
+                    },
+                    {
+                        label: "지니계수",
+                        backgroundColor: "#c7c7c7",
+                        data: bValues
+                    },
+                    {
+                        label: "성평등지수",
+                        backgroundColor: "#aaaaaa",
+                        data: cValues
+                    },
+                    {
+                        label: "균기대수",
+                        backgroundColor: "#9b9b9b",
+                        data: dValues
+                    },
+                    {
+                        label: "유아사망",
+                        backgroundColor: "#777777",
+                        data: eValues
+                    },
+                    {
+                        label: "병상수",
+                        backgroundColor: "#626262",
+                        data: fValues
+                    },
+                    {
+                        label: "보건비지출",
+                        backgroundColor: "#2f2f2f",
+                        data: gValues
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Bar Chart'
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: '단위:위로보내고싶은데'
+                        }
+                    }],
+                }
+            },
+        });
+    </script>
+    
+    <br><br><br>
+    
+    <canvas id="myChart6" style="width:100%;max-width:600px;"></canvas>
+<!--개빡치넹 왜안되는겨-->
+    <script>
+        var xValues = ["사회개발","인적자본","인프라","산업·혁신","무역·통상"];
+        
+        new Chart("myChart6", {
+          type: "radar",
+          data: {
+            labels: xValues,
+            datasets: [{ 
+              label: "한국",
+              data: [70,60,70,52,66],
+              borderWidth: 2,
+              borderColor: "red",
+              backgroundColor: "rgba(255, 0, 0, 0.1)",
+              pointBackgroundColor: "red",
+              pointBorderColor: "white",
+              pointBorderWidth: "2",
+              fill: true
+            }, { 
+              label: "중국", 
+              data: [56,37,50,68,42],
+              borderWidth: 2,
+              borderColor: "orange",
+              backgroundColor: "rgba(255, 165, 0, 0.1)",
+              pointBackgroundColor: "orange",
+              pointBorderColor: "white",
+              pointBorderWidth: "2",
+              fill: true
+            }, { 
+              label: "미국",
+              data: [63,47,24,55,49],
+              borderWidth: 2,
+              borderColor: "yellow",
+              backgroundColor: "rgba(255, 255, 0, 0.1)",
+              pointBackgroundColor: "yellow",
+              pointBorderColor: "white",
+              pointBorderWidth: "2",
+              fill: true
+            }]
+          },
+          options: {
+            legend: {display: true,
+                    position: 'bottom'},
+              scale: {
+                angleLines: {
+                    display: true
+                },
+                  circular: true,
+                ticks: {
+                    suggestedMin: 0,
+                    suggestedMax: 80,
+                }
+            },
+            
+          }
+        });
+    </script>
+    
+    
+    <br><br><br>
+    <h1>웅</h1>
+    <canvas id="chart" style="width:100%;max-width:600px"></canvas>
+    <script>
+        var ctx = document.getElementById('chart');
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['AFG','AGO','ALB','AND','ARE','ARE'],
+                datasets: [{
+                        label: '절대빈곤률',
+                        data: [0, 94, 40, 0, 0, 40],
+                        backgroundColor: '#8988AE',
+                    },
+                    {
+                        label: '지니계수',
+                        data: [0, 94, 28, 0, 22, 69],
+                        backgroundColor: '#DFA84B',
+                    },
+                    {
+                        label: '성평등지수',
+                        data: [97, 81, 25, 0, 11, 46],
+                        backgroundColor: '#E67370',
+                    },
+                    {
+                        label: '균기대수',
+                        data: [19, 9, 79, 0, 77, 68],
+                        backgroundColor: '#7BAD82',
+                    },
+                    {
+                        label: '유아사망',
+                        data: [86, 91, 35, 6, 30, 34],
+                        backgroundColor: '#01AAAE',
+                    },
+                    {
+                        label: '병상수',
+                        data: [3, 15, 61, 0, 30, 85],
+                        backgroundColor: '#A7A9AC',
+                    }
+                ]
+            },
+            options: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                scales : {
+                    x : {  display : false  } , 
+                    yAxis : {  display : false  } , 
+                    xAxes : [ {gridLines : {display : false},
+                                /*ticks: {display: false},*/
+                               stacked: true,
+                               barThickness: 30
+                               
+                    } ],
+                    y : {  display : false  } , 
+                    xAxis : {  display : false  } , 
+                    yAxes : [ {/*gridLines : {display : false},
+                              ticks: {display: false},*/
+                               stacked: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '(단위: 천 달러)'
+                        }
+                    } ]
+                }
+            }
+        });
+    </script>
+    
+    <br><br><br>
+    
+    <h1>2022.02.04</h1> <br>
+    <canvas id="myChart9" style="width:100%;max-width:1000px"></canvas>
+
+    <script>
+        var xValues = [["총 인구 중", "절대빈곤율"],['지니계수', '(0=완전평등)'],['성불평등지수', '(0=완전평등)'],['평균', '기대수명'],['영유아 사망률', '(5세미만 1천명 당)'],['1백명 당', '병상수']];
+        var aValues = [90, 94, 40, 80, 0, 40];
+        var bValues = [78, 94, 28, 70, 22, 69];
+        var cValues = [97, 81, 25, 90, 11, 46];
+
+        new Chart("myChart9", {
+
+            type: 'bar',
+            data: {
+                labels: xValues,
+                datasets: [{
+                        label: "아시아",
+                        backgroundColor: "#ebebeb",
+                        data: aValues,
+                        datalabels: {
+                            align: 'end',
+                            anchor: 'start'
+                          }
+                    },
+                    {
+                        label: "중저소득국",
+                        backgroundColor: "transparent",
+                        data: bValues,
+                        type: 'line',
+                        datalabels: {
+                            align: 'end',
+                            anchor: 'start'
+                          }
+                    },
+                    {
+                        label: "한국",
+                        backgroundColor: "transparent",
+                        data: cValues,
+                        type: 'line',
+                        datalabels: {
+                            align: 'end',
+                            anchor: 'start'
+                          }
+                    }
+                ]
+            },
+            
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Bar Chart'
+                    },
+                     datalabels: {
+                        color: 'black',
+                        display: 'block',
+                        font: {
+                          weight: 'bold'
+                        },
+                        formatter: Math.round }
+                }
+            },
+        });
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>

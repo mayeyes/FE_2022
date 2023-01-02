@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=yes">
+	<meta name="format-detection" content="telephone=no,email=no,address=no" />
+	<title>Font System</title>
+	<script src="../js/jquery-1.12.4.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+
+	<script>
+		$(function(){
+			loading.init();
+			fontList.init();
+		});
+		var loading = {
+			set:function(){
+				var text = '[data-skin="loading"]>div>span{display:block; position:absolute; left:50%; top:50%; width:2.4em; height:2.4em; -webkit-border-radius:50%; border-radius:50%; -webkit-transform:translate(-50%,-50%); transform:translate(-50%,-50%); -webkit-animation-name:loadding; -webkit-animation-duration:1.2s; -webkit-animation-fill-mode:forwards; -webkit-animation-iteration-count:infinite; -webkit-animation-timing-function:linear; animation-name:loadding; animation-duration:1.2s; animation-fill-mode:forwards; animation-iteration-count:infinite; animation-timing-function:linear;} [data-skin="loading"]>div>span:nth-child(1){left:calc(50% - 5em); background-color:rgb(251, 211, 4); animation-delay:0s;} [data-skin="loading"]>div>span:nth-child(2){left:calc(50% - 1.7em); background-color:rgb(0, 181, 255); animation-delay:0.2s;} [data-skin="loading"]>div>span:nth-child(3){left:calc(50% + 1.7em); background-color:rgb(0, 196, 209); animation-delay:0.4s;} [data-skin="loading"]>div>span:nth-child(4){left:calc(50% + 5em); background-color:rgb(250, 137, 7); animation-delay:0.6s;} @-webkit-keyframes loadding{0%,80%,100%{top:calc(50%);}50%{top:calc(50% - 3em);}} @keyframes loadding{0%,80%,100%{top:calc(50%);}50%{top:calc(50% - 3em);}}';
+				var style = document.createElement('style');
+				style.setAttribute("type", "text/css");
+				if (style.styleSheet) {
+					style.styleSheet.cssText = text;
+				} else {
+					style.innerHTML = text;
+				}
+				document.getElementsByTagName('head')[0].appendChild(style);
+			},
+			on:function(){
+				$('<div data-skin="loading"><div><span></span><span></span><span></span><span></span></div></div>').appendTo($("body"));
+				$('[data-skin="loading"]').attr("style","position:fixed; left:0; top:0; z-index:3000; width:100%; height:100%; background-color:rgba(0,0,0,0.5);");
+				$('[data-skin="loading"]>div').attr("style","position:fixed; left:50%; top:50%; width:30em; height:30em;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);");
+			},
+			off:function(){
+				$('[data-skin="loading"]').remove();
+			},
+			init:function(){
+				this.set();
+			}
+		}
+		var fontList = {
+			set:function(){
+				var obj = $(".font-list");
+					obj.arr = [
+						['Local',''],
+						['Nanum Square','./NanumSquare/'],
+						['s-core-dream','./ScoreDream/'],
+						['Noto Sans KR','./Noto_Sans_KR/'],
+						['Noto Serif KR','./Noto_Serif_KR/'],
+						['SUIT','./Sult/'],
+						['Pretendard','./Pretendard/'],
+						['Gmarket','./Gmarket/'],
+						['Poppins','./poppins/']
+					];
+					obj.item;
+				
+				for(var i=0; i<obj.arr.length; i++){
+					obj.item = this.temp(obj.arr[i],i);
+					$(obj.item).appendTo(obj);
+				}
+			},
+			temp:function(str,idx){
+				var fontFamily = (str[0] === "Local") ? "":'style="font-family:\''+str[0]+'\';"';
+				var tp = '<div class="item">\
+							<input type="checkbox" id="font-item_'+idx+'" value="'+str[1]+'" />\
+							<label for="font-item_'+idx+'">\
+								<div '+fontFamily+'>\
+									<div class="in">\
+										<span style="font-weight:300">ㄱㄴㄷ / ㅏㅣㅜㅔㅗ 안녕하세요 / Hi ABC / abc - 300</span>\
+										<span style="font-weight:400">ㄱㄴㄷ / ㅏㅣㅜㅔㅗ 안녕하세요 / Hi ABC / abc - 400</span>\
+										<span style="font-weight:500">ㄱㄴㄷ / ㅏㅣㅜㅔㅗ 안녕하세요 / Hi ABC / abc - 500</span>\
+										<span style="font-weight:600">ㄱㄴㄷ / ㅏㅣㅜㅔㅗ 안녕하세요 / Hi ABC / abc - 600</span>\
+									</div>\
+								</div>\
+								<strong>'+str[0]+'</strong>\
+							</label>\
+						</div>';
+				return tp;
+			},
+			code:function(){
+				var _this = this;
+				var obj = $(".font-list");
+				var storageBox = $(".font-code .storage");
+				var defaultBox = $(".font-code .default");
+				var sVal="";
+				var dVal="";
+				var v = obj.find(" input:checked");
+				var t = "";
+				var t2 = "";
+				var check1 = false;
+				var check2 = false;
+
+				storageBox.val("");
+				defaultBox.val("");
+				loading.on();
+				for(var i=0; i<v.length; i++){
+					if(v.eq(i).val() !== ''){
+						var cnt = i;
+						var cnt2 = i;
+						$.ajax({url: v.eq(i).val()+"font.css"})
+							.done(function(data){
+								t = t+data;
+								if(cnt === v.length-1){
+									sVal += t;
+									check1 = true;
+									storageBox.val(t);
+									if(check1 && check2){
+										check1 = false;
+										check2 = false;
+										cnt = 9999;
+										loading.off();
+									}
+								}
+							});
+
+						$.ajax({url: v.eq(i).val()+"font_default.css"})
+							.done(function(data){
+								t2 = t2+data;
+								if(cnt2 === v.length-1){
+									dVal += t2;
+									check2 = true;
+									defaultBox.val(t2);
+									if(check1 && check2){
+										check1 = false;
+										check2 = false;
+										cnt2 = 9999;
+										loading.off();
+									}
+								}
+							});
+					}
+				}
+			},
+			copy:function(str){
+				var obj = $("textarea."+str)[0];
+				obj.select();
+				document.execCommand("Copy");
+			},
+			init:function(){
+				this.set();
+			}
+		}
+	</script>
+</head>
+
+
+<body id="main" class="user" data-popup="on">
+
+	<div id="wrap">
+		<div class="font-list"></div>
+		<div class="font-code">
+			<div>
+				<div>
+					<strong>Storage Code</strong>
+					<textarea cols="" rows="" class="storage"></textarea>
+					<button onclick="fontList.copy('storage');"><span>Copy</span></button>
+				</div>
+				<div>
+					<strong>Default Code</strong>
+					<textarea cols="" rows="" class="default"></textarea>
+					<button onclick="fontList.copy('default');"><span>Copy</span></button>
+				</div>
+			</div>
+			<button onclick="fontList.code();"><span>코드생성</span></button>
+		</div>
+	</div>
+    
+
+</body>
+</html>

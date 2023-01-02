@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        canvas{padding: 0; margin: 0;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+    
+</head>
+<body>
+   
+    
+    <h1>line</h1><br>
+    <canvas id="myChart3" style="width:100%;max-width:700px"></canvas>
+
+    <script>
+        var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+        var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+        
+        new Chart("myChart3", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgb(54, 54, 54)",
+              borderColor: "rgba(54,54,54,0.1)",
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            scales: {
+              yAxes: [{ticks: {min: 6, max:16}}],
+            }
+          }
+        });
+    </script>
+    <br><br><hr><br>
+    <h1>scatter</h1><br>
+    <canvas id="myChart4" style="width:100%;max-width:700px"></canvas>
+
+    <script>
+        var xyValues = [
+          {x:50, y:7},
+          {x:60, y:8},
+          {x:70, y:8},
+          {x:80, y:9},
+          {x:90, y:9},
+          {x:100, y:9},
+          {x:110, y:10},
+          {x:120, y:11},
+          {x:130, y:14},
+          {x:140, y:14},
+          {x:150, y:15}
+        ];
+
+        new Chart("myChart4", {
+          type: "scatter",
+          data: {
+            datasets: [{
+              pointRadius: 4,
+              pointBackgroundColor: "rgb(62, 62, 62)",
+              borderColor: "transparent",
+              data: xyValues,
+                borderWidth: 1,
+                fill: false
+            }]
+          },
+          options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 40, max:160}}],
+              yAxes: [{ticks: {min: 6, max:16}}],
+            }
+          }
+        });
+    </script>
+    <br><br><hr><br>
+    <h1>line</h1> <br>
+    <div style="width: 600px;">
+        <canvas id="myChart" style="width:100%;margin-left: 0"></canvas>
+    </div>
+    <script>
+        var xValues = [0,100,200,300,400,500];
+        new Chart("myChart", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{ 
+              data: [360,500,100,240,304,300],
+                pointRadius: 0,
+              borderColor: "#dfgdff",
+              backgroundColor: "#dfgdff",
+              fill: true
+            }]
+          },
+          options: {
+            legend: {display: false},
+                display: true,
+                scales : {
+                    x : {  display : false  } , 
+                    yAxis : {  display : false  } , 
+                    xAxes : [ {gridLines : {display : false},
+                                ticks: {display: false},
+                               
+                    } ],
+                    y : {  display : false  } , 
+                    xAxis : {  display : false  } , 
+                    yAxes : [ {gridLines : {display : false},
+                              ticks: {display: false}
+                    } ]
+                }
+            }
+            
+            
+        });
+    </script>
+    <br><br><hr><br>
+    
+    <h1>line</h1> <br>
+    <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
+    <script>
+        var xValues = [0,100,200,300,400,500];
+        new Chart("myChart2", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{ 
+              data: [360,500,100,240,304,300],
+                pointRadius: 5,
+              borderColor: "#dfgdff",
+              fill: false
+            }]
+          },
+          options: {
+            legend: {display: false}
+            }
+            
+            
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        canvas{padding: 0; margin: 0;}
+        .span_box{width: 250px; height: 16px; background-color: #eee;}
+        .span_box:after{content: ""; display: block; clear: both;}
+        .span_box span{
+            display: inline-block; width:0; height: 100%; float: left; text-indent: -9999px;
+            transition:width 1.2s ease-in-out; -webkit-transition:width 1.2s ease-in-out;
+        }
+        .span_box span.gray{background-color: #7f7f7f;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+    
+</head>
+<body>
+    <h1>bubble</h1> <br>
+    <canvas id="myChart3" style="width:100%;max-width:600px"></canvas>
+
+    <script>
+        var xValues = ["A", "B", "C", "D", "E"];
+        var yValues = [55, 49, 44, 24, 35];
+        var barColors = ["#ffd9d9", "#cfffcf","#bebeff","#ffe9c0","#a78e8e"];
+
+        new Chart("myChart3", {
+          type: "bubble",
+          data: {
+            /*labels: xValues,*/
+            
+              datasets: [{
+                label: 'First Dataset',
+                data: [{
+                  x: 30,
+                  y: 30,
+                  r: 10
+                }, {
+                  x: 40,
+                  y: 10,
+                  r: 10
+                }],
+                backgroundColor: 'rgb(255, 99, 132)'
+              }]
+          },
+          options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: "버블버블"
+            }
+          }
+        });
+    </script>
+</body>
+</html>

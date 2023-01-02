@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HighCharts | Treemap Chart</title>
+	<style>
+		*{padding: 0; margin: 0;}
+		.highcharts-figure,
+		.highcharts-data-table table {
+		   width: 700px;
+		}
+	</style>
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/heatmap.js"></script>
+	<script src="https://code.highcharts.com/modules/treemap.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+
+<body>
+<figure class="highcharts-figure">
+	<div id="container"></div>
+</figure>
+
+<script>
+	Highcharts.chart('container', {
+	    colorAxis: {
+	        minColor: '#FFFFFF',
+	        maxColor: Highcharts.getOptions().colors[0]
+	    },
+	    series: [{
+	        type: 'treemap',
+	        layoutAlgorithm: 'squarified',
+	        data: [{
+	            name: 'A',
+	            value: 6,
+	            colorValue: 1
+	        }, {
+	            name: 'B',
+	            value: 6,
+	            colorValue: 2
+	        }, {
+	            name: 'C',
+	            value: 4,
+	            colorValue: 3
+	        }, {
+	            name: 'D',
+	            value: 3,
+	            colorValue: 4
+	        }, {
+	            name: 'E',
+	            value: 2,
+	            colorValue: 5
+	        }, {
+	            name: 'F',
+	            value: 2,
+	            colorValue: 6
+	        }, {
+	            name: 'G',
+	            value: 1,
+	            colorValue: 7
+	        }]
+	    }],
+	    title: {
+	        text: 'Treemap Chart 기본 그래프'
+	    }
+	});
+</script>
+</body>
+</html>

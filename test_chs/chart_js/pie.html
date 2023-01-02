@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        canvas{padding: 0; margin: 0;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+    
+</head>
+<body>
+    <h1>pie </h1>
+    <canvas id="myChart6" data-graph-type="radar" style="width:100%;max-width:400px"></canvas>
+
+    <script>
+        var xValues = ["A","B","C","D","E"];
+        var yValues = [55, 49, 44, 24, 15];
+        var barColors = [
+          "#dddddd",
+          "#a3a3a3",
+          "#8e8e8e",
+          "#575757",
+          "#383838"
+        ];
+        
+        new Chart("myChart6", {
+          type: "pie",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: "이것은 pie형~!"
+            }
+          }
+        });
+    </script>
+    
+    <br><br><hr><br>
+    <h1>doughnut </h1>
+    <canvas id="myChart7" data-graph-type="radar" style="width:100%;max-width:400px"></canvas>
+
+    <script>
+        var xValues = ["A","B","C","D","E"];
+        var yValues = [55, 49, 44, 24, 15];
+        var barColors = [
+          "#dddddd",
+          "#a3a3a3",
+          "#8e8e8e",
+          "#575757",
+          "#383838"
+        ];
+        
+        new Chart("myChart7", {
+          type: "doughnut",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: "이것은 doughnut형~!~!"
+            }
+          }
+        });
+    </script>
+</body>
+</html>

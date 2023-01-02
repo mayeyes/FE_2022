@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="grap.js"></script>
+    <link rel="stylesheet" href="grap.css">
+    <style>
+        *,
+        *::before,
+        *::after{box-sizing:border-box;}
+        #wrap::after{content:""; display:block; clear:both;}
+        #wrap>div{
+            float:left; width:calc((100% - 1px - (1em * 4)) / 4);
+            position:relative; margin:0.5em; padding:1em; border:1px solid #eee;
+            border-radius:0.5em;
+            box-shadow: 0.15em 0.26em 1em rgba(119, 119, 119, 0.1);
+        }
+        #wrap>div:nth-child(3),
+        #wrap>div:nth-child(6){clear:both;}
+        #wrap>div:nth-child(1),
+        #wrap>div:nth-child(2),
+        #wrap>div:nth-child(6),
+        #wrap>div:nth-child(7),
+        #wrap>div:nth-child(8),
+        #wrap>div:nth-child(9),
+        #wrap>div:nth-child(12),
+        #wrap>div:nth-child(4){width:calc((100% - 1px - (1em * 2)) / 2);}
+
+        .btn{display:block; position:fixed; left:2em; bottom:2em; z-index:1000; padding:1em 2em; text-decoration:none; color:#fff; background-color:#7357ff; border-radius:0.3em;}
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn">이전</a>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="1" />
+        <input type="hidden" name="target" value="grap_1" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="2" />
+        <input type="hidden" name="target" value="grap_2" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="10" />
+        <input type="hidden" name="target" value="grap_3" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="6" />
+        <input type="hidden" name="target" value="grap_4" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4.75" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="8" />
+        <input type="hidden" name="target" value="grap_5" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="3" />
+        <input type="hidden" name="target" value="grap_6" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="4" />
+        <input type="hidden" name="target" value="grap_7" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="5" />
+        <input type="hidden" name="target" value="grap_8" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="7" />
+        <input type="hidden" name="target" value="grap_9" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="9" />
+        <input type="hidden" name="target" value="grap_10" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="11" />
+        <input type="hidden" name="target" value="grap_11" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="4:4" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data2.json" />
+        <input type="hidden" name="type" value="12" />
+        <input type="hidden" name="target" value="grap_12" />
+        <input type="hidden" name="fig" value="" />
+        <input type="hidden" name="ratio" value="10:4.75" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data3.json" />
+        <input type="hidden" name="type" value="13" />
+        <input type="hidden" name="target" value="grap_13" />
+        <input type="hidden" name="fig" value="%" />
+        <input type="hidden" name="ratio" value="10:5" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data3.json" />
+        <input type="hidden" name="type" value="13" />
+        <input type="hidden" name="target" value="grap_14" />
+        <input type="hidden" name="fig" value="%" />
+        <input type="hidden" name="ratio" value="10:5" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data3.json" />
+        <input type="hidden" name="type" value="13" />
+        <input type="hidden" name="target" value="grap_15" />
+        <input type="hidden" name="fig" value="%" />
+        <input type="hidden" name="ratio" value="10:5" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+    <div data-skin="graph">
+        <input type="hidden" name="data" value="data3.json" />
+        <input type="hidden" name="type" value="13" />
+        <input type="hidden" name="target" value="grap_16" />
+        <input type="hidden" name="fig" value="%" />
+        <input type="hidden" name="ratio" value="10:5" />
+        <input type="hidden" name="maxpoint" value="4000" />
+    </div>
+
+    <div id="wrap">
+        <div class="item">
+            <div id="grap_1"></div>
+        </div>
+        <div class="item">
+            <div id="grap_2"></div>
+        </div>
+
+        <div class="item">
+            <div id="grap_3"></div>
+        </div>
+        <div class="item">
+            <div id="grap_4"></div>
+        </div>
+        <div class="item">
+            <div id="grap_5"></div>
+        </div>
+
+        <div class="item">
+            <div id="grap_6"></div>
+        </div>
+        <div class="item">
+            <div id="grap_7"></div>
+        </div>
+
+        <div class="item">
+            <div id="grap_8"></div>
+        </div>
+        <div class="item">
+            <div id="grap_9"></div>
+        </div>
+
+        <div class="item">
+            <div id="grap_10"></div>
+        </div>
+        <div class="item">
+            <div id="grap_11"></div>
+        </div>
+        <div class="item">
+            <div id="grap_12"></div>
+        </div>
+
+        <div class="item">
+            <div id="grap_13"></div>
+        </div>
+        <div class="item">
+            <div id="grap_14"></div>
+        </div>
+        <div class="item">
+            <div id="grap_15"></div>
+        </div>
+        <div class="item">
+            <div id="grap_16"></div>
+        </div>
+    </div>
+</body>
+</html>

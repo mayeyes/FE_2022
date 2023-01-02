@@ -1,0 +1,969 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link type="text/css" rel="stylesheet" href="./css/schfMedia.css" />
+<link type="text/css" rel="stylesheet" href="./css/datepicker.css" />
+<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-datepicker.js"></script>
+
+<!-- custom :s -->
+<link type="text/css" rel="stylesheet" href="./_custom/moe/css/style.css" />
+<script src="./_custom/moe/js/search.js"></script>
+<!-- custom :e -->
+<title>통합검색 - Repia</title>
+</head>
+
+<body>
+
+<div id="wrap">
+	<ul class="skip_navi_w">
+		<li class="skip_navi"><a href="#Smenu" title="메뉴바로가기" class="skip_navi02">주메뉴 바로가기</a></li>
+		<li class="skip_navi"><a href="#Scon" title="본문바로가기" class="skip_navi02">본문 바로가기</a></li>
+	</ul>
+<!--//Media header 부분-->
+<form method="get">
+	<div id="header">
+		<div class="hMain">
+			<div class="hLogo">
+				<a href="search_F.html" title="로고"><img src="./images/repia-logo.png" alt="logo" /></a>
+			</div><!--logo-->
+			
+			<div class="search Mobile_search">
+				<a href="search_F.html" title="로고"><img src="./images/repia-logo2.png" height="42" alt="logo" class="mobil_logo"/></a>
+				<input type="button" value="검색" title="검색" />
+				<img src="./images/search_white.png" alt="logo" class="search_img"/>
+			</div><!--search-->
+
+			<div class="search_chang">
+				<fieldset>
+					<input type="text" class="sc_input" title="검색입력창" placeholder="검색어를 입력하세요." />
+					<div class="search_arrow" id="autoCompleteToOn" onclick="autoOn()">
+						<a href="javascript:;" title="검색어자동완성 열림"><img src="./images/harrow.png" alt="arrow" /></a>
+					</div><!--search_arrow-->
+					<div class="search_arrow_off" id="autoComplete" onclick="autoOff()">
+						<a href="javascript:;" title="검색어자동완성 닫힘"><img src="./images/arrow_d.PNG" alt="arrow" /></a>
+					</div><!--search_arrow_off-->
+				</fieldset>
+				<div id="rcmdResult"> 
+					<ul class="autoList">
+						<li><a href="javascript:;" title="검색어자동완성 농어촌"><strong>정부</strong></a></li>
+						<li><a href="javascript:;" title="검색어자동완성 농어촌용수"><strong>정부</strong>조직</a></li>
+						<li><a href="javascript:;" title="검색어자동완성 농어촌 업무 총괄"><strong>정부</strong> 업무 총괄</a></li>
+						<li><a href="javascript:;" title="검색어자동완성 한국 농어촌 업무 총괄">한국<strong>정부</strong> 업무 총괄</a></li>
+						<li><a href="javascript:;" title="검색어자동완성 업무 관할 농어촌">업무 관할<strong>정부</strong></a></li>
+					</ul>
+				</div>
+			</div><!--search_chang-->
+			
+			<div class="search">
+				<input type="button" value="검색" title="검색" />
+			</div><!--search-->
+			
+			<div class="detatil_search">
+				<input type="button" value="상세검색" title="상세검색" onclick="detailOpen()"/>
+			</div><!--detatil_search-->
+			
+			<div class="result_chang">
+				<input type="checkbox" id="rc_check" title="결과내 재검색"/> <span><label for="rc_check">결과내 재검색</label></span>
+			</div><!--result_chang-->
+		</div><!--hMain-->
+	</div><!--header-->
+</form>
+	<div id="relation">
+		<div class="relation_search">
+			<div class="rs_Bar">
+				<ul>
+					<li class="rsText">추천검색어</li>
+					<li><a href="javascript:;" title="연관검색어 행정직">행정직</a></li>
+					<li><a href="javascript:;" title="연관검색어 행정업무">행정업무</a></li>
+					<li><a href="javascript:;" title="연관검색어 행정관리">행정관리</a></li>
+					<li><a href="javascript:;" title="연관검색어 주요사업">주요사업</a></li>
+					<li><a href="javascript:;" title="연관검색어 고객서비스">고객서비스</a></li>
+					<li><a href="javascript:;" title="연관검색어 입찰정보">입찰정보</a></li>
+					<li><a href="javascript:;" title="연관검색어 알림마당">알림마당</a></li>
+					<li><a href="javascript:;" title="연관검색어 사이버홍보">사이버홍보</a></li>
+					<li><a href="javascript:;" title="연관검색어 행정직원">행정직원</a></li>
+				</ul>
+			</div><!--rs_Barh-->
+		</div><!--relation_search-->
+	</div><!--relation-->
+
+
+
+<!--//상세검색 화면-->
+	<div class="detail_wrap" id="detailSearch" style="display:none;">
+			<div class="Fdetail">
+				<ul>
+					<li class="detail_title">
+						<a href="javascript:;" title="정렬" onclick="detail_option('sort')"> 정렬 <span class="arrow">▼</span></a>
+						<div class="detail_box_sort" id="detail_box_sort" style="display:none;">
+							<ul>
+								<li><a href="javascript:;" title="최신순" style="color:#333; font-weight:bold">관련도순</a></li>
+								<li><a href="javascript:;" title="최신순">최신순</a></li>
+							</ul>
+						</div>
+					</li>
+
+					<li class="detail_title">
+						<a href="javascript:;" title="영역" onclick="detail_option('region')"> 영역 <span class="arrow">▼</span></a>
+						<div class="detail_box_region" id="detail_box_region" style="display:none;">
+							<ul>
+								<li><a href="javascript:;" title="전체" style="color:#333; font-weight:bold">전체</a></li>
+								<li><a href="javascript:;" title="제목">제목</a></li>
+							</ul>
+						</div>
+					</li>
+	
+					<li class="detail_title">
+						<a href="javascript:;" title="기간" onclick="detail_option('period')"> 기간 <span class="arrow">▼</span></a>
+						<div class="detail_box_period" id="detail_box_period" style="display:none;">
+							<ul>
+								<li><a href="javascript:;" title="전체" style="color:#333; font-weight:bold">전체</a></li>
+								<li><a href="javascript:;" title="1일">1일</a></li>
+								<li><a href="javascript:;" title="1주">1주</a></li>
+								<li><a href="javascript:;" title="1개월">1개월</a></li>
+								<li><a href="javascript:;" title="1년">1년</a></li>
+							</ul>
+							<div class="detail_calendar">
+								<p class="tit">직접입력</p>
+								<div class="calendar_search">
+									<input type="text" name="calendar_start" class="startDate"/>
+									<a href="javascript:;" id="date_calendar" title="날짜시작 선택"><img src="./images/calendar.gif"  alt="날짜선택" /></a>
+								</div>
+	
+								<div class="calendar_search">
+									<input type="text" name="calendar_end" class="endtDate"/>
+									<a href="javascript:;" title="날짜시작 선택" class="cal_en"><img src="./images/calendar.gif" alt="날짜선택" /></a>
+								</div>
+	
+								<div class="calendar_search">
+									<input type="button" value="적용하기" name="confirming"/>
+								</div>
+							</div>
+						</div>
+					</li>
+	
+					
+	
+					<li class="detail_title">
+						<div class="option_choice">
+							옵션유지	
+							<span class="option">
+								<button class="option_off" id="option_off" onclick="op_choice('off')" type="button">꺼짐</button><button class="option_on" id="option_on" onclick="op_choice('on')" type="button">켜짐</button>
+							</span>
+						</div>
+					</li>
+				</ul>
+			</div><!--Fdetail//-->
+		</div><!--detail_wrap//-->
+<!--상세검색 화면//-->
+
+
+<div class="nav-wrap">
+	<nav>
+		<ul class="gnb">
+			<li class="ctgr"><a href="search_F.html" data-target="total" data-trcode="m_menu01" style="color:#004f96;">통합검색</a></li>
+			<li class="ctgr"><a href="search_F_menu.html" data-target="mnews" data-trcode="m_menu02">메뉴검색</a></li>
+			<li class="ctgr"><a href="search_F_jop.html" data-target="news" data-trcode="m_menu03">업무/직원</a></li>
+			<li class="ctgr"><a href="search_F_news.html" data-target="web" data-trcode="m_menu04">시정소식</a></li>
+			<li class="ctgr"><a href="search_F_web.html" data-target="video" data-trcode="m_menu05">웹페이지</a></li>
+			<li class="ctgr"><a href="search_F_board.html" data-target="complain" data-trcode="m_menu06">게시판</a></li>
+			<li class="ctgr"><a href="search_F_file.html" data-target="image" data-trcode="m_menu07">첨부문서</a></li>
+			<li class="ctgr"><a href="search_F_culture.html" data-target="bizcharge" data-trcode="m_menu08">문화관광</a></li>
+			<li class="ctgr"><a href="search_F_culture.html" data-target="bizcharge" data-trcode="m_menu09">멀티미디어</a></li>
+			<li class="ctgr"><a href="search_F_sns.html" data-target="minwon" data-trcode="m_menu10">소셜미디어</a></li>
+			<!--<li class="ctgr"><a href="search_F_site.html" data-target="minwon" data-trcode="m_menu11">구청웹페이지</a></li>-->
+		</ul>
+	</nav>			
+	<button type="button" title="카테고리 더보기" class="open">
+		<span class="ico-set dot"></span>
+		<span class="nav-close">닫기</span>
+	</button>
+</div><!-- nav-wrap// -->
+
+<!--모바일 상세검색-->
+	<div class="align_kind">
+	  <ul class="clearfix">
+		<li>
+		  <button class="kind_open kind_line" onclick="mobile_detail('array')"><span>정렬</span></button>
+		  <div class="kind_detail detail_array" id="kind_array" style="display:none;">
+			<ul class="kind_btn">
+			  <li><a href="#" onclick="doSorting('DATE')" style="background-color:#397bbf;color:#fff;">최신순</a></li>
+			  <li class="on"><a href="#" onclick="doSorting('RANK')">정확도</a></li>
+			</ul>
+		  </div>
+		</li>
+		<li>
+		  <button class="kind_open kind_date" onclick="mobile_detail('date')"><span>기간</span></button>
+		  <div class="kind_detail detail_date" id="kind_date" style="display:none;">
+			<ul class="kind_btn">
+			  <li><a href="#none" onclick="javascript:setDate('A');" style="background-color:#397bbf;color:#fff;">전체</a></li>
+			  <li><a href="#none" onclick="javascript:setDate('W');">1주</a></li>
+			  <li><a href="#none" onclick="javascript:setDate('M');">1개월</a></li>
+			  <li><a href="#none" onclick="javascript:setDate('Y');">1년</a></li>
+			</ul>
+			<div class="search_term">
+			  <!--form name=""-->
+				<fieldset style="border:0;">
+				  <!-- 검색 기간 조건 선택시 달력 선택 뿐만아니라 input 박스에 직접 날짜를 입력할 수 있도록 동시기능을 제공해야합니다. 추후 접근성, 호환성에 문제가 됩니다. -->
+				  <legend>검색기간 직접 선택</legend>
+				  <label>시작일</label>
+				  <span class="term"><input type="text" class="startDate" name="startDate" value="1970-01-01"><a href="#none" onclick="f_datepicker('startDate')">검색 시작 날짜 선택하기</a></span>
+				  <label>종료일</label>
+				  <span class="term"><input type="text" class="endtDate" name="endDate" value="2017-06-14"><a href="#none" onclick="f_datepicker('endDate')">검색 종료 날짜 선택하기</a></span>
+				  
+				</fieldset>
+			  <!--/form-->
+			</div>
+		  </div>
+		</li>
+		<li>
+		  <button class="kind_open" onclick="mobile_detail('region')"><span>영역</span></button>
+		  <div class="kind_detail detail_region" id="kind_region" style="display:none;">
+			<ul class="kind_btn">
+			  <li><a href="#" onclick="doSearchField('ALL');" style="background-color:#397bbf;color:#fff;">전체</a></li>
+			  <li><a href="#" onclick="doSearchField('TITLE');">제목</a></li>
+			  <li><a href="#" onclick="doSearchField('CONTENT');">내용</a></li>
+			  <!--li><a href="#">작성자</a></li-->
+			</ul>
+		  </div>
+		</li>
+	  </ul>
+	</div>
+
+
+<!--//search_second 부분-->
+	<div id="search_second">
+		<p><span>'정부'</span>에 대한 <span>총 574건</span>의 검색결과를 찾았습니다.</p>
+	</div><!--search_second-->
+<!--search_second 부분//-->
+
+
+<!--//contents 부분-->
+	<div id="contents">
+		<div class="cMain">
+			<div class="cMenu" id="Smenu">
+				<ul>
+					<li>
+						<a href="search_F.html" title="메뉴 통합검색"> 
+							<P class="Mtitle">통합검색</p> 
+							<div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div>
+						</a>
+					</li>
+					<li>
+						<a href="search_F_menu.html" title="메뉴 메뉴검색">
+							<P class="Mtitle">메뉴검색</p>
+							<div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div>
+						</a>
+					</li>
+					<li>
+						<a href="search_F_jop.html" title="메뉴 업무/직원">
+							<P class="Mtitle">업무/직원</p>
+							<div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div>
+						</a>
+					</li>
+					<li>
+						<a href="search_F_news.html" title="메뉴 시정소식">
+							<P class="Mtitle">시정소식</p>
+							<div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div>
+						</a>
+					</li>
+					<li class="on">
+						<a href="search_F_web.html" title="메뉴 웹페이지">
+							<P class="Mtitle">웹페이지</p>
+							<div class="Marrow"><img src="./images/carrow_on.png" alt="arrow" /></div>
+						</a>
+					</li>
+					<li>
+						<a href="search_F_board.html" title="메뉴 게시판">
+							<P class="Mtitle">게시판</p>
+							<div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div>
+						</a>
+					</li>
+					<li>
+						<a href="search_F_file.html" title="메뉴 첨부문서">
+							<P class="Mtitle">첨부문서</p>
+							<div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div>
+						</a>
+					</li>
+					<li>
+						<a href="search_F_culture.html" title="메뉴 문화관광">
+							<P class="Mtitle">문화관광</p>
+							<div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div>
+						</a>
+					</li>
+					<li>
+						<a href="search_F_multi.html" title="메뉴 멀티미디어">
+							<P class="Mtitle">멀티미디어</p>
+							<div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div>
+						</a>
+					</li>
+					<li>
+						<a href="search_F_sns.html" title="메뉴 소셜미디어">
+							<P class="Mtitle">소셜미디어</p> 
+							<div class="Marrow"><img src="./images/carrow_out.png" alt="arrow" /></div>
+						</a>
+					</li>
+				</ul>
+				<div class="cM_expression"><!--첫번째 li 선 --></div>
+			</div><!--cMenu-->
+			
+			<div class="cLeft" id="Scon">
+				<div class="C_body" id="board_sc">
+					<ul class="Cmenu_Title R_dir">
+						<li>웹페이지</li>
+						<li>(총<span>192</span>건)</li>
+					</ul>
+
+					<div class="thebogi dir">
+						<ul>
+							<li>
+								<span class="dir_align">
+									<select class="category" name="opt_nh" title="결과 갯수 선택">
+										<option value="10" selected="selected">10 결과 </option>
+										<option value="15">15 결과 </option>
+										<option value="20">20 결과 </option>
+										<option value="30">30 결과 </option>
+										<option value="50">50 결과 </option>
+										<option value="100">100 결과 </option>
+									</select>
+									<input type="button" value="확인" class="dgray">
+								</span>
+							</li>
+						</ul>
+					</div><!-- thebogi -->
+					
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+					<dl class="C_Cts">
+						<dt class="txt">
+							<a href="javascript:;" title="웹페이지  클린광주 > 일반현황 > 지역특성"> <strong class="keyword">XX시</strong> > 일반현황 > 지역특성</a>
+						</dt>
+
+						<dd class="txt2">
+							우리 <strong class="keyword">XX</strong>시는 경기도 내 중앙지대에 위치한 시로서 동서간 27.88km, 남북간 30.26km로 전면적 431.05㎢에 달한다. 동으로 여주, 이천에 접하고, 서에는 성남시, 남에는 용인시가 이웃해 있으며, 북쪽으로는 한강을 경계로 남양주, 양평군...
+						</dd>
+
+						<dd>
+							<cite class="txt3">http://www.gjcity.go.kr/n01_cityhall/03_general/01_01_02.asp</cite>
+						</dd>
+					</dl>
+				</div><!--board_sch-->
+
+				<div class="PC_job_num">
+					<ul>
+						<li><a href="javascript:;">&lt;&lt;</a></li>
+						<li><a href="javascript:;">&lt;</a></li>
+						<li class="on"><a href="javascript:;">1</a></li>
+						<li><a href="javascript:;">2</a></li>
+						<li><a href="javascript:;">3</a></li>
+						<li><a href="javascript:;">4</a></li>
+						<li><a href="javascript:;">5</a></li>
+						<li><a href="javascript:;">6</a></li>
+						<li><a href="javascript:;">7</a></li>
+						<li><a href="javascript:;">8</a></li>
+						<li><a href="javascript:;">9</a></li>
+						<li><a href="javascript:;">10</a></li>
+						<li><a href="javascript:;">&gt;</a></li>
+						<li><a href="javascript:;">&gt;&gt;</a></li>
+					</ul>
+				</div><!--job_num-->
+
+				<div class="M_job_num">
+					<ul>
+						<li><a href="javascript:;">&lt;&lt;</a></li>
+						<li><a href="javascript:;">&lt;</a></li>
+						<li class="on"><a href="javascript:;">1</a></li>
+						<li><a href="javascript:;">2</a></li>
+						<li><a href="javascript:;">3</a></li>
+						<li><a href="javascript:;">4</a></li>
+						<li><a href="javascript:;">5</a></li>
+						<li><a href="javascript:;">&gt;</a></li>
+						<li><a href="javascript:;">&gt;&gt;</a></li>
+					</ul>
+				</div><!--job_num-->
+			</div><!--cLeft-->
+
+			<div class="cRight">
+				<div class="topic">
+					<h2>분야별 토픽 
+						<span class="tp_arrow"> 
+							<input type="button" title="분야별토필" class="tp" value="<"><input type="button" title="분야별토필" class="tp" value=">">
+						</span>
+					</h2>
+
+					<ul class="topcicContent">
+						<li><a href="javascript:topicFunction();" title="분야별토픽 농촌" class="tc_title_on" id="tc_title_on" style="background-color:#fff" onclick="topicFunction('one');return false;">종합민원</a>
+							<div class="tc_text_on" id="tc_text_on" style="display:block;">
+								<ul>
+									<li>
+										<span class="relation_txt"><a href="javascript:;" title="분야별토픽 민원안내">민원안내</a></span>
+									</li>
+
+									<li>
+										<span class="relation_txt"><a href="javascript:;" title="분야별토픽농 납부안내">납부안내</a></span>
+									</li>
+
+									<li>
+										<span class="relation_txt"><a href="javascript:;" title="분야별토픽 민원상담">민원상담</a></span>
+									</li>
+
+									<li>
+										<span class="relation_txt"><a href="javascript:;" title="분야별토픽 소비자 정보">소비자 정보</a></span>
+									</li>
+
+									<li>
+										<span class="relation_txt"><a href="javascript:;" title="분야별토픽 민원콜센터">민원콜센터</a></span>
+									</li>
+
+									<li>
+										<span class="relation_txt"><a href="javascript:;" title="분야별토픽 시민신고센터">시민신고센터</a></span>
+									</li>
+
+									<li>
+										<span class="relation_txt"><a href="javascript:;" title="분야별토픽 부동산 민원">부동산 민원</a></span>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li><a href="javascript:topicFunction('two');" title="분야별토픽 시민참여" class="tc_title_on" id="tc_title_on2" style="background-color:#f5f8fa" onclick="topicFunction('two');return false;">시민참여</a>
+							<div class="tc_text_on" id="tc_text_on2" style="display:none;">
+								<ul>
+									<li>
+										<span class="relation_txt"><a href="javascript:;" title="분야별토픽 시민참여">시민참여</a></span>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li><a href="javascript:topicFunction('three');" title="분야별토픽 행정정보" class="tc_title_on" id="tc_title_on3" style="background-color:#f5f8fa" onclick="topicFunction('three');return false;">행정정보</a>
+							<div class="tc_text_on" id="tc_text_on3" style="display:none;">
+								<ul>
+									<li>
+										<span class="relation_txt"><a href="javascript:;" title="분야별토픽 행정정보">행정정보</a></span>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+					</ul>
+					<div class="cLine3"><!--pop_con 라인--></div>
+				</div><!--topic-->
+
+				<div class="pop_con">
+					<h2>인기 검색어</h2>
+					<ul class="pop_conContent">
+						<li><a href="javascript:popFunction('one');" title="인기검색어 실시간" class="pc_title_on" id="pc_title_on" style="background-color:#fff" onfocus="popFunction('one')">실시간</a>
+							<div class="pc_text_on" id="pc_text_on" style="display:block;">
+								<ul>
+									<li>
+										<span class="pop_num">1</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 1 아르바이트">아르바이트</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">705</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">2</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 2 시립어린이집">시립어린이집</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">171</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">3</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 3 공공근로">공공근로</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">192</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">4</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 4 자치법규">자치법규</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">66</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">5</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 5 어린이집">어린이집</a></span>
+										<span class="arrow_img"> <span class="popText" style="color:#f42828;">NEW</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">6</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 6 축구센터">축구센터</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">705</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">7</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 7 조례">조례</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">270</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">8</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 8 누비자">누비자</a></span>
+										<span class="arrow_img"><img src="images/arrow_blue.png" width="9" height="9" alt=""/> <span class="popText">5</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">9</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 9 취업">취업</a></span>
+										<span class="arrow_img"> <span class="popText">-</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">10</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 10 대학생">수능일</a></span>
+										<span class="arrow_img"><img src="images/arrow_blue.png" width="9" height="9" alt=""/> <span class="popText">3</span></span>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li><a href="javascript:popFunction('two');" title="인기검색어 일간" class="pc_title_on" id="pc_title_on2" style="background-color:#f5f8fa" onfocus="popFunction('two')">일간</a>
+							<div class="pc_text_on" id="pc_text_on2" style="display:none;">
+								<ul>
+									<li>
+										<span class="pop_num">1</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 1 일간">일간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">705</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">2</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 2 일간">일간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">171</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">3</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 3 일간">일간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">192</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">4</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 4 일간">일간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">66</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">5</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 5 일간">일간</a></span>
+										<span class="arrow_img"> <span class="popText" style="color:#f42828;">NEW</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">6</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 6 일간">일간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">705</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">7</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 7 일간">일간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">270</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">8</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 8 일간">일간</a></span>
+										<span class="arrow_img"><img src="images/arrow_blue.png" width="9" height="9" alt=""/> <span class="popText">5</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">9</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 9 일간">일간</a></span>
+										<span class="arrow_img"> <span class="popText">-</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">10</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 10 일간">일간</a></span>
+										<span class="arrow_img"><img src="images/arrow_blue.png" width="9" height="9" alt=""/> <span class="popText">3</span></span>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li><a href="javascript:onfocus=popFunction('three');" title="인기검색어 주간" class="pc_title_on" id="pc_title_on3" style="background-color:#f5f8fa" onfocus="popFunction('three')">주간</a>
+							<div class="pc_text_on" id="pc_text_on3" style="display:none;">
+								<ul>
+									<li>
+										<span class="pop_num">1</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 1 주간">주간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">705</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">2</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 2 주간">주간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">171</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">3</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 3 주간">주간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">192</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">4</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 4 주간">주간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">66</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">5</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 5 주간">주간</a></span>
+										<span class="arrow_img"> <span class="popText" style="color:#f42828;">NEW</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">6</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 6 주간">주간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">705</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">7</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 7 주간">주간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">270</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">8</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 8 주간">주간</a></span>
+										<span class="arrow_img"><img src="images/arrow_blue.png" width="9" height="9" alt=""/> <span class="popText">5</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">9</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 9 주간">주간</a></span>
+										<span class="arrow_img"> <span class="popText">-</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">10</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 10 주간">주간</a></span>
+										<span class="arrow_img"><img src="images/arrow_blue.png" width="9" height="9" alt=""/> <span class="popText">3</span></span>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li><a href="javascript:popFunction('fore');" title="인기검색어 월간" class="pc_title_on" id="pc_title_on4" style="background-color:#f5f8fa" onfocus="popFunction('fore')">월간</a>
+							<div class="pc_text_on" id="pc_text_on4" style="display:none;">
+								<ul>
+									<li>
+										<span class="pop_num">1</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 1 월간">월간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">705</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">2</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 2 월간">월간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">171</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">3</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 3 월간">월간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">192</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">4</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 4 월간">월간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">66</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">5</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 5 월간">월간</a></span>
+										<span class="arrow_img"> <span class="popText" style="color:#f42828;">NEW</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">6</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 6 월간">월간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">705</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">7</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 7 월간">월간</a></span>
+										<span class="arrow_img"><img src="images/arrow_red.png" width="9" height="9" alt=""/> <span class="popText">270</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">8</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 8 월간">월간</a></span>
+										<span class="arrow_img"><img src="images/arrow_blue.png" width="9" height="9" alt=""/> <span class="popText">5</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">9</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 9 월간">월간</a></span>
+										<span class="arrow_img"> <span class="popText">-</span></span>
+									</li>
+
+									<li>
+										<span class="pop_num">10</span>
+										<span class="pop_txt"><a href="javascript:;" title="인기검색어 10 월간">월간</a></span>
+										<span class="arrow_img"><img src="images/arrow_blue.png" width="9" height="9" alt=""/> <span class="popText">3</span></span>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div><!--pop_con-->
+
+				<div class="relation_con">
+					<h2>관련 사이트</h2>
+					<ul>
+						<li>
+							<span class="relation_num">■</span>
+							<span class="relation_txt"><a href="javascript:;" title="관련사이트 경기XX우체국">경기XX우체국</a></span>
+						</li>
+
+						<li>
+							<span class="relation_num">■</span>
+							<span class="relation_txt"><a href="javascript:;" title="관련사이트 XX경찰서">XX경찰서</a></span>
+						</li>
+
+						<li>
+							<span class="relation_num">■</span>
+							<span class="relation_txt"><a href="javascript:;" title="관련사이트 XXX 기관 사회복지협의회">XXX 기관 사회복지협의회</a></span>
+						</li>
+
+						<li>
+							<span class="relation_num">■</span>
+							<span class="relation_txt"><a href="javascript:;" title="관련사이트 OOO립 중앙도서관 XX분관">OOO립 중앙도서관 XX분관</a></span>
+						</li>
+					</ul>
+					
+				</div><!--relation_con-->
+
+				<div class="find_con">
+					<h2>내가찾은 검색어</h2>
+					<ol>
+						<li><span class="find_num">1</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 1 시립어린이집 ">시립어린이집 </a></span>
+						</li>
+
+						<li><span class="find_num">2</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 2 대학생 ">대학생 </a></span>
+						</li>
+
+						<li><span class="find_num">3</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 3 누비자">누비자</a></span>
+						</li>
+
+						<li><span class="find_num">4</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 4 조례">조례</a></span>
+						</li>
+
+						<li><span class="find_num">5</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 5 아르바이트">아르바이트</a></span>
+						</li>
+
+						<li><span class="find_num">6</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 6 어린이집">어린이집</a></span>
+						</li>
+
+						<li><span class="find_num">7</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 7 공공근로">공공근로</a></span>
+						</li>
+
+						<li><span class="find_num">8</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 8 자치법규">자치법규</a></span>
+						</li>
+
+						<li><span class="find_num">9</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 9  축구센터"> 축구센터</a></span>
+						</li>
+
+						<li><span class="find_num">10</span>
+							<span class="find_txt"><a href="javascript:;" title="내가찾은검색아 10 취업">취업</a></span>
+						</li>
+					</ol>
+				</div><!--find_con-->
+			</div><!--cRight-->
+		</div><!--cMain-->
+	</div><!--contents-->
+<!--contents 부분//-->
+
+
+
+	<div id="footer">
+		<div class="layout">
+			<div class="menu">
+				<ul>
+					<li><a href="#"><strong>개인정보처리방침</strong></a></li>
+					<li><a href="#"><span>이용안내</span></a></li>
+					<li><a href="#"><span>웹접근성정책</span></a></li>
+					<li><a href="#"><span>저작권정책</span></a></li>
+					<li><a href="#"><span>행정서비스헌장</span></a></li>
+					<li><a href="#"><span>전자우편 무단수집거부</span></a></li>
+					<li><a href="#"><span>읽기전용프로그램</span></a></li>
+				</ul>
+			</div>
+
+			<address>
+				[30119] 세종특별자치시 갈매로 408, 14동 정부세종청사 교육부 / 세종특별자치시 어진동 634
+			</address>
+			<div class="copy">
+				<strong>일반번호</strong>  
+				<ul>
+					<li>정부민원안내 전화 상담실 국번없이 110</li>
+					<li>교육부 민원 전화 상담실 02-6222-6060</li>
+					<li>당직실 044-203-6118</li>
+				</ul>
+				<strong>팩스번호</strong>
+				<ul>
+					<li>민원 044-203-6093</li>
+					<li>문서접수 044-203-6133</li>
+				</ul>
+			</div>
+
+			<div class="etc">
+				<ul>
+					<li><a href="https://www.mois.go.kr/html/govindex.html" title="국정지표 새창 바로가기" target="_blank" rel="noopener noreferrer"><span><img src="./_custom/moe/img/footer_bn_1.png" alt="국민의 나라 정의로운 대한민국"></span></a></li>
+					<li><a href="https://www.mois.go.kr/frt/sub/popup/p_taegugki_banner/screen.do" title="국가상징 새창 바로가기" target="_blank" rel="noopener noreferrer"><span><img src="./_custom/moe/img/footer_bn_2.png" alt="국가상징 알아보기"></span></a></li>
+					<li><a href="http://www.innogov.go.kr/ucms/main/main.do" title="정부혁신 보다나은 정부 새창 바로가기" target="_blank" rel="noopener noreferrer"><span><img src="./_custom/moe/img/footer_bn_3.png" alt="정부혁신 보다나은 정부"></span></a></li>
+					<li><a href="/upload/2021-078.pdf" title="pdf 파일보기 새창 바로가기" target="_blank" rel="noopener noreferrer"><span><img src="./_custom/moe/img/footer_bn_4.png" alt="웹접근성 품질마크 WA"></span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div><!--wrap-->
+
+</body>
+</html>

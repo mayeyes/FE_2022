@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HighCharts | Pie Chart</title>
+	<style>
+		*{padding: 0; margin: 0;}
+		.highcharts-figure{width: 800px;}
+        #pie_2,
+        #pie_3{margin-top:40px;}
+	</style>
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+</head>
+
+<body>
+<figure class="highcharts-figure">
+	<div id="pie_1"></div>
+    <div id="pie_2"></div>
+    <div id="pie_3"></div>
+</figure>
+
+<script>
+    //basic
+    Highcharts.chart('pie_1', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Pie Chart 기본 그래프'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Chrome',
+                y: 61.41,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Internet Explorer',
+                y: 11.84
+            }, {
+                name: 'Firefox',
+                y: 10.85
+            }, {
+                name: 'Edge',
+                y: 4.67
+            }, {
+                name: 'Safari',
+                y: 4.18
+            }, {
+                name: 'Sogou Explorer',
+                y: 1.64
+            }, {
+                name: 'Opera',
+                y: 1.6
+            }, {
+                name: 'QQ',
+                y: 1.2
+            }, {
+                name: 'Other',
+                y: 2.61
+            }]
+        }]
+    });
+
+    //legend
+    Highcharts.chart('pie_2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Pie Chart 범례 있는 그래프'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Chrome',
+                y: 61.41,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Internet Explorer',
+                y: 11.84
+            }, {
+                name: 'Firefox',
+                y: 10.85
+            }, {
+                name: 'Edge',
+                y: 4.67
+            }, {
+                name: 'Safari',
+                y: 4.18
+            }, {
+                name: 'Other',
+                y: 7.05
+            }]
+        }]
+    });
+
+    //semi
+    Highcharts.chart('pie_3', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false
+    },
+    title: {
+        text: 'Pei Chart<br>반원 그래프',
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 60
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '75%'],
+            size: '110%'
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Browser share',
+        innerSize: '50%',
+        data: [
+            ['Chrome', 58.9],
+            ['Firefox', 13.29],
+            ['Internet Explorer', 13],
+            ['Edge', 3.78],
+            ['Safari', 3.42],
+            {
+                name: 'Other',
+                y: 7.61,
+                dataLabels: {
+                    enabled: false
+                }
+            }
+        ]
+    }]
+});
+
+</script>
+</body>
+</html>

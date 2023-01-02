@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=yes">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="./js/audio.js"></script>
+    <link rel="stylesheet" href="./css/audio.css">
+    <style>
+        *,
+        *::before,
+        *::after{box-sizing:border-box;}
+        html,
+        body{height:100%;}
+        #box-audio{
+            position:absolute; left:calc(50% - 25em); top:calc(50% - 15em);
+            width:50em;
+            margin:0.5em; padding:1em; border:1px solid #eee;
+            border-radius:0.5em;
+            box-shadow: 0.15em 0.26em 1em rgba(119, 119, 119, 0.1);
+        }
+        #box-audio::after{content:""; display:block; position:relative; z-index:-1; width:100%; padding-top:52.6%;}
+        .cont{position:fixed; left:0; bottom:1em; width:100%; text-align:center;}
+        @media screen and (max-width: 900px){
+            #box-audio{left:2em; width:calc(100% - 4em);}
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="box-audio">
+        <div data-skin="audio"></div>    
+    </div>
+    <div class="cont">
+        <button data-audio="v.mp3">그해우리는 재생</button>
+        <button data-audio="invu.mp3">invu 재생</button>
+    </div>
+    
+</body>
+</html>

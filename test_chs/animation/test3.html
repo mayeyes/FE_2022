@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        html,body{width: 100%; height: 100%;}
+        .page_wrap{overflow-x: hidden; position: relative; width: 100%; height: 100%; /*background-color: #fff; */ box-sizing: border-box;}
+        [id*="page_"]{position: relative; width: 100%; height: auto; overflow: hidden;}
+        [id*="page_"] .inner{position: relative; width: 100%; height: 500px; background-color: #fff;}
+        #page_1 .inner{
+            height: 300vh; background-color: transparent; transition: all 0.5s ease;
+        }
+        #page_1 .fix_box{position: fixed; top: 0; left: 0; z-index: -1; display: block; width: 100%; height: 100%; text-align: center;}
+        #page_1 .fix_box .img_box{display: inline-block; width: auto; height: 100vh; margin: 0 auto;  transition: all 0.3s linear;}
+        #page_1 .fix_box .img_box img{display: block; width: auto; height: 100%;/*position: absolute; top: 0; left: 50%;  display: block; width: auto; width: auto; height: 100vh; transform: translateX(-50%);*/}
+        /*[data-scroll-count="0"] #page_1[data-steps="4"] .img_box{transform: scale(2); transform-origin: 80% 80%;}
+        [data-scroll-count="0"] #page_1[data-steps="5"] .img_box{transform: scale(5); transform-origin: 20% 40%;}
+        [data-scroll-count="0"] #page_1[data-steps="6"] .img_box{transform: scale(3); transform-origin: 70% 20%;}*/
+        
+        #page_3{background: url(img/46b8a9395bc0b4411d00898bd85ee195.jpg) no-repeat center center; background-size: cover; background-attachment: fixed;}
+        #page_3 .inner:after{content: ""; display: block; clear: both;}
+        #page_3 .right{display: table; table-layout: fixed; width: 100%; margin-left: 70%; width: 30%; height: 100%; background-color: #fff; box-sizing: border-box;}
+        #page_3 .right>div{display: table-cell; vertical-align: bottom;}
+        
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            layout_scroll_AC();
+        });
+        function layout_scroll_AC(){
+            $("body").attr("data-scroll-count", "0");
+            $(".page_wrap").on("scroll",function(){
+                //console.log($(window).height());
+                //console.log(($(this).scrollTop() / ($("body").height() - $(window).height())) * 100);
+                //console.log($(this).scrollTop(), $(window).height());
+                
+                
+                var t = 0;
+                var arr = ['page_1','page_2','page_3','page_4'];
+
+                var cnt = 0;
+                for(var i=0; i<arr.length; i++){
+                    var ob = $("#"+arr[i]);
+                    var t2 = (t - ob.offset().top) + $(window).height();
+                    var step = Math.floor(t2 / ob.innerHeight() * 100);
+                    
+                    
+                    var scale = "";
+                    var origin_x = "";
+                    var origin_y = "";
+                    
+                    var n_width = document.getElementById("bg_img").naturalWidth;
+                    var n_height = document.getElementById("bg_img").naturalHeight; 
+                    
+                    
+                    if(step < 10) step = 0;
+                    else step = Math.floor(step / 10);
+                    if(t2 > 0 && t2 < ob.innerHeight()){
+                        ob.attr("data-steps",step);
+                        ob.find(".steps >span").removeClass("on");
+                        ob.find(".steps >span").eq(step).addClass("on");
+                        
+                        
+                        scale = ob.find(".steps >span").eq(step-1).attr("data-transform-scale");
+                        origin_x = ob.find(".steps >span").eq(step-1).attr("data-transform-origin-x");
+                        origin_y = ob.find(".steps >span").eq(step-1).attr("data-transform-origin-y");
+                        if(scale != undefined && origin_x != undefined && origin_y != undefined){
+                            
+                        }else{
+                            scale = 1;
+                        }
+
+                        ob.find(".img_box").css({'transform':'scale('+ scale +')','-webkit-transform':'scale('+ scale +')', "transform-origin":""+ ((origin_x / n_width)*100)  +"% "+ ((origin_y / n_height )*100) + "%", "-webkit-transform-origin":""+ ((origin_x / n_width)*100)  +"% "+ ((origin_y / n_height )*100) + "%" });
+                        ob.parent().parent().attr("data-scroll-count",i);
+                    } else {
+                        if(t2 < 10){
+                            ob.removeAttr("data-steps");
+                        }
+                        else{
+                            ob.attr("data-steps","10");
+                        }
+                    }
+                }
+            });
+        }
+        
+        
+        
+    </script>
+    
+</head>
+<body>
+    <div class="page_wrap">
+        <div id="page_1">
+            <div class="inner">
+                <div class="fix_box">
+                    <div class="img_box">
+                        <img src="img/1463937368.png" alt="" id="bg_img">
+                        <div class="steps">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span data-transform-scale="2" data-transform-origin-x="87" data-transform-origin-y="160"></span>
+                            <span data-transform-scale="5" data-transform-origin-x="887" data-transform-origin-y="760"></span>
+                            <span data-transform-scale="2" data-transform-origin-x="1347" data-transform-origin-y="460"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="page_2">
+            <div class="inner"><p>page_2</p><p>page_2</p><p>page_2</p><p>page_2</p><p>page_2</p><p>page_2</p><p>page_2</p></div>
+        </div>
+        <div id="page_3">
+            <div class="inner">
+                <div class="right"><div>
+                    <p>page_3</p><p>page_3</p><p>page_3</p><p>page_3</p><p>page_3</p><p>page_3</p><p>page_3</p>
+                </div></div>
+            </div>
+        </div>
+        <div id="page_4">
+            <div class="inner"><p>page_4</p><p>page_4</p><p>page_4</p><p>page_4</p><p>page_4</p><p>page_4</p><p>page_4</p></div>
+        </div>
+    </div>
+    
+</body>
+</html>

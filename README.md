@@ -1,1 +1,51 @@
-# FE_2022
+# Mayeye 2022
+1. 소상공인
+    * 나눔터 : [`./edu_nanum/`](./edu_nanum/)
+    * 배움터 : [`./online_edu/`](./online_edu/)
+2. 교육부
+    * [국문]사용자 : [`./moe_sample/`](./moe_sample/)
+    * 관리자 : 로그인 [`./moe_admin/`](./moe_admin/)
+    * [영문]사용자 : [`./moe_eng/`](./moe_eng/)
+3. 법제연구원 LAW DATA : [`./law/`](./law/)
+4. 국립무형유산원 : [`./nihc/`](./nihc/)
+5. 배재대학교
+    * 입학 : [`./pcu_enter/`](./pcu_enter/)
+    * 대표 : [`./pcu_enter/`](./pcu_enter/index2.html)
+    * 단과대 : [`./pcu_part/`](./pcu_part/)
+    * 학과 : [`./pcu_part/index2.html`](./pcu_part/index2.html)
+    * 커뮤니티맵 : [`./pcu_cmap/index.html`](./pcu_cmap/index.html)
+    * 배재콕매뉴얼 : [`./pcu_enter/html/site/apps/index.html`](./pcu_enter/html/site/apps/index.html)
+    * 행정부서안내 : [`./pcu_enter/html/site/depart/1.html`](./pcu_enter/html/site/depart/1.html)
+    * 배양영재실 : [`./pcu_honor/index.html`](./pcu_honor/)
+    * 학생상담실 : [`./pcu_counsel/index.html`](./pcu_counsel/)
+    * 학생성장센터 : [`./pcu_partner/index.html`](./pcu_partner/)
+6. 광해광업공단
+    * 런칭 : [`./gwanghae/`](./gwanghae/)
+    * 전체 : [`./komir/`](./komir/)
+7. 대전세종연구원 : [`./dsi/`](./dsi/)
+8. KDI 협력대상국 대시보드 : [`./kdi/`](./kdi/)
+9. 1회용 컵 보증금 표시라벨 관리시스템 : [`./papercup/`](./papercup/)
+10. 대구가톨릭대학 : [`./dcu/`](./dcu/)
+11. 사내프로젝트-업무일지 : [`./_report_/`](./_report/)
+12. 관광포털홈페이지개편(외국어) : [`./brcn_lang/`](./brcn_lang/)
+13. 공간의 탄소중립을 위한 시뮬레이션 프로그램 구축  : [`./_gtc/`](./_gtc/)
+14. 2022보령시대표누리집기능보강용역  : [`./brcn/`](./brcn/)
+15. 대구대학교-입학안내  : [`./fe_daegu/`](./fe_daegu/)
+16. 교육부 열린부총리실  : [`./moe_mnstr/`](./moe_mnstr/)
+17. 유네스코아태무형유산센터  : [`./ich/`](./ich/)
+18. 한국폐기물거래소  : [`./kowax/`](./kowax/)
+19. 국가가뭄정보포털  : [`./gamum/`](./gamum/)
+20. 공주교육대학교-국제교류원  : [`./gjue/`](./gjue/)
+21. 2022 모델동물 클러스터 교육·홍보 포털 시스템  : [`./kmpc/`](./kmpc/)
+22. 내부프로젝트 - MAYEYE 홈페이지  : [`./mayeye/`](./mayeye/)
+23. 소상공인컨설팅 
+    * 대민서비스 : [`./sbiz_cot/`](./sbiz_cot/)
+    * 사업관리 : [`./sbiz_cm/`](./sbiz_cm/)
+24. 소상공인지식배움터 2022 : [`./online_edu_2022/`](./online_edu_2022/)
+25. 관망CCTV감시시스템 모니터링 : [`./kwater_cctv/`](./kwater_cctv/)
+26. 친환경선박 전주기 혁신기술개발사업 통합사업단 : [`./kories/`](./kories/)
+27. 공주대학교-입학 : [`./4u/`](./4u/)
+<hr>
+
+이전 자료
+- [`Mayeye 2021`](https://ipsea.github.io/2021/public/2021.html)
