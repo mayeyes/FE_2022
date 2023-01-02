@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.kongju.ac.kr/images/core/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://www.kongju.ac.kr/images/core/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="./css/campusmap.css" media="all">
+
+    <title>배재대학교 캠퍼스 맵</title>
+</head>
+<body>
+<div id="wrap">
+    <div id="header">
+        <h1 class="logo"><img src="./img/logo.svg" alt="배재대학교"><span>캠퍼스맵</span></h1>
+        <div class="map-area">
+            <a href="#map1" onclick="return false" data-camp="smap" class="smap"><span>본관</span></a>
+            <a href="#map2" onclick="return false" data-camp="cmap" class="cmap"><span>대덕밸리</span></a>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="camp-info">
+            <div id="camp-list"></div>
+            <div id="shadow-bg"></div>
+            <div id="camp-views"></div>
+            <div id="close-btn"><span>목록</span></div>
+        </div>
+        <div id="daumMap"></div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+<script>
+    // const contextPath = '${pageContext.request.contextPath}';
+    // const siteCode = '${siteCode}';
+    const contextPath = 'pcu_cmap';
+    const siteCode = 'kor';
+</script>
+<script src="https://www.kongju.ac.kr/js/babel.min.js"></script>
+<script src="https://www.kongju.ac.kr/js/babel.polyfill.min.js"></script>
+<script src="https://www.kongju.ac.kr/js/bluebird.js"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b919daae188d8b2a849335c605ff069"></script>
+<script type="text/babel" src="./js/campusmap.js"></script>
+<script type="text/babel" data-presets="es2015,stage-2">
+    const CONTEXT_PATH = 'pcu_cmap';
+</script>
+<script type="text/babel" src="./js/common.js"></script>
+<script type="text/babel" src="./js/campusguide.js"></script>
+
+<script type="text/babel" data-presets="es2015,stage-2" charset="UTF-8">
+    campusGuide.list();
+</script>
+</body>
+</html>

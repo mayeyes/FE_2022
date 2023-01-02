@@ -1,0 +1,242 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+
+/* sec1 */
+.user#main section#sec_1{position:relative;}
+.user#main section#sec_3{position:relative; padding-bottom:12em;}
+.user#main section#sec_3:after{content:""; display:block; position:absolute; right:-19em; bottom:0; z-index:-1; width:98em; height:56em; background-image:url(../../../images/site/beauty/main/sec_3_bg.png); background-repeat:no-repeat; background-position:center center; background-size:contain;}
+.user#main section#sec_3>.layout:after{content:""; display:block; clear:both;}
+@media screen and (max-width: 1024px) {
+    .user#main section#sec_3:after{display:none;}
+}
+
+.user#main #visual{position:relative;}
+.user#main #visual>.midd{position:relative; z-index:0; height:72.5em;}
+.user#main #visual>.midd>ul:after{content:""; display:block; clear:both;}
+.user#main #visual>.midd>ul{
+    white-space:nowrap; position:absolute; left:0; top:0; height:100%;
+}
+.user#main #visual>.midd>ul>li{display:inline-block; position:relative; width:143.2em; height:100%; padding:0 1.6em; vertical-align:top;}
+.user#main #visual>.midd>ul>li>.in{display:block; position:relative; top:50%; z-index:10; width:100%;
+    -webkit-transform:translateY(-50%);
+    transform:translateY(-50%);
+}
+.user#main #visual>.midd>ul>li>.in>img{display:block; position:relative; z-index:-1; width:100%;}
+.user#main #visual>.midd>ul>li>.in>.p:before,
+.user#main #visual>.midd>ul>li>.in>.t,
+.user#main #visual>.midd>ul>li>.in>.d{
+    opacity:0;
+    -webkit-transition:all 0.7s linear;
+    transition:all 0.7s linear;
+}
+.user#main #visual>.midd>ul>li>.in>.p{display:block; position:absolute; left:0; top:0; z-index:0; width:100%; height:100%; background-repeat:no-repeat; background-position:center center; background-size:cover;}
+.user#main #visual>.midd>ul>li>.in>.p:before{opacity:1; content:""; display:block; position:absolute; left:0; top:0; width:100%; height:100%; background-color:rgba(82, 82, 82, 0.5);}
+.user#main #visual>.midd>ul>li>.in>.t{
+    position:absolute; left:50%; top:calc(50% - 11em); z-index:200; text-align:center;
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+}
+.user#main #visual>.midd>ul>li>.in>.t>em,
+.user#main #visual>.midd>ul>li>.in>.t>strong{display:block;}
+.user#main #visual>.midd>ul>li>.in>.t>em{font-style:normal; font-weight:300; font-size:2.5em; color:#fff;}
+.user#main #visual>.midd>ul>li>.in>.t>strong{line-height:1.2; margin-top:0.1em; font-family:'KoddiUDOnGothic'; font-weight:500; font-size:5.6em; color:#fff;}
+.user#main #visual>.midd>ul>li>.in>.d{position:absolute; right:2em; bottom:1.33em; z-index:200; font-weight:300; font-size:1.5em; color:rgba(255,255,255,0.8);}
+
+.user#main #visual .prev,
+.user#main #visual .next{
+    display:block; position:absolute; top:calc(50% - 8em); z-index:400; width:4.3em; height:8.6em; background-image:url(../../../images/site/beauty/main/visual_arrow_2.svg); background-repeat:no-repeat; background-position:center center; background-size:contain;
+    -webkit-transition:transform 0.2s linear;
+    transition:transform 0.2s linear;
+}
+.user#main #visual .prev{
+    left:calc(50% - 70em + 4.4em);
+    -webkit-transform:translateY(-50%);
+    transform:translateY(-50%);
+}
+.user#main #visual .next{
+    right:calc(50% - 70em + 4.4em);
+    -webkit-transform:translateY(-50%) rotate(180deg);
+    transform:translateY(-50%) rotate(180deg);
+}
+.user#main #visual .prev>span,
+.user#main #visual .next>span{position:absolute; opacity:0;}
+.user#main #visual .prev:hover{
+    -webkit-transform:translateY(-50%) scale(1.1);
+    transform:translateY(-50%) scale(1.1);
+}
+.user#main #visual .next:hover{
+    -webkit-transform:translateY(-50%) rotate(180deg) scale(1.1);
+    transform:translateY(-50%) rotate(180deg) scale(1.1);
+}
+
+.user#main #visual>.midd>ul>li.on>.in>.t,
+.user#main #visual>.midd>ul>li.on>.in>.d{opacity:1;}
+.user#main #visual>.midd>ul>li.on>.in>.p:before{opacity:0;}
+@media screen and (max-width: 1400px) {
+    .user#main #visual .prev{left:2em;}
+    .user#main #visual .next{right:2em;}
+    .user#main #visual>.midd>ul{left:auto !important; width:100%;}
+    .user#main #visual>.midd>ul>li{opacity:0; position:absolute; left:0; z-index:0;}
+    .user#main #visual>.midd>ul>li.on{opacity:1; position:relative; left:50%; z-index:1000; transform:translateX(-50%);}
+}
+@media screen and (max-width: 1024px) {
+    .user#main #visual .prev, 
+    .user#main #visual .next{top:calc(50% - 5em); width:2em; height:4em;}
+    .user#main #visual>.midd{height:40em;}
+    .user#main #visual>.midd>ul>li>.in{height:100%;}
+    .user#main #visual>.midd>ul>li>.in>img{display:none;}
+    .user#main #visual>.midd>ul>li>.in>.t{top:calc(50% - 7em);}
+    .user#main #visual>.midd>ul>li>.in>.t>em{font-size:2em;}
+    .user#main #visual>.midd>ul>li>.in>.t>strong{font-size:4em;}
+}
+@media screen and (max-width: 600px) {
+    .user#main #visual .prev, 
+    .user#main #visual .next{top:calc(50% - 8em); width:1.5em; height:3em;}
+    .user#main #visual>.midd{height:36em;}
+    .user#main #visual>.midd>ul>li>.in>.t{top:calc(50% - 9em);}
+    .user#main #visual>.midd>ul>li>.in>.t>em{font-size:1.5em;}
+    .user#main #visual>.midd>ul>li>.in>.t>strong{font-size:3em;}
+}
+@media screen and (max-width: 400px) {
+    .user#main #visual>.midd>ul>li>.in>.t>em{font-size:1.3em;}
+    .user#main #visual>.midd>ul>li>.in>.t>strong{font-size:2.4em;}
+}
+
+
+/* 학사일정 */
+.user#main #list-icon{position:absolute; left:0; bottom:8em; z-index:100; width:100%;}
+.user#main #list-icon > .layout > ul{padding:0 5em;}
+.user#main #list-icon > .layout > ul:after{content:""; display:block; clear:both;}
+.user#main #list-icon > .layout > ul > li{
+    float:left; width:calc((100% - 1px - 7em) / 8); margin-right:1em; text-align:center;
+    -webkit-border-radius:0.8em;
+    border-radius:0.8em;
+}
+.user#main #list-icon > .layout > ul > li:nth-child(8n+8){margin-right:0;}
+.user#main #list-icon > .layout > ul > li > a{
+    display:table; table-layout:fixed; width:100%;
+    -webkit-border-radius:0.8em;
+    border-radius:0.8em;
+    -webkit-transition:background-color 0.2s linear;
+    transition:background-color 0.2s linear;
+}
+.user#main #list-icon > .layout > ul > li > a > span{
+    display:table-cell; vertical-align:middle; text-align:center; font-size:1.6em; color:#fff;
+    -webkit-transition:transform 0.2s linear;
+    transition:transform 0.2s linear;
+}
+.user#main #list-icon > .layout > ul > li > a > span:before{content:""; display:block; width:3.125em; height:3.125em; margin:0 auto 1em; background-repeat:no-repeat; background-position:center center; background-size:contain;}
+.user#main #list-icon > .layout > ul > li:nth-child(1) > a > span:before{background-image:url(../../../images/site/beauty/main/icon_list_1.svg);}
+.user#main #list-icon > .layout > ul > li:nth-child(2) > a > span:before{background-image:url(../../../images/site/beauty/main/icon_list_2.svg);}
+.user#main #list-icon > .layout > ul > li:nth-child(3) > a > span:before{background-image:url(../../../images/site/beauty/main/icon_list_3.svg);}
+.user#main #list-icon > .layout > ul > li:nth-child(4) > a > span:before{background-image:url(../../../images/site/beauty/main/icon_list_4.svg);}
+.user#main #list-icon > .layout > ul > li:nth-child(5) > a > span:before{background-image:url(../../../images/site/beauty/main/icon_list_5.svg);}
+.user#main #list-icon > .layout > ul > li:nth-child(6) > a > span:before{background-image:url(../../../images/site/beauty/main/icon_list_6.svg);}
+.user#main #list-icon > .layout > ul > li:nth-child(7) > a > span:before{background-image:url(../../../images/site/beauty/main/icon_list_7.svg);}
+.user#main #list-icon > .layout > ul > li:nth-child(8) > a > span:before{background-image:url(../../../images/site/beauty/main/icon_list_8.svg);}
+
+.user#main #list-icon > .layout > ul > li > a:hover > span{
+    -webkit-transform:translateY(-1em);
+    transform:translateY(-1em);
+}
+@media screen and (max-width: 1400px) {
+    .user#main #list-icon > .layout > ul{padding:0;}
+}
+@media screen and (max-width: 1024px){
+    .user#main #list-icon{bottom:3em;}
+}
+@media screen and (max-width: 800px){
+    .user#main #list-icon{font-size:0.8em;}
+}
+@media screen and (max-width: 600px){
+    .user#main #list-icon{font-size:0.7em;}
+    .user#main #list-icon > .layout > ul > li{width:calc((100% - 1px - 3em) / 4);}
+    .user#main #list-icon > .layout > ul > li:nth-child(4n+4){margin-right:0;}
+    .user#main #list-icon > .layout > ul > li:nth-child(n+5){margin-top:2em;}
+}
+
+
+/*  */
+.user#main #etc-list{padding:3.2em 0;}
+.user#main #etc-list>ul:after{content:""; display:block; clear:both;}
+.user#main #etc-list>ul>li{float:left; width:calc((100% - 1px - (3.2em * 2)) / 3); margin-left:3.2em;}
+.user#main #etc-list>ul>li:nth-child(3n+1){clear:both; margin-left:0;}
+.user#main #etc-list>ul>li>a{
+    overflow:hidden; display:block; position:relative; height:28.8em; padding:3.6em 4.3em; background-color:#ddd;
+    -webkit-transition:transform 0.2s linear;
+    transition:transform 0.2s linear;
+}
+.user#main #etc-list>ul>li:nth-child(1)>a{background-color:#9778E5;}
+.user#main #etc-list>ul>li:nth-child(2)>a{background-color:#F28B84;}
+.user#main #etc-list>ul>li:nth-child(3)>a{background-color:#102140;}
+.user#main #etc-list>ul>li>a:before{content:""; display:block; position:absolute; right:0; bottom:0; background-repeat:no-repeat; background-position:center center; background-size:contain;}
+.user#main #etc-list>ul>li:nth-child(1)>a:before{right:-2em; bottom:-1em; width:24em; height:25.9em; background-image:url(../../../images/site/beauty/main/etc-list_simbol_1.svg);}
+.user#main #etc-list>ul>li:nth-child(2)>a:before{right:-6em; bottom:-4em; width:24.5em; height:29.4em; background-image:url(../../../images/site/beauty/main/etc-list_simbol_2.svg);}
+.user#main #etc-list>ul>li:nth-child(3)>a:before{right:-3em; bottom:-16em; width:31.1em; height:38.6em; background-image:url(../../../images/site/beauty/main/etc-list_simbol_3.svg);}
+.user#main #etc-list>ul>li>a>.head>em,
+.user#main #etc-list>ul>li>a>.head>strong{display:block;}
+.user#main #etc-list>ul>li>a>.head>em{font-family: 'Poppins', sans-serif; font-style:normal; font-weight:500; font-size:1.8em; color:#fff;}
+.user#main #etc-list>ul>li>a>.head>strong{font-weight:500; font-size:3.2em; color:#fff;}
+.user#main #etc-list>ul>li>a>.midd{margin-top:1em; font-weight:300; font-size:2em; color:#fff;}
+
+.user#main #etc-list>ul>li>a:hover{
+    -webkit-transform:translateY(-1em);
+    transform:translateY(-1em);
+}
+@media screen and (max-width: 1024px){
+    .user#main #etc-list>ul>li{width:calc((100% - 1px - (2em * 2)) / 3); margin-left:2em;}
+    .user#main #etc-list>ul>li>a{height:14.7em; padding:2.2em 2em;}
+    .user#main #etc-list>ul>li:nth-child(1)>a:before{right:-7em; bottom:-0.2em; height:80%;}
+    .user#main #etc-list>ul>li:nth-child(2)>a:before{right:-8em; bottom:-0.5em; height:80%;}
+    .user#main #etc-list>ul>li:nth-child(3)>a:before{right:-12em; bottom:-3.5em; height:80%;}
+    .user#main #etc-list>ul>li>a>.head>em{font-size:1.5em;}
+    .user#main #etc-list>ul>li>a>.head>strong{font-size:2.4em;}
+    .user#main #etc-list>ul>li>a>.midd{display:none;}
+}
+@media screen and (max-width: 700px){
+    .user#main #etc-list>ul>li{width:100%; margin-left:0;}
+    .user#main #etc-list>ul>li:nth-child(n+2){margin-top:1em;}
+    .user#main #etc-list>ul>li>a{height:10em;}
+    .user#main #etc-list>ul>li:nth-child(1)>a:before{right:-7em; bottom:0em;}
+    .user#main #etc-list>ul>li:nth-child(2)>a:before{right:-8em; bottom:-0.5em;}
+    .user#main #etc-list>ul>li:nth-child(3)>a:before{right:-10.5em; bottom:-0.5em;}
+    .user#main #etc-list>ul>li>a>.head>em{font-size:1.4em;}
+    .user#main #etc-list>ul>li>a>.head>strong{font-size:2em;}
+}
+
+
+.user#main #notice{float:left; position:relative; width:40%; height:39.3em; padding:4em; margin-right:3.2em; border: 1px solid rgba(16, 33, 64, 0.2);}
+.user#main #notice>.head{padding-bottom:1.2em; border-bottom:2px solid #003494;}
+.user#main #notice>.head>strong{line-height:1; font-family: 'Poppins', sans-serif; font-size:2.8em; color:#333;}
+.user#main #notice>.midd{margin-top:0.5em;}
+.user#main #notice>.midd>ul>li{padding:1.5em 0;}
+.user#main #notice>.midd>ul>li:nth-child(n+2){border-top:1px solid #ECECEC;}
+.user#main #notice>.midd>ul>li>a{display:block; position:relative; padding-right:8em;}
+.user#main #notice>.midd>ul>li>a>.t{white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:block; font-weight:400; font-size:1.6em; color:#444;}
+.user#main #notice>.midd>ul>li>a>.d{position:absolute; right:0; bottom:0; font-weight:300; font-size:1.5em; color:#666;}
+.user#main #notice .more{position:absolute; right:4em; top:4.5em;}
+.user#main #notice .more>a{display:block; position:relative; padding-right:1.3em;}
+.user#main #notice .more>a:before{content:""; display:block; position:absolute; right:0; top:calc(50% - 0.55em); width:0.7em; height:1.1em; background-image:url(../../../images/site/beauty/main/notice_arrow.svg);}
+.user#main #notice .more>a>span{font-size:1.5em; color:#555;}
+
+.user#main #notice>.midd>ul>li>a:hover>.t{text-decoration:underline;}
+
+.user#main #youtube{float:left; width:calc(60% - 3.2em); height:39.3em;}
+.user#main #youtube>iframe{width:100%; height:100%;}
+
+@media screen and (max-width: 1024px){
+    .user#main section#sec_3{padding-bottom:6em;}
+}
+@media screen and (max-width: 900px){
+    .user#main #notice{float:none; width:100%; height:auto; padding:4em 4em 3em 4em;}
+    .user#main #youtube{float:none; position:relative; width:100%; height:auto; margin-top:3em; padding-top:56.2%;}
+    .user#main #youtube>iframe{position:absolute; left:0; top:0; width:100%; height:100%;}
+}
+@media screen and (max-width: 600px){
+    .user#main section#sec_3{padding-bottom:3em;}
+    .user#main #notice{padding:2em 2em 1em 2em;}
+    .user#main #notice>.head>strong{font-size:2em;}
+    .user#main #notice>.midd>ul>li{padding:1.2em 0;}
+    .user#main #notice .more{top:2.5em; right:2em;}
+}

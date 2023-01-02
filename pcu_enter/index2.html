@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+    <script src="../mark.js"></script>
+    
+    
+    <script>
+        $(function(){
+            function _checklist(){
+                // for(var i=0; i<$("table").length; i++){
+                //     for(var t=0; t<$("table").eq(i).find(" tbody tr").length; t++){
+                //         //num
+                //         $("table").eq(i).find(" tbody tr:eq("+t+")>td:eq(0)").text((t+1));
+                //     }
+                // }
+                for(var i=0; i<$("table tr").size(); i++){
+                    var num = $("table tr").eq(i).find(">td:eq(0)");
+                    var t = $.trim($("table tr").eq(i).find(">td:eq(4)").text());
+                    var line = $.trim($("table tr").eq(i).find(">td:eq(1)").text());
+                    var deps = $("table tr").eq(i).find(">td:eq(2)").text();
+                    //console.log($("table tr").eq(i).find(">td:eq(0)").text(),t);
+                    if(t.indexOf("LINK") !== -1){
+                        $("table tr").eq(i).attr("data-hidden","on");
+                    } else if(t === ""){
+                        $("table tr").eq(i).attr("data-line","on");
+                    }
+
+                    if(line.indexOf("-") !== -1){
+                        $("table tr").eq(i).attr("data-no","on");
+                    } else if(line.indexOf("1") !== -1){
+                        $("table tr").eq(i).attr("data-1dep","on");
+                    } else if(line.indexOf("+") !== -1){
+                        $("table tr").eq(i).attr("data-pr","on");
+                    } else if(line.indexOf("?") !== -1){
+                        $("table tr").eq(i).attr("data-help","on");
+                    }
+
+                    // deps
+                    var buls = "";
+                    if(deps.indexOf("+") !== -1){
+                        var cnts = 0;
+                        for(var t=0; t<deps.length; t++){
+                            if(deps[t] === "+"){
+                                buls += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                                cnts++;
+                            }
+                        }
+                        
+                        var icons = "";
+                        if(cnts === 0) icons = "1️⃣";
+                        else if(cnts === 1) icons = "2️⃣";
+                        else if(cnts === 2) icons = "3️⃣";
+                        else if(cnts === 3) icons = "🅿️";
+                        else if(cnts === 4) icons = "5️⃣";
+                        else if(cnts === 5) icons = "6️⃣";
+                        else if(cnts === 6) icons = "7️⃣";
+                    //1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣✅🅿️
+                        //buls += "→ ";
+                    } else {
+                        icons = "1️⃣";
+                    }
+                    buls += icons+" ";
+                    $("table tr").eq(i).find(">td:eq(2)").html(buls+$.trim(deps.replace(/\+/g,'')));
+                }
+
+                $("table").attr("data-site","moe");
+            }
+            $.get("./readme2.md")
+                .done(function(data) {
+                    $("body").html(marked(data));
+                    _checklist();
+                })
+                .fail(function() {
+                    $.get("./README2.md")
+                        .done(function(data) {
+                        //dataSet(data);
+                        $("body").html(marked(data));
+                        _checklist();
+                    });
+                });
+
+        })
+    </script>
+    <link rel="stylesheet" href="../markdown.css">
+    <style>
+        table>tbody a:before,
+        table>tbody a:after{display:none !important;}
+        table>tbody>tr>td:nth-child(1){width:5%;}
+        table>tbody>tr>td:nth-child(2){width:5%;}
+
+        h2+table>tbody>tr>td:nth-child(3){width:auto;}
+        h2+table>tbody>tr>td:nth-child(4){width:20%;}
+        h2+table>tbody>tr>td:nth-child(5){width:20%;}
+
+        h3+table>tbody>tr>td:nth-child(3){width:5%;}
+        h3+table>tbody>tr>td:nth-child(4){width:auto;}
+        h3+table>tbody>tr>td:nth-child(5){width:20%;}
+        h3+table>tbody>tr>td:nth-child(6){width:20%;}
+    </style>
+</head>
+<body>
+
+</body>
+</html> 

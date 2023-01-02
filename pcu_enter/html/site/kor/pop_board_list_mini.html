@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOOO게시판 리스트</title>
+    <script src="../../../js/site/kor/jquery.1.12.4.js"></script>
+    <link rel="stylesheet" href="../../../css/site/core/core.css">
+    <link rel="stylesheet" href="../../../css/site/kor/board.css">
+    <link rel="stylesheet" href="../../../css/site/kor/skin.css">
+    <style>
+        body#pop{padding:0;}
+        body#pop #wrap{max-width:1000px; margin:0 auto;}
+    </style>
+</head>
+<body id="pop">
+    
+
+    <div id="wrap">
+
+    <!-- 게시판 :s -->
+        
+        <div class="notice_mini">
+            <ul>
+                <li><a href="#"><span>취업</span></a>
+                    <div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <strong>
+                                        <i data-simbol="1" data-type="new"><span>new</span></i>
+                                        Technical Report Report Report Report Report Report Technical Report Report Report Report Report Report
+                                    </strong>
+                                    <span>홍길동</span>
+                                    <span>0000-00-00</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <strong>
+                                        <i data-simbol="1" data-type="new"><span>new</span></i>
+                                        Technical Report Report Report Report Report Report Technical Report Report Report Report Report Report
+                                    </strong>
+                                    <span>홍길동</span>
+                                    <span>0000-00-00</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <strong>
+                                        Technical Report Report Report Report Report Report Technical Report Report Report Report Report Report
+                                    </strong>
+                                    <span>홍길동</span>
+                                    <span>0000-00-00</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <strong>
+                                        Technical Report Report Report Report Report Report Technical Report Report Report Report Report Report
+                                    </strong>
+                                    <span>홍길동</span>
+                                    <span>0000-00-00</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <strong>
+                                        Technical Report Report Report Report Report Report Technical Report Report Report Report Report Report
+                                    </strong>
+                                    <span>홍길동</span>
+                                    <span>0000-00-00</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="no_mini_board_data">등록된 데이터가 없습니다.</div>
+                    </div>
+                    <a href="#" class="more"><span>more</span></a>
+                </li>
+                <li><a href="#"><span>일반</span></a>
+                    <div>
+                        <div class="no_mini_board_data">등록된 데이터가 없습니다.</div>
+                    </div>
+                    <a href="#" class="more"><span>more</span></a>
+                </li>
+                <li><a href="#"><span>학사</span></a>
+                    <div>
+                        <div class="no_mini_board_data">등록된 데이터가 없습니다.</div>
+                    </div>
+                    <a href="#" class="more"><span>more</span></a>
+                </li>
+                <li><a href="#"><span>장학</span></a>
+                    <div>
+                        <div class="no_mini_board_data">등록된 데이터가 없습니다.</div>
+                    </div>
+                    <a href="#" class="more"><span>more</span></a>
+                </li>
+                <li><a href="#"><span>행사</span></a>
+                    <div>
+                        <div class="no_mini_board_data">등록된 데이터가 없습니다.</div>
+                    </div>
+                    <a href="#" class="more"><span>more</span></a>
+                </li>
+                <li><a href="#"><span>각종</span></a>
+                    <div>
+                        <div class="no_mini_board_data">등록된 데이터가 없습니다.</div>
+                    </div>
+                    <a href="#" class="more"><span>more</span></a>
+                </li>
+            </ul>
+        </div>
+        <script>
+            $(function(){
+                notice_mini_AC();
+            });
+            function notice_mini_AC(){
+                var obj = $(".notice_mini");
+                    obj.btn = obj.find(">ul>li>a:not(.more)");
+                function _set(idx){
+                    obj.find(">ul>li").removeClass("on").eq(idx).addClass("on");
+                }
+                _set(0);
+                obj.btn.on("click",function(){
+                    var idx = obj.btn.parent().index($(this).parent());
+                    _set(idx);
+                    return false;
+                });
+            }
+        </script>
+        <!-- 게시판 :e -->
+
+    </div>
+
+
+</body>
+</html>

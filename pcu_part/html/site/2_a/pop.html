@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOOO게시판 리스트</title>
+    <link rel="stylesheet" href="../../../css/site/core/core.css">
+    <link rel="stylesheet" href="../../../css/site/board.css">
+    <link rel="stylesheet" href="../../../css/site/guide.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <style>
+        body#pop{padding:3em 0; font-family:'Noto Sans KR',Arial,sans-serif;}
+        body#pop #wrap{max-width:1400px; margin:0 auto;}
+        .btn {display: inline-block; min-width: 6em; padding: 0.6em 1em 0.5em; margin: 2px 0; text-align: center; color: #fff; background-color: #2B4381;}
+        .btn.bg_01{background-color: #5078E7;}
+        .page a.on, .page a:hover{background-color: #0f3192 !important;}
+        .qna_list ul li .subject a strong .re_end{background-color: #2B4381; border-color: #2B4381;}
+        .faq_list li .question a:before{background-color: #f2f5fa; color: #0f3192; font-weight: 700;}
+        .bodo_list ul li a .contents{height: 4.5em;}
+        @media screen and (max-width: 380px){
+            .bodo_list ul li a .contents{max-height: 3em;}
+        }
+
+    </style>
+</head>
+<body id="pop">
+    
+
+    <div id="wrap">
+    <h4>***공지형 게시판***</h4>
+            <!-- 검색인풋 :: s :: -->
+            <div class="board_search">
+                <div class="count">
+                    <strong>총 게시물</strong>
+                    <span class="price">865</span>
+                    <span>1 </span>/ 10
+                </div>
+                <div class="select">
+                    <form action="" method="">
+                        <label for="input_sel" class="hidden">검색조건 선택</label>
+                        <select name="input_sel" id="input_sel">
+                            <option value="">제목</option>
+                            <option value="">작성자</option>
+                        </select>
+                        <label for="input_val" class="hidden">검색어 입력</label>
+                        <input type="text" id="input_val" class="input_val" title="검색어를 입력해주세요.">
+                        <input type="submit" class="search_btn" value="검색" title="검색">
+                    </form>
+                </div>
+            </div>
+            <!-- 검색인풋 :: e :: -->
+            <!-- 공지형 게시판 :: s :: -->
+            <div class="notice_list">
+                <ul>
+                    <li class="thead">
+                        <strong class="no">번호</strong>
+                        <strong class="subject">제목</strong>
+                        <strong class="writer">작성자</strong>
+                        <strong class="date">작성일</strong>
+                        <strong class="counter">조회수</strong>
+                        <strong class="file_atch">파일</strong>
+                    </li>
+                    <li class="notice">
+                        <p class="no">공지</p>
+                        <p class="subject align_left">
+                            <a href="#" class="new js_secret">
+                                <strong>
+                                    Technical Report Report Report Report Report Report Technical Report Report
+                                    <span class="new">new</span>
+                                    <span class="secret">잠김</span>
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                    <li>
+                        <p class="no">000</p>
+                        <p class="subject align_left">
+                            <a href="#">
+                                <strong>
+                                    Technical Report Report Report Report Report Report Technical Report Report Report Report Report Report
+                                    <span class="new">new</span>
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                    <li>
+                        <p class="no">000</p>
+                        <p class="subject align_left">
+                            <a href="#" class="new">
+                                <strong>
+                                    Technical Report Report Report Report Report Report
+                                    <span class="new">new</span>
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                </ul>
+            </div>
+            <!-- 공지형 게시판 :: e :: -->
+            <!-- 페이징 :: s :: -->
+            <div class="page">
+                <a href="#" class="page_first">처음으로</a>
+                <a href="#" class="page_left">이전</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#" class="on" title="현재 페이지">5</a>
+                <a href="#" class="page_right">다음</a>
+                <a href="#" class="page_end">마지막으로</a>
+            </div>
+            <!-- 페이징 :: e :: -->
+            
+            <div class="align_right mt_30">
+                <a href="#" class="btn">등록</a>
+                <a href="#" class="btn">수정</a>
+                <a href="#" class="btn">확인</a>
+                <a href="#" class="btn bg_01">목록</a>
+                <a href="#" class="btn bg_01">취소</a>
+                <a href="#" class="btn bg_01">삭제</a>
+            </div>
+        
+            <br />
+        
+            <h4>***QnA 게시판***</h4>
+            <!-- 검색인풋 :: s :: -->
+            <div class="board_search">
+                <div class="count">
+                    <strong>총 게시물</strong>
+                    <span class="price">865</span>
+                    <span>1 </span>/ 10
+                </div>
+                <div class="select">
+                    <form action="" method="">
+                        <label for="input_sel" class="hidden">검색조건 선택</label>
+                        <select name="input_sel" id="input_sel">
+                            <option value="">제목</option>
+                            <option value="">작성자</option>
+                        </select>
+                        <label for="input_val" class="hidden">검색어 입력</label>
+                        <input type="text" id="input_val" class="input_val" title="검색어를 입력해주세요.">
+                        <input type="submit" class="search_btn" value="검색" title="검색">
+                    </form>
+                </div>
+            </div>
+            <!-- 검색인풋 :: e :: -->
+            <!-- QnA 게시판 :: s :: -->
+            <div class="qna_list">
+                <ul>
+                    <li class="thead">
+                        <strong class="no">번호</strong>
+                        <strong class="subject">제목</strong>
+                        <strong class="writer">작성자</strong>
+                        <strong class="date">작성일</strong>
+                        <strong class="counter">조회수</strong>
+                        <strong class="file_atch">파일</strong>
+                    </li>
+                    <li>
+                        <p class="no">000</p>
+                        <p class="subject align_left">
+                            <a href="#" class="re_end js_secret new">
+                                <strong>
+                                    <span class="re_end">답변완료</span>
+                                    Technical Report Report Report Report
+                                    <span class="js_secret">[secret]</span>
+                                    <span class="new">new</span>
+        
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                    <li>
+                        <p class="no">000</p>
+                        <p class="subject align_left">
+                            <a href="#" class="new js_secret">
+                                <strong>
+                                    <span class="re_end">답변완료</span>
+                                    Technical Report Report Report Report
+                                    <span class="js_secret">[secret]</span>
+                                    <span class="new">new</span>
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                    <li>
+                        <p class="no">000</p>
+                        <p class="subject align_left">
+                            <a href="#" class="re_end js_secret">
+                                <strong>
+                                    <span class="re_end">답변완료</span>
+                                    Technical Report Report Report Report
+                                    <span class="js_secret">[secret]</span>
+                                    <span class="new">new</span>
+        
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                    <li>
+                        <p class="no">000</p>
+                        <p class="subject align_left">
+                            <a href="#" class="re_end new">
+                                <strong>
+                                    <span class="re_end">답변완료</span>
+                                    Technical Report Report Report Report
+                                    <span class="js_secret">[secret]</span>
+                                    <span class="new">new</span>
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                    <li>
+                        <p class="no">000</p>
+                        <p class="subject align_left">
+                            <a href="#" class="re_end">
+                                <strong>
+                                    <span class="re_end">답변완료</span>
+                                    Technical Report Report Report Report
+                                    <span class="js_secret">[secret]</span>
+                                    <span class="new">new</span>
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                    <li>
+                        <p class="no">000</p>
+                        <p class="subject align_left">
+                            <a href="#" class="js_secret">
+                                <strong>
+                                    <span class="re_end">답변완료</span>
+                                    Technical Report Report Report Report Report Report Report Report Report Report
+                                    <span class="js_secret">[secret]</span>
+                                    <span class="new">new</span>
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                    <li>
+                        <p class="no">000</p>
+                        <p class="subject align_left">
+                            <a href="#" class="new">
+                                <strong>
+                                    <span class="re_end">답변완료</span>
+                                    Technical Report Report Report Report Report Report Report Report Report Report
+                                    <span class="js_secret">[secret]</span>
+                                    <span class="new">new</span>
+                                </strong>
+                            </a>
+                        </p>
+                        <p class="writer">관리자</p>
+                        <p class="date">0000-00-00</p>
+                        <p class="counter">000</p>
+                        <p class="file_atch"><span class="board_file">파일</span></p>
+                    </li>
+                </ul>
+            </div>
+            <!-- QnA 게시판 :: e :: -->
+            <!-- 페이징 :: s :: -->
+            <div class="page">
+                <a href="#" class="page_first">처음으로</a>
+                <a href="#" class="page_left">이전</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#" class="on" title="현재 페이지">5</a>
+                <a href="#" class="page_right">다음</a>
+                <a href="#" class="page_end">마지막으로</a>
+            </div>
+            <!-- 페이징 :: e :: -->
+        
+            <br />
+        
+            <h4>***FAQ 게시판***</h4>
+            <!-- 검색인풋 :: s :: -->
+            <div class="board_search">
+                <div class="count">
+                    <strong>총 게시물</strong>
+                    <span class="price">865</span>
+                    <span>1 </span>/ 10
+                </div>
+                <div class="select">
+                    <form action="" method="">
+                        <label for="input_sel" class="hidden">검색조건 선택</label>
+                        <select name="input_sel" id="input_sel">
+                            <option value="">제목</option>
+                            <option value="">작성자</option>
+                        </select>
+                        <label for="input_val" class="hidden">검색어 입력</label>
+                        <input type="text" id="input_val" class="input_val" title="검색어를 입력해주세요.">
+                        <input type="submit" class="search_btn" value="검색" title="검색">
+                    </form>
+                </div>
+            </div>
+            <!-- 검색인풋 :: e :: -->
+            <!-- FAQ 게시판 :: s :: -->
+            <ul class="faq_list">
+                <li class="first">
+                    <div class="question">
+                        <a href="#">
+                            <span>질문이 있습니다. 질문이 있습니다. 질문이 있습니다.</span>
+                        </a>
+                    </div>
+                    <div class="answer">
+                        <p>답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="question">
+                        <a href="#">
+                            <span>질문이 있습니다. 질문이 있습니다. 질문이 있습니다. 질문이 있습니다. 질문이 있습니다. 질문이 있습니다. 질문이 있습니다. 질문이 있습니다. 질문이 있습니다. 질문이 있습니다. 질문이 있습니다. 질문이 있습니다.</span>
+                        </a>
+                    </div>
+                    <div class="answer">
+                        <p>답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다. 답변은 이렇습니다.</p>
+                    </div>
+                </li>
+            </ul>
+            <!-- FAQ 게시판 :: e :: -->
+            <!-- 페이징 :: s :: -->
+            <div class="page">
+                <a href="#" class="page_first">처음으로</a>
+                <a href="#" class="page_left">이전</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#" class="on" title="현재 페이지">5</a>
+                <a href="#" class="page_right">다음</a>
+                <a href="#" class="page_end">마지막으로</a>
+            </div>
+            <!-- 페이징 :: e :: -->
+        
+            <br />
+        
+            <h4>***보도형_게시판***</h4>
+            <!-- 검색인풋 :: s :: -->
+            <div class="board_search">
+                <div class="count">
+                    <strong>총 게시물</strong>
+                    <span class="price">865</span>
+                    <span>1 </span>/ 10
+                </div>
+                <div class="select">
+                    <form action="" method="">
+                        <label for="input_sel" class="hidden">검색조건 선택</label>
+                        <select name="input_sel" id="input_sel">
+                            <option value="">제목</option>
+                            <option value="">작성자</option>
+                        </select>
+                        <label for="input_val" class="hidden">검색어 입력</label>
+                        <input type="text" id="input_val" class="input_val" title="검색어를 입력해주세요.">
+                        <input type="submit" class="search_btn" value="검색" title="검색">
+                    </form>
+                </div>
+            </div>
+            <!-- 검색인풋 :: e :: -->
+            <!-- 보도형 게시판 :: s :: -->
+            <div class="bodo_list">
+                <ul>
+                    <li>
+                        <a href="#" class="new">
+                            <span class="photo">
+                                <span><img src="../images/site/skin/sample.jpg" alt=""></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다. 
+                                <span class="new">[new]</span>
+                            </strong>
+                            <span class="contents">
+                                내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
+                            </span>
+                            <span class="writer">관리자</span>
+                            <span class="date">0000-00-00</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="new">
+                            <span class="photo">
+                                <span><img src="../images/site/skin/sample.jpg" alt=""></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="contents">
+                                내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다. 내용이 들어갑니다.
+                            </span>
+                            <span class="writer">관리자</span>
+                            <span class="date">0000-00-00</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 보도형 게시판 :: e :: -->
+            <!-- 페이징 :: s :: -->
+            <div class="page">
+                <a href="#" class="page_first">처음으로</a>
+                <a href="#" class="page_left">이전</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#" class="on" title="현재 페이지">5</a>
+                <a href="#" class="page_right">다음</a>
+                <a href="#" class="page_end">마지막으로</a>
+            </div>
+            <!-- 페이징 :: e :: -->
+        
+            <br />
+        
+            <h4>***포토형 게시판***</h4>
+            <!-- 검색인풋 :: s :: -->
+            <div class="board_search">
+                <div class="count">
+                    <strong>총 게시물</strong>
+                    <span class="price">865</span>
+                    <span>1 </span>/ 10
+                </div>
+                <div class="select">
+                    <form action="" method="">
+                        <label for="input_sel" class="hidden">검색조건 선택</label>
+                        <select name="input_sel" id="input_sel">
+                            <option value="">제목</option>
+                            <option value="">작성자</option>
+                        </select>
+                        <label for="input_val" class="hidden">검색어 입력</label>
+                        <input type="text" id="input_val" class="input_val" title="검색어를 입력해주세요.">
+                        <input type="submit" class="search_btn" value="검색" title="검색">
+                    </form>
+                </div>
+            </div>
+            <!-- 검색인풋 :: e :: -->
+            <!-- 포토형 게시판 :: s :: -->
+            <div class="photo_list">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="../images/site/skin/sample.jpg" alt=""></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="writer">입학전략홍보센터</span>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="../images/site/skin/sample.jpg" alt=""></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="writer">입학전략홍보센터</span>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="../images/site/skin/sample.jpg" alt=""></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="writer">입학전략홍보센터</span>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="../images/site/skin/sample.jpg" alt=""></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="writer">입학전략홍보센터</span>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="../images/site/skin/sample.jpg" alt=""></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="writer">입학전략홍보센터</span>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="../images/site/skin/sample.jpg" alt=""></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="writer">입학전략홍보센터</span>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 포토형 게시판 :: e :: -->
+            <!-- 페이징 :: s :: -->
+            <div class="page">
+                <a href="#" class="page_first">처음으로</a>
+                <a href="#" class="page_left">이전</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#" class="on" title="현재 페이지">5</a>
+                <a href="#" class="page_right">다음</a>
+                <a href="#" class="page_end">마지막으로</a>
+            </div>
+            <!-- 페이징 :: e :: -->
+        
+            <br />
+        
+            <h4>***유튜브형 게시판***</h4>
+            <!-- 검색인풋 :: s :: -->
+            <div class="board_search">
+                <div class="count">
+                    <strong>총 게시물</strong>
+                    <span class="price">865</span>
+                    <span>1 </span>/ 10
+                </div>
+                <div class="select">
+                    <form action="" method="">
+                        <label for="input_sel" class="hidden">검색조건 선택</label>
+                        <select name="input_sel" id="input_sel">
+                            <option value="">제목</option>
+                            <option value="">작성자</option>
+                        </select>
+                        <label for="input_val" class="hidden">검색어 입력</label>
+                        <input type="text" id="input_val" class="input_val" title="검색어를 입력해주세요.">
+                        <input type="submit" class="search_btn" value="검색" title="검색">
+                    </form>
+                </div>
+            </div>
+            <!-- 검색인풋 :: e :: -->
+            <!-- 유튜브형 게시판 :: s :: -->
+            <div class="youtube_list">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="https://img.youtube.com/vi/Qunl9Szdd_w/sddefault.jpg" title="3D 펜으로 나천재 만들기" onerror="this.src='/images/mec/skin/no_img.png'"></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="https://img.youtube.com/vi/Qunl9Szdd_w/sddefault.jpg" title="3D 펜으로 나천재 만들기" onerror="this.src='/images/mec/skin/no_img.png'"></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="https://img.youtube.com/vi/Qunl9Szdd_w/sddefault.jpg" title="3D 펜으로 나천재 만들기" onerror="this.src='/images/mec/skin/no_img.png'"></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="https://img.youtube.com/vi/Qunl9Szdd_w/sddefault.jpg" title="3D 펜으로 나천재 만들기" onerror="this.src='/images/mec/skin/no_img.png'"></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="https://img.youtube.com/vi/Qunl9Szdd_w/sddefault.jpg" title="3D 펜으로 나천재 만들기" onerror="this.src='/images/mec/skin/no_img.png'"></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="photo">
+                                <span><img src="https://img.youtube.com/vi/Qunl9Szdd_w/sddefault.jpg" title="3D 펜으로 나천재 만들기" onerror="this.src='/images/mec/skin/no_img.png'"></span>
+                            </span>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="date">2016-03-25</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 유튜브형 게시판 :: e :: -->
+            <!-- 페이징 :: s :: -->
+            <div class="page">
+                <a href="#" class="page_first">처음으로</a>
+                <a href="#" class="page_left">이전</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#" class="on" title="현재 페이지">5</a>
+                <a href="#" class="page_right">다음</a>
+                <a href="#" class="page_end">마지막으로</a>
+            </div>
+            <!-- 페이징 :: e :: -->
+        
+            <br />
+        
+            <h4>***다운로드(이미지) 게시판***</h4>
+            <!-- 검색인풋 :: s :: -->
+            <div class="board_search">
+                <div class="count">
+                    <strong>총 게시물</strong>
+                    <span class="price">865</span>
+                    <span>1 </span>/ 10
+                </div>
+                <div class="select">
+                    <form action="" method="">
+                        <label for="input_sel" class="hidden">검색조건 선택</label>
+                        <select name="input_sel" id="input_sel">
+                            <option value="">제목</option>
+                            <option value="">작성자</option>
+                        </select>
+                        <label for="input_val" class="hidden">검색어 입력</label>
+                        <input type="text" id="input_val" class="input_val" title="검색어를 입력해주세요.">
+                        <input type="submit" class="search_btn" value="검색" title="검색">
+                    </form>
+                </div>
+            </div>
+            <!-- 검색인풋 :: e :: -->
+            <!-- 다운로드(이미지) 게시판 :: s :: -->
+            <div class="downpic_list">
+                <ul>
+                    <li>
+                        <div>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="photo">
+                                <span><img src="../images/site/skin/pdf_img.jpg" alt=""></span>
+                            </span>
+                            <div class="btns">
+                                <a href="#" class="btn down" title="파일 다운로드">다운로드</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="photo">
+                                <span><img src="../images/site/skin/pdf_img.jpg" alt=""></span>
+                            </span>
+                            <div class="btns">
+                                <a href="#" class="btn down" title="파일 다운로드">다운로드</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="photo">
+                                <span><img src="../images/site/skin/pdf_img.jpg" alt=""></span>
+                            </span>
+                            <div class="btns">
+                                <a href="#" class="btn down" title="파일 다운로드">다운로드</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong class="subject">
+                                제목입니다. 제목입니다. 제목입니다. 제목입니다. 제목입니다.
+                            </strong>
+                            <span class="photo">
+                                <span><img src="../images/site/skin/pdf_img.jpg" alt=""></span>
+                            </span>
+                            <div class="btns">
+                                <a href="#" class="btn down" title="파일 다운로드">다운로드</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- 다운로드(이미지) 게시판 :: e :: -->
+            <!-- 페이징 :: s :: -->
+            <div class="page">
+                <a href="#" class="page_first">처음으로</a>
+                <a href="#" class="page_left">이전</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#" class="on" title="현재 페이지">5</a>
+                <a href="#" class="page_right">다음</a>
+                <a href="#" class="page_end">마지막으로</a>
+            </div>
+            <!-- 페이징 :: e :: -->
+        
+            <br />
+            <br />
+        
+            <h4>***게시판_no_data***</h4>
+            <!-- 검색인풋 :: s :: -->
+            <div class="board_search">
+                <div class="count">
+                    <strong>총 게시물</strong>
+                    <span class="price">865</span>
+                    <span>1 </span>/ 10
+                </div>
+                <div class="select">
+                    <form action="" method="">
+                        <label for="input_sel" class="hidden">검색조건 선택</label>
+                        <select name="input_sel" id="input_sel">
+                            <option value="">제목</option>
+                            <option value="">작성자</option>
+                        </select>
+                        <label for="input_val" class="hidden">검색어 입력</label>
+                        <input type="text" id="input_val" class="input_val" title="검색어를 입력해주세요.">
+                        <input type="submit" class="search_btn" value="검색" title="검색">
+                    </form>
+                </div>
+            </div>
+            <!-- 검색인풋 :: e :: -->
+            <!-- 노데이터 :: s :: -->
+            <div class="no_board_data">등록된 데이터가 없습니다.</div>
+            <!-- 노데이터 :: e :: -->
+            <!-- 페이징 :: s :: -->
+            <div class="page">
+                <a href="#" class="page_first">처음으로</a>
+                <a href="#" class="page_left">이전</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#" class="on" title="현재 페이지">5</a>
+                <a href="#" class="page_right">다음</a>
+                <a href="#" class="page_end">마지막으로</a>
+            </div>
+            <!-- 페이징 :: e :: -->
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            board_list_faq_AC();
+        });
+
+        function board_list_faq_AC(){
+            var obj = $(".faq_list");
+                obj.question = obj.find(".question");
+                obj.answer = obj.find(".answer");
+
+            //초기값
+            obj.find("li:eq(0) .question").addClass("on");
+            obj.find("li:eq(0) .question >a>em").text("닫기");
+            obj.find("li:eq(0) .answer").css("display","block");
+
+            obj.question.click(function(){
+                var boxs = $(this).siblings(".answer");
+
+                if(boxs.is(":hidden")){
+                    obj.answer.not(":hidden").siblings(".question").removeClass("on");
+                    obj.answer.not(":hidden").slideUp(300);
+                    boxs.siblings(".question").addClass("on");
+                    boxs.siblings(".question").find(">a>em").text("닫기");
+                    boxs.slideDown(300);
+                } else {
+                    obj.question.removeClass("on");
+                    boxs.siblings(".question").find(">a>em").text("열기");
+                    boxs.slideUp(300);
+                }
+                return false;
+            });
+        }
+    </script>
+
+
+</body>
+</html>
