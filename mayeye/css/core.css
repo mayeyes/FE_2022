@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+:root{
+	--bg:#fff;
+	--image-layout:url(../images/layout/layout.svg);
+	--image-main:url(../images/main/main.svg);
+	--image-content:url(../images/content/content.svg);
+	
+	/* main */
+	--main-bg-m:url(../images/main/m-bg.svg);
+}
+/* dark */
+[data-skin="dark"]:root{
+	--bg:#000;
+
+	/* main */
+	--main-bg-m:url(../images/main/dark_m-bg.svg);
+}
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	Basic	
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+*,*::before,*::after{box-sizing:border-box;}
+html,body{height:100%;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, button{margin:0; padding:0;}
+body{line-height:1.5; margin:0; padding:0; color:#222; font-weight:400; font-family:'Noto Sans KR', Arial, sans-serif;}
+ul, ol, dl, dt, dd{margin:0; padding:0; list-style:none;}
+img{border:none;}
+hr{display:none;}
+fieldset{border:none;}
+legend{display:none;}
+p{margin:0;}
+table{border-collapse:collapse; border-spacing:0;}
+table th,
+table td{padding:1em; border:1px solid #ddd;}
+.table,
+.table table{table-layout:fixed; border-collapse:collapse; border-spacing:0; border:none;}
+.table caption{overflow:hidden; position:relative; line-height:1px; font-size:1px; text-indent:-30000px;}
+.table th,
+.table td{border:none;}
+.hidden{overflow:hidden; position:absolute; top:0; left:-30000px; line-height:1px; font-size:1px;}
+
+.cke_editable p{margin:1em 0;}
+
+/* 초기 한글사용(한글 및 중국, 일본 사이트용) */
+input[type="text"],
+input[type="password"],
+textarea{ime-mode:active;}
+
+*{
+	-webkit-text-size-adjust:none;
+	text-size-adjust:none;
+	word-wrap: break-word;
+	word-break: keep-all;
+}
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	Skip
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+#skip{position:absolute; left:0; top:0; width:100%; margin:0 auto; z-index:999;}
+#skip a{display:block; position:absolute; left:0; padding:10px; text-decoration:none; font-size:16px; color:#fff; background:#000;}
+#skip a:link,
+#skip a:visited,
+#skip a:active{top:-10000px;}
+#skip a:hover,
+#skip a:focus{top:0;}
