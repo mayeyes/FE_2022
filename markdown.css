@@ -1,0 +1,68 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+body{padding:2em; margin:0; font-size:14px;}
+* {line-height:2; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight:300;}
+h1:first-child{margin-top:0;}
+h1{border-bottom:1px solid #555;}
+li a{position:relative; padding-right:1.8em; color:rgb(255, 127, 104);}
+li a:before,
+li a:after{content:""; position:absolute; right:0.5em; bottom:0.1em; z-index:10; width:0.8em; height:0.8em; border:1px solid rgb(128, 128, 128); background-color:#fff; box-sizing:border-box;}
+li a:before{right:calc(0.5em - 3px); bottom:calc(0.1em + 3px); z-index:20;}
+code{
+    display:inline-block; line-height:1; padding:0.3em 0.5em; background-color:#ebebeb;
+    border-radius:0.3em;
+}
+a>code{padding:0; background-color:transparent;}
+blockquote{position:relative; padding-left:1em;}
+blockquote:before{
+    content:""; display:block; position:absolute; left:0; top:0; width:0.3em; height:100%; background-color:#e1e1e1;
+    border-radius:0.2em;
+}
+table{width:100%;}
+table th,
+table td{padding:0.2em 0.4em; font-size:12px; border:1px solid #ddd;}
+table th{font-weight:500; background-color:rgba(0,0,0,0.03);}
+table td a{
+    display:inline-block; padding:0.3em 1em; margin:1px 0; text-decoration:none; color:#fff; background-color: rgb(152, 152, 255);
+    border-radius:0.2em;
+}
+table td a:not([href="#"]):hover{color:#fff; background-color: rgb(126, 126, 231);}
+table td a[href="#"]{opacity:0.2; cursor:default;}
+table tr[data-hidden="on"]{display:none !important;}
+table tr[data-no="on"]{opacity:0.5; background-color:#eee;}
+table tr[data-1dep="on"]{opacity:1; color:#fff; background-color:#465379;}
+table tr[data-pr="on"]{opacity:1; color:#000; background-color:#84a3ff;}
+table tr[data-help="on"]{opacity:1; color:#000; background-color:#ff8484;}
+
+@media screen and (max-width: 600px) {
+    /* 교육부 예외 처리 */
+    table[data-site="moe"] thead tr > th:nth-child(2),
+    table[data-site="moe"] thead tr > th:nth-child(4),
+    table[data-site="moe"] thead tr > th:nth-child(5),
+    table[data-site="moe"] thead tr > th:nth-child(7),
+    table[data-site="moe"] tbody tr > td:nth-child(2),
+    table[data-site="moe"] tbody tr > td:nth-child(4),
+    table[data-site="moe"] tbody tr > td:nth-child(5),
+    table[data-site="moe"] tbody tr > td:nth-child(7){display:none;}    
+
+    table[data-site="moe"] th,
+    table[data-site="moe"] td{font-size:10px;}
+    table[data-site="moe"] td a{padding:0.1em 0.5em;}
+}
+
+
+body{color:#999; background-color:#000;}
+hr{border-color:#999;}
+li a:before,
+li a:after{background-color:#000;}
+td a:before,
+td a:after{display:none !important;}
+table th,
+table td{border-color:#444;}
+table th{background-color:rgba(255,255,255,0.2);}
+table tr{color:rgba(255,255,255,0.8);}
+table tr[data-no="on"]{opacity:1; background-color:#000;}
+table tr[data-no="on"] td{color:rgba(255,255,255,0.4);}
+table tr[data-1dep="on"]{color:rgba(255,255,255,0.5); background-color:rgba(255,255,255,0.1);}
+table tr[data-pr="on"]{opacity:1; color:#b4bac1; background-color:rgba(56,139,253,0.25);}
+table tr[data-help="on"]{opacity:1; color:#b4bac1; background-color:rgba(255, 132, 132,0.7);}
+table td a{background-color: rgb(82, 82, 165);}

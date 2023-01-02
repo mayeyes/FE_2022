@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script>
+      $(function(){
+        main_full_scroll();
+      });
+      function main_full_scroll(){
+        var box = $('[data-view-scroll="box"]');
+        var cnt = 0;
+        function scrollEvent(event,c,callback){
+          if(event === "null"){
+            var target = ($('[data-view-scroll="box"][data-hit="on"]').size() !== 0) ? $('[data-view-scroll="box"][data-hit="on"]'):$('[data-view-scroll="box"]').eq(0);
+            var scrollTops = 0;
+            var scrollBottom = 0;
+          } else {
+            var target = ($(event.target).attr('data-view-scroll')==='box')?$(event.target):$(event.target).parents('[data-view-scroll="box"]');
+            var scrollTops = target.scrollTop();
+            var scrollBottom = target.find(">.in").innerHeight() - $(document).height() - target.scrollTop();
+          }
+          
+          box.removeAttr("data-hit");
+          if(c === "down" && scrollBottom <= 0){
+              target = target.next();
+              target.check = target.attr('data-view-scroll-position');
+              if(target.length !== 0){
+                  if(target.check === 'y'){
+                      box.css({"z-index":"0"});
+                      if(!target.is(":animated")) target.stop().css({"left":"0","top":"100%","z-index":"2000"}).animate({"top":"0"},500,"linear");
+                  } else if(target.check === 'x'){
+                      box.css({"z-index":"0"});
+                      if(!target.is(":animated")) target.stop().css({"left":"100%","top":"0","z-index":"2000"}).animate({"left":"0"},500,"linear");
+                  }
+              }
+              target.attr("data-hit","on");
+          } else if(c === "up" && scrollTops === 0){
+              if(box.index(target) !== 0){
+                  target.check = target.attr('data-view-scroll-position');
+                  if(target.length !== 0){
+                      if(target.check === 'y'){
+                          box.css({"z-index":"0"});
+                          if(!target.is(":animated")) target.stop().animate({"top":"100%"},500,"linear");
+                      } else if(target.check === 'x'){
+                          box.css({"z-index":"0"});
+                          if(!target.is(":animated")) target.stop().animate({"left":"100%"},500,"linear");
+                      }
+                  }
+              }
+              target.prev().attr("data-hit","on");
+          }
+          callback();
+        }
+        
+        var scrollCheck = true;
+        $(window).on("wheel", function (event){
+          if(scrollCheck){
+            scrollCheck = false;
+            var c = (event.originalEvent.deltaY < 0) ? "up":"down";
+            scrollEvent(event,c,function(){
+              scrollCheck = true;
+            });
+          }
+        });
+        box.on("scroll",function(){
+          var target = $(this);
+          var scrollBottom = target.find(">.in").innerHeight() - $(document).height() - target.scrollTop();
+          var per = scrollBottom / (target.find(">.in").innerHeight() - $(document).height()) * 100;
+              per = 100 - per;
+              per = ~~(per/10);
+
+          box.removeAttr("data-hit");
+          target.attr('data-per',per);
+          target.attr("data-hit","on");
+        });
+
+        $('[data-view-scroll="prev"]').on("click",function(){
+          if(scrollCheck){
+            scrollCheck = false;
+            scrollEvent('null',"up",function(){
+              scrollCheck = true;
+            });
+          }
+        });
+
+        $('[data-view-scroll="next"]').on("click",function(){
+          if(scrollCheck){
+            scrollCheck = false;
+            scrollEvent('null',"down",function(){
+              scrollCheck = true;
+            });
+          }
+        });
+    }
+    </script>
+    <style>
+      html,body{height:100%; margin:0; padding:0;}
+      body{background-color:rgb(104, 31, 31);}
+      [data-view-scroll="wrap"]{overflow:hidden; position:relative; height:100%;}
+      [data-view-scroll="box"]{
+        overflow:auto; position:absolute; left:100%; top:0; z-index:0; width:100%; height:100%;
+      }
+      [data-view-scroll="box"]>.in>p{margin:0;}
+      [data-view-scroll="box"]:nth-child(1){left:0; background-color:rgb(0, 0, 0);}
+      [data-view-scroll="box"]:nth-child(2){background-color:rgb(30, 30, 30);}
+      [data-view-scroll="box"]:nth-child(3){background-color:rgb(60, 60, 60);}
+      [data-view-scroll="box"]:nth-child(4){background-color:rgb(90, 90, 90);}
+      [data-view-scroll="box"]:nth-child(5){background-color:rgb(120, 120, 120);}
+      [data-view-scroll="box"]:nth-child(6){background-color:rgb(150, 150, 150);}
+
+      [data-view-scroll="prev"],
+      [data-view-scroll="next"]{position:fixed; left:0; top:0; z-index:3000; color:#fff;}
+      [data-view-scroll="next"]{left:50px;}
+    </style>
+  </head>
+  <body>
+    <a href="#" data-view-scroll="prev">이전</a>
+    <a href="#" data-view-scroll="next">다음</a>
+    <div data-view-scroll="wrap">
+      <div data-view-scroll="box" data-view-scroll-position="y">
+        <div class="in" style="position:absolute; left:0; top:0; width:100%; height:100%;"></div>
+      </div>
+      <div data-view-scroll="box" data-view-scroll-position="y">
+        <div class="in" style="color:#fff;">
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+          <p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p><p>asdasdasdadas</p>
+        </div>
+      </div>
+      <div data-view-scroll="box" data-view-scroll-position="x"></div>
+      <div data-view-scroll="box" data-view-scroll-position="x"></div>
+      <div data-view-scroll="box" data-view-scroll-position="y"></div>
+      <div data-view-scroll="box" data-view-scroll-position="y"></div>
+    </div>
+  </body>
+</html>
