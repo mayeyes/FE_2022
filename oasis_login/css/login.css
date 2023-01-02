@@ -1,0 +1,386 @@
+@charset "utf-8";
+
+/*웹폰트*/
+@font-face {
+  font-family: 'Nanum Barun Gothic';
+  font-style: normal;
+  font-weight: 200;
+  src: url(fonts/NanumBarunGothicUltraLight.eot);
+  src: local('fonts/Nanum Barun Gothic UltraLight'),
+       local('fonts/NanumBarunGothicUltraLight'),
+       url(fonts/NanumBarunGothicUltraLight.eot?#iefix) format('embedded-opentype'),
+       url(fonts/NanumBarunGothicUltraLight.woff2) format('woff2'),
+       url(fonts/NanumBarunGothicUltraLight.woff) format('woff'),
+       url(fonts/NanumBarunGothicUltraLight.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Nanum Barun Gothic';
+  font-style: normal;
+  font-weight: 300;
+  src: url(fonts/NanumBarunGothicLight.eot);
+  src: local('fonts/Nanum Barun Gothic Light'),
+       local('fonts/NanumBarunGothicLight'),
+       url(fonts/NanumBarunGothicLight.eot?#iefix) format('embedded-opentype'),
+       url(fonts/NanumBarunGothicLight.woff2) format('woff2'),
+       url(fonts/NanumBarunGothicLight.woff) format('woff'),
+       url(fonts/NanumBarunGothicLight.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Nanum Barun Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/NanumBarunGothic.eot);
+  src: local('fonts/Nanum Barun Gothic'),
+       local('fonts/NanumBarunGothic'),
+       url(fonts/NanumBarunGothic.eot?#iefix) format('embedded-opentype'),
+       url(fonts/NanumBarunGothic.woff2) format('woff2'),
+       url(fonts/NanumBarunGothic.woff) format('woff'),
+       url(fonts/NanumBarunGothic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Nanum Barun Gothic';
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/NanumBarunGothicBold.eot);
+  src: local('fonts/Nanum Barun Gothic Bold'),
+       local('fonts/NanumBarunGothicBold'),
+       url(fonts/NanumBarunGothicBold.eot?#iefix) format('embedded-opentype'),
+       url(fonts/NanumBarunGothicBold.woff2) format('woff2'),
+       url(fonts/NanumBarunGothicBold.woff) format('woff'),
+       url(fonts/NanumBarunGothicBold.ttf) format('truetype');
+}
+/*초기화*/
+html, body {padding: 0; margin: 0; width: 100%; height: 100%; font-family: "Nanum Barun Gothic", 'Malgun Gothic', "Apple SD Gothic Neo", "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, serif; font-size: 12px;}
+h1 {margin: 0 0;}
+a {text-decoration: none;color: #000;}
+a:hover {text-decoration: underline;}
+a:focus {text-decoration: none;}
+label {margin-bottom: 0;font-weight: normal;}
+th {font-weight: normal;}
+ul, li {list-style: none;margin: 0;padding: 0;}
+a, button {border:0 none;background-color:transparent;cursor:pointer}
+.hide-text {overflow: hidden;text-indent: -9999px;}
+.clearfix {overflow: auto;zoom: 1;}
+[class^="ico-"]:before, [class*=" ico-"]:before {font-family: "erpiu";font-style: normal;font-weight: normal;speak: none;display: inline-block;text-decoration: inherit;width: 1em;text-align: center;font-variant: normal;text-transform: none;line-height: 1em;}
+input:focus, select:focus, button:focus, a:focus {box-shadow: none;outline: 0;}
+
+/* ie10에서 x를 없애는 css */
+input[type="text"]::-ms-clear {height: 0;width: 0;display: none !important;}
+input[type="search"]::-ms-clear {height: 0;width: 0;display: none !important;}
+input[type=password]::-ms-reveal {display: none !important;}
+/* ie10에서 V를 없애는 css */
+select::-ms-expand {display: none;}
+
+/*로그인*/
+.container.login {background-color: #fff;min-height: 100%;min-width: 750px;max-width: 100%;max-height: 100%;padding: 0;}
+.container.login * {box-sizing: border-box;}
+.container.login .wrapper {position: absolute;height: 565px !important;min-height: auto !important;width: 750px;top: 50%;left: 50%;margin: -282px 0 0 -375px;}
+
+/*상단영역*/
+.login-header {height: 40px;background: url('../images/bg_top.png') no-repeat;}
+.login-header .site-logo {display: inline-block;float: left;font-size: inherit;margin: 2px 0 0 7px;}
+/*캐치프레이즈*/
+.login-header .marquee {height: 40px;width: 350px;overflow: hidden;position: absolute;top: 0;left: 320px;}
+.login-header .marquee div {display: block;width: 400%;height: 40px;position: absolute;overflow: hidden;animation: marquee 40s linear infinite;line-height: 41px;}
+.login-header .marquee span {display: inline;width: 50%;font-size: 13px;color: #fff;padding: 0 5px 0 10px;}
+.login-header .marquee span:after {content: '/'; margin-left: 20px;}
+.login-header .marquee span:last-child:after {content: none; margin-left: 15px;}
+
+/*전체 캐치프레이즈 넓이값에 맞게 100% left의 %값 조정*/
+@keyframes marquee {
+  0% { left: 100%; }
+  100% { left: -400%; }
+}
+
+/*메인 비주얼 영역*/
+.login-box {height: 525px;width: 750px;background: #fff;overflow: hidden;}
+.login-box .login-pic {width: 750px;height: 420px;}
+.login-box .login-pic img {max-width: 750px;max-height: 420px;}
+
+/*로그인 form영역*/
+.login-box .login-wrap {width: 750px;height: 105px;position: relative;}
+.login-box .login-wrap .login-form {width: 100%;padding-top: 10px;max-height: 105px;overflow: hidden;}
+.login-box .login-wrap .login-form fieldset {padding: 0;margin: 0;border: 0;}
+.login-box .login-wrap .login-form legend {display: none;overflow: hidden;text-indent: -9999px;}
+.login-box .login-wrap .login-form p {display: inline-block;float: left;margin: 0;}
+.login-box .login-wrap .save {display: inline-block;}
+.login-box .login-wrap .save + .help_txt {margin-left: 15px !important;}
+.login-box .login-wrap .login-form input.input_box {height: 50px !important;padding: 2px 12px 0;border: 1px solid #dadada;visibility: visible!important;}
+.login-box .login-wrap .login-form select.select_box {width: 300px;height: 50px !important;font-size: 12px;padding: 2px 12px 0;border: 1px solid #dadada;visibility: visible!important;margin-right: 10px;background: #fff;text-indent: 5px;border-radius: 0;-webkit-appearance: none;-moz-appearance: none;appearance: none;background: #fff url(../images/ico_select_arrow.png) no-repeat right 0;}
+.login-box .login-wrap .login-form select.select_box:hover {border-color: #72bdf5;background: #fff url(/custom/common/images/ico_select_arrow.png) no-repeat right -50px;}
+.login-box .login-wrap .login-form select.select_box:focus {border-color: #72bdf5;background: #fff url(/custom/common/images/ico_select_arrow.png) no-repeat right -100px;}
+
+.login-box .login-wrap .login-form input.input_box:hover, .login-box .login-wrap .login-form input.input_box:focus {border-color: #72bdf5;}
+.login-box .login-wrap .login-form input.input_box:read-only {background-color: #f5f5f5;}
+.login-box .login-wrap .login-form input.input_box:read-only:hover, .login-box .login-wrap .login-form input.input_box:read-only:focus {border-color: #dadada;}
+.login-box .login-wrap .login-form input:not([type='checkbox']) {width: 251px;font-size: 13px;margin-left: -1px;margin-right: 10px;}
+.login-box .login-wrap .login-form button {}
+.login-box .login-wrap .login-form a {}
+.login-box .login-wrap .login-form p > label {display: inline-block;float: left;width: 50px;height: 50px;background: #f5f5f5;border: 1px solid #dadada;font-size: 0;text-indent: -9999px;}
+.login-box .login-wrap .login-form p > label.user_id {background: #f5f5f5 url('../images/label_user.png') no-repeat;}
+.login-box .login-wrap .login-form p > label.user_pw {background: #f5f5f5 url('../images/label_pw.png') no-repeat;}
+.login-box .login-wrap .login-form p > label.user_mobile {background: #f5f5f5 url('../images/label_mobile.png') no-repeat;}
+.login-box .login-wrap .login-form p > label[for='save'] {display: inline;font-weight: normal;color: #444;cursor: pointer;}
+.login-box .login-wrap .login-form .login_btn {font-size: 16px;font-weight: 600;width: 130px;height: 50px;color: #fff;background-color: #007bb8 !important;border-color: #007bb8 !important;}
+.login-box .login-wrap .login-form .login_btn:hover {background-color: #006da3 !important;border-color: #006da3 !important;}
+.login-box .login-wrap .login-form input.image-placeholder {background: no-repeat 6px 13px;}
+.login-box .login-wrap .login-form input:-moz-placeholder {color: #939393;}
+.login-box .login-wrap .login-form input::-webkit-input-placeholder {color: #939393;}
+.login-box .login-wrap .login-form input:-ms-input-placeholder {color: #939393 !important;}
+
+/*하단영역*/
+.login-box .login-wrap .etc {display: block;width: 100%;height: 45px;padding-top: 15px;}
+.login-box .login-wrap .etc .help_txt {display: inline;font-size: 12px;color: #e46d2a;margin: 0;}
+.login-box .login-wrap .etc .btn_area {display: inline-block;float: right;margin-top: -15px;}
+.login-box .login-wrap .etc .btn_area .setting_btn {text-align: left;padding-left: 62px;background: #fff url('../images/btn_setting.png') 18px 8px no-repeat;border: 1px solid #e2e2e2;margin-right: 10px;}
+.login-box .login-wrap .etc .btn_area button {float: left;width: 130px;height: 40px;font-size: 13px;color: #333;font-weight: 600;margin-top: 5px;}
+.login-box .login-wrap .etc .btn_area button:hover {color: #000;border-color: #ccc;}
+.login-box .login-wrap .etc .btn_area a {float: left;width: 130px;height: 40px;font-size: 13px;color: #333;font-weight: 600;margin-top: 5px;}
+.login-box .login-wrap .etc .btn_area a:hover {color: #000;border-color: #ccc;}
+.login-box .login-wrap .etc .btn_area .change_login {background-color: #fff !important;border: 1px solid #e2e2e2;}
+.login-box .login-wrap .etc .btn_area .back_login {width: 132px;font-size: 12px;background-color: #fff !important;border: 1px solid #e2e2e2;}
+.login-box .login-wrap .etc.select_user .btn_area .back_login {width: 130px;}
+.login-box .login-wrap .etc .btn_area .login_btn {width: 101px;font-size: 15px;color: #fff;background-color: #007bb8 !important;border: 1px solid #007bb8;margin-left: 10px;}
+.login-box .login-wrap .etc .btn_area .login_btn:hover {color: #fff;background-color: #006da3 !important;border: 1px solid #006da3;}
+
+/*휴대폰 인증*/
+.login-box .login-wrap .login-form.mobile p > label.user_id + .input_box {width: 200px;}
+.login-box .login-wrap .login-form.mobile p > label.user_mobile + .input_box {width: 201px;margin-right: 0;}
+.login-box .login-wrap .login-form.mobile p > label.user_pw + .input_box {width: 200px;margin-right: 0;}
+.login-box .login-wrap .login-form .send_btn {font-size: 13px;width: 101px;height: 50px;color: #fff;background-color: #979797 !important;border-color: #979797 !important;margin-left: -1px;margin-right: 10px;}
+.login-box .login-wrap .login-form .send_btn:hover {background-color: #878787 !important;border-color: #878787 !important;}
+
+/*비밀번호 변경*/
+.login-box .login-wrap .login-form.change_pw .input_box {width: 196px;margin-left: 0;}
+.login-box .login-wrap .login-form.change_pw .login_btn {width: 132px;}
+
+/*설치페이지*/
+.container.setting {background-color: #fff;min-width: 555px;padding: 20px;}
+.container.setting .wrapper {border: 3px solid #005696;padding: 20px;}
+.container.setting * {box-sizing: border-box;}
+.container.setting .title_header {position: relative;padding: 10px;}
+.container.setting .title_header .site-logo {display: inline-block;width: auto;}
+.container.setting .title_header .kwater-logo {position: absolute;top: 3px;right: 0;display: inline-block;width: auto;margin: 0;}
+.container.setting .cont_wrap {padding: 10px;}
+.container.setting .cont_wrap h2 {font-size: 24px;color: #f8981c;margin: 10px 0;}
+.container.setting .cont_wrap ul li {font-size: 13px;padding: 4px 0;}
+.container.setting .cont_wrap ul li.depth {padding-left: 15px;}
+.container.setting .cont_wrap ul li a.download {position: relative;display: inline-block;width: auto;height: 16px;font-weight: normal;color: #f44336;background: url(../images/ico_download.png) right center no-repeat; padding-right: 16px;margin-left: 5px;}
+.container.setting .cont_wrap ul li em {font-style: normal;background: #f5ff98;}
+.container.setting .cont_wrap ul li.txt_blue {color: #0083ea;font-weight: 600;}
+.container.setting .cont_wrap ul li.txt_red {color: #f44336;font-weight: 600;}
+.container.setting .footer {display: table;width: 100%;margin-top: 10px;text-align: center;}
+.container.setting .footer .close {display: inline-block;width: 101px;font-size: 15px;color: #fff;background-color: #007bb8 !important;border: 1px solid #007bb8;padding: 5px 10px;}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	Basic	
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+html,body{width: 100%; height: 100%; background-color: #fff;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, button{margin:0; padding:0;}
+body, h1, h2, h3, h4, h5, h6, th, td, input, select, textarea{line-height:1.2; margin:0; padding:0; color:#444; font-size:15px; font-weight:400; font-family:'Noto Sans KR';}
+img{border:none;}
+fieldset{border:none;}
+legend{display:none;}
+p{margin:0;}
+.hidden{overflow:hidden; position:absolute; top:0; left:-30000px; line-height:1px; font-size:1px;}
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	Form
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+input{box-sizing:border-box;}
+input[type="text"],
+input[type="password"]{height:20px; padding:0 10px; line-height:20px; border:1px solid #cecece; vertical-align:middle;}
+input[type="radio"],
+input[type="checkbox"]{margin-right:2px; vertical-align:middle;}
+label{vertical-align:middle;}
+input[type="submit"]{height:20px; padding:0 5px; line-height:20px; vertical-align:middle; cursor:pointer; border:none; background:#ccc;}
+input[type="file"]{cursor:pointer; vertical-align:middle;}
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+button{appearance:none; -webkit-appearance:none; border-radius:0; -webkit-border-radius:0;}
+textarea{border:1px solid #ccc; padding:5px; box-sizing:border-box;}
+select{border:1px solid #dbdbdb; padding:0 5px; cursor:pointer; vertical-align:middle; box-sizing:border-box;}
+input[readonly="readonly"],
+textarea[readonly="readonly"],
+input[disabled="disabled"],
+textarea[disabled="disabled"]{background:#efefef;}
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	js_slide Tag
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.js_slide{position:relative; width:100%; height:80px; padding:10px 10px 10px 130px; box-sizing:border-box;}
+.js_slide .title{display:block; position:absolute; left:0; top:12px; z-index:1; width:120px; font-size:18px; text-align:center;}
+.js_slide .control{position:absolute; left:0; right:auto; top:auto; bottom:0px; z-index:1; width:120px; padding:0; text-align:center;}
+.js_slide .control .count{display:none;}
+.js_slide .control a[class*="btn_"]{overflow:hidden; display:inline-block; width:31px; height:31px; text-indent:-1000px; border:1px solid #c5c5c5; background:#fff url(../../../images/site/skin/slider_control.png) no-repeat;}
+.js_slide .control a.btn_left{background-position:0 0;}
+.js_slide .control a.btn_play{display:none; background-position:0 -93px;}
+.js_slide .control a.btn_stop{background-position:0 -62px;}
+.js_slide .control a.btn_right{background-position:0 -31px;}
+.js_slide .control ul{display:none;}
+.js_slide .move{overflow:hidden; position:relative; z-index:0; width:100%; height:100%;}
+.js_slide .move ul{overflow:hidden; position:absolute; left:0; top:0; width:200000px; height:100%;}
+.js_slide .move ul li{float:left; width:170px; height:100%; padding:0px 5px;}
+.js_slide .move ul li a{overflow:hidden; display:block; position:relative; height:100%; text-align:center; border:1px solid #c5c5c5; background-color:#eee; box-sizing:border-box;
+transition:all 0.3s ease; -webkit-transition:all 0.3s ease;}
+.js_slide .move ul li a:hover,
+.js_slide .move ul li a:focus{border:1px solid #ff6600;}
+.js_slide .move ul li a span{display:block; position:absolute; left:50%; top:0; width:2000px; height:100%; margin-left:-1000px; text-align:center;}
+.js_slide .move ul li img{display:block; margin:0 auto; height:100%;}
+.js_slide.type_03{width:100%; height:608px; padding:0;}
+.js_slide.type_03 .title{
+	left:10%; top:20%; width:auto; font-size:40px; text-align:left; color:#fff;
+	text-shadow:1px 1px 2px #000;
+	-moz-text-shadow:1px 1px 2px #000;
+    -webkit-text-shadow:1px 1px 2px #000;
+    -ms-text-shadow:1px 1px 2px #000;
+    -khtml-text-shadow:1px 1px 2px #000;
+    -o-text-shadow:1px 1px 2px #000;
+}
+.js_slide.type_03 .title span{display:block; line-height:22px; margin-top:10px; font-weight:400; font-size:16px;}
+.js_slide.type_03 .control{display: none;left:0; bottom:auto; top:0; width:100%; height:100%;}
+.js_slide.type_03 .control a[class*="btn_"]{position:absolute;}
+.js_slide.type_03 .control a.btn_left,
+.js_slide.type_03 .control a.btn_right{z-index:9; width:100px; height:100%; border:none; background:none !important;}
+.js_slide.type_03 .control a.btn_play,
+.js_slide.type_03 .control a.btn_stop{right:20px; bottom:20px; z-index:10; background:#fff url(../../../images/site/skin/slider_control.png) no-repeat;}
+.js_slide.type_03 .control a.btn_left{left:0; top:0;}
+.js_slide.type_03 .control a.btn_right{right:0; top:0;}
+.js_slide.type_03 .control a.btn_left span,
+.js_slide.type_03 .control a.btn_right span{display:block; position:absolute; left:0; top:50%; width:100px; height:100px; margin-top:-50px;}
+.js_slide.type_03 .control a.btn_play span,
+.js_slide.type_03 .control a.btn_stop span{display:block; width:100%; height:100%;}
+.js_slide.type_03 .control a.btn_left span{background:url(../../../images/site/skin/btn_icon_08.png) no-repeat center 0px;}
+.js_slide.type_03 .control a.btn_play{background-position:0 -93px;}
+.js_slide.type_03 .control a.btn_stop{display:none; background-position:0 -62px;}
+.js_slide.type_03 .control a.btn_right span{background:url(../../../images/site/skin/btn_icon_09.png) no-repeat center 0px;}
+.js_slide.type_03 .control ul{display:block; position:absolute; left:0; bottom:20px; z-index:9; width:100%; text-align:left;}
+.js_slide.type_03 .control ul li{display:inline-block; margin-right:4px;}
+.js_slide.type_03 .control ul li:first-child{margin-left:20px;}
+.js_slide.type_03 .control ul li a{
+	overflow:hidden; display:block; width:20px; height:20px; text-indent:-10000px; background-color:#c5c5c5;
+	border-radius:10px;
+    -webkit-border-radius:10px;
+	transition:all 0.3s ease;
+	-webkit-transition:all 0.3s ease;
+	
+}
+.js_slide.type_03 .control ul li a.on{width:50px;}
+.js_slide.type_03 .move{position:absolute; left:0; top:0; height:100%;}
+.js_slide.type_03 .move ul{width:100%;}
+.js_slide.type_03 .move ul li{float:none; position:absolute; left:100%; top:0; width:100%; padding:0;}
+.js_slide.type_03 .move ul li:first-child{left:0;}
+.js_slide.type_03 .move ul li a{overflow:hidden; cursor:default;}
+.js_slide.type_03 .move ul li a:hover,
+.js_slide.type_03 .move ul li a:focus{border:none;}
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	Common
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+body{}
+
+#wrapss{position: relative; min-width: 1920px; margin: 0 auto;/* height: 100%;*/ box-sizing:border-box;}
+.layoutss{position:relative; width: 1400px; margin:0 auto; box-sizing:border-box;}
+
+[data-item="login"] .log_wrap{
+    position: relative; padding: 20px 0; opacity:0; -webkit-opacity:0; box-sizing: border-box;
+    transition : all 0.8s linear; -webkit-transition : all 0.8s linear;
+}
+[data-item="login"] .log_wrap.on {opacity:1; -webkit-opacity:1;}
+[data-item="login"]:before{
+    content: "";
+    position: absolute; z-index: 0;
+    width: 100vw;
+    min-width: 1920px;
+    height: 100vh; min-height: 674px;
+    background: url(../images/bg.png) no-repeat center center;
+    background-size: 2106px 1223px;
+    top: 0;
+    right: 50%;
+    transform: translate(50%,0);
+}
+[data-item="login"] .log_wrap >p{position: relative; margin-bottom: 8px; letter-spacing: -0.03em; color: #333; font-weight: 500;}
+[data-item="login"] .boxs{
+    box-shadow: 16.3934px 19.6721px 32.7869px rgba(67, 92, 105, 0.15); overflow: hidden; border-right: 1px solid rgba(196, 196, 196, 0.15); box-sizing: border-box;
+    border-radius: 0 25px 0 25px; -webkit-border-radius: 0 25px 0 25px; 
+}
+[data-item="login"] .boxs:after{content: ""; display: block; clear: both;}
+[data-item="login"] .boxs .vis,
+[data-item="login"] .boxs .inp{float: left; height: 608px;}
+[data-item="login"] .boxs .vis{width: 1043px;}
+
+[data-item="login"] .boxs .inp{position: relative; width: calc(100% - 1043px); background-color: #fff;}
+[data-item="login"] .boxs .inp{padding: 80px 30px 165px; text-align: center; box-sizing: border-box;}
+[data-item="login"] .boxs .inp h1{display: block; width: 114px; height: 32px; margin: 0 auto; background: url(../images/oasis.png) no-repeat center center; text-indent: -9999px;}
+[data-item="login"] .boxs .inp >p{font-size: 16px; margin-top: 22px; color: #000; line-height: 20px; font-weight: 500; letter-spacing: -0.03em;}
+[data-item="login"] .boxs .inp .forms{margin-top: 62px;}
+[data-item="login"] .boxs .inp .forms .t .input{position: relative; display: block; width: 100%;}
+[data-item="login"] .boxs .inp .forms .t .input.ps{margin-top: 6px;}
+[data-item="login"] .boxs .inp .forms .t .input label{display: none;}
+[data-item="login"] .boxs .inp .forms .t .input input{
+    position: relative; width: 100%; height: auto; padding: 12px 20px 12px 60px; border-color: #ccc; color: #111827; font-weight: 500; box-sizing: border-box; 
+    border-radius: 5px; -webkit-border-radius: 5px;
+    transition: border-color 0.2s linear; -webkit-transition: border-color 0.2s linear;
+}
+[data-item="login"] .boxs .inp .forms .t .input input::placeholder{color: #A8A8A8; font-weight: 400;}
+[data-item="login"] .boxs .inp .forms .t .input input:focus,
+[data-item="login"] .boxs .inp .forms .t .input input:hover{outline: none; border-color: #007BB8;}
+[data-item="login"] .boxs .inp .forms .t .input i{
+    position: absolute; top: 50%; left: 17px; z-index: 100; display: block; width: 22px; height: 22px; margin-top: -11px; background-repeat: no-repeat; background-position: center center; background-size: 100% auto; text-indent: -9999px;
+    transition: background-image 0.2s linear; -webkit-transition: background-image 0.2s linear;
+}
+[data-item="login"] .boxs .inp .forms .t .input i:before{
+    content: ""; position: absolute; top: 50%; right: -11px; display: block; width: 1px; height: 16px; margin-top: -8px; background-color: #E2E2E2;
+    transition: background-color 0.2s linear; -webkit-transition: background-color 0.2s linear;
+}
+[data-item="login"] .boxs .inp .forms .t .input.id i{background-image: url(../images/login_id.svg); }
+[data-item="login"] .boxs .inp .forms .t .input.ps i{background-image: url(../images/login_ps.svg); }
+[data-item="login"] .boxs .inp .forms .t .input.id input:hover ~ i,
+[data-item="login"] .boxs .inp .forms .t .input.id input:focus ~ i{background-image: url(../images/login_id_on.svg);}
+[data-item="login"] .boxs .inp .forms .t .input.ps input:hover ~ i,
+[data-item="login"] .boxs .inp .forms .t .input.ps input:focus ~ i{background-image: url(../images/login_ps_on.svg);}
+[data-item="login"] .boxs .inp .forms .t .input.id input:hover ~ i:before,
+[data-item="login"] .boxs .inp .forms .t .input.ps input:hover ~ i:before,
+[data-item="login"] .boxs .inp .forms .t .input.id input:focus ~ i:before,
+[data-item="login"] .boxs .inp .forms .t .input.ps input:focus ~ i:before{background-color: #007BB8;}
+[data-item="login"] .boxs .inp .forms .m{margin-top: 22px;}
+[data-item="login"] .boxs .inp .forms .m a{
+    display: block; width: 100%; padding: 22.5px; line-height: 1; font-size: 17px; font-weight: 500; color: #fff; text-decoration: none; letter-spacing: 0.327869px; font-family: 'Noto Sans KR'; background-color: #007BB8; cursor: pointer; box-sizing: border-box;
+    border-radius: 5px; -webkit-border-radius: 5px;
+    transition: background-color 0.2s linear; -webkit-transition: background-color 0.2s linear;
+}
+[data-item="login"] .boxs .inp .forms .m a:hover{background-color: #005680;}
+
+[data-item="login"] .boxs .inp .forms .b{margin-top: 5px; text-align: left;}
+[data-item="login"] .boxs .inp .forms .b input{cursor: pointer;}
+[data-item="login"] .boxs .inp .forms .b label{display: inline-block; margin-left: 5px; font-size: 14px; line-height: 22px; color: #333; letter-spacing: -0.03em; cursor: pointer;}
+[data-item="login"] .boxs .inp .forms .b .reds{float: right; line-height: 22px; font-size: 14px; color: #EB5757;}
+[data-item="login"] .boxs .inp .forms .b .reds:before{content: ""; display: inline-block; width: 16px; height: 22px; margin-right: 1px; background: url(../images/reds.svg) no-repeat top 4px center; background-size: 100% auto; vertical-align: bottom;}
+
+[data-item="login"] .boxs .inp .btns{position: absolute; bottom: 0; left: 0; width: 100%; border-top: 1px solid #DDDDDD;}
+[data-item="login"] .boxs .inp .btns:after{content: ""; display: block; clear: both;}
+[data-item="login"] .boxs .inp .btns a{float: left; position: relative; display: block; width: 50%; padding: 15px 0 12px; text-decoration: none; box-sizing: border-box;}
+[data-item="login"] .boxs .inp .btns a:not(:last-child):after{content: ""; position: absolute; top: 0; right: -0.5px; width: 1px; height: 100%; background-color: #DDDDDD;}
+[data-item="login"] .boxs .inp .btns a span{position: relative; display: inline-block; color: #333; text-decoration: none; letter-spacing: -0.03em; font-weight: 500; font-size: 16px; line-height: 22px;}
+[data-item="login"] .boxs .inp .btns a:hover span{text-decoration: underline;}
+[data-item="login"] .boxs .inp .btns a span:before{content: ""; display: inline-block; margin-right: 3px; background-repeat: no-repeat; background-position: center center; background-size: 100% auto;}
+[data-item="login"] .boxs .inp .btns a:first-child span:before{width: 36px; height: 27px; background-image: url(../images/btns01.svg); vertical-align: middle;}
+[data-item="login"] .boxs .inp .btns a:nth-child(2) span:before{width: 22px; height: 22px; background-image: url(../images/btns02.svg); vertical-align: text-bottom;}

@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="지식배움터 - 소상공인평생교육">
+    <meta property="og:type" content="지식배움터 - 소상공인평생교육">
+    <meta property="og:title" content="온라인교육, 현장교육, 채널, 알림공간, 교육장 임대">
+    <meta property="og:description" content="소상공인 무료 온라인, 오프라인 평생학습서비스 플랫폼입니다. 소상공인 창업-성장-재기 단계별로 맞춤형 교육을 제공합니다.">
+    <meta property="og:image" content="http://edu.sbiz.or.kr/edu/main/main.do">
+    <meta property="og:url" content="http://edu.sbiz.or.kr/edu/main/main.do">
+    <meta name="naver-site-verification" content="c3ca84982ae5ba7642fcfc1ad1e90b74a74f2ff4">
+
+    <title>온라인교육 > 교육안내</title>
+
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link  rel="stylesheet" href="../css/swiper-3.4.2.min.css">
+    <link  rel="stylesheet" href="../css/style.css"><!-- 공통 -->
+
+    <style >
+        .loading {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+            display: block;
+            opacity: 0.8;
+            background: white;
+            z-index: 99;
+            text-align: center;
+        }
+
+        .loading > img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 100;
+        }
+    </style>
+
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/swiper-3.4.2.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/design.js"></script><!-- 공통 -->
+    <script src="../../spt/js/common.js"></script><!-- 현장교육공통 -->
+    <!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> --><!-- http 다음 주소 API -->
+    <!-- <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js?autoload=false"></script> https 다음 주소 API -->
+
+    <!-- datepicker -->
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/datepicker-ko.js"></script>
+    <!-- //datepicker -->
+        
+    <!-- 로딩 화면 제어 스크립트 -->
+    <script >
+        $(window).load(function() {
+            $('.loading').hide();
+        });
+
+        function fnLoading(){
+            setTimeout(function() {
+            $('.loading').show();
+            }, 3000);
+        }
+
+        $(document).ready(function(){
+        //     .attr('onsubmit','fnLoading();');
+
+        //     $('form').each(function(){
+            //로딩 바
+            $('.loading').hide();
+        //     });
+            
+
+            //주소검색 이벤트
+            $('.btnOpenDaumPost').on('click',function(){
+                openDaumPostcode( this );
+            });
+
+
+            // <!-- Global site tag (gtag.js) - Google Analytics -->
+            if (window.location.protocol != "https:") {
+
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "http://www.googletagmanager.com/gtag/js?id=UA-3180660-22";
+                    document.body.appendChild(script);
+
+
+                    script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "http://www.googletagmanager.com/gtag/js?id=UA-116531390-2";
+                    document.body.appendChild(script);
+
+                    script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false";
+                    document.body.appendChild(script);
+
+
+            } else {
+
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "https://www.googletagmanager.com/gtag/js?id=UA-3180660-22";
+                    document.body.appendChild(script);
+
+                    script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "https://www.googletagmanager.com/gtag/js?id=UA-116531390-2";
+                    document.body.appendChild(script);
+
+
+                    script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js?autoload=false";
+                    document.body.appendChild(script);
+            }
+
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'UA-116531390-2');
+            gtag('config', 'UA-3180660-22');
+            
+
+        });
+
+        function smesLogin(){
+            window.open("http://www.sbiz.or.kr/sup/sbiz_help/sbiz_pop.jsp?link=edu","pop","width=800,height=700, scrollbars=yes");
+        }
+
+        
+
+    </script>
+    <!-- //로딩 화면 제어 스크립트 -->
+
+    <script  src="https://edu.sbiz.or.kr/edu/classdesk/common/js/jquery.cookie.js"></script>
+
+	<link  rel="stylesheet" href="../css/main.css">
+	<script src="../js/main.js"></script>
+</head>
+
+<body>
+<script >
+    var loginAt = true;
+
+    $(document).ready(function(){
+        init();
+        $('title').text('소상공인 지식배움터 - 소상공인평생교육');
+        if($.cookie("mainPopYn") == 'Y'){
+            $(".main_pop_wrap").slideUp("fast");
+        }
+    });	
+
+    //close main pop
+    function fnCloseMainPop() {
+        if($('#chk_pop').is(':checked')){
+            $.cookie('mainPopYn','Y',{
+                //쿠키보관일
+                expires : 1
+            })
+        }
+        $(".main_pop_wrap").slideUp("fast");
+    }
+    
+    //공지사항 및 수행기관모집 상세보기
+    function fnMovePage(no, bcateno){
+        if(bcateno == 1) {
+            $("#bbsNo").val(no);
+            $("#bcateno").val(bcateno);
+            $("#form").attr("action","/edu/board/noticeView.do");
+        } else if(bcateno == 1038){
+            $("#bbsNo").val(no);
+            $("#bcateno").val(bcateno);
+            $("#form").attr("action", "/edu/board/boardView.do");
+        } else if(bcateno == null) {
+            $("#pblancNo").val(no);
+            $("#form").attr("action", "/edu/user/spt/bsnsPblancView.do");
+        }
+        $("#form").submit();
+    }
+    
+    //공지사항 및 수행기관모집 및 자료실 리스트페이지
+    function fnMore(bcateno){
+        if(bcateno == 1) {
+            $("#bcateno").val(bcateno);
+            $("#form").attr("action","/edu/board/noticeList.do");	
+        } else if(bcateno == 1038) {
+            $("#bcateno").val(bcateno);
+            $("#form").attr("action", "/edu/board/boardList.do");
+        } else if(bcateno == null){
+            $("#form").attr("action", "/edu/user/spt/bsnsPblancList.do");
+        }
+        $("#form").submit();
+    }
+    
+    //회원가입 및 아이디/패스워드찾기 및 원격지원 url
+    function fnpop(val){
+        if(val == 'mem') {
+            window.open("https://sso.sbiz.or.kr/sup/cmm/member/personal_clause.do", "개인회원가입", "width=1100,height=1400,scrollbars=yes");
+        } else if(val == 'id') {
+            window.open("https://sso.sbiz.or.kr/sup/cmm/member/findUserID.do", "아이디 찾기", "width=1100,height=1400,scrollbars=yes");
+        } else if(val == 'pw') {
+            window.open("https://sso.sbiz.or.kr/sup/cmm/member/findPWSelect.do", "패스워드 찾기", "width=1100,height=1400,scrollbars=yes");
+        } else if(val == 'sup') {
+            window.open("http://113366.com/seda", "원격지원");
+        }
+    }
+    
+    function atnlView(progrmSn, index, menucode){
+        $("#progrmSn").val(progrmSn);
+        $("#bsnsNo").val(index);
+        $("#menuCode").val(menucode);
+        $("#form2").attr("action","/edu/user/spt/atnlcReqst/atnlcProgrmView.do");
+        $("#form2").submit();
+    }
+    
+    //교육소개 이동
+    function eduIntro_move(tabNum){
+        $("#tabNum").val(tabNum);
+        $("#form2").attr("action","/edu/user/spt/sptInfo.do");
+        $("#form2").attr("method","post");
+        $("#form2").submit();
+    }
+    
+    function faqMove(){
+        location.href="/edu/board/faqList.do?menuCode=WWW004007";
+    }
+    
+    function noticeMove(){
+        location.href="/edu/board/noticeList.do?menuCode=WWW004004";
+    }
+    
+    function moreMove(data,bsnsNo, menuCode){
+        if(data == 1){
+            location.href = "/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo="+bsnsNo+"&menuCode="+menuCode;
+        }else if(data == 2){
+            window.open("https://www.sbiz.or.kr/hrp/ed/ED_10101_SL.do");
+        }else {
+            alert('준비중 입니다.')
+        }
+    }
+    
+    function init(){
+        $('[data-scroll="yes"]').niceScroll({cursorcolor: "#D2D5DA"});
+        fn_slide();
+        fn_slide_2();
+        main_item_3();
+        main_item_5();
+        main_item_6();
+        main_item_7();
+        slide_quick();//2021.01.04 추가
+
+        //sitemap
+        /* $('<div id="slide_map" tabindex="0"><div class="inner"><div class="binds"></div><a href="#" class="btn_close">닫기</a></div></div>').prependTo($("#wrap"));
+        $('#gnb').clone(false).appendTo($("#slide_map >.inner > .binds"));
+        $("<div class='titles'>전체메뉴</div>").prependTo($("#slide_map >.inner > .binds"));
+        $("#slide_map .in_depth_tit_p").remove();
+        $("#slide_map .in_depth_menu").unwrap();
+        $("#slide_map .in_depth_menu>li>ul").wrap('<div />');
+        
+
+        $(".btn_allmenu").click(function() {
+            if($("#slide_map").is(":hidden")){		
+                $("body").addClass("fixed");
+                $("#slide_map").fadeIn(300).focus();
+            }
+            
+            return false;
+        });
+        $("#slide_map>.inner>.btn_close").click(function(){
+            $("#slide_map").fadeOut(300);
+            $("body").removeClass("fixed");
+        }); */
+    }
+
+    function fn_slide(){
+        function _set(str){
+            var obj = str;
+                obj.ul = obj.find(" .move>ul");
+                obj.li = obj.ul.find(">li");
+                obj.btn_left = obj.find(" .btn_left");
+                obj.btn_right = obj.find(" .btn_right");
+
+            function _move(str){
+                obj.li = obj.ul.find(">li");
+                var l = obj.li.innerWidth() * -1;
+
+                if(str == "left"){
+                    obj.li.last().prependTo(obj.ul);
+                    obj.ul.css("left",l+"px");
+                    l = 0;
+                }
+                obj.ul.animate({"left":l+"px"},300,function(){
+                    if(str == "right"){
+                        obj.li.eq(0).appendTo(obj.ul);
+                        obj.ul.css("left","0");
+                    }
+                });
+            }
+
+            obj.btn_left.on("click",function(){_move("left");return false;});
+            obj.btn_right.on("click",function(){_move("right");return false;});
+        }
+
+        for(var i=0; i<$('[data-js="slide-1"]').size(); i++){
+            _set($('[data-js="slide-1"]').eq(i));
+        }
+    }
+
+    function fn_slide_2(){
+        function _set(str){
+            var obj = str;
+                obj.ul = obj.find(" .move>ul");
+                obj.li = obj.ul.find(">li");
+                obj.allCnt = obj.li.size();
+                obj.btn_left = obj.find(" .btn_left");
+                obj.btn_right = obj.find(" .btn_right");
+                obj.btn_stop = obj.find(" .btn_stop");
+                obj.btn_play = obj.find(" .btn_play");
+                obj.cnt = 0;
+                obj.count = obj.find(" .count");
+                obj.auto = (obj.btn_play.size() != 0) ? "Y":"N";
+                obj.autoTime = "";
+                obj.autoTimeSpeed = 6000;
+
+            if(obj.li.size() < 1){
+                obj.find(" .control").remove();
+                return false;
+            }
+            function _def(){
+                if(obj.attr('data-simbol') == "yes"){
+                    for(var i=0; i<obj.li.size(); i++){
+                        $('<a href="#"><span>'+(obj.li.size()-i)+'</span></a>').prependTo(obj.find(" .control"));
+                    }
+                    obj.simbol = obj.find(" .control>a:not([class*='btn_'])");
+                }
+                
+                obj.li.eq(0).addClass("on");
+                for(i=0; i<obj.li.size(); i++){
+                    obj.li.eq(i).attr("data-cnt",i);
+                }
+                if(obj.li.size() > 1){
+                    var liClone = obj.li.clone();
+                    liClone.removeAttr("data-cnt").removeClass("on").prependTo(obj.ul);
+                } else {
+                    obj.allCnt = 0;
+                }
+                obj.li = obj.ul.find(">li");
+                obj.li.find("a").attr("tabindex","-1");
+                obj.ul.find(">li[data-cnt='0']").find("a").attr("tabindex","0");
+                _page();
+                _position();
+            }
+            _def();
+            function _position(){
+                obj.li = obj.ul.find(">li");
+                var idx = obj.li.index(obj.ul.find(">li.on"));
+                var l = 0;
+                var c = 0;
+
+                for(var i=(idx-1); i>=0; i--){
+                    c = c - 1;
+                    l = 105*c;
+                    obj.li.eq(i).css("left",l+"%");
+                }
+                for(i=0; i<(obj.li.size() - idx); i++){
+                    c = i;
+                    l = 105*i;
+                    obj.li.eq(idx+i).css("left",l+"%");
+                }
+            }
+            function _page(){
+                if(obj.count.size() != 0) obj.count.text((obj.cnt+1)+"/"+(obj.li.size() - obj.allCnt));
+                if(obj.attr('data-simbol') == "yes"){
+                    _sumbol();
+                }
+            }
+            function _sumbol(){
+                obj.simbol.removeClass("on").eq(obj.cnt).addClass("on");
+            }
+            function _move(idx){
+                if(idx == obj.cnt) return false;
+                if(idx > (obj.li.size() - 1 - obj.allCnt)) idx = 0;
+                if(idx < 0) idx = (obj.li.size() - 1 - obj.allCnt);
+                obj.li = obj.ul.find(">li");
+                var str = "next";
+                var o = idx - obj.cnt;
+                var l = (o*105) * -1;
+
+                if(idx < obj.cnt){
+                    str = "prev";
+                    o = (obj.li.size()-1) - (o * -1);
+                }
+                obj.ul.stop().animate({"left":l+"%"},500,function(){
+                    obj.ul.css("left","0");
+                    if(str == "next"){
+                        obj.ul.find(">li:lt("+(o)+")").appendTo(obj.ul);
+                    } else {
+                        obj.ul.find(">li:gt("+(o)+")").prependTo(obj.ul);
+                    }
+
+                    obj.li.removeClass("on");
+                    obj.ul.find(">li[data-cnt='"+idx+"']").addClass("on");
+                    
+                    obj.li.find("a").attr("tabindex","-1");
+                    obj.ul.find(">li[data-cnt='"+idx+"']").find("a").attr("tabindex","0");
+
+                    _position();
+
+                    if(obj.auto == "Y"){
+                        _stop();
+                        _play();
+                    }
+                });
+                obj.cnt = idx;
+                _page();
+            }
+            function _play(){
+                obj.autoTime = setTimeout(function(){
+                    var idx=obj.cnt+1;
+                    _move(idx);
+                },obj.autoTimeSpeed);
+            }
+            function _stop(){
+                clearTimeout(obj.autoTime);
+            }
+
+            obj.btn_left.on("click",function(){var idx=obj.cnt-1;_move(idx);return false;});
+            obj.btn_right.on("click",function(){var idx=obj.cnt+1;_move(idx);return false;});
+            if(obj.attr('data-simbol') == "yes"){
+                obj.simbol.on("click",function(){var idx=obj.simbol.index($(this));_move(idx);return false;});
+            }
+
+            obj.btn_play.on("click",function(){
+                obj.auto = "Y";
+                obj.btn_play.hide();
+                obj.btn_stop.show();
+                _play();
+                return false;
+            });
+            obj.btn_stop.on("click",function(){
+                obj.auto = "N";
+                obj.btn_play.show();
+                obj.btn_stop.hide();
+                _stop();
+                return false;
+            });
+
+            if(obj.auto == "Y"){
+                obj.btn_play.click();
+            }
+        }
+
+        for(var i=0; i<$('[data-js="slide-2"]').size(); i++){
+            _set($('[data-js="slide-2"]').eq(i));
+        }
+    }
+
+    function main_item_3(){
+        function _set(str){
+            var obj = str;
+                obj.menu = obj.find(" .head>ul>li");
+                obj.box = obj.find(" .midd>.view[data-page]");
+
+            function _set(idx){
+                obj.menu.removeClass("on");
+                obj.menu.find(">a[data-page='"+idx+"']").parent().addClass("on");
+                obj.box.removeClass("on");
+                obj.find(" .midd>.view[data-page='"+idx+"']").addClass("on");
+
+                obj.find(" .midd").getNiceScroll(0).doScrollTop('y', 0);
+            }
+
+            obj.menu.find(">a").on("click",function(){
+                var idx = $(this).attr("data-page");
+                _set(idx);
+                return false;
+            });
+            obj.menu.eq(0).find(">a").click();
+        }
+        for(var i=0; i<$('[data-item="3"]').size(); i++){
+            _set($('[data-item="3"]').eq(i));
+        }
+    }
+
+    function main_item_5(){
+        function _set(str){
+            var obj = str;
+                obj.menu = obj.find(" .midd>.tabs>ul>li");
+                obj.box = obj.find(" .midd>.move>[data-page]");
+
+            function _set(idx){
+                obj.menu.removeClass("on");
+                obj.menu.find(">a[data-page='"+idx+"']").parent().addClass("on");
+                obj.box.removeClass("on");
+                obj.find(" .midd>.move>[data-page='"+idx+"']").addClass("on");
+            }
+
+            obj.menu.find(">a").on("click",function(){
+                var idx = $(this).attr("data-page");
+                _set(idx);
+                return false;
+            });
+            obj.menu.eq(0).find(">a").click();
+        }
+        for(var i=0; i<$('[data-item="5"]').size(); i++){
+            _set($('[data-item="5"]').eq(i));
+        }
+    }
+
+    function main_item_6(){
+        function _set(str){
+            var obj = str;
+                obj.menu = obj.find(" .head>ul>li");
+                obj.box = obj.find(" .midd>.view");
+
+            function _set(idx){
+                obj.menu.removeClass("on");
+                obj.menu.find(">a[data-page='"+idx+"']").parent().addClass("on");
+                obj.box.removeClass("on");
+                obj.find(" .midd>.view[data-page='"+idx+"']").addClass("on");
+            }
+
+            obj.menu.find(">a").on("click",function(){
+                var idx = $(this).attr("data-page");
+                _set(idx);
+                return false;
+            });
+        }
+        for(var i=0; i<$('[data-item="6"]').size(); i++){
+            _set($('[data-item="6"]').eq(i));
+        }
+    }
+
+    function main_item_7(){
+        function _set(str){
+            var obj = str;
+                obj.btn = obj.find(" .head > a");
+            
+            function _move(idx){
+                obj.attr('data-page',(idx+1));
+            }
+            _move(0);
+            obj.btn.on("click",function(){
+                var idx = obj.find(" .head").index($(this).parent());
+                _move(idx);
+                return false;
+            });
+        }
+
+        for(var i=0; i<$('[data-item="7"]').size(); i++){
+            _set($('[data-item="7"]').eq(i));
+        }
+
+    }
+    
+    function slide_quick(){
+        if($('[data-skin="slide-quick"]').size() == 0) return false;
+        var obj = $('[data-skin="slide-quick"]');
+            obj.btn_close = obj.find(" a.close");
+
+        obj.btn_close.on("click",function(){
+            obj.hide();
+            return false;
+        });
+    }
+    
+</script>
+<!-- skip nav -->
+<div id="skip_nav">
+	<ul>
+		<li><a href="#content" onclick="document.getElementById('content').tabIndex = -1;document.getElementById('content').focus();return false;">본문 바로가기</a></li>
+		<li><a href="#gnb" class="pc_allmenu" onclick="document.getElementById('gnb').tabIndex = -1;document.getElementById('gnb').focus();return false;">주메뉴 바로가기</a></li>
+	</ul>
+</div>
+<!--// skip nav -->
+
+<div id="wrap">
+
+    <!-- popup:s -->
+    <div class="main_pop_wrap">
+		<div class="main_pop swiper-container">
+			<div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="pc">
+                        <a href="#none"><img src="../images/layout/photoImageViewer.jpg" alt="2020 소상공인 온라인 실시간 교육 안내 - 제조업(2020.11.24)" ></a>
+                    </div>
+                    <div class="mobile">
+                        <a href="#none"><img src="../images/layout/photoImageViewer_mobile.jpg" alt="2020 소상공인 온라인 실시간 교육 안내 - 제조업(2020.11.24)" ></a>
+                    </div>
+                </div>
+			</div>
+			<div class="swiper_prev_next">
+				<button class="swiper-button-prev swiper-button-disabled">Prev</button>
+				<button class="swiper-button-next swiper-button-disabled">Next</button>
+			</div>
+			<div class="ctl_btn">
+				<input type="checkbox" id="chk_pop" class="hide_checkbox"><label for="chk_pop" class="cb_none">1일 동안 보지 않기</label>
+				<button class="btn_close" onclick="fnCloseMainPop()">닫기</button>
+			</div>
+		</div>
+	</div>
+    <!-- popup:e -->
+
+	<!-- head PC -->
+	<header class="header_pc">
+		<div class="loading" style="display: none;" > 
+		    <img src="../images/loading.gif" alt="loading">
+		</div>
+		
+		<!-- header top -->
+		<div class="header_top">
+			<div class="con_center">
+				<ul>
+                    <li><a href="#" class="on"><span>소상공인지식배움터</span></a></li>
+                    <li><a href="#"><span>소상공인지식나눔터</span></a></li>
+                </ul>
+			</div>
+		</div>
+		<!--// header top -->
+
+		<!-- header cont -->
+		<div class="header_cont">
+			<div class="con_center">
+                <h1 class="logo"><a href="/edu/main/main.do"><img src="../images/layout/logo.svg" alt="소상공인지식배움터 - 소상공인시장진흥공단"></a></h1>
+                <!--
+                    텍스트형식 로고 
+                    <h1 class="logo"><a href="/edu/main/main.do"><span class="t">주식회사 우아한형제들</span></a></h1> 
+                -->
+				
+                <div class="util">
+                    <div class="link_area" id="pcLogin1">
+                        <ul>
+                            <li><a href="#"><span>전자도서관</span></a></li>
+                            <li><a href="#"><span>제휴기관신청</span></a></li>
+                            <li><a href="https://edu.sbiz.or.kr/edu/institution/common/login.do" target="_blank" title="기업회원 로그인"><span>기업회원로그인</span></a></li>
+                            <li><a href="#"><span>회원가입</span></a></li>
+                            <li><a href="#" class="popup-select"><span>POPUP</span></a></li>
+                        </ul>
+                    </div>
+				</div>
+			</div>
+		</div>
+		<!--// header cont -->
+
+		<!-- gnb section -->
+		<div class="gnb_section">
+			<div class="gnb_box">
+                
+				<ul id="gnb">
+                    <li class="">
+                        <a href="/edu/online/onlineEduInfo.do?menuCode=WWW001001"><span>온라인교육</span></a>
+                        <div class="in_depth">
+                            <div class="con_center">
+                                <!-- 온라인교육 -->
+                                <div class="in_depth_tit_p">
+                                    <strong class="head">온라인교육</strong>
+                                    <div class="midd">
+                                        <span>사업주기별(창업-성장-재기)</span>
+                                        <span>교육과 노하우, 교양교육을</span>
+                                        <span>온라인으로</span>
+                                        <span>수강할 수 있습니다.</span>
+                                    </div>
+                                    <div class="simbol"></div>
+                                </div>
+                                <ul class="in_depth_menu" data-type="2">
+                                    <!-- 온라인 교육 하위 메뉴는 하드코딩 -->
+                                    <li class="sub1">
+                                        <ul>
+                                            <li class="sub1"><a href="/edu/online/onlineEduInfo.do?menuCode=WWW001001"><span>교육안내</span></a></li>
+                                            <li class="sub1"><a href="/edu/rltmBrdcst/rltmBrdcstList.do?menuCode=WWW001009001"><span>실시간교육</span></a>
+                                                <ul>
+                                                    <li><a href="/edu/rltmBrdcst/rltmBrdcstList.do?menuCode=WWW001009001"><span>ON AIR</span></a></li>
+                                                    <li><a href="/edu/rltmBrdcst/rltmScheduleList.do?menuCode=WWW001009002"><span>실시간 교육일정</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="sub1"><a href="/edu/board/onlineSugList.do?menuCode=WWW001011"><span>개설해드림(강의요청)</span></a></li>
+                                            <li class="sub1"><a href="/edu/online/onlineFundRcmd.do?menuCode=WWW001012"><span>정책자금연계(추천강좌)</span></a></li>
+                                        </ul>	
+                                    </li>
+                                    <li class="sub1">
+                                        <ul>
+                                            <li><a href="/edu/online/hopeEduList.do?menuCode=WWW001013"><span>희망첫걸음</span></a></li>
+                                            <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031001"><span>업종별 특화교육</span></a>
+                                                <ul>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031001"><span>제과/제빵</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031002"><span>음식업</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031003"><span>공방</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031004"><span>미용</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031005"><span>기타</span></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="sub1">
+                                        <ul>
+                                            <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032001"><span>공통교육</span></a>
+                                                <ul>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032001"><span>마케팅</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032002"><span>경영마인드</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032003"><span>법/세무/노무</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032004"><span>교양</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032005"><span>라이브 커머스</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001033001"><span>지원사업</span></a>
+                                                <ul>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001033001"><span>공단</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001033002"><span>유관기관</span></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li> 
+                                    <li class="sub1">
+                                        <ul>
+                                            <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034001"><span>공단교육</span></a>
+                                                <ul>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034001"><span>창업</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034002"><span>성장</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034003"><span>재기</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034004"><span>금융</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034005"><span>전통시장</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034006"><span>협동조합</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034007"><span>수출·해외 판로</span></a></li>
+                                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034007"><span>온라인 판로</span></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="">
+                        <a href="/edu/user/spt/sptInfo.do?menuCode=WWW002001"><span>현장교육</span></a>
+                        <div class="in_depth">
+                            <div class="con_center">
+                                <!-- 현장교육 -->
+                                <div class="in_depth_tit_p">
+                                    <strong class="head">현장교육</strong>
+                                    <div class="midd">
+                                        <span>경영교육, 재기교육 과정을</span>
+                                        <span>확인하고 신청할 수 있습니다.</span>
+                                    </div>
+                                    <div class="simbol"></div>
+                                </div>
+                                <ul class="in_depth_menu">
+                                    <li class="sub2"><a href="/edu/user/spt/sptInfo.do?menuCode=WWW002001"><span>교육안내</span></a></li>
+                                    <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=2&amp;searchIng=Y&amp;menuCode=WWW002003001"><span>성장</span></a>
+                                        <ul>
+                                            <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=2&amp;searchIng=Y&amp;menuCode=WWW002003001"><span>전문기술교육</span></a></li>
+                                            <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=3&amp;menuCode=WWW002003002"><span>경영개선교육</span></a></li>
+                                            <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=4&amp;menuCode=WWW002003003"><span>전용교육장교육</span></a></li>
+                                            <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=9&amp;menuCode=WWW002003004"><span>실시간·쌍방향교육</span></a></li>
+                                            <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=10&amp;menuCode=WWW002003005"><span>소상공인 수출교육</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="javascript:_go_nhrp()"><span>재기</span></a>
+                                        <ul>
+                                            <li><a href="javascript:_go_nhrp()"><span>재창업교육</span></a></li>
+                                            <li><a href="https://www.sbiz.or.kr/nhrp/main.do?menuCode=WWW002002002" target="_BLANK"><span>희망리턴패키지</span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="">
+                        <a href="/edu/channel/channelQuestList.do?menuCode=WWW003004"><span>제휴기관</span></a>
+                        <div class="in_depth">
+                            <div class="con_center">
+                                <!-- 채널 -->
+                                <div class="in_depth_tit_p">
+                                    <strong class="head">제휴기관</strong>
+                                    <div class="midd">
+                                        <span>공단과 제휴를 맺은</span>
+                                        <span>타 기관의 온라인 콘텐츠를</span>
+                                        <span>수강할 수 있습니다.</span>
+                                    </div>
+                                    <div class="simbol"></div>
+                                </div>
+                                <ul class="in_depth_menu">
+                                    <li class="sub1"><a href="/edu/channel/channelQuestList.do?menuCode=WWW003004"><span>제휴기관 탐색</span></a></li>
+                                    <li class="sub1"><a href="/edu/channel/channelQuestInfo.do?menuCode=WWW003006"><span>제휴기관 신청</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="">
+                        <a href="/edu/user/spt/eduspntdMng/eduspntdMngList.do?menuCode=WWW007001003"><span>시설임대</span></a>
+                        <div class="in_depth">
+                            <div class="con_center">
+                                <!-- 나의 강의실 -->
+                                <div class="in_depth_tit_p">
+                                    <strong class="head">시설임대</strong>
+                                    <div class="midd">
+                                        <span>전용교육장, 체험정포 등</span>
+                                        <span>시설 및 장비를</span>
+                                        <span>예약할 수 있습니다.</span>
+                                    </div>
+                                    <div class="simbol"></div>
+                                </div>
+                                <ul class="in_depth_menu">
+                                    <li><a href="/edu/user/spt/eduspntdMng/eduspntdMngList.do?menuCode=WWW007001003"><span>교육장 임대</span></a>
+                                        <ul>
+                                            <li><a href="/edu/user/spt/eduspntdMng/eduspntdMngList.do?menuCode=WWW007001003"><span>시설이용신청</span></a></li>
+                                            <li><a href="/edu/user/spt/eduspntdReqst/eduspntdReqstList.do?menuCode=WWW007001004"><span>신청내역</span></a></li>
+                                            <li><a href="/edu/user/spt/eduspntdReqst/getOprtnGdlnsInfo.do?menuCode=WWW007001002"><span>운영지침</span></a></li>
+                                            <li><a href="/edu/user/spt/eduspntdReqst/getFacilityInfo.do?menuCode=WWW007001001"><span>시설안내</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/edu/user/spt/eduspntdMng/eduspntdMngList2.do?menuCode=WWW007002003"><span>사관학교 시설 임대</span></a>
+                                        <ul>
+                                            <li><a href="/edu/user/spt/eduspntdMng/eduspntdMngList2.do?menuCode=WWW007002003"><span>성장공간 임대</span></a></li>
+                                            <li><a href="/edu/user/spt/eduspntdReqst/eduspntdReqstList2.do?menuCode=WWW007002004"><span>신청내역</span></a></li>
+                                            <li><a href="/edu/user/spt/eduspntdReqst/nbsOprtnGdlnsInfo.do?menuCode=WWW007002002"><span>운영지침</span></a></li>
+                                            <li><a href="/edu/user/spt/eduspntdReqst/nbsFacilityInfo.do?menuCode=WWW007002001"><span>시설안내</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/edu/user/spt/eduspntdReqst/contentsReqstInfo.do?menuCode=WWW007003001"><span>영상콘텐츠 제작지원</span></a>
+                                        <ul>
+                                            <li><a href="/edu/user/spt/eduspntdReqst/contentsReqstInfo.do?menuCode=WWW007003001"><span>제작지원 신청</span></a></li>
+                                            <li><a href="/edu/user/spt/eduspntdReqst/myContentsReqstList.do?menuCode=WWW007003002"><span>신청내역</span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="">
+                        <a href="/edu/board/noticeList.do?menuCode=WWW004004"><span>알림공간</span></a>
+                        <div class="in_depth">
+                            <div class="con_center">
+                                <!-- 알림공간 -->
+                                <div class="in_depth_tit_p">
+                                    <strong class="head">알림공간</strong>
+                                    <div class="midd">
+                                        <span>소상공인을 위한</span>
+                                        <span>교육 알림공간</span>
+                                    </div>
+                                    <div class="simbol"></div>
+                                </div>
+                                <ul class="in_depth_menu" data-type="2">
+                                    <li class="sub1">
+                                        <ul>
+                                            <li><a href="/edu/board/noticeList.do?menuCode=WWW004004"><span>공지사항</span></a></li>
+                                            <li><a href="/edu/board/boardList.do?menuCode=WWW004005"><span>자료실</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="sub1">
+                                        <ul>
+                                            <li><a href="/edu/board/faqList.do?menuCode=WWW004007"><span>자주묻는질문</span></a></li>
+                                            <li><a href="/edu/board/qnaList.do?menuCode=WWW004009"><span>Q&amp;A</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="sub1">
+                                        <ul>
+                                            <li><a href="/edu/user/spt/bsnsPblancList.do?menuCode=WWW004002005"><span>교육수행기관 모집</span></a></li>
+                                            <li><a href="/edu/sptClass/prfrmCheck.do?menuCode=WWW004002005"><span>교육강사</span></a>
+                                                <ul>
+                                                    <li><a href="/edu/sptClass/prfrmCheck.do?menuCode=WWW004002005"><span>강사 실적조회</span></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="sub1">
+                                        <ul>
+                                            <li><a href="/edu/board/eventList.do?menuCode=WWW004006001"><span>이벤트</span></a>
+                                                <ul>
+                                                    <li><a href="/edu/board/eventList.do?menuCode=WWW004006001"><span>진행중인 이벤트</span></a></li>
+                                                    <li><a href="/edu/board/comEventList.do?menuCode=WWW004006002"><span>완료 이벤트</span></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="">
+                        <a href="/edu/studyState/studyInfo.do?menuCode=WWW005001001"><span>나의강의실</span></a>
+                        <div class="in_depth">
+                            <div class="con_center">
+                                <!-- 나의 강의실 -->
+                                <div class="in_depth_tit_p">
+                                    <strong class="head">나의강의실</strong>
+                                    <div class="midd">
+                                        <span>학습현황, 학습중인<br>교육과정을</span>
+                                        <span>확인할 수 있는</span>
+                                        <span>나의 강의실</span>
+                                    </div>
+                                    <div class="simbol"></div>
+                                </div>
+                                <ul class="in_depth_menu">
+                                    <li><a href="/edu/studyState/studyInfo.do?menuCode=WWW005001001"><span>학습정보</span></a>
+                                        <ul>
+                                            <li><a href="/edu/studyState/studyInfo.do?menuCode=WWW005001001"><span>학습현황</span></a></li>
+                                            <li><a href="/edu/studyState/studyingCourse.do?menuCode=WWW005001002"><span>학습중인 과정</span></a></li>
+                                            <li><a href="/edu/studyState/studyCompCourse.do?menuCode=WWW005001003"><span>학습완료 과정</span></a></li>
+                                            <li><a href="/edu/studyState/studyCancelCourse.do?menuCode=WWW005001004"><span>교육취소 내역</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/edu/onlineClass/onlineClassList.do?menuCode=WWW005002001"><span>온라인강의실</span></a>
+                                        <ul>
+                                            <li><a href="/edu/onlineClass/onlineClassList.do?menuCode=WWW005002001"><span>온라인강의실</span></a></li>
+                                            <li><a href="/edu/myLecture/myLectureList.do?menuCode=WWW005002002"><span>즐겨찾기</span></a></li>
+                                            <li><a href="/edu/rltmBrdcst/recentWatch.do?menuCode=WWW005002003"><span>최근 시청한 실시간 강의</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="sub1"><a href="/edu/sptClass/sptClassList.do?menuCode=WWW005007"><span>현장강의실</span></a></li>
+                                    <li><a href="/edu/myChannel/myChannelList.do?menuCode=WWW005004001"><span>제휴기관</span></a>
+                                        <ul>
+                                            <li><a href="/edu/myChannel/myChannelList.do?menuCode=WWW005004001"><span>구독한 제휴기관</span></a></li>
+                                            <li><a href="/edu/myChannel/myChannelCourseList.do?menuCode=WWW005004002"><span>수강목록</span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="login-select">
+                    <strong class="head"><a href="#"><span>로그인</span></a></strong>
+                    <div class="midd">
+                        <ul>
+                            <li><a href="#"><span>로그인</span></a></li>
+                            <li><a href="#"><span>아이디 찾기</span></a></li>
+                            <li><a href="#"><span>비밀번호 찾기</span></a></li>
+                        </ul>
+                        <!-- 로그인 시
+                        <ul>
+                            <li><a href="#"><span>회원정보수정</span></a></li>
+                            <li><a href="#"><span>로그아웃</span></a></li>
+                        </ul>
+                        -->
+                    </div>
+                </div>
+                <a href="#" class="search-btn"><span>검색열기</span></a>
+                <div class="search_box">
+                    <div class="in">
+                        <input type="text" id="pcSearch" placeholder="검색어를 입력해주세요" title="검색어를 입력하세요.">
+                        <button type="button" class="btn_search" onclick="fnAllSearch('pc');" >검색</button>
+                        <button type="button" class="btn_search-close">검색 닫기</button>
+                    </div>
+                </div>
+				<a href="/edu/common/siteMap.do" class="btn_allmenu" ><span>전체메뉴</span></a>
+			</div>
+		</div>
+		<!--// gnb section -->
+
+	</header>
+	<!--// head PC -->
+
+	<!-- head MOBILE -->
+    <header class="header_mobile">
+		<div class="loading" style="display: none;" >
+		    <img src="../images/loading.gif" alt="loading">
+		</div>
+        <h1 class="logo"><a href="/edu/main/main.do"><img src="../images/layout/logo.svg" alt="소상공인지식배움터 - 소상공인시장진흥공단"></a></h1>
+		<button type="button" class="btn_nav">전체메뉴 보기</button>
+		<div class="all_nav_wrap">
+			<div class="all_nav_box">
+                <div class="login_con">
+                    <div class="user-card">
+                        <!-- 로그인 전 -->
+                        <div class="user">로그인</div>
+                        <strong>로그인하세요</strong>
+                        <span><a href="#">로그인</a></span>
+                        <span><a href="#">회원가입</a></span>
+                        <!-- 로그인 후 
+                        <div class="user on" style="background-image:url(../images/sub/sample.jpg);">상세정보</div>
+                        <strong>홍길동님 환영합니다.</strong>
+                        <span><a href="#">회원정보수정</a></span>
+                        <span><a href="#">로그아웃</a></span>
+                        -->
+                    </div>
+                </div>
+                <div class="links">
+                    <ul>
+                        <li><a href="#" target="_blank"><span>소상공인지식나눔터</span></a></li>
+                        <li><a href="#"><span>소상공인시장진흥공단</span></a></li>
+                    </ul>
+                </div>
+                <ul id="all_nav">
+                    <li><a href="/edu/online/onlineEduInfo.do?menuCode=WWW001001" onclick="return false;"><span>온라인교육</span></a>
+                        <ul class="in_depth_menu">
+                            <li><a href="/edu/online/onlineEduInfo.do?menuCode=WWW001001"><span>교육안내</span></a></li>
+                            <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001002"><span>전체</span></a></li>
+                            <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031001" class="inul" onclick="return false;"><span>업종별 특화교육</span></a>
+                                <ul>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031001"><span>제과/제빵</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031002"><span>음식업</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031003"><span>공방</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031004"><span>미용</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001031005"><span>기타</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032001" class="inul" onclick="return false;"><span>공통교육</span></a>
+                                <ul>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032001"><span>마케팅</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032002"><span>경영마인드</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032003"><span>법/세무/노무</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032004"><span>교양</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001032005"><span>라이브 커머스</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001033001" class="inul" onclick="return false;"><span>지원사업</span></a>
+                                <ul>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001033001"><span>공단</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001033002"><span>유관기관</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034001" class="inul" onclick="return false;"><span>공단교육</span></a>
+                                <ul>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034001"><span>창업</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034002"><span>성장</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034003"><span>재기</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034004"><span>금융</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034005"><span>전통시장</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034006"><span>협동조합</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034007"><span>수출·해외 판로</span></a></li>
+                                    <li><a href="/edu/online/onlineEduList.do?menuCode=WWW001034008"><span>온라인 판로</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/rltmBrdcst/rltmBrdcstList.do?menuCode=WWW001009001" class="inul" onclick="return false;"><span>실시간교육</span></a>
+                                <ul>
+                                    <li><a href="/edu/rltmBrdcst/rltmBrdcstList.do?menuCode=WWW001009001"><span>ON AIR</span></a></li>
+                                    <li><a href="/edu/rltmBrdcst/rltmScheduleList.do?menuCode=WWW001009002"><span>실시간 교육일정</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/online/hopeEduList.do?menuCode=WWW001013"><span>희망첫걸음</span></a></li>
+                            <li><a href="/edu/board/onlineSugList.do?menuCode=WWW001011"><span>개설해드림(강의요청)</span></a></li>
+                            <li><a href="/edu/online/onlineFundRcmd.do?menuCode=WWW001012"><span>정책자금연계(추천강좌)</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/edu/user/spt/sptInfo.do?menuCode=WWW002001" onclick="return false;"><span>현장교육</span></a>
+                        <ul class="in_depth_menu">
+                            <li><a href="/edu/user/spt/sptInfo.do?menuCode=WWW002001"><span>교육안내</span></a></li>
+                            <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=2&amp;searchIng=Y&amp;menuCode=WWW002003001" class="inul" onclick="return false;"><span>성장</span></a>
+                                <ul>
+                                    <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=2&amp;searchIng=Y&amp;menuCode=WWW002003001"><span>전문기술교육</span></a></li>
+                                    <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=3&amp;menuCode=WWW002003002"><span>경영개선교육</span></a></li>
+                                    <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=4&amp;menuCode=WWW002003003"><span>전용교육장교육</span></a></li>
+                                    <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=9&amp;menuCode=WWW002003004"><span>실시간·쌍방향교육</span></a></li>
+                                    <li><a href="/edu/user/spt/atnlcReqst/atnlcProgrmList.do?bsnsNo=10&amp;menuCode=WWW002003005"><span>소상공인 수출교육</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edujavascript:_go_nhrp()" class="inul" onclick="return false;"><span>재기</span></a>
+                                <ul>
+                                    <li><a href="javascript:_go_nhrp()"><span>재창업교육</span></a></li>
+                                    <li><a href="https://www.sbiz.or.kr/nhrp/main.do?menuCode=WWW002002002" target="_BLANK"><span>희망리턴패키지</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="/edu/channel/channelQuestList.do?menuCode=WWW003004" onclick="return false;"><span>제휴기관</span></a>
+                        <ul class="in_depth_menu">
+                            <li><a href="/edu/channel/channelQuestList.do?menuCode=WWW003004"><span>제휴기관 탐색</span></a></li>
+                            <li><a href="/edu/channel/channelQuestInfo.do?menuCode=WWW003006"><span>제휴기관 신청</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/edu/user/spt/eduspntdMng/eduspntdMngList.do?menuCode=WWW007001003" onclick="return false;"><span>시설임대</span></a>
+                        <ul class="in_depth_menu">
+                            <li><a href="/edu/user/spt/eduspntdMng/eduspntdMngList.do?menuCode=WWW007001003" class="inul" onclick="return false;"><span>교육장 임대</span></a>
+                                <ul>
+                                    <li><a href="/edu/user/spt/eduspntdMng/eduspntdMngList.do?menuCode=WWW007001003"><span>시설이용신청</span></a></li>
+                                    <li><a href="/edu/user/spt/eduspntdReqst/eduspntdReqstList.do?menuCode=WWW007001004"><span>신청내역</span></a></li>
+                                    <li><a href="/edu/user/spt/eduspntdReqst/getOprtnGdlnsInfo.do?menuCode=WWW007001002"><span>운영지침</span></a></li>
+                                    <li><a href="/edu/user/spt/eduspntdReqst/getFacilityInfo.do?menuCode=WWW007001001"><span>시설안내</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/user/spt/eduspntdMng/eduspntdMngList2.do?menuCode=WWW007002003" class="inul" onclick="return false;"><span>사관학교 시설 임대</span></a>
+                                <ul>
+                                    <li><a href="/edu/user/spt/eduspntdMng/eduspntdMngList2.do?menuCode=WWW007002003"><span>성장공간 임대</span></a></li>
+                                    <li><a href="/edu/user/spt/eduspntdReqst/eduspntdReqstList2.do?menuCode=WWW007002004"><span>신청내역</span></a></li>
+                                    <li><a href="/edu/user/spt/eduspntdReqst/nbsOprtnGdlnsInfo.do?menuCode=WWW007002002"><span>운영지침</span></a></li>
+                                    <li><a href="/edu/user/spt/eduspntdReqst/nbsFacilityInfo.do?menuCode=WWW007002001"><span>시설안내</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/user/spt/eduspntdReqst/contentsReqstInfo.do?menuCode=WWW007003001" class="inul" onclick="return false;"><span>영상콘텐츠 제작지원</span></a>
+                                <ul>
+                                    <li><a href="/edu/user/spt/eduspntdReqst/contentsReqstInfo.do?menuCode=WWW007003001"><span>제작지원 신청</span></a></li>
+                                    <li><a href="/edu/user/spt/eduspntdReqst/myContentsReqstList.do?menuCode=WWW007003002"><span>신청내역</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="/edu/board/noticeList.do?menuCode=WWW004004" onclick="return false;"><span>알림공간</span></a>
+                        <ul class="in_depth_menu">
+                            <li><a href="/edu/board/noticeList.do?menuCode=WWW004004"><span>공지사항</span></a></li>
+                            <li><a href="/edu/board/boardList.do?menuCode=WWW004005"><span>자료실</span></a></li>
+                            <li><a href="/edu/board/faqList.do?menuCode=WWW004007"><span>자주묻는질문</span></a></li>
+                            <li><a href="/edu/board/qnaList.do?menuCode=WWW004009"><span>Q&amp;A</span></a></li>
+                            <li><a href="/edu/user/spt/bsnsPblancList.do?menuCode=WWW004001"><span>교육수행기관 모집</span></a></li>
+                            <li><a href="/edu/sptClass/prfrmCheck.do?menuCode=WWW004002005" class="inul" onclick="return false;"><span>교육강사</span></a>
+                                <ul>
+                                    <li><a href="/edu/sptClass/prfrmCheck.do?menuCode=WWW004002005"><span>강사실적조회</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/board/eventList.do?menuCode=WWW004006001" class="inul" onclick="return false;"><span>이벤트</span></a>
+                                <ul>
+                                    <li><a href="/edu/board/eventList.do?menuCode=WWW004006001"><span>진행중인 이벤트</span></a></li>
+                                    <li><a href="/edu/board/comEventList.do?menuCode=WWW004006002"><span>완료 이벤트</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="/edu/studyState/studyInfo.do?menuCode=WWW005001001" onclick="return false;"><span>나의강의실</span></a>
+                        <ul class="in_depth_menu">
+                            <li><a href="/edu/studyState/studyInfo.do?menuCode=WWW005001001" class="inul" onclick="return false;"><span>학습정보</span></a>
+                                <ul>
+                                    <li><a href="/edu/studyState/studyInfo.do?menuCode=WWW005001001"><span>학습현황</span></a></li>
+                                    <li><a href="/edu/studyState/studyingCourse.do?menuCode=WWW005001002"><span>학습중인 과정</span></a></li>
+                                    <li><a href="/edu/studyState/studyCompCourse.do?menuCode=WWW005001003"><span>학습완료 과정</span></a></li>
+                                    <li><a href="/edu/studyState/studyCancelCourse.do?menuCode=WWW005001004"><span>교육취소 내역</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/onlineClass/onlineClassList.do?menuCode=WWW005002001" class="inul" onclick="return false;"><span>온라인강의실</span></a>
+                                <ul>
+                                    <li><a href="/edu/onlineClass/onlineClassList.do?menuCode=WWW005002001"><span>온라인강의실</span></a></li>
+                                    <li><a href="/edu/myLecture/myLectureList.do?menuCode=WWW005002002"><span>즐겨찾기</span></a></li>
+                                    <li><a href="/edu/rltmBrdcst/recentWatch.do?menuCode=WWW005002003"><span>최근 시청한 실시간 강의</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/edu/sptClass/sptClassList.do?menuCode=WWW005007"><span>현장강의실</span></a></li>
+                            <li><a href="/edu/myChannel/myChannelList.do?menuCode=WWW005004001" class="inul" onclick="return false;"><span>제휴기관</span></a>
+                                <ul>
+                                    <li><a href="/edu/myChannel/myChannelList.do?menuCode=WWW005004001"><span>구독한 제휴기관</span></a></li>
+                                    <li><a href="/edu/myChannel/myChannelCourseList.do?menuCode=WWW005004002"><span>수강목록</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+				<button type="button" class="btn_close">전체메뉴 닫기</button>
+                <button class="mobile-gnb-close">메뉴 닫기</button>
+			</div>
+		</div>
+		<div class="mask"></div>
+
+		<button class="btn_sc_toggle">검색영역 펼치기</button>
+		<div class="search_box">
+			<div class="radius_box">
+				<input type="text" id="mSearch" placeholder="검색어를 입력하세요." title="검색어를 입력하세요.">
+				<button type="button" class="btn_search" onclick="fnAllSearch('m');" >검색</button>
+                <button type="button" class="btn_search-close">검색 닫기</button>
+			</div>
+		</div>
+	</header>
+	<!--// head MOBILE -->
+	
+
+
+
+   
+    <!-- main :s -->
+    <div id="container" class="main">
+        <!-- 
+            visual :s 
+                data-type
+                    1 : 봄
+                    2 : 여름
+                    3 : 가을
+                    4 : 겨울
+        -->
+        <div id="visual" data-type="4" data-quick-point="1">
+            <div class="in">
+                <div class="search">
+                    <strong class="head">
+                        <em>희망찬 미래를 위한 첫 걸음</em>
+                        <span><i>소상공인지식배움터</i>에서 시작하세요.</span>
+                    </strong>
+                    <div class="midd">
+                        <form action="/">
+                            <input type="text" placeholder="검색어를 입력해주세요" title="검색어를 입력하세요. ">
+                            <button>검색</button>
+                        </form>
+                    </div>
+                    <div class="foot">
+                        <strong>추천검색어</strong>
+                        <ul>
+                            <li>#전자도서관</li>
+                            <li>#전자도서관</li>
+                            <li>#전자도서관</li>
+                            <li>#전자도서관</li>
+                            <li>#전자도서관</li>
+                            <li>#전자도서관</li>
+                        </ul>
+                    </div>
+                </div>
+                <ul>
+                    <li class="icon-1"><a href="#"><strong>배움터 이용가이드</strong><span>배움터 이렇게 활용해보세요!</span></a></li>
+                    <li class="icon-2"><a href="#"><strong>온라인교육</strong><span>핵심 내용을 한눈에 쭉~ 온라인교육!</span></a></li>
+                    <li class="icon-3"><a href="#"><strong>패키지교육</strong><span>순서대로 보면 꿈은 이루어진다!</span></a></li>
+                    <li class="icon-4"><a href="#"><strong>현장교육</strong><span>전국에서 진행되는 현장교육!</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- visual :e -->
+
+        <!-- pgedu :s -->
+        <div id="pg">
+            <div class="in">
+                <div class="head"><strong>인기 패키지 교육</strong></div>
+                <div class="midd">
+                    <div class="controll">
+                        <a href="#" class="btn-prev"><span>이전</span></a>
+                        <a href="#" class="btn-next"><span>다음</span></a>
+                    </div>
+                    <div class="move">
+                        <ul>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>기업가정신</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>마케팅</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>온라인 마케팅</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>프랜차이즈</span></a></li>
+                            <li><a href="#"><i></i><span>음식점</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>제조업</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>도소매업</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>서비스업</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>숙박업</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>창업</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>성장</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>폐업</span></a></li>
+                            <li><a href="#"><i style="background-image:url(../images/main/sample.svg)"></i><span>재도전</span></a></li>
+                        </ul>
+                        <div data-set="scroll"><span></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pgedu :e -->
+
+        <!-- eyes edu :s -->
+        <div id="eyes" data-page="1" data-quick-point="2">
+            <div class="in">
+                <div class="head"><strong>한눈에 교육보기</strong></div>
+                <div class="midd">
+                    <div>
+                        <div class="head">
+                            <a href="#"><span>온라인교육</span></a>
+                        </div>
+                        <div class="midd">
+                            <ul data-type="1">
+                                <li>
+                                    <a href="#">
+                                        <span class="head" style="background-image:url(../images/main/youtube_img.jpg)"><em>New</em></span>
+                                        <span class="midd">
+                                            <strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong>
+                                            <span><i>교육카테고리</i><span>세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분</span></span>
+                                        </span>
+                                        <span class="foot">
+                                            <span>조회수 1510회</span>
+                                            <span class="star">4.9</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li><a href="#"><span class="head" style="background-image:url(../images/main/youtube_img.jpg)"><em>New</em></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span><i>교육카테고리</i><span>세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분</span></span></span><span class="foot"><span>조회수 1510회</span><span class="star">4.9</span></span></a></li>
+                                <li><a href="#"><span class="head" style="background-image:url(../images/main/youtube_img.jpg)"></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span><i>교육카테고리</i><span>세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분</span></span></span><span class="foot"><span>조회수 1510회</span><span class="star">4.9</span></span></a></li>
+                                <li><a href="#"><span class="head" style="background-image:url(../images/main/youtube_img.jpg)"></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span><i>교육카테고리</i><span>세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분</span></span></span><span class="foot"><span>조회수 1510회</span><span class="star">4.9</span></span></a></li>
+
+                                <li><a href="#"><span class="head" style="background-image:url(../images/main/youtube_img.jpg)"></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span><i>교육카테고리</i><span>세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분</span></span></span><span class="foot"><span>조회수 1510회</span><span class="star">4.9</span></span></a></li>
+                                <li><a href="#"><span class="head" style="background-image:url(../images/main/youtube_img.jpg)"></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span><i>교육카테고리</i><span>세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분</span></span></span><span class="foot"><span>조회수 1510회</span><span class="star">4.9</span></span></a></li>
+                                <li><a href="#"><span class="head" style="background-image:url(../images/main/youtube_img.jpg)"></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span><i>교육카테고리</i><span>세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분</span></span></span><span class="foot"><span>조회수 1510회</span><span class="star">4.9</span></span></a></li>
+                                <li><a href="#"><span class="head" style="background-image:url(../images/main/youtube_img.jpg)"></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span><i>교육카테고리</i><span>세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분 세부구분</span></span></span><span class="foot"><span>조회수 1510회</span><span class="star">4.9</span></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="more"><a href="#"><span>더보기</span></a></div>
+                    </div>
+                    <div>
+                        <div class="head">
+                            <a href="#"><span>현장교육</span></a>
+                        </div>
+                        <div class="midd">
+                            <ul data-type="2">
+                                <!-- <li>
+                                    <a href="#">
+                                        <span class="head">
+                                            <span data-color="1">모집중</span>
+                                            <span data-color="3">모집완료</span>
+                                        </span>
+                                        <span class="midd">
+                                            <strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong>
+                                            <span>전용교육장</span>
+                                        </span>
+                                        <span class="foot">
+                                            <ul>
+                                                <li><strong>모집기간</strong><span>2022.09.14~09.30</span></li>
+                                                <li><strong>신청인원</strong><span>4/20</span></li>
+                                                <li><strong>교육기관</strong><span>서울전용교육장</span></li>
+                                            </ul>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li><a href="#"><span class="head"><span data-color="1">모집중</span><span data-color="3">모집완료</span></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span>전용교육장</span></span><span class="foot"><ul><li><strong>모집기간</strong><span>2022.09.14~09.30</span></li><li><strong>신청인원</strong><span>4/20</span></li><li><strong>교육기관</strong><span>서울전용교육장</span></li></ul></span></a></li>
+                                <li><a href="#"><span class="head"><span data-color="1">모집중</span><span data-color="3">모집완료</span></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span>전용교육장</span></span><span class="foot"><ul><li><strong>모집기간</strong><span>2022.09.14~09.30</span></li><li><strong>신청인원</strong><span>4/20</span></li><li><strong>교육기관</strong><span>서울전용교육장</span></li></ul></span></a></li>
+                                <li><a href="#"><span class="head"><span data-color="1">모집중</span><span data-color="3">모집완료</span></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span>전용교육장</span></span><span class="foot"><ul><li><strong>모집기간</strong><span>2022.09.14~09.30</span></li><li><strong>신청인원</strong><span>4/20</span></li><li><strong>교육기관</strong><span>서울전용교육장</span></li></ul></span></a></li>
+                                <li><a href="#"><span class="head"><span data-color="1">모집중</span><span data-color="3">모집완료</span></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span>전용교육장</span></span><span class="foot"><ul><li><strong>모집기간</strong><span>2022.09.14~09.30</span></li><li><strong>신청인원</strong><span>4/20</span></li><li><strong>교육기관</strong><span>서울전용교육장</span></li></ul></span></a></li>
+                                <li><a href="#"><span class="head"><span data-color="1">모집중</span><span data-color="3">모집완료</span></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span>전용교육장</span></span><span class="foot"><ul><li><strong>모집기간</strong><span>2022.09.14~09.30</span></li><li><strong>신청인원</strong><span>4/20</span></li><li><strong>교육기관</strong><span>서울전용교육장</span></li></ul></span></a></li>
+                                <li><a href="#"><span class="head"><span data-color="1">모집중</span><span data-color="3">모집완료</span></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span>전용교육장</span></span><span class="foot"><ul><li><strong>모집기간</strong><span>2022.09.14~09.30</span></li><li><strong>신청인원</strong><span>4/20</span></li><li><strong>교육기관</strong><span>서울전용교육장</span></li></ul></span></a></li>
+                                <li><a href="#"><span class="head"><span data-color="1">모집중</span><span data-color="3">모집완료</span></span><span class="midd"><strong>온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다. 온라인 강의명이 표출되는 영역입니다. 2줄로 아래로 떨어지면 표출됩니다.</strong><span>전용교육장</span></span><span class="foot"><ul><li><strong>모집기간</strong><span>2022.09.14~09.30</span></li><li><strong>신청인원</strong><span>4/20</span></li><li><strong>교육기관</strong><span>서울전용교육장</span></li></ul></span></a></li> -->
+                            </ul>
+                        </div>
+                        <div class="more"><a href="#"><span>더보기</span></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- eyes edu :e -->
+
+        <!-- choice :s -->
+        <div id="choice" data-quick-point="3">
+            <div class="in">
+                <div class="head">
+                    <strong>
+                        <!-- 로그인시만 표출 :s -->
+                        <span>홍길동</span>님을 위한 
+                        <!-- 로그인시만 표출 :e -->
+                        추천강좌
+                    </strong>
+                </div>
+                <div class="midd">
+                    <div id="event">
+                        <div class="head">
+                            <strong>교육 EVENT</strong>
+                            <div>
+                                <span><strong>1</strong>/3</span>
+                                <a href="#" class="btn-prev"><span>이전</span></a>
+                                <a href="#" class="btn-stop"><span>정지</span></a>
+                                <a href="#" class="btn-play"><span>재생</span></a>
+                                <a href="#" class="btn-next"><span>다음</span></a>
+                            </div>
+                        </div>
+                        <div class="midd">
+                            <div class="move">
+                                <ul>
+                                    <li><a href="#" style="background-image:url(../images/main/event_1.jpg);"><span>계정에 따라 달라지는 소비트렌드 강의듣고 선물도 받아가세요~! 2022.09.15~10.14</span></a></li>
+                                    <li><a href="#" style="background-image:url(../images/main/event_2.jpg);"><span>계정에 따라 달라지는 소비트렌드 강의듣고 선물도 받아가세요~! 2022.09.15~10.14</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mini-board">
+                        <ul>
+                            <li class="on">
+                                <div class="head"><a href="#"><span>관심분야추천강좌</span></a></div>
+                                <div class="midd">
+                                    <ul>
+                                        <li><a href="#"><strong>1 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>2 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>개별교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>3 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>4 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>5 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>6 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>7 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>8 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>9 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>10 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>11 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                        <li><a href="#"><strong>12 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다 추천강좌명이 표시되는 영역 입니다. 썸네일 없이 강좌 제목이 나옵니다</strong><span><em>패키지교육</em><span>법/세무/노무</span></span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="head"><a href="#"><span>정책자금연계강좌</span></a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- choice :e -->
+
+        <!-- etc :s -->
+        <div id="etc-box">
+            <div class="in">
+                <!-- 공지사항:s -->
+                <div class="item-box">
+                    <div class="notice">
+                        <ul>
+                            <li class="on">
+                                <a href="#"><span>공지사항</span></a>
+                                <div>
+                                    <ul>
+                                        <li><a href="#"><strong><em>공지</em><span>전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내 전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내</span></strong><span>2022.09.15</span></a></li>
+                                        <li><a href="#"><strong><em>공지</em><span>전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내 전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내</span></strong><span>2022.09.15</span></a></li>
+                                        <li><a href="#"><strong><span>전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내 전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내</span></strong><span>2022.09.15</span></a></li>
+                                        <li><a href="#"><strong><span>전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내 전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내</span></strong><span>2022.09.15</span></a></li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="more"><span>더보기</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span>교육수행기관모집</span></a>
+                                <div>
+                                    <ul>
+                                        <li><a href="#"><strong><em>공지</em><span>전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내 전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내</span></strong><span>2022.09.15</span></a></li>
+                                        <li><a href="#"><strong><em>공지</em><span>전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내 전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내</span></strong><span>2022.09.15</span></a></li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="more"><span>더보기</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span>자료실</span></a>
+                                <div>
+                                    <ul>
+                                        <li><a href="#"><strong><em>공지</em><span>전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내 전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내</span></strong><span>2022.09.15</span></a></li>
+                                        <li><a href="#"><strong><em>공지</em><span>전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내 전문기술교육 교육기관 교육 과정 등록기간 및 교육 인원 배정안내</span></strong><span>2022.09.15</span></a></li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="more"><span>더보기</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 공지사항:e -->
+
+                <!-- 제휴기관 :s -->
+                <div class="item-box">
+                    <div class="jh">
+                        <div class="head"><strong>제휴기관</strong></div>
+                        <div class="midd">소상공인지식배움터의 제휴기관을 모집하고 있습니다.</div>
+                        <div class="foot">
+                            <ul>
+                                <li><a href="#" class="icon-1"><span>제휴기관 신청</span></a></li>
+                                <li><a href="#" class="icon-2"><span>제휴기관 신청</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 제휴기관 :e -->
+
+                <!-- popup :s -->
+                <div class="item-box">
+                    <div class="popup">
+                        <div class="head">
+                            <strong>POPUP</strong>
+                            <div>
+                                <span><strong>1</strong>/3</span>
+                                <a href="#" class="btn-prev"><span>이전</span></a>
+                                <a href="#" class="btn-stop"><span>정지</span></a>
+                                <a href="#" class="btn-play"><span>재생</span></a>
+                                <a href="#" class="btn-next"><span>다음</span></a>
+                            </div>
+                        </div>
+                        <div class="midd">
+                            <ul>
+                                <li><a href="#" style="background-image:url(../images/main/popup_2.jpg)"><span>간편한결제 제로페이사용법 바로가기</span></a></li>
+                                <li><a href="#" style="background-image:url(../images/main/popup_3.jpg)"><span>간편한결제 제로페이사용법 바로가기</span></a></li>
+                                <li><a href="#" style="background-image:url(../images/main/popup_4.jpg)"><span>간편한결제 제로페이사용법 바로가기</span></a></li>
+                                <li><a href="#" style="background-image:url(../images/main/popup_5.jpg)"><span>간편한결제 제로페이사용법 바로가기</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- popup :e -->
+
+                <div class="item-box">
+                    <div class="info">
+                        <div class="head">
+                            <em>고객문의 안내</em>
+                            <strong>문의사항이 있으신가요?</strong>
+                        </div>
+                        <div class="midd">
+                            평일 09:00 ~ 18:00 주말/공휴일 휴무
+                        </div>
+                        <div class="foot">
+                            <ul>
+                                <li><strong>자금/교육문의</strong><span>1357</span></li>
+                                <li><strong>시스템관련</strong><span>1644-5302</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-box">
+                    <a href="https://eduopen.sbiz.or.kr/kor/59/newslettermember" target="_blank" title="새창 링크" class="letter">
+                        <span class="head">
+                            <em>소상공인사이버평생교육원</em>
+                            <strong>뉴스레터 구독신청</strong>
+                        </span>
+                        <span class="foot">
+                            <span>바로가기</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="item-box">
+                    <a href="#" class="tube">
+                        <span class="head">
+                            <em><span>공</span>부하는 <span>사</span>장님 <span>공사장 TV</span></em>
+                            <strong>지식배움터 <span>유튜브</span></strong>
+                        </span>
+                        <span class="foot">
+                            <span>바로가기</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- etc :e -->
+
+        <!-- quick :s -->
+        <div id="main-quick">
+            <ul>
+                <li class="quick" data-sw="off">
+                    <div class="head"><a href="#"><span>QUICK SERVICE <em>열기</em></span></a></div>
+                    <div class="midd">
+                        <div class="in">
+                            <ul>
+                                <li class="item-1"><a href="#" class="bx"><span><span>소상공인 무료</span><span>전자도서관</span></span></a></li>
+                                <li class="item-2"><a href="#" class="bx"><span><span>수료증</span><span>발급하기</span></span></a></li>
+                                <li class="item-3"><a href="#" class="bx"><span><span>정책자금연계</span><span>추천강의 바로가기</span></span></a></li>
+                                <li class="item-4"><a href="#" class="bx"><span><span>학습중인</span><span>온라인강의</span></span></a></li>
+                                <li class="item-5"><a href="#" class="bx"><span><span>학습중인</span><span>현장강의</span></span></a></li>
+                                <li class="item-6"><a href="#" class="bx"><span><span>Q&amp;A</span><span>바로가기</span></span></a></li>
+                                <li class="item-7">
+                                    <div class="bx">
+                                        <div class="head">
+                                            <!-- 생방송이 있을때
+                                                생방송 온라인 교육이 <span>진</span><span>행</span><span>중</span> 입니다! 
+                                            -->
+                                            <!-- 생방송이 없을때 :s -->
+                                            진행중인 생방송 온라인 교육이 없습니다
+                                            <!-- 생방송이 없을때 :e -->
+                                        </div>
+                                        <div class="midd">
+                                            <a href="#"><span>일정보기</span></a>
+                                            <!-- 생방송이 있을때만 :s -->
+                                            <a href="#"><span>보러가기</span></a> 
+                                            <!-- 생방송이 있을때만 :s -->
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="foot"><a href="#"><span>QUICK SERVICE <em>닫기</em></span></a></div>
+                    </div>
+                </li>
+                <li><a href="#" data-quick-target="1" class="on"><span>메인</span></a></li>
+                <li><a href="#" data-quick-target="2"><span>최신교육</span></a></li>
+                <li><a href="#" data-quick-target="3"><span>추천교육</span></a></li>
+            </ul>
+        </div>
+        <!-- quick :e -->
+    </div>
+    <!-- main :e -->
+
+
+    <!-- 로그인 모달 :s -->
+    <div class="layerpop alert" tabindex="0" data-tooltip-con="pop-alert" data-focus="pop-alert" data-focus-prev="pop-alert-close">
+        <div class="layer_mask"></div><!-- 블랙mask영역 -->
+        <div class="layer_cont">
+            <div class="lc_head"></div>
+            <div class="lc_cont">
+    
+                <p class="alert_msg ico_lock">로그인 후 이용하실 수 있습니다.</p>
+    
+                <div class="p_btn_center"></div>
+    
+            </div>
+        </div>
+    </div>
+    <!-- 로그인 모달 :e -->
+    <script>
+	
+        function fn_courseCustom(reset){
+            if(!loginAt){
+                fnModalMsg( '', 'alert', '로그인 후 이용 가능합니다.',	'');
+                return;
+            }
+            
+            modal.on('my');
+            
+            if(reset == "Y"){
+                $("#btn_courseCustom").show();
+                $("#btn_courseCustomReset").hide();
+                $("#courseCustomResetDesc").hide();
+            }
+            $.ajax({
+                url: '/edu/main/courseCustomAjax.do',
+                type: 'POST'
+                ,dataType:"json"
+                ,success:function(result){
+                    if(result == 'FAIL'){
+                        fnModalMsg( '' , 'alert', '정보 조회에 실패했습니다.' ,'' );	
+                    }else if(result == 'ERROR'){
+                        fnModalMsg( '' , 'alert', '정보 조회 중 오류가 발생했습니다.' ,'' );	
+                    }else{
+                        var i;
+                        var html="";
+                        for(i = 0 ; i < result.length ; i++){
+                            html += '<tr>';
+                            html += '	<td class="left">';
+                            html += '		'+result[i].question;
+                            html += '	</td>';
+                            html += '	<td>';
+                            html += '		<div data-skin="checkbox" data-text="off">';
+                            html += '			<input type="checkbox" name="answerYn_'+i+'" id="checkbox_pop_'+i+'" value="Y">';
+                            html += '		    <label for="checkbox_pop_'+i+'"><span>답변체크</span></label>';
+                            html += '			<input type="hidden" id="cc_subSn_'+i+'" name="subSn" value="'+result[i].subSn+'"/>';
+                            //html += '		<input type="radio" id="cc_answerYn_'+i+'_Y" name="answerYn_'+i+'" value="Y" class="cc_answerYn"><label for="cc_answerYn_'+i+'_Y">예</label></input>';
+                            //html += '		<input type="radio" id="cc_answerYn_'+i+'_N" name="answerYn_'+i+'" value="N" class="cc_answerYn"><label for="cc_answerYn_'+i+'_N">아니요</label></input>';
+                            html += '		</div>';
+                            html += '	</td>';
+                            html += '</tr>';
+                        }
+                        $("#cc_customSn").val(result[0].customSn);
+                        $("#courseCustomTable > tbody").html(html);
+                    }
+                }
+                ,fail:function(){
+                    fnModalMsg( '' , 'alert', '정보 조회 중 오류가 발생했습니다.' ,'' );
+                }
+            });
+        }
+        
+        function fn_courseCustomUser(){
+            modal.on('my');
+        }
+        
+        function fn_courseCustomUserExec(obj){
+            var i = 0;
+            
+            for(i = 0 ; i < $(".cc_answerYn").length ; i++){
+                if(!$("[name="+$($(".cc_answerYn")[i]).attr("name")+"]").is(":checked")){
+                    alert("답변이 선택되지 않은 항목이 있습니다.");
+                    return;
+                }
+            }
+            
+            fnModalMsg( obj
+                      , 'confirm'
+                      , '저장 하시겠습니까?'
+                      , function( result ){
+                              if(result){
+                                  $('#courseCustomForm').attr('target','_self');
+                                  $('#courseCustomForm').attr('action','/edu/main/courseCustomUserExec.do');
+                                  $('#courseCustomForm').submit();	    				
+                              }
+                      });
+        }
+    </script>
+
+    <!-- 나의 관심분야 설정 :s -->
+    <form id="courseCustomForm" name="courseCustomForm" action="/edu/main/courseCustomExec.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" id="cc_customSn" name="customSn" value="1">
+		
+	    <div data-skin="modal" data-name="my">
+	        <div class="in">
+	            <div class="head">
+	                <strong>나의 관심분야 설정</strong>
+	            </div>
+	            <div class="midd">
+	                <div class="my-data">
+	                    <div class="head">
+	                        아래 질문에 대답하시면 맞춤강좌를 골라 추천해 드립니다.<br>
+	                        각 질문 중에서 본인에게 해당되면 답변에 체크해 주세요.
+	                    </div>
+	                    <div class="midd">
+	                        <div data-skin="table">
+	                            <table id="courseCustomTable">
+	                                <caption>나의 관심분야 설정 : 질문, 답변을 설정하실수 있습니다.</caption>
+	                                <colgroup><col style="width:auto">
+	                                <col style="width:8em">
+	                                </colgroup><thead>
+	                                    <tr>
+	                                        <th scope="col">질문</th>
+	                                        <th scope="col">답변</th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody><tr>	<td class="left">		음식점업	</td>	<td>		<div data-skin="checkbox" data-text="off">			<input type="checkbox" name="answerYn_0" id="checkbox_pop_0" value="Y">		    <label for="checkbox_pop_0"><span>답변체크</span></label>			<input type="hidden" id="cc_subSn_0" name="subSn" value="1">		</div>	</td></tr><tr>	<td class="left">		제조업	</td>	<td>		<div data-skin="checkbox" data-text="off">			<input type="checkbox" name="answerYn_1" id="checkbox_pop_1" value="Y">		    <label for="checkbox_pop_1"><span>답변체크</span></label>			<input type="hidden" id="cc_subSn_1" name="subSn" value="2">		</div>	</td></tr><tr>	<td class="left">		도소매업	</td>	<td>		<div data-skin="checkbox" data-text="off">			<input type="checkbox" name="answerYn_2" id="checkbox_pop_2" value="Y">		    <label for="checkbox_pop_2"><span>답변체크</span></label>			<input type="hidden" id="cc_subSn_2" name="subSn" value="3">		</div>	</td></tr><tr>	<td class="left">		서비스업	</td>	<td>		<div data-skin="checkbox" data-text="off">			<input type="checkbox" name="answerYn_3" id="checkbox_pop_3" value="Y">		    <label for="checkbox_pop_3"><span>답변체크</span></label>			<input type="hidden" id="cc_subSn_3" name="subSn" value="4">		</div>	</td></tr><tr>	<td class="left">		숙박업	</td>	<td>		<div data-skin="checkbox" data-text="off">			<input type="checkbox" name="answerYn_4" id="checkbox_pop_4" value="Y">		    <label for="checkbox_pop_4"><span>답변체크</span></label>			<input type="hidden" id="cc_subSn_4" name="subSn" value="5">		</div>	</td></tr></tbody>
+	                            </table>
+	                        </div>
+	                    </div>
+	                    
+	                </div>
+	            </div>
+	            <div class="foot">
+	                <a href="#" class="color_1" onclick="modal.off();return false;"><span>닫기</span></a>
+	                <a href="#" class="color_2" onclick="fn_courseCustomUserExec(this); return false;"><span>저장</span></a>
+	            </div>
+	            <a href="#" class="close" onclick="modal.off();return false;"><span>닫기</span></a>
+	        </div>
+	    </div>
+    </form>
+    <!-- 나의 관심분야 설정 :e -->
+
+    <div data-skin="alert" data-name="my2">
+        <div class="in">
+            <div class="midd">
+                관심분야 질문이 변경되었습니다.<br>
+                재설정 버튼을 클릭하여<br>변경된 질문을 확인하세요.
+            </div>
+            <div class="foot">
+                <a href="#" class="color_2" onclick="alert2.off();return false;"><span>확인</span></a>
+            </div>
+        </div>
+    </div>
+
+
+
+	<!-- foot -->
+	<footer id="footer">
+		
+		<div class="foot_banners">
+			<div class="con_center">
+				<h2>배너모음</h2>
+				<div class="ctrl_box">
+					<button class="swiper-button-prev">이전</button>
+					<button class="stop">자동슬라이드 정지</button>
+					<button class="play" style="display:none;">자동슬라이드 재생</button>
+					<button class="swiper-button-next">다음</button>
+					<a href="#none" class="more">더보기</a>
+				</div>
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide"><a href="http://www.bizinfo.go.kr/cmm/main/introPage.do" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners01.png" alt="기업마당"></a></li>
+						<li class="swiper-slide"><a href="http://www.osmb.go.kr/" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners02.png" alt="중소기업 옴부즈만" ></a></li>
+						<li class="swiper-slide"><a href="https://www.mss.go.kr/site/smba/main.do" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners03.png" alt="중소기업벤처기업부" ></a></li>
+						<li class="swiper-slide"><a href="http://www.kodit.co.kr/" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners04.png" alt="신용보증기금" ></a></li>
+						<li class="swiper-slide"><a href="http://www.sbiz.or.kr/sup/main.do" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners05.png" alt="소상공인마당" ></a></li>
+						<li class="swiper-slide"><a href="http://www.bizinfo.go.kr/cmm/main/introPage.do" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners01.png" alt="기업마당" ></a></li>
+						<li class="swiper-slide"><a href="http://www.osmb.go.kr/" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners02.png" alt="중소기업 옴부즈만" ></a></li>
+						<li class="swiper-slide"><a href="https://www.mss.go.kr/site/smba/main.do" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners03.png" alt="중소기업벤처기업부" ></a></li>
+						<li class="swiper-slide"><a href="http://www.kodit.co.kr/" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners04.png" alt="신용보증기금" ></a></li>
+						<li class="swiper-slide"><a href="http://www.sbiz.or.kr/sup/main.do" target="_blank" title="새창으로 열기"><img src="../images/img_foot_banners05.png" alt="소상공인마당" ></a></li>
+					</ul>
+				</div>
+				<a href="#skip_nav" class="btn_top">맨위로가기</a>
+			</div>
+		</div>
+
+		<div class="foot_box">
+            <div class="footer-select">
+                <select title="패밀리사이트 이동하기">
+                    <option value="">패밀리사이트</option>
+                </select>
+            </div>
+			<h2 class="foot_logo">
+                <span><img src="../images/foot_logo_semas_1.svg" alt="소상공인시장진흥공단"></span>
+                <span><img src="../images/foot_logo_semas_2.svg" alt="중소벤처기업부"></span>
+            </h2>
+			<div class="foot_cont">
+				<ul class="foot_links">
+                    <li class="bold"><a href="http://www.sbiz.or.kr/sup/cmm/member/privacy.do" target="_blank" title="">개인정보처리방침</a></li>
+					<li><a href="http://www.sbiz.or.kr/sup/cmm/member/rule.do" target="_blank" title="">이용약관</a></li>
+					<li><a href="http://www.sbiz.or.kr/sup/cmm/member/copyright.do" target="_blank" title="">저작권정책</a></li>
+					<li><a href="http://www.sbiz.or.kr/sup/cmm/member/email.do" target="_blank" title="">이메일주소무단수집거부</a></li>
+					<li><a href="#none" onclick="window.open('http://113366.com/seda', '원격지원');" title="">원격지원</a></li>
+				</ul>
+				<p class="addr_copyright">(34917) 대전광역시 중구 보문로 246 대림빌딩 2~3층, 11층 <span class="mobile_br"></span>소상공인시장진흥공단<span class="copyright">Copyright 2022 SEMAS, All Right Reserved.</span></p>
+			</div>
+			<h2 class="wa mobile_none"><a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" ><img src="../images/sub/wb_mark.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)" title="국가 공인 인증기관 : 웹와치" style=" width: 116px; "></a></h2>
+		</div>
+
+		<script >
+			//통함 검색 ( pc, m )
+			$(document).ready(function(){
+				$('#mSearch').on('keyup', function(e){
+		            if (e.keyCode == 13) { // enter key
+		            	fnAllSearch( 'm' );
+		                return false;
+		            }
+				});
+				$('#pcSearch').on('keyup', function(e){
+					if (e.keyCode == 13) { // enter key
+		            	fnAllSearch( 'pc' );
+		                return false;
+		            }
+				});
+				$('.btn_search').on('click',function(e){});
+			});
+			//헤더 통합검색
+			function fnAllSearch( searchDiv ){
+				var searchWord = '';				
+				if(searchDiv == 'pc'){
+					searchWord = $('#pcSearch').val();
+				} else {
+					searchWord = $('#mSearch').val();
+				}				
+				$('#allSearchWordText').val(searchWord);
+				$('#allSearchWord').val(searchWord);
+			    $("#searchFrm").submit();
+			}
+			//로그인 페이지 이동
+			function fnLogin(){
+				$('#loginReturnUrl').val(location.pathname.replace('/edu',''));
+				$("#loginFrm").submit();
+			}
+			//로그아웃
+			function fnLogout() {
+				$('#logoutReturnUrl').val(location.pathname.replace('/edu',''));
+				$("#logoutFrm").submit();
+			}
+		</script>
+		<!-- 통합검색 폼 -->
+		<form name="searchFrm" id="searchFrm" action="/edu/common/search.do" method="post">
+			<input type="hidden" name="searchWord1" id="allSearchWord" value="">
+			<input type="hidden" name="serachWord" id="allSearchWordText" value="">
+		</form>
+		<!-- //통합검색 폼 -->
+
+		<!-- 로그인 폼 -->
+		<form name="loginFrm" id="loginFrm" action="/edu/common/ssoLogin.do" method="post">
+			<input type="hidden" name="loginReturnUrl" id="loginReturnUrl" >	<!-- 로그인 후 이동할 주소 url -->
+			<input type="hidden" name="actionUrl" id="actionUrl">	<!-- 로그인 후 이동할 주소 url -->
+		</form>
+		<!-- 로그인 폼 -->
+		
+		<!-- 로그아웃 폼 -->
+		<form name="logoutFrm" id="logoutFrm" action="/edu/common/logout.do" method="post">
+			<input type="hidden" name="logoutReturnUrl" id="logoutReturnUrl" > <!-- 로그아웃 후 이동할 주소 url -->
+		</form>
+
+	</footer>
+	<!--// foot end -->
+
+</div>
+
+</body>
+</html>

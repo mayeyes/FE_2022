@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소상공인시장진흥공단 : QR</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div data-skin="view">
+        <div class="in">
+            <div class="head">
+                온라인 출결
+            </div>
+            <div class="midd">
+                <div class="midd">
+                    <ul>
+                        <li>
+                            <strong>교육과정</strong>
+                            <span>크리닉최신칼라, 컷트, 디자인 펌</span>
+                        </li>
+                        <li>
+                            <strong>교육기관</strong>
+                            <span>윤정순뷰티 아카데미</span>
+                        </li>
+                        <li>
+                            <strong>교육기간</strong>
+                            <span>2020-06-23 ~ 2020-07-07</span>
+                        </li>
+                        <li>
+                            <strong>교육시간</strong>
+                            <span>12시간</span>
+                        </li>
+                        <li>
+                            <strong>센터</strong>
+                            <span>(전남) 여수센터</span>
+                        </li>
+                        <li>
+                            <strong>위치</strong>
+                            <span class="point">대전 서구</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="foot">
+                    <a href="#" class="on" onclick="alert.on('start');return false;"><span>출석</span></a>
+                    <a href="#" onclick="alert.on('end');return false;"><span>퇴석</span></a>
+                </div>
+            </div>
+            <div class="foot">
+                <span class="logo"><img src="./img/logo3.svg" alt="소상공인시장진흥공단"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 위치정보 동의 :s -->
+    <div data-alert="position">
+        <div class="in">
+            <div class="midd">
+                <div class="cell">
+                    소상공인지식배움터에서 현재 위치 정보를
+                    사용하고자 합니다. 온라인 출결을 하시려면
+                    위치정보 사용에 동의하셔야 합니다.
+                </div>
+            </div>
+            <div class="foot">
+                <a href="#" onclick="alert.off();return false;"><span>차단</span></a>
+                <a href="#" onclick="alert.off();return false;"><span>동의</span></a>
+            </div>
+        </div>
+    </div>
+    <!-- 위치정보 동의 :s -->
+
+    <!-- 출석 :s -->
+    <div data-alert="start">
+        <div class="in">
+            <div class="midd">
+                <div class="cell">
+                    출석하시겠습니까?
+                </div>
+            </div>
+            <div class="foot">
+                <a href="#" onclick="alert.off();return false;"><span>취소</span></a>
+                <a href="#" onclick="alert.on('start-err');return false;"><span>확인</span></a>
+            </div>
+        </div>
+    </div>
+    <!-- 출석 :s -->
+
+    <!-- 이미 출석 :s -->
+    <div data-alert="start-err">
+        <div class="in">
+            <div class="midd">
+                <div class="cell">
+                    이미 출석 처리된 기기입니다.
+                </div>
+            </div>
+            <div class="foot">
+                <a href="#" onclick="alert.off();return false;"><span>확인</span></a>
+            </div>
+        </div>
+    </div>
+    <!-- 이미 출석 :s -->
+
+    <!-- 퇴석 :s -->
+    <div data-alert="end">
+        <div class="in">
+            <div class="midd">
+                <div class="cell">
+                    퇴석하시겠습니까?
+                </div>
+            </div>
+            <div class="foot">
+                <a href="#" onclick="alert.off();return false;"><span>취소</span></a>
+                <a href="#" onclick="alert.on('end-err');return false;"><span>확인</span></a>
+            </div>
+        </div>
+    </div>
+    <!-- 퇴석 :s -->
+
+    <!-- 이미 퇴석 :s -->
+    <div data-alert="end-err">
+        <div class="in">
+            <div class="midd">
+                <div class="cell">
+                    이미 퇴석 처리된 기기입니다.
+                </div>
+            </div>
+            <div class="foot">
+                <a href="#" onclick="alert.off();return false;"><span>확인</span></a>
+            </div>
+        </div>
+    </div>
+    <!-- 이미 퇴석 :s -->
+
+    <script>
+        $(function(){
+            alert.on('position');//위치정보 동의 호출
+        });
+        function alert_AC(){
+            return {
+                on: function(str){
+                    $('[data-alert]').hide();
+                    $('[data-alert="'+str+'"]').show();
+                },
+                off: function(){
+                    $('[data-alert]').hide();
+                }
+            }
+        }
+        var alert = alert_AC();
+    </script>
+</body>
+</html>

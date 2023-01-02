@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+	<meta name="viewport" content="width=1920">
+	<meta name="format-detection" content="telephone=no,email=no,address=no" />
+
+	<meta name="description" content="K-water 오아시스 로그인" />
+	<meta name="keywords" content="K-water, 오아시스, 로그인" />
+
+	<title>K-water 오아시스 로그인</title>
+
+
+	<link rel="stylesheet" type="text/css" href="../font/NotoSansKr/font.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../css/login.css" media="all" />
+	<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="../js/content.js"></script>
+</head>
+
+
+<body class="user">
+    <div id="wrapss">
+        <div class="layoutss">
+            <div data-item="login">
+                <div class="log_wrap">
+                <p>K-water 정보관리처</p>
+                <div class="boxs">
+                    <div class="vis">
+                       <img id="visual_img" alt="비주얼" />
+                        <!--<div class="js_slide type_03">
+                            <div class="control">
+                                <a href="#" class="btn_left"><span>이전</span></a>
+                                <a href="#" class="btn_play"><span>재생</span></a>
+                                <a href="#" class="btn_stop"><span>정지</span></a>
+                                <a href="#" class="btn_right"><span>다음</span></a>
+                            </div>
+                            <div class="move">
+                                <ul>
+                                    <li><img src="../../../images/visual01.jpg" alt="비주얼1" /></li>
+                                    <li><img src="../../../images/visual02.jpg" alt="비주얼2" /></li>
+                                    <li><img src="../../../images/visual03.jpg" alt="비주얼3" /></li>
+                                </ul>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="inp">
+                        <h1>OASIS</h1>
+                        <p>오아시스에 오신 것을 환영합니다.</p>
+                        <div class="forms">
+                            <div class="t">
+                                <span class="input id">
+                                    <label for="user_id" class="user_id"><fmt:message bundle="${orgBundle}" key="InputLoginId" /></label>
+                                    <input type="text" name="login_id" placeholder="아이디(사번)을 입력하세요." value="" id="name_cus" onkeyup="num_cus();" >
+                                    <i>icon</i>
+                                </span>
+                                <span class="input ps">
+                                    <label for="user_pwd" class="user_pw"><fmt:message bundle="${orgBundle}" key="InputPassword" /></label>
+                                    <input type="text" name="login_ps" placeholder="비밀번호를 입력하세요." autocomplete="off" value="" onkeyup='checkCapsLock(event);' >
+                                    <i>icon</i>
+                                </span>
+                            </div>
+                            <div class="m">
+                                <a href="#" class="login_btn" onclick="javascript:NameCheck();">로그인</a>
+                            </div>
+                            <div class="b">
+                                <span class="input sa">
+                                    <input id="save" type="checkbox" name="save"><label for="save">아이디 저장</label>
+                                </span>
+                                <span class="reds">오아시스 ID는 사번입니다.</span>
+                            </div>
+                        </div>
+                        <div class="btns">
+                            <a href="#" class="setting_btn" onclick="window.open('http://<%=domain%>/helpdocs/help2005/INST/inst_new.html','설치메뉴얼','left=1,top=1,width=628,height=798,resizable=yes,menubar=no,scrollbars=no');"><span>설치방법</span></a>
+                            <a href="#" class="change_login" name="mobile_login" id="mobile_login" onclick="javascript:location.href='./index_otp.jsp'"><span>휴대폰인증 로그인</span></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() {
+                $('[data-item="login"] .log_wrap').addClass("on").css({"padding-top":($("body").height() - $('[data-item="login"] .log_wrap').height())/2 - 20});
+                $(window).resize(function() {
+                    $('[data-item="login"] .log_wrap').css({"padding-top":($("body").height() - $('[data-item="login"] .log_wrap').height())/2 - 20});
+                });
+                showImage();
+            });
+            var imgArray = new Array();
+            imgArray[0] = "../images/visual01.jpg";
+            imgArray[1] = "../images/visual02.jpg";
+            imgArray[2] = "../images/visual03.jpg";
+            
+            function showImage(){
+                var imgNum = Math.round(Math.random()*2);
+                var objImg = document.getElementById("visual_img");
+                objImg.src = imgArray[imgNum];
+            }
+           
+        </script>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+@charset "utf-8";
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	Layout
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.cms {background-color:#dde3e7; position:relative;}
+.cms #wrap {position:relative; min-width:1900px; height:100%;}
+.cms #wrap .layout {position:relative; margin:0; padding:0px; box-sizing:border-box;}
+.cms #wrap .top_btn {position:fixed; left:-60px; bottom:20px; overflow:hidden; -webkit-border-radius:3px; border-radius:3px; z-index:999; display:none;}
+.cms #wrap .top_btn a {display:block; width:40px; height:40px; background:#fff url(../../images/mec/layout/top_btn.gif) no-repeat center 50%; overflow:hidden; text-indent:-9999px;}
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	Container
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.cms #container {position:relative; z-index:0; height:100%; box-sizing:border-box; padding:0 0 0 215px;}
+.cms #container:after {content:""; display:block; width:215px; height:100%; position:absolute; left:0; top:0; z-index:20; background-color:#1a1f2b;}
+.cms #container #remote {position:absolute; left:0; top:0; z-index:30; width:215px; height:100%; padding:0px 0px 130px 0px; background-color:#1a1f2b; background-image:url(../../images/mec/layout/bg_remote.png); background-repeat:repeat-x; background-position:left top; box-sizing:border-box;}
+.cms #container #remote h1 {display:table; table-layout: fixed; position:relative; z-index:1; height:125px;}
+.cms #container #remote h1 a{display: table-cell; vertical-align: middle; text-decoration: none;}
+.cms #container #remote h1 a span{display: block; margin: 0 auto; text-align: center; font-size: 18px; line-height: 1.3; color: #fff;}
+.cms #container #remote h1 a span img{display: block; margin: 0 auto 8px; }
+.cms #container #remote .js_menu {width:100%; box-sizing:border-box;}
+.cms #container #remote .js_menu ul {border-top:1px solid #282f40;}
+.cms #container #remote .js_menu ul li {border-bottom:1px solid #282f40;}
+.cms #container #remote .js_menu ul li a {background-image:url(../../images/mec/layout/js_menu_depth1_bul.png); background-position:11px 18px; background-repeat:no-repeat; display:block; line-height:22px; padding:16px 11px 16px 38px; font-weight:600; font-size:14px; background-color:#1a1f2b; box-sizing:border-box; transition : all 0.5s ease; -webkit-transition : all 0.5s ease;}
+.cms #container #remote .js_menu ul li a:link,
+.cms #container #remote .js_menu ul li a:visited,
+.cms #container #remote .js_menu ul li a:active {border-left:3px solid #1a1f2b; color:#8b93a7; text-decoration:none;}
+.cms #container #remote .js_menu ul li a:hover,
+.cms #container #remote .js_menu ul li a.on:link,
+.cms #container #remote .js_menu ul li a.on:visited,
+.cms #container #remote .js_menu ul li a.on:active,
+.cms #container #remote .js_menu ul li a.on:hover {font-weight:600; border-left:3px solid #62cf40; color:#fff; background-color:#0e1217; background-image:url(../../images/mec/layout/js_menu_depth1_bul_on.png);}
+.cms #container #remote .js_menu ul li ul {display:none; padding:12px 0px; border:none; border-top:1px solid #282f40; background-color:#0e1217;}
+.cms #container #remote .js_menu ul li ul li {border-bottom:none; background-color:#0e1217 !important;}
+.cms #container #remote .js_menu ul li ul li a {padding:3px 10px 3px 41px; display:inline-block; font-weight:normal; font-size:13px; background-color:transparent; background-repeat:no-repeat; background-position:27px 11px;}
+.cms #container #remote .js_menu ul li ul li a:link,
+.cms #container #remote .js_menu ul li ul li a:visited,
+.cms #container #remote .js_menu ul li ul li a:active {color:#666a79; border:none; background-image:url(../../images/mec/layout/js_menu_depth2_bul.png);}
+.cms #container #remote .js_menu ul li ul li a:hover,
+.cms #container #remote .js_menu ul li ul li a.on:link,
+.cms #container #remote .js_menu ul li ul li a.on:visited,
+.cms #container #remote .js_menu ul li ul li a.on:active,
+.cms #container #remote .js_menu ul li ul li a.on:hover {color:#c5cdd8; text-decoration:none; border:none; background-image:url(../../images/mec/layout/js_menu_depth2_bul_on.png);}
+.cms #container #remote .js_menu ul li ul li ul {padding:0 0px 5px 0px; border:none;}
+.cms #container #remote .js_menu ul li ul li ul li {}
+.cms #container #remote .js_menu ul li ul li ul li a {padding:2px 10px 2px 36px;}
+.cms #container #remote .js_menu ul li ul li ul li a:before {content:"┗ ";}
+.cms #container #remote .js_menu ul li ul li ul li a:link,
+.cms #container #remote .js_menu ul li ul li ul li a:visited,
+.cms #container #remote .js_menu ul li ul li ul li a:active {background-image:none;}
+.cms #container #remote .js_menu ul li ul li ul li a:hover,
+.cms #container #remote .js_menu ul li ul li ul li a.on:link,
+.cms #container #remote .js_menu ul li ul li ul li a.on:visited,
+.cms #container #remote .js_menu ul li ul li ul li a.on:active,
+.cms #container #remote .js_menu ul li ul li ul li a.on:hover {background-image:none;}
+.cms #container #remote .js_menu ul li ul li a.menu_arrow:after {content:""; opacity:0.4; display:inline-block; margin-top:-2px; margin-left:7px; vertical-align:middle; width:0; height:0; border-top:4px solid transparent; border-bottom:4px solid transparent; border-left:6px solid #fff; transition:all 0.5s ease; -webkit-transition:all 0.5s ease;}
+.cms #container #remote .js_menu ul li ul li a.menu_arrow.on:after {transform:rotate(90deg); -webkit-transform:rotate(90deg);}
+.cms #container #remote .js_menu ul li ul li a.menu_arrow:hover:after,
+.cms #container #remote .js_menu ul li ul li a.menu_arrow.on:after {opacity:0.9; -webkit-opacity:0.9;}
+.cms #container #content {width:auto; position:relative;}
+.cms #container #content:after {content:""; display:block; width:215px; height:100%; position:absolute; left:-215px; top:0; z-index:10; background-color:#1a1f2b;}
+.cms #container #content h3 {height:76px; padding:25px 0 0 0; font-weight:600; font-size:28px; line-height:34px; color:#1e1e1e; box-sizing:border-box;}
+.cms #container #content #path {position:relative; height:49px; line-height:49px; padding:0px 25px; font-size:10px; color:#404040; background-color:#fff;}
+.cms #container #content #path .komsco{}
+.cms #container #content #path .komsco img{display: inline-block; vertical-align: middle;}
+.cms #container #content #path .komsco span{display: inline-block; margin-left: 8px; color: #222; letter-spacing: -0.05em; font-size: 20px; font-weight: 800; line-height: 1; vertical-align: middle;}
+.cms #container #content #global {position:absolute; right:25px; top:7px;}
+.cms #container #content #global ul {float:left;}
+.cms #container #content #global ul li {float:left; position:relative; height:36px; line-height:36px; padding-left:25px; font-size:12px; color:#505050; background:url(../../images/mec/layout/bar_01.png) no-repeat 12px center;}
+.cms #container #content #global ul li:first-child {padding-left:0px; background:none;}
+.cms #container #content #global ul li.last {padding-left:12px; background:none;}
+.cms #container #content #global ul li.alarm .js_popup_btn{position: relative; display: block; height: 38px;}
+.cms #container #content #global ul li.alarm .js_popup_btn span{
+    position: absolute; top: -2px; right: -10px; display: inline-block; padding: 4px 7px; line-height: 1; background-color: #CB2B33; color: #fff; font-size: 10px; font-weight: 500; letter-spacing: -0.05em; box-sizing: border-box;
+    border-radius: 50px; -webkit-border-radius: 50px;
+}
+.cms #container #content #global ul li strong {line-height:36px; padding-left:0; font-size:12px; font-weight:normal; vertical-align:top; background:none;}
+.cms #container #content #txt {min-height:500px; padding:0px 25px 50px 25px;}
+.cms #container #content #txt .inner {position:relative; background-color:#fff; border-radius:5px; -webkit-border-radius:5px;}
+.cms #container #content #txt .inner .view {padding:35px 35px;}
+.cms #container #content #txt .inner .controls {position:relative; width:100%; height:60px; padding:12px 25px; background-color:#f5f6f8; box-sizing:border-box; border-radius:5px 5px 0px 0px; -webkit-border-radius:5px 5px 0px 0px;}
+.cms #container #content #txt .inner .controls.fixed {position:fixed; left:0; top:0; z-index:10; padding-left:265px; box-shadow:0 2px 8px rgba(0,0,0,0.2); border-bottom:1px solid #ccc;}
+.cms #container #content #txt .inner .controls.fixed .search {right:50px;}
+.cms #container #content #txt .inner .controls .search {position:absolute; right:25px; top:14px; line-height:32px; height:32px;}
+.cms #container #content #txt .inner .controls .search_box{}
+.cms #container #content #txt .inner .controls .search_box [data-type="cal"]{background-color: #fff;}
+.cms #container #content #txt .inner .controls .search .count {display:inline-block;}
+.cms #container #content #txt .inner .controls .search form,
+.cms #container #content #txt .inner .controls .search .form {overflow:hidden; display:inline-block; height:32px; margin-left:14px; padding-left:10px; vertical-align:top; border:1px solid #c0c4ce; background-color:#fff; box-sizing:border-box; border-radius:16px;	-webkit-border-radius:16px;}
+.cms #container #content #txt .inner .controls .search select,
+.cms #container #content #txt .inner .controls .search input[type="text"],
+.cms #container #content #txt .inner .controls .search a,
+.cms #container #content #txt .inner .controls .search div[data-type="cal"],
+.cms #container #content #txt .inner .controls .search span{float:left; height:32px; line-height:32px; vertical-align:middle; border:none; background-color:transparent;}
+.cms #container #content #txt .inner .controls .search div[data-type="cal"]{border: 0;}
+.cms #container #content #txt .inner .controls .search div[data-type="cal"] input{width: 100px;}
+.cms #container #content #txt .inner .controls .search div[data-type="cal"] .ui-datepicker-trigger{vertical-align: sub;}
+.cms #container #content #txt .inner .controls .search .btn {vertical-align:middle;}
+.cms #container #content #txt .inner .controls .search select {min-width:80px;}
+.cms #container #content #txt .inner .controls .search input[type="text"] {width:140px;}
+.cms #container #content #txt .inner .controls .search a {overflow:hidden; width:40px; text-indent:-1000px; background:url(../../images/mec/layout/icon_search.png) no-repeat center 42%;}
+
+
+
+/*팝업창 뷰*/
+.view_popup{padding:20px;}
