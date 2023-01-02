@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>취약지점 영상</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jquery -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!-- jquery ui -->
+    <script src="../js/content.js"></script>
+
+    
+
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+
+</head>
+
+<body data-mode="dark"> <!--  data-mode="bright" -->
+
+    <div id="container">
+
+        <div class="layout">
+
+            <!-- 사이트 메뉴  -->
+            <div id="snb_wrap">
+
+                <h3></h3>
+
+                <div id="remote">
+
+                    <button class="all_fold" onclick="all_close_btn()"> <span>모든메뉴접기</span></button>
+
+                    <div id="lnb" class="js_menu" data-scroll="custom" data-style="2">
+                        <ul>
+                            <li><a href="#" data-icon="accident">사고감지 정보 (1)</a>
+                                <div>
+                                    <ul data-scroll="custom" data-height="small">
+                                        <li data-sens="red"><a href="">2022년 10월 21일 15:49 물비침 감시 정보</a></li>
+                                        <li data-sens="red"><a href="">2022년 10월 21일 15:49 물비침 감시 정보</a></li>
+                                        <li data-sens="red"><a href="">2022년 10월 21일 15:49 물비침 감시 정보</a></li>
+                                        <li data-sens="red"><a href="">2022년 10월 21일 15:49 물비침 감시 정보</a></li>
+                                        <li data-sens="red"><a href="">2022년 10월 21일 15:49 물비침 감시 정보</a></li>
+                                        <li data-sens="red"><a href="">2022년 10월 21일 15:49 물비침 감시 정보</a></li>
+                                        <li data-sens="red"><a href="">2022년 10월 21일 15:49 물비침 감시 정보</a></li>
+                                        <li data-sens="red"><a href="">2022년 10월 21일 15:49 물비침 감시 정보</a></li>
+                                        <li data-sens="red"><a href="">2022년 10월 21일 15:49 물비침 감시 정보</a></li>
+                                    </ul>
+
+                                </div>
+                            </li>
+
+
+                            <li><a href="#" data-icon="point_map">취약지점 (8)</span></a>
+                                <div>
+                                    <ul data-scroll="custom" data-height="middle">
+                                        <li data-sens="yel"><a href="">창원병원 사거리</a></li>
+                                        <li><a href="">[경부선]대신</a></li>
+                                        <li><a href="">[국도 1호선]오산경원산</a></li>
+                                        <li><a href="">영통입구사거리</a></li>
+                                        <li><a href="">비전사거리</a></li>
+                                        <li><a href="">만남의 폭포사거리</a></li>
+                                        <li><a href="">[국도 1호선]오산경원산</a></li>
+                                        <li><a href="">[국도 1호선]오산경원산</a></li>
+                                        <li><a href="">[국도 1호선]오산경원산</a></li>
+                                        <li><a href="">[국도 1호선]오산경원산</a></li>
+                                        <li><a href="">[국도 1호선]오산경원산</a></li>
+                                        <li><a href="">[국도 1호선]오산경원산</a></li>
+                                    </ul>
+
+                                </div>
+                            </li>
+
+
+                            <li><a href="#" data-icon="map"> <span>[창원병원 사거리]</span> 위치정보 </a>
+                               
+                                            <div id="map" style="width:100%;height:277px;"></div>
+                                                    
+                                                    <!--  지도 예시 -->
+                                                
+                                                    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ddad69038fa2757e0da6b2286c6877d8"></script>
+
+                                                    <script>
+
+
+                                                        var container = document.getElementById('map'); 
+                                                        var options = { 
+                                                            center: new kakao.maps.LatLng(33.450701, 126.570667), 
+                                                            level: 3 
+                                                        };
+                                                        
+                                                        var map = new kakao.maps.Map(container, options); 
+                                                        
+                                                        
+                                                    </script>
+                                        
+                            </li>
+
+
+                        </ul>
+                        
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!-- 비디오 컨텐츠  -->
+            <div id="video_wrap">
+
+                <div class="head">
+
+                    <ul>
+                        <li>
+                            <a href="./index.html">실시간 영상</a>
+                        </li>
+                        <li class="on">
+                            <a href="./index_02.html">취약지점 영상</a>
+                        </li>
+                        <li>
+                            <a href="./index_03.html">사고감시 영상</a>
+                        </li>
+                    </ul>
+
+                    <div class="top_menu_btns">
+                        <div class="mode_chg">
+                            
+                            <div class="mode_txt">
+                                <p data-icon="moon">다크모드</p>
+                                <p data-icon="sun">라이트모드</p>
+                            </div>
+                            <div class="button r" id="mode_btn">
+                                <input type="checkbox" class="checkbox" />
+                                <div class="knobs"></div>
+                                <div class="layer"></div>
+                            </div>
+                        </div>
+                        <div class="logins">
+                             <a href="#none">Admin</a>
+                             <ul>
+                                <li><a href="">로그아웃</a></li>
+                                <li><a href="">마이페이지</a></li>
+                             </ul>
+                        </div>
+
+                        <div class="home_box">     <!-- 2022.12.09 추가 / home 버튼 추가 -->
+                            <a href="#" class="home_btn"></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="midd">
+                    <div class="layout_btns">
+                        <button data-layout="1" class="">
+                        </button>
+                        <button data-layout="2" class="on">
+                        </button>
+                        <span class="frame"></span>
+                    </div>
+
+                    <div class="video_layout" data-layout="2">  <!--  data-layout="1"  == 2x2  /  data-layout="2"  == 3x3 -->
+
+                        <ul>
+                            <li data-sens="yel">
+                                <strong>창원병원 사거리</strong>
+                                <video id="video1" autoplay="" muted="muted">
+                                    <source src="../img/sample_video.mp4">
+                                </video>
+                            </li>
+                            <li>
+                                <strong>창원병원 사거리</strong>
+                                <video id="video1" autoplay="" muted="muted">
+                                    <source src="../img/sample_video.mp4">
+                                </video>
+                            </li>
+                            <li >
+                                <strong>창원병원 사거리</strong>
+                                <video id="video1" autoplay="" muted="muted">
+                                    
+                                </video>
+                            </li>
+                            <li data-sens="red">
+                                <strong>창원병원 사거리</strong>
+                                <video id="video1" autoplay="" muted="muted">
+                                    <source src="../img/sample_video.mp4">
+                                </video>
+                            </li>
+                            <li>
+                                <strong>창원병원 사거리</strong>
+                                <video id="video1" autoplay="" muted="muted">
+                                    <source src="../img/sample_video.mp4">
+                                </video>
+                            </li>
+                            <li>
+                                <strong>창원병원 사거리</strong>
+                                <video id="video1" autoplay="" muted="muted">
+                                    <source src="../img/sample_video.mp4">
+                                </video>
+                            </li>
+                            <li>
+                                <strong>창원병원 사거리</strong>
+                                <video id="video1" autoplay="" muted="muted">
+                                    <source src="../img/sample_video.mp4">
+                                </video>
+                            </li>
+                            <li>
+                                <strong>창원병원 사거리</strong>
+                                <video id="video1" autoplay="" muted="muted">
+                                    <source src="../img/sample_video.mp4">
+                                </video>
+                            </li>
+                            <li>
+                                <strong>창원병원 사거리</strong>
+                                <video id="video1" autoplay="" muted="muted">
+                                    <source src="../img/sample_video.mp4">
+                                </video>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+
+                <div class="foot">
+                    <div class="text_box">
+                        <marquee onmouseover="this.stop();" onmouseout="this.start();"> <!-- 2022.12.09 추가 / 텍스트 동적 작업 추가  -->
+                            <strong>2022년 10월 21일 15:49 물비침 감시 정보 → <p>[CCTV000246] 서울교통정보센터 - 교육개발원입구 CCTV</p> <p>[CCTV000246] 서울교통정보센터 - 교육개발원입구 CCTV</p> <p>[CCTV000246] 서울교통정보센터 - 교육개발원입구 CCTV</p> <p>[CCTV000246] 서울교통정보센터 - 교육개발원입구 CCTV</p></strong>
+                        </marquee>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
